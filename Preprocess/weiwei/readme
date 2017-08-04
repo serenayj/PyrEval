@@ -1,0 +1,84 @@
+============================================
+Introduction
+============================================
+  In the 2014-10-17 version, I incorporated the nearly orthogonal projection idea in my latest paper (Guo et al. 2014).  A corresponding parameter alpha is added, which controls the orthogonal projection.  Setting alpha=0 will produce the same model as Weighted Matrix Factorization (Guo and Diab, 2012) does.
+  
+  This package contains the matlab code for a distributional similarity model -- Orthogonal matrix factorization (OrMF), and a perl pipeline that preprocesses the data and uses the OrMF model to extract the latent vectors of short texts.
+  It can be used to find the latent topics of short text data.  It can also be used to compute the similarity between two short texts (simply the cosine similarity between the two latent vectors).
+  The pipeline will: (1) preprocess each short text by tokenization and stemming, (2) change the preprocessed data into matlab format after removing infrequent words and TF-IDF weighting, (3) use the OrMF model to extract the latent semantics which is represented as a 100-dimension vector.
+
+  The OrMF model is an unsupervised dimension reduction algorithm, use the exactly the same information that LSA and LDA exploit, which is word-document co-occurrence, and outperforms LSA and LDA by a large margin (on the sentence similarity data sets).  
+It will train a model on a corpus.  For each short text in the test data, it will find a latent K-dimension vector.  Usually a larger K leads to a better performance.  In this package, I used K=100.
+
+
+Please cite the following paper when you use the code:
+@INPROCEEDINGS {Guo:12,
+        AUTHOR    = {Weiwei Guo and Mona Diab},
+        TITLE     = {Modeling Sentences in the Latent Space},
+        BOOKTITLE = {Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics},
+        YEAR      = {2012},
+}
+
+@INPROCEEDINGS {Guo:14,
+        AUTHOR    = {Weiwei Guo and Wei Liu and Mona Diab},
+        TITLE     = {Fast Tweet Retrieval with Compact Binary Codes},
+        BOOKTITLE = {Proceedings of COLING 2014, the 25th International Conference on Computational Linguistics},
+        YEAR      = {2014},
+}
+
+
+===========================================
+Install
+============================================
+  OrMF requires matlab to be installed.
+
+=========================================
+directory and files
+=========================================
+      	bin/ and lib/: perl pipeline scripts for preprocessing and evaluation 
+	data/: the corpora I used to build OrMF model
+      	models/: where the OrMF models are
+	test/: some test files, including several sentence similarity data sets
+	ormf/: the algorithm written in matlab
+
+==========================================
+OrMF model and corpora
+==========================================
+A OrMF model with dimension=100, alpha=0.0001 is already trained in "models/14-10-31/" (another WMF model with dimension=100, alpha=0 is trained in "models/14-05-29/").  It is trained on WordNet sense definitions, Wiktionary definitions and Brown corpus.  For Brown corpus, each sentence is treated as a document to create more word-document co-occurrence.  For Wordnet and Wiktionary sense definitions, the target words and their usage examples are appended to the definitions.  The following script is used to merge the three corpora:
+    cat  data/WordNet/text.wem  data/Wiktionary/text.wem  data/Brown/text  >  models/14-10-30/train.txt
+More information can be found in the paper and data/readme file.
+
+
+============================================
+How to use
+============================================
+------------------------
+1. test
+------------------------
+To obtain the similarity between two short texts, you can directly run the scripts using our trained model:
+a. "perl  bin/test.pl  models/14-10-31  test/sts12/text"
+   The 1st input is the directory of the model, which will be explained in detail later.  The 2nd input is the file that contains a short text each line.
+   The script will generate a file "test/sts12/text.ls", where each line contains a latent vector.
+b. "perl  bin/Postprocess/get_sim.pl  test/sts12/text.ls  test/sts12/text.sim"
+   The first input is the latent semantics file.  The second input is an output file that contains the similarity between two adjacent latent vectors.  For example, if the "test/sts12/text" file has 100 lines, then "test/sts12/text.sim" will have 50 lines, each containing a similarity score.
+c. "perl  bin/Postprocess/correlation.pl  test/sts12/text.sim  test/sts12/gs"
+   It is used only if you have gold standard similarity.  It will print the Pearson's correlation score between system generated similarity and gold standard similarity.
+   Running the 3 commands should yield a pearson's correlation of 0.72033.
+
+------------------------
+2. train
+------------------------
+You can train a new model on your own corpora.  The format of the corpora is straightforward: each line contains a short text.
+   "perl  bin/train.pl  models/14-10-31  models/14-10-31/train.txt  100  20  0.01  0.0001  20"
+   ++ the 1st parameter is the model directory.
+   ++ The "train.txt" is your own corpora.  The script will create a OrMF model in the directory "models/14-10-31", as well as a set of files:
+      a. models/14-10-31/vocab: the index of each word.  For example, the second word is "follow", then the index of "follow" is 2.
+      b. models/14-10-31/idf: the idf value of each word.  It is line aligned with vocab file.
+      c. models/14-10-31/model: contains the parameter of the OrMF model
+      d. models/14-10-31/train.clean: the resulting file after preprocessing train.txt (using script bin/Preprocess/preprocess.pl)
+      e. models/14-10-31/train.ind: the input file to OrMF.m (using script bin/Preprocess/change_format.pl)
+   ++ the 3rd parameter is the number of dimensions.  In the example I used 100.  Usually applying a larger number of dimension results in better performance and more training time.
+   ++ the 4th parameter is the lambda (regularization factor).  In the example I used 20.  You can fix it as 20.
+   ++ the 5th parameter is the w_m (missing word weight).  In the example I used 0.01.  You can also try 0.1 depending on your task.
+   ++ the 6th parameter is the alpha (controls the orthogonal projection).  In the example I use 0.0001.  You can fix it as 0.0001.  You can also try 0, which means it is a WMF model (Guo and Diab 2012) without the orthogonal projection.
+   ++ the 7th parameter is the number of iteration.  In the example I used 20.  You can fix it as 20.

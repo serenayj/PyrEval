@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<!DOCTYPE pyramid [
+ <!ELEMENT pyramid (startDocumentRegEx?,text,scu*)>
+ <!ELEMENT startDocumentRegEx (#PCDATA)>
+ <!ELEMENT text (line*)>
+ <!ELEMENT line (#PCDATA)>
+ <!ELEMENT scu (contributor)+>
+ <!ATTLIST scu uid CDATA #REQUIRED
+               label CDATA #REQUIRED
+               comment CDATA #IMPLIED>
+ <!ELEMENT contributor (part)+>
+ <!ATTLIST contributor label CDATA #REQUIRED
+                       comment CDATA #IMPLIED>
+ <!ELEMENT part EMPTY>
+ <!ATTLIST part label CDATA #REQUIRED
+                start CDATA #REQUIRED
+                end   CDATA #REQUIRED>
+
+]>
+
+<pyramid>
+<startDocumentRegEx><![CDATA[[-]*\n[0-9]\.txt\n[-]*\n]]></startDocumentRegEx>
+ <text>
+  <line>---------</line>
+  <line>1.txt</line>
+  <line>---------</line>
+  <line></line>
+  <line>Matter is what makes up all objects or substances and contains both volume and mass. Some types of matter are easily observable with the senses but others are harder to identify without the assistance of a microscope. To classify matter one must identify the physical and chemical properties. The physical properties are those that can be observed without changing the matter itself.  Examples of physical property are malleability, boiling point, melting point, solubility, and others. The chemical properties involve changing the matter into a new kind of matter with different properties. Examples of this are rusting and flammability, because it systematically changes the matter itself. The primary difference between a physical and chemical change is the changing of the substance into a new matter in a chemical change. By changing the physical property of the substance, the matter itself does not change, but in a chemical change the substance itself becomes something new.</line>
+  <line>All matter has energy, although it cannot be seen or touched. The law of conservation of energy is the notion that energy can be transferred between objects but cannot be created or destroyed. Mechanical energy is a cause of the object's motion or position; broken down there are two different kinds of mechanical energy. Kinetic energy is because of the object's motion and potential energy is because of the object's position.</line>
+  <line></line>
+  <line>---------</line>
+  <line>2.txt</line>
+  <line>---------</line>
+  <line></line>
+  <line>The author of this passage titled 'What is Matter?' defines matter as 'the stuff' that all objects and substances in the universe are made of. All matter has the ability to be detected and measured as it takes up space defined as volume and contains a certain amount of material defined as mass. Matter can either observed easily with an individual's senses, or in a more challenging capacity. Examples the text gives of types of matter that are easy to identify with sight and touch senses are: rocks, trees, bicycles, and different kinds of animals. Types of matter more challenging to observe are: dust mites and air. Dust mites are too small for the naked eye but can be found in furniture and rugs, and air although can't be seen the author argues it can be felt with help of the wind, bending the tree branches.</line>
+  <line>Matter can be classified by two separate properties: physical and chemical. Physical properties can be observed without having to change the make-up, or identity of the matter. Matter has several different physical properties that are outlined in the article. Examples of physical properties are: density, ductility, malleability, boiling point, melting point, electrical conductivity, and solubility. The author references clay as an object that is malleable as it has the ability to take different forms by pressing or pounding on it. Chemical properties however, describe matter based on its ability to change into matter with different properties. Examples of chemical properties are flammability and rusting, as the object is no longer made of the same matter. The difference between physical and chemical change is that physical change only relates to the size and shape of the object, the matter the object is made up of remains the same. The author provides an example of a sheet of paper folded into thirds, although the new paper size is now one third of the original and is shaped differently, it is still paper. Unlike physical change, chemical change occurs when the chemical properties of the matter have changed and a new substance is produced. The author keeps the original type of matter: paper, and explains by applying fire to the paper and letting it burn, the ash, gas, and smoke you're left with is not paper any longer.</line>
+  <line>In conclusion, the author explains that energy is related to matter as it is defined as a property of matter, and all matter has it. Although it can't be seen or touched like matter, energy is very essential. The law of conservation of energy is a rule associated with forms of energy. This law explains that energy comes several forms and cannot be created or destroyed. Energy can only be transferred from one object or system to another. Mechanical energy is the energy an object has because of its motion or position. The two kinds of mechanical energy are: kinetic and potential. Kinetic energy is the energy an object has because it is moving. The author asserts a parallel between speed/mass and kinetic energy, the greater the speed and mass of an object, the greater the kinetic energy. Potential energy is energy an object has because of its position or shape.</line>
+  <line></line>
+  <line>---------</line>
+  <line>3.txt</line>
+  <line>---------</line>
+  <line></line>
+  <line>The passage, What is Matter, mainly focused on the topic of matter and its components. Matter is identified as being present everywhere and in all substances. What is unique is that individuals are able to observe certain forms of matter using their senses while other forms are not so easily observed. The latter requires the assistance of a specific instrument such as a microscope. The passage further explained that matter can be broken down into physical properties and chemical properties. Physical properties can occur without changing the identity or nature of the matter. It is important to know that if the physical properties such as the size and shape of an object changes, the chemical properties does not change. However, chemical properties have the capability to change into a different matter containing different properties.</line>
+  <line></line>
+  <line>---------</line>
+  <line>4.txt</line>
+  <line>---------</line>
+  <line></line>
+  <line>In 'What is Matter?', we learn the definition of matter, its properties, and how matter relates to energy. Matter is anything that has mass and takes up space (volume). We can detect matter because it does have mass and take up space. Common examples are solids like a bed and a bug, liquids like water and milk, and gas like air and smoke. Scientists classify matter based on its physical and chemical properties.</line>
+  <line>A physical property is something we can observe without changing the essential, atomic identity of the matter. For example, its shape, size, malleability, and density are all properties we can observe without fundamentally changing the matter. However, a chemical property requires the observer to change the essential, atomic identity of the matter. For example, a chemical property of paper is flammability. When paper burns, the paper's atomic make-up is changed and it is no longer paper. A final property of matter is energy. Although you cannot see or touch energy, all matter has it. Energy is transferred between matter.</line>
+  <line></line>
+  <line>---------</line>
+  <line>5.txt</line>
+  <line>---------</line>
+  <line></line>
+  <line>Matter is all the objects and substances that take up space around us. Matter can be detected and measured because it contains volume and mass. Trees, rocks, animals, dust mites and air are all considered examples of matter. Properties are used to help us identify matter. Physical and chemical properties are the two main types of properties used to classify matter. Physical properties are observed without changing the identity of the object. For example, clay can be molded into different shapes and sizes but the molding does not change the substances in clay. Chemical properties of matter are characterized by their ability to change into a new substance with different properties. For example, paper burning into ash and irons ability to rust. There is also a physical and chemical change that exists in matter. The difference between a physical and chemical change is that a chemical change will create a new substance while all the chemical properties in a physical change will not change.</line>
+  <line>Another property of matter is energy. Energy is related to matter because all matter is made up of energy. The rule that governs energy is known as the law of conservation of energy. This rule indicates that energy cannot be destroyed when it moves from one object or system to another. An additional form of energy is mechanical energy. Mechanical energy is the energy of an object that results from its motion or position. Mechanical energy comes in two forms, kinetic and potential. Kinetic energy occurs when an object is moving. Potential energy results from an object's position or shape.</line>
+ </text>
+ <scu uid="8" label="Matter is classified by physical and chemical properties">
+  <contributor label="To classify matter one must identify the physical and chemical properties">
+   <part label="To classify matter one must identify the physical and chemical properties" start="245" end="318"/>
+  </contributor>
+  <contributor label="Matter can be classified by two separate properties: physical and chemical">
+   <part label="Matter can be classified by two separate properties: physical and chemical" start="2285" end="2359"/>
+  </contributor>
+  <contributor label="matter can be broken down into physical properties and chemical properties">
+   <part label="matter can be broken down into physical properties and chemical properties" start="5047" end="5121"/>
+  </contributor>
+  <contributor label="Scientists classify matter based on its physical and chemical properties">
+   <part label="Scientists classify matter based on its physical and chemical properties" start="5839" end="5911"/>
+  </contributor>
+  <contributor label="Physical and chemical properties are the two main types of properties used to classify matter">
+   <part label="Physical and chemical properties are the two main types of properties used to classify matter" start="6843" end="6936"/>
+  </contributor>
+ </scu>
+ <scu uid="1" label="Matter is what makes up all objects or substances">
+  <contributor label="Matter is what makes up all objects or substances">
+   <part label="Matter is what makes up all objects or substances" start="27" end="76"/>
+  </contributor>
+  <contributor label="defines matter as 'the stuff' that all objects and substances in the universe are made of">
+   <part label="defines matter as 'the stuff' that all objects and substances in the universe are made of" start="1519" end="1608"/>
+  </contributor>
+  <contributor label="Matter is identified as being present everywhere and in all substances">
+   <part label="Matter is identified as being present everywhere and in all substances" start="4714" end="4784"/>
+  </contributor>
+  <contributor label="Matter is anything that has mass and takes up space (volume)">
+   <part label="Matter is anything that has mass and takes up space (volume)" start="5605" end="5665"/>
+  </contributor>
+  <contributor label="Matter is all the objects and substances that take up space around us">
+   <part label="Matter is all the objects and substances that take up space around us" start="6570" end="6639"/>
+  </contributor>
+ </scu>
+ <scu uid="10" label="The chemical properties involve changing the matter into a new kind of matter with different properties">
+  <contributor label="The chemical properties involve changing the matter into a new kind of matter with different properties">
+   <part label="The chemical properties involve changing the matter into a new kind of matter with different properties" start="514" end="617"/>
+  </contributor>
+  <contributor label="Chemical properties however, describe matter based on its ability to change into matter with different properties">
+   <part label="Chemical properties however, describe matter based on its ability to change into matter with different properties" start="2822" end="2935"/>
+  </contributor>
+  <contributor label="chemical properties have the capability to change into a different matter containing different properties">
+   <part label="chemical properties have the capability to change into a different matter containing different properties" start="5363" end="5468"/>
+  </contributor>
+  <contributor label="a chemical property requires the observer to change the essential, atomic identity of the matter">
+   <part label="a chemical property requires the observer to change the essential, atomic identity of the matter" start="6166" end="6262"/>
+  </contributor>
+  <contributor label="Chemical properties of matter are characterized by their ability to change into a new substance with different properties">
+   <part label="Chemical properties of matter are characterized by their ability to change into a new substance with different properties" start="7136" end="7257"/>
+  </contributor>
+ </scu>
+ <scu uid="9" label="The physical properties are those that can be observed without changing the matter itself">
+  <contributor label="The physical properties are those that can be observed without changing the matter itself">
+   <part label="The physical properties are those that can be observed without changing the matter itself" start="320" end="409"/>
+  </contributor>
+  <contributor label="Physical properties can be observed without having to change the make-up, or identity of the matter">
+   <part label="Physical properties can be observed without having to change the make-up, or identity of the matter" start="2361" end="2460"/>
+  </contributor>
+  <contributor label="Physical properties can occur without changing the identity or nature of the matter">
+   <part label="Physical properties can occur without changing the identity or nature of the matter" start="5123" end="5206"/>
+  </contributor>
+  <contributor label="A physical property is something we can observe without changing the essential, atomic identity of the matter...without fundamentally changing the matter">
+   <part label="A physical property is something we can observe without changing the essential, atomic identity of the matter" start="5913" end="6022"/>
+   <part label="without fundamentally changing the matter" start="6114" end="6155"/>
+  </contributor>
+  <contributor label="Physical properties are observed without changing the identity of the object">
+   <part label="Physical properties are observed without changing the identity of the object" start="6938" end="7014"/>
+  </contributor>
+ </scu>
+ <scu uid="11" label="All matter has energy">
+  <contributor label="All matter has energy">
+   <part label="All matter has energy" start="1010" end="1031"/>
+  </contributor>
+  <contributor label="all matter has it">
+   <part label="all matter has it" start="3842" end="3859"/>
+  </contributor>
+  <contributor label="all matter is made up of energy">
+   <part label="all matter is made up of energy" start="7644" end="7675"/>
+  </contributor>
+  <contributor label="all matter has it">
+   <part label="all matter has it" start="6485" end="6502"/>
+  </contributor>
+ </scu>
+ <scu uid="13" label="energy can be transferred between objects">
+  <contributor label="energy can be transferred between objects">
+   <part label="energy can be transferred between objects" start="1125" end="1166"/>
+  </contributor>
+  <contributor label="Energy can only be transferred from one object or system to another">
+   <part label="Energy can only be transferred from one object or system to another" start="4100" end="4167"/>
+  </contributor>
+  <contributor label="Energy is transferred between matter">
+   <part label="Energy is transferred between matter" start="6504" end="6540"/>
+  </contributor>
+  <contributor label="it moves from one object or system to another">
+   <part label="it moves from one object or system to another" start="7810" end="7855"/>
+  </contributor>
+ </scu>
+ <scu uid="21" label="Examples of chemical property are rusting and flammability">
+  <contributor label="For example, a chemical property of paper is flammability">
+   <part label="For example, a chemical property of paper is flammability" start="6264" end="6321"/>
+  </contributor>
+  <contributor label="Examples of this are rusting and flammability, because it systematically changes the matter itself">
+   <part label="Examples of this are rusting and flammability, because it systematically changes the matter itself" start="619" end="717"/>
+  </contributor>
+  <contributor label="Examples of chemical properties are flammability and rusting, as the object is no longer made of the same matter">
+   <part label="Examples of chemical properties are flammability and rusting, as the object is no longer made of the same matter" start="2937" end="3049"/>
+  </contributor>
+  <contributor label="For example, paper burning into ash and irons ability to rust">
+   <part label="For example, paper burning into ash and irons ability to rust" start="7259" end="7320"/>
+  </contributor>
+ </scu>
+ <scu uid="20" label="Examples of physical property are malleability, boiling point, melting point, solubility, and others">
+  <contributor label="Examples of physical property are malleability, boiling point, melting point, solubility, and others">
+   <part label="Examples of physical property are malleability, boiling point, melting point, solubility, and others" start="412" end="512"/>
+  </contributor>
+  <contributor label="Examples of physical properties are: density, ductility, malleability, boiling point, melting point, electrical conductivity, and solubility...only relates to the size and shape of the object">
+   <part label="Examples of physical properties are: density, ductility, malleability, boiling point, melting point, electrical conductivity, and solubility" start="2545" end="2685"/>
+   <part label="only relates to the size and shape of the object" start="3127" end="3175"/>
+  </contributor>
+  <contributor label="physical properties such as the size and shape of an object">
+   <part label="physical properties such as the size and shape of an object" start="5244" end="5303"/>
+  </contributor>
+  <contributor label="For example, its shape, size, malleability, and density are all properties we can observe">
+   <part label="For example, its shape, size, malleability, and density are all properties we can observe" start="6024" end="6113"/>
+  </contributor>
+ </scu>
+ <scu uid="2" label="Matter contains volume and mass">
+  <contributor label="contains both volume and mass">
+   <part label="contains both volume and mass" start="81" end="110"/>
+  </contributor>
+  <contributor label="takes up space defined as volume and contains a certain amount of material defined as mass">
+   <part label="takes up space defined as volume and contains a certain amount of material defined as mass" start="1671" end="1761"/>
+  </contributor>
+  <contributor label="contains volume and mass">
+   <part label="contains volume and mass" start="6688" end="6712"/>
+  </contributor>
+  <contributor label="it does have mass and take up space">
+   <part label="it does have mass and take up space" start="5696" end="5731"/>
+  </contributor>
+ </scu>
+ <scu uid="23" label="The difference between physical and chemical change is that matter remains the same in physical change while mateer have changed in chemical change">
+  <contributor label="The primary difference between a physical and chemical change is the changing of the substance into a new matter in a chemical change...By changing the physical property of the substance, the matter itself does not change, but in a chemical change the substance itself becomes something new">
+   <part label="The primary difference between a physical and chemical change is the changing of the substance into a new matter in a chemical change" start="719" end="852"/>
+   <part label="By changing the physical property of the substance, the matter itself does not change, but in a chemical change the substance itself becomes something new" start="854" end="1008"/>
+  </contributor>
+  <contributor label="The difference between physical and chemical change is that physical change...the matter the object is made up of remains the same...Unlike physical change, chemical change occurs when the chemical properties of the matter have changed and a new substance is produced">
+   <part label="The difference between physical and chemical change is that physical change" start="3051" end="3126"/>
+   <part label="the matter the object is made up of remains the same" start="3177" end="3229"/>
+   <part label="Unlike physical change, chemical change occurs when the chemical properties of the matter have changed and a new substance is produced" start="3409" end="3543"/>
+  </contributor>
+  <contributor label="The difference between a physical and chemical change is that a chemical change will create a new substance while all the chemical properties in a physical change will not change">
+   <part label="The difference between a physical and chemical change is that a chemical change will create a new substance while all the chemical properties in a physical change will not change" start="7390" end="7568"/>
+  </contributor>
+  <contributor label="if the...changes, the chemical properties does not change">
+   <part label="if the" start="5237" end="5243"/>
+   <part label="changes, the chemical properties does not change" start="5304" end="5352"/>
+  </contributor>
+ </scu>
+ <scu uid="14" label="energy cannot be created or destroyed">
+  <contributor label="cannot be created or destroyed">
+   <part label="cannot be created or destroyed" start="1171" end="1201"/>
+  </contributor>
+  <contributor label="cannot be created or destroyed">
+   <part label="cannot be created or destroyed" start="4068" end="4098"/>
+  </contributor>
+  <contributor label="energy cannot be destroyed">
+   <part label="energy cannot be destroyed" start="7778" end="7804"/>
+  </contributor>
+ </scu>
+ <scu uid="12" label="energy cannot be seen or touched">
+  <contributor label="it can't be seen or touched like matter, energy">
+   <part label="it can't be seen or touched like matter, energy" start="3870" end="3917"/>
+  </contributor>
+  <contributor label="you cannot see or touch energy">
+   <part label="you cannot see or touch energy" start="6453" end="6483"/>
+  </contributor>
+  <contributor label="although it cannot be seen or touched">
+   <part label="although it cannot be seen or touched" start="1033" end="1070"/>
+  </contributor>
+ </scu>
+ <scu uid="16" label="kinetic and potential energy are two kinds of mechanical energy">
+  <contributor label="there are two different kinds of mechanical energy">
+   <part label="there are two different kinds of mechanical energy" start="1280" end="1330"/>
+  </contributor>
+  <contributor label="The two kinds of mechanical energy are: kinetic and potential">
+   <part label="The two kinds of mechanical energy are: kinetic and potential" start="4250" end="4311"/>
+  </contributor>
+  <contributor label="Mechanical energy comes in two forms, kinetic and potential">
+   <part label="Mechanical energy comes in two forms, kinetic and potential" start="7995" end="8054"/>
+  </contributor>
+ </scu>
+ <scu uid="18" label="Kinetic energy is because of the object's motion">
+  <contributor label="Kinetic energy is because of the object's motion">
+   <part label="Kinetic energy is because of the object's motion" start="1332" end="1380"/>
+  </contributor>
+  <contributor label="Kinetic energy is the energy an object has because it is moving">
+   <part label="Kinetic energy is the energy an object has because it is moving" start="4313" end="4376"/>
+  </contributor>
+  <contributor label="Kinetic energy occurs when an object is moving">
+   <part label="Kinetic energy occurs when an object is moving" start="8056" end="8102"/>
+  </contributor>
+ </scu>
+ <scu uid="25" label="matter has the ability to be detected and measured">
+  <contributor label="All matter has the ability to be detected and measured">
+   <part label="All matter has the ability to be detected and measured" start="1610" end="1664"/>
+  </contributor>
+  <contributor label="We can detect matter">
+   <part label="We can detect matter" start="5667" end="5687"/>
+  </contributor>
+  <contributor label="Matter can be detected and measured">
+   <part label="Matter can be detected and measured" start="6641" end="6676"/>
+  </contributor>
+ </scu>
+ <scu uid="17" label="Mechanical energy is a cause of the object's motion or position;">
+  <contributor label="Mechanical energy is a cause of the object's motion or position;">
+   <part label="Mechanical energy is a cause of the object's motion or position;" start="1203" end="1267"/>
+  </contributor>
+  <contributor label="Mechanical energy is the energy an object has because of its motion or position">
+   <part label="Mechanical energy is the energy an object has because of its motion or position" start="4169" end="4248"/>
+  </contributor>
+  <contributor label="Mechanical energy is the energy of an object that results from its motion or position">
+   <part label="Mechanical energy is the energy of an object that results from its motion or position" start="7908" end="7993"/>
+  </contributor>
+ </scu>
+ <scu uid="34" label="One property of matter is energy">
+  <contributor label="energy is related to matter as it is defined as a property of matter">
+   <part label="energy is related to matter as it is defined as a property of matter" start="3768" end="3836"/>
+  </contributor>
+  <contributor label="A final property of matter is energy">
+   <part label="A final property of matter is energy" start="6406" end="6442"/>
+  </contributor>
+  <contributor label="Another property of matter is energy">
+   <part label="Another property of matter is energy" start="7570" end="7606"/>
+  </contributor>
+ </scu>
+ <scu uid="19" label="potential energy is because of the object's position">
+  <contributor label="potential energy is because of the object's position">
+   <part label="potential energy is because of the object's position" start="1385" end="1437"/>
+  </contributor>
+  <contributor label="Potential energy is energy an object has because of its position or shape">
+   <part label="Potential energy is energy an object has because of its position or shape" start="4524" end="4597"/>
+  </contributor>
+  <contributor label="Potential energy results from an object's position or shape">
+   <part label="Potential energy results from an object's position or shape" start="8104" end="8163"/>
+  </contributor>
+ </scu>
+ <scu uid="4" label="Some types of matter are easily observable with the senses">
+  <contributor label="Some types of matter are easily observable with the senses">
+   <part label="Some types of matter are easily observable with the senses" start="112" end="170"/>
+  </contributor>
+  <contributor label="Matter can either observed easily with an individual's senses...easy to identify with sight and touch senses">
+   <part label="Matter can either observed easily with an individual's senses" start="1763" end="1824"/>
+   <part label="easy to identify with sight and touch senses" start="1913" end="1957"/>
+  </contributor>
+  <contributor label="individuals are able to observe certain forms of matter using their senses">
+   <part label="individuals are able to observe certain forms of matter using their senses" start="4809" end="4883"/>
+  </contributor>
+ </scu>
+ <scu uid="6" label="Some types of matter are harder to identify without the assistance">
+  <contributor label="others are harder to identify without the assistance of a microscope">
+   <part label="others are harder to identify without the assistance of a microscope" start="175" end="243"/>
+  </contributor>
+  <contributor label="or in a more challenging capacity...more challenging to observe">
+   <part label="or in a more challenging capacity" start="1826" end="1859"/>
+   <part label="more challenging to observe" start="2035" end="2062"/>
+  </contributor>
+  <contributor label="other forms are not so easily observed...requires the assistance of a specific instrument such as a microscope">
+   <part label="other forms are not so easily observed" start="4890" end="4928"/>
+   <part label="requires the assistance of a specific instrument such as a microscope" start="4941" end="5010"/>
+  </contributor>
+ </scu>
+ <scu uid="26" label="The author of this passage titled 'What is Matter?'">
+  <contributor label="The author of this passage titled 'What is Matter?'">
+   <part label="The author of this passage titled 'What is Matter?'" start="1467" end="1518"/>
+  </contributor>
+  <contributor label="The passage, What is Matter">
+   <part label="The passage, What is Matter" start="4627" end="4654"/>
+  </contributor>
+  <contributor label="In 'What is Matter?'">
+   <part label="In 'What is Matter?'" start="5498" end="5518"/>
+  </contributor>
+ </scu>
+ <scu uid="24" label="The law of conservation of energy is a rule associated with forms of energy">
+  <contributor label="The law of conservation of energy">
+   <part label="The law of conservation of energy" start="1072" end="1105"/>
+  </contributor>
+  <contributor label="The law of conservation of energy is a rule associated with forms of energy">
+   <part label="The law of conservation of energy is a rule associated with forms of energy" start="3937" end="4012"/>
+  </contributor>
+  <contributor label="The rule that governs energy is known as the law of conservation of energy">
+   <part label="The rule that governs energy is known as the law of conservation of energy" start="7677" end="7751"/>
+  </contributor>
+ </scu>
+ <scu uid="30" label="Examples of matter are trees, rocks, animals and dust mites, etc.">
+  <contributor label="Common examples are solids like a bed and a bug, liquids like water and milk, and gas like air and smoke">
+   <part label="Common examples are solids like a bed and a bug, liquids like water and milk, and gas like air and smoke" start="5733" end="5837"/>
+  </contributor>
+  <contributor label="Examples the text gives of types of matter...are: rocks, trees, bicycles, and different kinds of animals...dust mites and air">
+   <part label="Examples the text gives of types of matter" start="1861" end="1903"/>
+   <part label="are: rocks, trees, bicycles, and different kinds of animals" start="1958" end="2017"/>
+   <part label="dust mites and air" start="2068" end="2086"/>
+  </contributor>
+  <contributor label="Trees, rocks, animals, dust mites and air are all considered examples of matter">
+   <part label="Trees, rocks, animals, dust mites and air are all considered examples of matter" start="6714" end="6793"/>
+  </contributor>
+ </scu>
+ <scu uid="31" label="The author references clay as an object that can be made physical change">
+  <contributor label="The author references clay as an object that is malleable as it has the ability to take different forms by pressing or pounding on it">
+   <part label="The author references clay as an object that is malleable as it has the ability to take different forms by pressing or pounding on it" start="2687" end="2820"/>
+  </contributor>
+  <contributor label="For example, clay can be molded into different shapes and sizes but the molding does not change the substances in clay">
+   <part label="For example, clay can be molded into different shapes and sizes but the molding does not change the substances in clay" start="7016" end="7134"/>
+  </contributor>
+ </scu>
+ <scu uid="33" label="The author uses burning paper as an example of chemical change">
+  <contributor label="The author keeps the original type of matter: paper, and explains by applying fire to the paper and letting it burn, the ash, gas, and smoke you're left with is not paper any longer">
+   <part label="The author keeps the original type of matter: paper, and explains by applying fire to the paper and letting it burn, the ash, gas, and smoke you're left with is not paper any longer" start="3545" end="3726"/>
+  </contributor>
+  <contributor label="When paper burns, the paper's atomic make-up is changed and it is no longer paper">
+   <part label="When paper burns, the paper's atomic make-up is changed and it is no longer paper" start="6323" end="6404"/>
+  </contributor>
+ </scu>
+ <scu uid="28" label="The passage mainly focused on the topic of matter and its components">
+  <contributor label="mainly focused on the topic of matter and its components">
+   <part label="mainly focused on the topic of matter and its components" start="4656" end="4712"/>
+  </contributor>
+  <contributor label="we learn the definition of matter, its properties, and how matter relates to energy">
+   <part label="we learn the definition of matter, its properties, and how matter relates to energy" start="5520" end="5603"/>
+  </contributor>
+ </scu>
+ <scu uid="37" label="An additional form of energy is mechanical energy">
+  <contributor label="An additional form of energy is mechanical energy">
+   <part label="An additional form of energy is mechanical energy" start="7857" end="7906"/>
+  </contributor>
+ </scu>
+ <scu uid="38" label="Author cites dust mites as an example of matter that is difficult to observe">
+  <contributor label="Dust mites are too small for the naked eye but can be found in furniture and rugs, and air although can't be seen the author argues it can be felt with help of the wind, bending the tree branches">
+   <part label="Dust mites are too small for the naked eye but can be found in furniture and rugs, and air although can't be seen the author argues it can be felt with help of the wind, bending the tree branches" start="2088" end="2283"/>
+  </contributor>
+ </scu>
+ <scu uid="40" label="energy comes several forms">
+  <contributor label="energy comes several forms">
+   <part label="energy comes several forms" start="4037" end="4063"/>
+  </contributor>
+ </scu>
+ <scu uid="39" label="Matter has several different physical properties that are outlined in the article">
+  <contributor label="Matter has several different physical properties that are outlined in the article">
+   <part label="Matter has several different physical properties that are outlined in the article" start="2462" end="2543"/>
+  </contributor>
+ </scu>
+ <scu uid="35" label="Properties are used to help us identify matter">
+  <contributor label="Properties are used to help us identify matter">
+   <part label="Properties are used to help us identify matter" start="6795" end="6841"/>
+  </contributor>
+ </scu>
+ <scu uid="41" label="The author asserts a parallel between speed/mass and kinetic energy, the greater the speed and mass of an object, the greater the kinetic energy">
+  <contributor label="The author asserts a parallel between speed/mass and kinetic energy, the greater the speed and mass of an object, the greater the kinetic energy">
+   <part label="The author asserts a parallel between speed/mass and kinetic energy, the greater the speed and mass of an object, the greater the kinetic energy" start="4378" end="4522"/>
+  </contributor>
+ </scu>
+ <scu uid="32" label="The author provides an example of folding paper as physical change">
+  <contributor label="The author provides an example of a sheet of paper folded into thirds, although the new paper size is now one third of the original and is shaped differently, it is still paper">
+   <part label="The author provides an example of a sheet of paper folded into thirds, although the new paper size is now one third of the original and is shaped differently, it is still paper" start="3231" end="3407"/>
+  </contributor>
+ </scu>
+ <scu uid="36" label="There is also a physical and chemical change that exists in matter">
+  <contributor label="There is also a physical and chemical change that exists in matter">
+   <part label="There is also a physical and chemical change that exists in matter" start="7322" end="7388"/>
+  </contributor>
+ </scu>
+</pyramid>

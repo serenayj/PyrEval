@@ -7,8 +7,25 @@ PyrEval is a tool to construct a content model of semantically coherent units di
 
 ## Installation Requirement 
 1. Python 2.7 (or Anaconda2)
-2. Stanford CoreNLP System, see download https://stanfordnlp.github.io/CoreNLP/index.html[6]
-3. Pacakges: nltk, glob, sklearn, bs4, numpy, scipy
+2. Perl
+3. Stanford CoreNLP System, see download https://stanfordnlp.github.io/CoreNLP/index.html[6]
+4. Python Pacakges: nltk, glob, sklearn, bs4, numpy, scipy
+
+## Raw texts
+At the very beginning, you need to split your raw text into one sentence per line. There are three folders for you to place your raw texts. 
+- Preprocess/wise_crowd_summaries: the folder for model(referenced) summaries
+- Preprocess/peer_summaries: the folder for the summaries you want to score
+- Preprocess/test_summaries: others 
+
+## Components and Directories
+This package contains two major components: Build the pyramid and Score the peer summaries by the pyramid.  
+
+Here is an explanation of 4 folders under PyrEval. 
+-Preprocess: For preprocessing your raw texts(step 0 and 1). They will be proprocessed by Stanford CoreNLP system and vectorizations. 
+-Pyramid: For preprocessed model summaries(step 2). We build the pyramid from model summaries under wise_crowd. And output the pyramid for future use. 
+-Scoring: For scoring peer summaries by the pyramid(step3).  
+-Summaries: TBD
+
 
 ## HOW TO USE 
 ### Step 0: Download and Run Stanford CoreNLP to get the preprocess xml files 
@@ -23,6 +40,13 @@ python stanford.py Users\blah\raw_text 2 Users\blah\PyrEval
 ```
 
 ### Step 1: Preprocess files for sentence vectorizations 
+We are using vectorizations method by WTMF, created by Weiwei Guo. [7][8]
+
+cd to Preprocess directory, then run preprocess.py:
+```
+python preprocess.py mode 
+``` 
+where mode: 1: peer summries; 2: wise_crowd_summaries, 3:test_summaries. 
 
 
 ## Reference
@@ -37,3 +61,7 @@ python stanford.py Users\blah\raw_text 2 Users\blah\PyrEval
 [5] Yang, Qian, Rebecca J. Passonneau, and Gerard de Melo. "PEAK: Pyramid Evaluation via Automated Knowledge Extraction." AAAI. 2016.
 
 [6] Manning, Christopher D., Mihai Surdeanu, John Bauer, Jenny Finkel, Steven J. Bethard, and David McClosky. 2014. The Stanford CoreNLP Natural Language Processing Toolkit In Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics: System Demonstrations, pp. 55-60.
+
+[7] Weiwei Guo, Wei Liu and Mona Diab. "Fast Tweet Retrieval with Compact Binary Codes". In Proceedings of COLING, 2014, Dublin, Ireland.
+
+[8] Weiwei Guo and Mona Diab. "Modeling Sentences in the Latent Space". In Proceedings of ACL, 2012, Jeju, Korea.

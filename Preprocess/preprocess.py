@@ -31,3 +31,9 @@ if (dir1):
 		DecomposeSummary(summary, n + 1,dir1)
 		summary, seg_ids = CleanSegmentations(summary, dir1)
 		VectorizeSummary(summary, seg_ids, dir1)
+
+if int(mode) ==2:
+	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
+	os.system(command)
+
+print "Finish Preprocess!!!"

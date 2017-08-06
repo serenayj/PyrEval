@@ -26,6 +26,7 @@ import sys
 
 fname = sys.argv[1]
 sum_index = sys.argv[2]
+outpath = sys.argv[3]
 
 summary_index =  sum_index
 content = open(fname).read()
@@ -46,6 +47,12 @@ comp = ['comp','acomp','ccomp','xcomp',]
 tensed_verb = ['VBZ','VBD','VBP','MD']
 sub_conj = ['after', 'although', 'as', 'as if', 'as long as', 'as much as', 'as soon as', 'as though', 'because', 'before', 'even', 'even if', 'even though', 'if', 'if only', 'if when', 'if then', 'inasmuch', 'in order that', 'just as', 'lest', 'now', 'now since', 'now that', 'now when', 'once', 'provided', 'provided that', 'rather that', 'since', 'so that', 'supposing', 'than', 'that', 'though', 'till', 'unless', 'until', 'when', 'whenever', 'where', 'whereas', 'where if', 'wherever', 'whether', 'which', 'while', 'who', 'whoever', 'why']
 
+wl = ['CC','CD','DT','EX','FW','IN','JJ','JJR','JJS','LS','MD','NN','NNS','NNP','NNPS','PDT','POS','PRP','PRP$','RB','RBR','RBS','RP','SYM','TO','UH','VB','VBD','VBG','VBN','VBP','VBZ','WDT','WP','WP$','WRB']
+
+pl = ['ADJP','ADVP','CONJP','FRAG','INTJ','LST','NAC','NP','NX','PP','PRN','PRT','QP','RRC','UCP','VP','WHADJP','WHAVP','WHNP','WHPP','X']
+
+cl = ['S','SBAR','SBARQ','SINV','SQ']
+
 # Get a set of tags, Pl is phrase tags, Cl is clause tags, Wl is POS tags 
 soup = BeautifulSoup(content,'lxml')
 
@@ -63,20 +70,6 @@ for links in soup.find_all("parse"):
 """
 def flatten(sublist):
     return list(chain.from_iterable(item if isinstance(item,Iterable) and not isinstance(item, basestring) else [item] for item in sublist))
-
-def gettingtags(csvfile):
-    tmp = []
-    with open(csvfile,'r') as cf:
-        rea = csv.reader(cf)
-        for i in rea:
-            tmp.append(i)
-
-    pl = tmp[0]
-    return pl
-
-pl = gettingtags('csv/pl.csv')
-cl = gettingtags('csv/cl.csv')
-wl = gettingtags('csv/wl.csv')
 
 # Get arcs and nodes from dependency parser
 # Input is a list containing all the enhanced-dependencies
@@ -522,10 +515,10 @@ def reorder(tmp):
 """ 
 sentence_segmentations = []
 all_dep_sent = get_depparse(basic)
-write_log('ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
-write_log('DecomposedSummaries/' + fname +'.segs', '', 1)
-write_log('ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
-write_log('ext/' + fname +'_log1-segment-id.txt', '', 1)
+write_log(outpath+'ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
+write_log(outpath + fname +'.segs', '', 1)
+write_log(outpath+'ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
+write_log(outpath+'ext/' + fname +'_log1-segment-id.txt', '', 1)
 
 segments = {}
 idseg = {}
@@ -542,9 +535,9 @@ for ind in range(1,len(all_dep_sent)):
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
     raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
-    write_log('ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
+    write_log(outpath+'ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
     raw_sentence = "===================Raw sentence: "+ " ".join([str(i[1]) for i in numlist]) + " \n"
-    write_log('ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
+    write_log(outpath+'ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
     segmentation_count = 0
     segment_count = 0
     # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
@@ -553,15 +546,15 @@ for ind in range(1,len(all_dep_sent)):
         subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist) 
         for kk in range(0,len(subconj_seg_sent[0])):
             output_sentence = "Segment " + str(kk) + " from Sentence "+str(ind)+" :\n " + str(subconj_seg_ids[0][kk])+" \n"
-            write_log('ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
+            write_log(outpath+'ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
             # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
             out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_ids[0][kk])+'\n'
-            write_log('ext/' + fname +'_log1-segment-id.txt',out_sent)
+            write_log(outpath+'ext/' + fname +'_log1-segment-id.txt',out_sent)
             output_sentence1 = "Segmentation " + str(kk) + " from Sentence "+str(ind)+" :\n " + str(subconj_seg_sent[0][kk])+" \n"   
-            write_log('ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
+            write_log(outpath+'ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
             sentence_segmentations.append(output_sentence1)
             out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_sent[0][kk])+'\n'
-            write_log('DecomposedSummaries/' + fname +'.segs',out_sent1)
+            write_log(outpath + fname +'.segs',out_sent1)
         segmentation_count += 1 
     # Iterating in a list of vp chunks 
     if vps:
@@ -621,10 +614,10 @@ for ind in range(1,len(all_dep_sent)):
         segment_set[ind] = res
         for v in segment_set[ind]:
             output_sentence = "Segment " + str(segment_count) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"
-            write_log('ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
+            write_log(outpath+'ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
             for vv in range(0,len(v)):
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+'\n'
-                write_log('ext/' + fname +'_log1-segment-id.txt',out_sent)
+                write_log(outpath+'ext/' + fname +'_log1-segment-id.txt',out_sent)
             segment_count += 1
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
@@ -635,7 +628,7 @@ for ind in range(1,len(all_dep_sent)):
             kk = 0
             output_sentence = "Segment " + str(kk+1) + " from Sentence "+str(ind)+" :\n " + str(tl)+" \n"
             out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+ '&'+str(kk)+'&'+str(tl)+'\n'
-            write_log('ext/' + fname +'_log1-segment-id.txt',out_sent)
+            write_log(oupath+'ext/' + fname +'_log1-segment-id.txt',out_sent)
             segmentation_count += 1
 
     if all_vpnodes:
@@ -654,11 +647,11 @@ for ind in range(1,len(all_dep_sent)):
             seg[iind] = unit
         for k,v in seg.items():
             output_sentence = "Segmentation " + str(k+1) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"   
-            write_log('ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence) 
+            write_log(outpath+'ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence) 
             for vv in range(0,len(v)):
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+ '\n'  
-                write_log('DecomposedSummaries/' + fname +'.segs',out_sent)
+                write_log(outpath + fname +'.segs',out_sent)
                 sentence_segmentations.append(out_sent)
 
             segment_count += 1
@@ -670,9 +663,9 @@ for ind in range(1,len(all_dep_sent)):
             segmentation_count +=1  
             v = " ".join([item[0] for item in numlist]) 
             output_sentence = "Segmentation 0" + " from Sentence "+str(ind)+" :\n " + v +" \n"
-            write_log('ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
+            write_log(outpath+'ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
             out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+'0'+'&'+v +'\n'
-            write_log('DecomposedSummaries/' + fname +'.segs',out_sent)
+            write_log(outpath + fname +'.segs',out_sent)
             sentence_segmentations.append(out_sent)
 
         # Else, the case we just take whatever it is 

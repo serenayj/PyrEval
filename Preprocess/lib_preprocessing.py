@@ -17,29 +17,30 @@ def getRealName(fname):
 		dot = None
 	return fname[:dot]
 
-def CoreNLPdecomposition(fname):
-	print "RUNNING CoreNLP ON {}".format(fname)
-	""" Takes input file file, creates xml parse using Stanford Core NLP
-		Input -- File in Summaries Directory
-		Output -- xml file to Preprocess Directory
-		Actions -- move xml file to CoreNLP_XMLs """
-	cmd = 'java -cp "CoreNLP/*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file ' + fname
-	os.system(cmd)
-	mv = 'mv ' + getRoot(fname) + '.xml' + ' CoreNLP_XMLs/'
-	os.system(mv)
+#def CoreNLPdecomposition(fname):
+#	print "RUNNING CoreNLP ON {}".format(fname)
+#	""" Takes input file file, creates xml parse using Stanford Core NLP
+#		Input -- File in Summaries Directory
+#		Output -- xml file to Preprocess Directory
+#		Actions -- move xml file to CoreNLP_XMLs """
+#	cmd = 'java -cp "CoreNLP/*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file ' + fname
+#	os.system(cmd)
+#	mv = 'mv ' + getRoot(fname) + '.xml' + ' CoreNLP_XMLs/'
+#	os.system(mv)
 
-def DecomposeSummary(fname, summ_ind):
-	print "DECOMPOSING SENTENCES FROM SUMMARY {}".format(fname + '.xml')
+def DecomposeSummary(fname, summ_ind, dir1):
+	print "DECOMPOSING SENTENCES FROM SUMMARY {}",fname
 	""" Reads in XML file from CoreNLP_XMLs, facilitates sentence decomposition, outputs .segs file """
-	cmd = 'python sentparser.py ' + fname + '.xml ' + str(summ_ind)
+	#cmd = 'python sentparser.py ' + fname + '.xml ' + str(summ_ind)
+	cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1
 	os.system(cmd)
 
 def CleanSegmentations(fname, directory):
 	print "CLEANING SENTENCE DECOMPOSITION FROM SUMMARY {}".format(getRealName(fname) + '.segs')
 	""" Reads in .segs file moves it to its directory in Decomposed Summaries/, cleans file of segment segment_ids """
-	segFile = 'DecomposedSummaries/' + getRealName(fname) + '.segs'
-	mv = 'mv ' + segFile + ' ' + directory
-	os.system(mv)
+	#segFile = 'DecomposedSummaries/' + getRealName(fname) + '.segs'
+	#mv = 'mv ' + segFile + ' ' + directory
+	#os.system(mv)
 	segFile = directory +'/' + getRealName(fname) + '.segs'
 	with open(segFile, 'r') as f:
 		lines = f.readlines()

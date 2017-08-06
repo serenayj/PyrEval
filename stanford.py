@@ -21,11 +21,14 @@ for filename in glob.glob(os.path.join(path_,'*.txt')):
 		outpath = "../Preprocess/peer_summaries"
 	elif int(mode) == 2:
 		outpath = "../Preprocess/wise_crowd_summaries"
-	else:
+	elif int(mode) == 3:
 		outpath = "../Preprocess/test_summaries"
-	print outpath
-	command2 = "java -cp '*' edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file "+filename+" -outputDirectory "+outpath
-	os.system(command2)
+	else:
+		print "Option doesn't exist!!!"
+	if outpath:
+		print outpath
+		command2 = "java -cp '*' edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file "+filename+" -outputDirectory "+outpath
+		os.system(command2)
 
 
 

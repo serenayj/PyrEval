@@ -21,10 +21,10 @@ At the very beginning, you need to split your raw text into one sentence per lin
 This package contains two major components: Build the pyramid and Score the peer summaries by the pyramid.  
 
 Here is an explanation of 4 folders under PyrEval. 
--Preprocess: For preprocessing your raw texts(step 0 and 1). They will be proprocessed by Stanford CoreNLP system and vectorizations. 
--Pyramid: For preprocessed model summaries(step 2). We build the pyramid from model summaries under wise_crowd. And output the pyramid for future use. 
--Scoring: For scoring peer summaries by the pyramid(step3).  
--Summaries: TBD
+- Preprocess: For preprocessing your raw texts(step 0 and 1). They will be proprocessed by Stanford CoreNLP system and vectorizations. 
+- Pyramid: For preprocessed model summaries(step 2). We build the pyramid from model summaries under wise_crowd. And output the pyramid for future use. 
+- Scoring: For scoring peer summaries by the pyramid(step3).  
+- Summaries: TBD
 
 
 ## HOW TO USE 

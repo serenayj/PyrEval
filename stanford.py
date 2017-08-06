@@ -1,3 +1,8 @@
+# Aug 6, 2017
+# Step 0, move this file to stanford-corenlp folder 
+# mode: 1: peer summries; 2: wise_crowd_summaries, 3:test_summaries 
+# Usage: python stanford.py mode 
+
 import os 
 import sys
 import glob 

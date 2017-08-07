@@ -32,7 +32,7 @@ Copy stanford.py to the Stanford CoreNLP folder, then run command:
 ```
 python stanford.py path_to_raw_text mode path_to_PyrEval
 ```
-where mode: 1: peer summries; 2: wise_crowd_summaries, 3:test_summaries. 
+where mode: 1: peer summries; 2: wise_crowd_summaries. 
 E.g: 
 ```
 python stanford.py Users\blah\raw_text 2 Users\blah\PyrEval 
@@ -45,7 +45,7 @@ cd to Preprocess directory, then run preprocess.py:
 ```
 python preprocess.py mode 
 ``` 
-where mode: 1: peer summries; 2: wise_crowd_summaries, 3:test_summaries. 
+where mode: 1: peer summries; 2: wise_crowd_summaries. 
 
 ### Step 2: Build Pyramid
 The script will take input from Preprocess/wise_crowd_summaries/*, and output the pyramid as .pyr file to Pyramid/scu/. 

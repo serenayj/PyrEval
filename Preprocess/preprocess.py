@@ -1,8 +1,7 @@
 import os
 import glob
 import sys
-from lib_preprocessing import getRealName, CoreNLPdecomposition, CleanSegmentations, VectorizeSummary, DecomposeSummary, getRoot
-#dir1 = sys.argv[1]
+from lib_preprocessing import getRealName, CleanSegmentations, VectorizeSummary, DecomposeSummary, getRoot
 mode = sys.argv[1]
 
 """
@@ -29,11 +28,11 @@ if (dir1):
 	summaries = list(glob.iglob(dir1+ '/*.xml'))
 	for n, summary in enumerate(summaries):
 		DecomposeSummary(summary, n + 1,dir1)
-		summary, seg_ids = CleanSegmentations(summary, dir1)
-		VectorizeSummary(summary, seg_ids, dir1)
+		summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
+		VectorizeSummary(summary, seg_ids, dir1,n+1)
 
-if int(mode) ==2:
-	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
-	os.system(command)
+#if int(mode) ==2:
+#	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
+#	os.system(command)
 
 print "Finish Preprocess!!!"

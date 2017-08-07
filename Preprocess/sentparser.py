@@ -22,6 +22,7 @@ import string
 import pickle
 import copy
 import sys
+import os
 #from draft2 import get_segmentation,rearrangement,reorder
 
 fname = sys.argv[1]
@@ -517,9 +518,15 @@ def reorder(tmp):
 sentence_segmentations = []
 all_dep_sent = get_depparse(basic)
 write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
-write_log(outpath +'/'+ fname +'.segs', '', 1)
+#write_log(outpath +'/'+ fname +'.segs', '', 1)
 write_log(outpath+'/ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
 write_log(outpath+'/ext/' + fname +'_log1-segment-id.txt', '', 1)
+
+seg_dir = outpath +'/'+str(summary_index)
+if not os.path.exists(seg_dir):
+    os.makedirs(seg_dir)
+
+write_log(seg_dir +'/'+ fname +'.segs', '', 1)
 
 segments = {}
 idseg = {}
@@ -555,7 +562,7 @@ for ind in range(1,len(all_dep_sent)):
             write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
             sentence_segmentations.append(output_sentence1)
             out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_sent[0][kk])+'\n'
-            write_log(outpath + fname +'.segs',out_sent1)
+            write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
         segmentation_count += 1 
     # Iterating in a list of vp chunks 
     if vps:
@@ -652,7 +659,7 @@ for ind in range(1,len(all_dep_sent)):
             for vv in range(0,len(v)):
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+ '\n'  
-                write_log(outpath +'/'+ fname +'.segs',out_sent)
+                write_log(seg_dir +'/'+ fname +'.segs',out_sent)
                 sentence_segmentations.append(out_sent)
 
             segment_count += 1
@@ -666,7 +673,7 @@ for ind in range(1,len(all_dep_sent)):
             output_sentence = "Segmentation 0" + " from Sentence "+str(ind)+" :\n " + v +" \n"
             write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
             out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+'0'+'&'+v +'\n'
-            write_log(outpath +'/'+ fname +'.segs',out_sent)
+            write_log(seg_dir +'/'+ fname +'.segs',out_sent)
             sentence_segmentations.append(out_sent)
 
         # Else, the case we just take whatever it is 

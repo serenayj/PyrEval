@@ -35,13 +35,14 @@ def DecomposeSummary(fname, summ_ind, dir1):
 	cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1
 	os.system(cmd)
 
-def CleanSegmentations(fname, directory):
+def CleanSegmentations(fname, directory, summ_ind):
 	print "CLEANING SENTENCE DECOMPOSITION FROM SUMMARY {}".format(getRealName(fname) + '.segs')
 	""" Reads in .segs file moves it to its directory in Decomposed Summaries/, cleans file of segment segment_ids """
 	#segFile = 'DecomposedSummaries/' + getRealName(fname) + '.segs'
 	#mv = 'mv ' + segFile + ' ' + directory
 	#os.system(mv)
-	segFile = directory +'/' + getRealName(fname) + '.segs'
+	file_dir = directory +'/'+str(summ_ind)
+	segFile = file_dir +'/' + getRealName(fname) + '.segs'
 	with open(segFile, 'r') as f:
 		lines = f.readlines()
 		segments = [line.split('&')[4] for line in lines]
@@ -53,10 +54,10 @@ def CleanSegmentations(fname, directory):
 	f.close()
 	return segFile, seg_ids
 
-def VectorizeSummary(fname, seg_ids, directory):
+def VectorizeSummary(fname, seg_ids, directory,summ_ind):
 	print "VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname + '.cl')
 	vectors = vectorize(fname + '.cl')
-	fname = directory + '/' + getRealName(fname) + '.ls'
+	fname = directory +'/'+str(summ_ind)+ '/' + getRealName(fname) + '.ls'
 	with open(fname, 'w') as f:
 		for n, vec in enumerate(vectors):
 			line = seg_ids[n] + '&' + str(vec) + '\n'

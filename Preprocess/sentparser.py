@@ -11,9 +11,6 @@
 # Sentence Segmentation: Rearrange the segment into a complete pieces 
 # Main Procedure: A complete pipeline  
 
-# To-do: 
-# Make a set of default rules, try not to filter out the segments even though we can't find subjects matched them. 
-# Program robustness checking
 
 from bs4 import BeautifulSoup
 import csv
@@ -311,14 +308,14 @@ def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag):
                 sentence = "Sentence "+str(index)+" SUBJ/OBJ segment is:" + " ".join(sentmp)+ "\n"
                 sent_ids = "cover from:" + str(nodes_id) + ","+ " ".join(id_list) + "\n"
                 ##print sentence
-                write_log(outpath+'/ext/' + fname +'_log1.txt',sentence)
-                write_log(outpath+'/ext/' + fname +'_log1.txt',sent_ids)
+                write_log('../ext/' + fname +'_log1.txt',sentence)
+                write_log('../ext/' + fname +'_log1.txt',sent_ids)
                 all_obj.append([ids, " ".join(sentmp)])
     # If nothing ever got mached, just put it into no-match             
     if flag == False:
         ##print "Not found", " ".join(m[0] for m in leaves)
-        write_log(outpath+'/ext/' + fname +'_log1-no-match.txt'," ".join(m[0] for m in leaves))
-        write_log(outpath+'/ext/' + fname +'_log1-no-match.txt',id_list)
+        write_log('../ext/' + fname +'_log1-no-match.txt'," ".join(m[0] for m in leaves))
+        write_log('../ext/' + fname +'_log1-no-match.txt',id_list)
     return ids, all_obj
 
 # Input: woa-without arcs, things-dictionary, leaves-from vps, wordlist-a list of numbers marked as nodes
@@ -358,8 +355,8 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label):
                         ##print "cover from", ids
                         sentence = "Sentence "+str(index)+" COMP/CONJ segment is:" + senten + "\n"
                         sent_ids = "cover from:"+ l['dep_id'] + "," +" ".join(wordlist) + "\n" 
-                        write_log(outpath+'/ext/' + fname +'_log1.txt',sentence)
-                        write_log(outpath+'/ext/' + fname +'_log1.txt',sent_ids)
+                        write_log('../ext/' + fname +'_log1.txt',sentence)
+                        write_log('../ext/' + fname +'_log1.txt',sent_ids)
                         all_parts.append([ids,sentence])
         # If nothing got matched...  
         if flag == False:
@@ -367,8 +364,8 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label):
             backup_id.append(wordlist)
             sentence = "Sentence "+str(index)+" segment is:" + boat + "\n"
             sent_ids = "cover from:"+ " ".join(wordlist) + "\n"
-            write_log(outpath+'/ext/' + fname +'_log1-no-match.txt',sentence)
-            write_log(outpath+'/ext/' + fname +'_log1-no-match.txt',sent_ids)
+            write_log('../ext/' + fname +'_log1-no-match.txt',sentence)
+            write_log('../ext/' + fname +'_log1-no-match.txt',sent_ids)
         return big_ids,all_parts 
 
 
@@ -517,10 +514,10 @@ def reorder(tmp):
 """ 
 sentence_segmentations = []
 all_dep_sent = get_depparse(basic)
-write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
+write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
 #write_log(outpath +'/'+ fname +'.segs', '', 1)
-write_log(outpath+'/ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
-write_log(outpath+'/ext/' + fname +'_log1-segment-id.txt', '', 1)
+write_log('../ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
+write_log('../ext/' + fname +'_log1-segment-id.txt', '', 1)
 
 seg_dir = outpath +'/'+str(summary_index)
 if not os.path.exists(seg_dir):
@@ -543,9 +540,9 @@ for ind in range(1,len(all_dep_sent)):
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
     raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
-    write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
+    write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
     raw_sentence = "===================Raw sentence: "+ " ".join([str(i[1]) for i in numlist]) + " \n"
-    write_log(outpath+'/ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
+    write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
     segmentation_count = 0
     segment_count = 0
     # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
@@ -554,12 +551,12 @@ for ind in range(1,len(all_dep_sent)):
         subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist) 
         for kk in range(0,len(subconj_seg_sent[0])):
             output_sentence = "Segment " + str(kk) + " from Sentence "+str(ind)+" :\n " + str(subconj_seg_ids[0][kk])+" \n"
-            write_log(outpath+'/ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
+            write_log('../ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
             # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
             out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_ids[0][kk])+'\n'
-            write_log(outpath+'/ext/' + fname +'_log1-segment-id.txt',out_sent)
+            write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
             output_sentence1 = "Segmentation " + str(kk) + " from Sentence "+str(ind)+" :\n " + str(subconj_seg_sent[0][kk])+" \n"   
-            write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
+            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
             sentence_segmentations.append(output_sentence1)
             out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_sent[0][kk])+'\n'
             write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
@@ -622,10 +619,10 @@ for ind in range(1,len(all_dep_sent)):
         segment_set[ind] = res
         for v in segment_set[ind]:
             output_sentence = "Segment " + str(segment_count) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"
-            write_log(outpath+'/ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
+            write_log('../ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
             for vv in range(0,len(v)):
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+'\n'
-                write_log(outpath+'/ext/' + fname +'_log1-segment-id.txt',out_sent)
+                write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
             segment_count += 1
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
@@ -636,7 +633,7 @@ for ind in range(1,len(all_dep_sent)):
             kk = 0
             output_sentence = "Segment " + str(kk+1) + " from Sentence "+str(ind)+" :\n " + str(tl)+" \n"
             out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+ '&'+str(kk)+'&'+str(tl)+'\n'
-            write_log(outpath+'/ext/' + fname +'_log1-segment-id.txt',out_sent)
+            write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
             segmentation_count += 1
 
     if all_vpnodes:
@@ -655,7 +652,7 @@ for ind in range(1,len(all_dep_sent)):
             seg[iind] = unit
         for k,v in seg.items():
             output_sentence = "Segmentation " + str(k+1) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"   
-            write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence) 
+            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence) 
             for vv in range(0,len(v)):
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+ '\n'  
@@ -671,7 +668,7 @@ for ind in range(1,len(all_dep_sent)):
             segmentation_count +=1  
             v = " ".join([item[0] for item in numlist]) 
             output_sentence = "Segmentation 0" + " from Sentence "+str(ind)+" :\n " + v +" \n"
-            write_log(outpath+'/ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
+            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
             out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+'0'+'&'+v +'\n'
             write_log(seg_dir +'/'+ fname +'.segs',out_sent)
             sentence_segmentations.append(out_sent)

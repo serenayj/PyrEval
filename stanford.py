@@ -10,6 +10,8 @@ import glob
 
 path_ = sys.argv[1]
 mode = sys.argv[2]
+# in case for moving the script around, need a argument linked back to PyrEval 
+out_ = sys.argv[3]
 
 for filename in glob.glob(os.path.join(path_,'*.txt')):
 	print "current filename", filename
@@ -18,11 +20,11 @@ for filename in glob.glob(os.path.join(path_,'*.txt')):
 	#print "current filename", getRoot(filename)
 	#os.system(mv)
 	if int(mode) == 1:
-		outpath = "../Preprocess/peer_summaries"
+		outpath = out_+ "/Preprocess/peer_summaries"
 	elif int(mode) == 2:
-		outpath = "../Preprocess/wise_crowd_summaries"
+		outpath = out_ + "/Preprocess/wise_crowd_summaries"
 	elif int(mode) == 3:
-		outpath = "../Preprocess/test_summaries"
+		outpath = out_ + "/Preprocess/test_summaries"
 	else:
 		print "Option doesn't exist!!!"
 	if outpath:

@@ -8,7 +8,7 @@ import csv
 ============================ Input==============================
 """
 
-summaries = list(glob.iglob('test_summaries/*'))
+summaries = list(glob.iglob('../peer_summaries/*'))
 pyramid = sys.argv[1]
 results_file = '../results.csv'
 f = open(results_file, 'w')

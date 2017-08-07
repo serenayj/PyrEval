@@ -214,8 +214,10 @@ def SettleNodes(layern, N, segmentpool):
 def readFiles(directories):
     segs = []
     vecs = []
+    N = 0
     for directory in directories:
         if os.path.isdir(directory):
+            N += 1
             #slash = directory.rfind('/')
             #d = directory[slash + 1:]
             #d = directory[]
@@ -238,7 +240,7 @@ def readFiles(directories):
             f.close()
         else:
             pass
-    return segs, vecs
+    return segs, vecs, N
 
 def make_segs(text, vecs):
     content = []
@@ -368,7 +370,7 @@ def power_law(n,bf_dict):
 def BestFit(layern, n, segmentpool,capacity):
     segments_in_layer = []
     layer_copy = copy.deepcopy(layern)
-    if n == 5 and capacity == 1:
+    if n == 4 and capacity == 1:
         capacity = 2
     while (len(segments_in_layer) + 1 < capacity) and (len(layer_copy) != 0):
             # While Condition : We are below (or at) capacity and we arent searching an empty set

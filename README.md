@@ -9,7 +9,7 @@ PyrEval is a tool to construct a content model of semantically coherent units di
 1. Python 2.7 (or Anaconda2)
 2. Perl
 3. Stanford CoreNLP System[6], see download https://stanfordnlp.github.io/CoreNLP/index.html. 
-4. Python Pacakges: nltk, glob, sklearn, bs4, numpy, scipy, networkx
+4. Python Pacakges: nltk, glob, sklearn, bs4, numpy, scipy, networkx, statistics
 
 ## Raw texts
 At the very beginning, you need to split your raw text into one sentence per line. There are three folders for you to place your raw texts. 
@@ -48,15 +48,33 @@ python preprocess.py mode
 ``` 
 where mode: 1: peer summries; 2: wise_crowd_summaries, 3:test_summaries. 
 
-### Step2: Build Pyramid
+### Step 2: Build Pyramid
 The script will take input from Preprocess/wise_crowd_summaries/*, and output the pyramid as .pyr file to Pyramid/scu/. 
 
 Locate to the Pyramid folder and run the script: 
 ```
 python pyramid.py 
 ```
+Output of Step 2 could be found in the following three places. The format of filename is: "pyramid_tSimilrityThreshold_aCoefficient_bCoefficient.suffix".  
 
-### Step3: Score the summaries 
+- Pyramid/scu/*.pyr: A readable version of pyramid. The format of *.pyr is: 
+```
+SCU_index Weight Segment_Label
+```
+
+- Scoring/pyrs/pyramids/*.p: A raw(unreadable) pyramid used as input for scorng the peer summaries.  
+
+- Scoring/size/*.size: An overview of size of each layer in the pyramid. Sorted from top to the bottom. 
+
+
+### Step 3: Score the peer summaries 
+This step will take preprocessed peer summaries under Preprocess/peer_summaries/ and your selected pyramid as input and generate the scores. Switch to Scoring folder and run the script: 
+```
+python scoring.py selected_pyramid
+```
+Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p. 
+
+Output of Step 3 is a .csv file, located under PyrEval. 
 
 
 ## Reference

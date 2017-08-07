@@ -14,8 +14,7 @@ PyrEval is a tool to construct a content model of semantically coherent units di
 ## Raw texts
 At the very beginning, you need to split your raw text into one sentence per line. There are three folders for you to place your raw texts. 
 - Preprocess/wise_crowd_summaries: the folder for model(referenced) summaries
-- Preprocess/peer_summaries: the folder for the summaries you want to score
-- Preprocess/test_summaries: others 
+- Preprocess/peer_summaries: the folder for the summaries you want to score 
 
 ## Components and Directories
 This package contains two major components: Build the pyramid and Score the peer summaries by the pyramid.  
@@ -24,7 +23,7 @@ Here is an explanation of 4 folders under PyrEval.
 - Preprocess: For preprocessing your raw texts(step 0 and 1). They will be proprocessed by Stanford CoreNLP system and vectorizations. 
 - Pyramid: For preprocessed model summaries(step 2). We build the pyramid from model summaries under wise_crowd. And output the pyramid for future use. 
 - Scoring: For scoring peer summaries by the pyramid(step3).  
-- Summaries: TBD
+- ext: log files(you probably don't want to look at them) 
 
 
 ## HOW TO USE 

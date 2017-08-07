@@ -42,8 +42,8 @@ for filename in glob.glob(os.path.join(path_, '')):
 		outpath = pyrEval + "/Preprocess/peer_summaries"
 	elif int(mode) == 2:
 		outpath = pyrEval + "/Preprocess/wise_crowd_summaries"
-	elif int(mode) == 3:
-		outpath = pyrEval + "/Preprocess/test_summaries"
+	#elif int(mode) == 3:
+		#outpath = pyrEval + "/Preprocess/test_summaries"
 	else:
 		print "Option doesn't exist!!!"
 	if outpath:

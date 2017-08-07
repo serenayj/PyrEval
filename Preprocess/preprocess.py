@@ -18,8 +18,8 @@ if int(mode) == 1:
 	dir1 = "../Preprocess/peer_summaries"
 elif int(mode) == 2:
 	dir1 = "../Preprocess/wise_crowd_summaries"
-elif int(mode) == 3:
-	dir1 = "../Preprocess/test_summaries"
+#elif int(mode) == 3:
+	#dir1 = "../Preprocess/test_summaries"
 else:
 	dir1 = None
 	print "Option doesn't exist!!!"

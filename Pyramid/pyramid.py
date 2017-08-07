@@ -16,7 +16,8 @@ import glob
 """ 
 
 print("Reading Content")
-directories = glob.iglob('wise_crowd/*')
+#directories = glob.iglob('wise_crowd/*')
+directories = glob.iglob('../Preprocess/wise_crowd_summaries/*')
 segs, vecs = readFiles(directories)
 print("Making Segments")
 segpool = make_segs(segs, vecs)

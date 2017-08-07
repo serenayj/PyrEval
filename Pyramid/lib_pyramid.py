@@ -213,19 +213,29 @@ def readFiles(directories):
     segs = []
     vecs = []
     for directory in directories:
-        slash = directory.rfind('/')
-        d = directory[slash + 1:]
-        vec_fname = directory + '/' + d + '.ls'
-        seg_fname = directory + '/' + d + '.segs'
-        with open(vec_fname, 'r') as f:
-            lines = f.readlines()
-            vecs += lines
-        f.close()
-        with open(seg_fname, 'r') as f:
-            lines = f.readlines()
-            lines = [line.strip() for line in lines]
-            segs += lines
-        f.close()
+        if os.path.isdir(directory):
+            #slash = directory.rfind('/')
+            #d = directory[slash + 1:]
+            #d = directory[]
+            ii = glob.iglob(directory+'/*')
+            for fn in ii:
+                if '.ls' in fn:
+                    vec_fname = fn
+                if '.segs' in fn:
+                    seg_fname = fn
+            #vec_fname = directory + '/' + d + '.ls'
+            #seg_fname = directory + '/' + d + '.segs'
+            with open(vec_fname, 'r') as f:
+                lines = f.readlines()
+                vecs += lines
+            f.close()
+            with open(seg_fname, 'r') as f:
+                lines = f.readlines()
+                lines = [line.strip() for line in lines]
+                segs += lines
+            f.close()
+        else:
+            pass
     return segs, vecs
 
 def make_segs(text, vecs):

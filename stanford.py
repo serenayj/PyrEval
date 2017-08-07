@@ -8,23 +8,42 @@ import sys
 import glob 
 #from lib_preprocessing import *
 
-path_ = sys.argv[1]
-mode = sys.argv[2]
-# in case for moving the script around, need a argument linked back to PyrEval 
-out_ = sys.argv[3]
+path_ = sys.argv[2]
+mode = sys.argv[3]
+pyrEval = sys.argv[1]
 
-for filename in glob.glob(os.path.join(path_,'*.txt')):
+
+# Clean Summary before XML dump
+for fname in glob.iglob(path_ + '/*'):
+	f = open(fname, 'r')
+	lines = f.readlines()
+	f.close()
+	clean = []
+	for line in lines:
+		line = line.replace("'", '').replace('`', '')
+		# if '.' in line:
+		# 	ind = line.index('.')
+		# 	if len(line) == ind + 1:
+		# 		pass
+		# 	elif line[ind + 1] != ' ':
+		# 		line[ind] = ' '
+		clean.append(line)
+	with open(fname, 'w') as f:
+		for line in clean:
+			f.write(line)
+	f.close()
+
+
+
+for filename in glob.glob(os.path.join(path_, '')):
 	print "current filename", filename
 	print mode
-	#mv = 'mv ' + getRoot(filename) + '.xml' + ' CoreNLP_XMLs/'
-	#print "current filename", getRoot(filename)
-	#os.system(mv)
 	if int(mode) == 1:
-		outpath = out_+ "/Preprocess/peer_summaries"
+		outpath = pyrEval + "/Preprocess/peer_summaries"
 	elif int(mode) == 2:
-		outpath = out_ + "/Preprocess/wise_crowd_summaries"
+		outpath = pyrEval + "/Preprocess/wise_crowd_summaries"
 	elif int(mode) == 3:
-		outpath = out_ + "/Preprocess/test_summaries"
+		outpath = pyrEval + "/Preprocess/test_summaries"
 	else:
 		print "Option doesn't exist!!!"
 	if outpath:

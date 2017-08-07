@@ -18,11 +18,11 @@ import os
 
 print("Reading Content")
 #directories = glob.iglob('wise_crowd/*')
-directories = glob.iglob('../Preprocess/wise_crowd_summaries/*')
-segs, vecs = readFiles(directories)
+directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
+segs, vecs, N = readFiles(directories)
 print("Making Segments")
 segpool = make_segs(segs, vecs)
-pairwise_test(segpool, 5)
+pairwise_test(segpool, N)
 
 # thresholds = [85, 82, 80, 78, 75, 72, 70]
 # tups = [(125, 1.0), (125, 1.5), (125, 2.0), (125, 2.5), (125, 3.0), 
@@ -45,7 +45,7 @@ for threshold in thresholds:
         
         
         # Build Pairwise Similarity Set
-        BigSet2 = pairwise(segmentpool, 5, threshold)
+        BigSet2 = pairwise(segmentpool, N, threshold)
 
         # For getting the coefficients combinations 
         #bf_dict = BruteForceLaw(len(segmentpool),5)
@@ -56,14 +56,15 @@ for threshold in thresholds:
         timer = time()
     
         # N is the number of summaries used, indicates number of layers in pyramid
-        N = 5
         
         # Pyramid is a list of lists and Pyramid_info is a list of Layer() objects
-        Pyramid = range(5)
-        Pyramid_info = range(5)
+        Pyramid = range(N)
+        Pyramid_info = range(N)
 
         # Build the first N -> 2 Layers of the Pyramid
         for n in range(N,1, -1):
+            print "Building Layer %d" % n
+
             y_n = power_law(n, bf_dict)
             
             # If we are building the second layer of the Pyramid
@@ -95,6 +96,7 @@ for threshold in thresholds:
             
             # If we are looking at any layer between N-1 and 2 and the contraint is False...
             if (constraint == False) and (n != N):
+                print("\tCalling Local Backtracking")
                 status, segmentpool, Pyramid, Pyramid_info, current = localBackTracking(layer, n,
                                                                                       segmentpool,
                                                                                       Pyramid_info,
@@ -114,6 +116,7 @@ for threshold in thresholds:
             segmentpool = RecursiveSettling(Pyramid, segmentpool)
 
         # Build Layer 1
+        print "Building Layer 1"
         bs1, segmentpool = ComposeLayer1(segmentpool)
         Pyramid[0] = bs1
         bottom = Layer(0)
@@ -206,7 +209,7 @@ for threshold in thresholds:
                     if segment.id == vector_to_find:
                         vectors.append(segment.vec)
             scu_with_vecs[scu_id] = [weight_dict[scu_id], vectors]
-        with open('../Scoring/pyrs/pyramids/' + fname + '.p', 'wb') as f:
+        with open('../Scoring/pyrs/pyramids/DUC' + fname + '.p', 'wb') as f:
             pickle.dump(scu_with_vecs, f)
         f.close()
 
@@ -225,7 +228,7 @@ for threshold in thresholds:
         for n, pyr in enumerate(Pyramid_info):
             print('Layer {} has size {} | Upperbound {}'.format(n+1, pyr.length, pyr.capacity))
         if len(all_seg_ids) == len(set(all_seg_ids)):
-            print('Length of Segment Pool as Beginning: {} vs Length at End{}'.format(segmentpool_length,
+            print('Length of Segment Pool as Beginning: {} vs Length at End {}'.format(segmentpool_length,
                                                                                       len(segmentpool)))
             print('Number of Segments Used: %d' % len(all_seg_ids))
             print('All Segment IDs are Unique')

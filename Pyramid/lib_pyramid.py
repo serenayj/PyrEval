@@ -12,6 +12,8 @@ import math
 from itertools import combinations
 from sklearn.metrics.pairwise import cosine_similarity as cos
 import numpy as np
+import os
+import glob
 
 
 """
@@ -219,9 +221,9 @@ def readFiles(directories):
             #d = directory[]
             ii = glob.iglob(directory+'/*')
             for fn in ii:
-                if '.ls' in fn:
+                if fn[-3:] == '.ls':
                     vec_fname = fn
-                if '.segs' in fn:
+                if fn[-5:] == '.segs':
                     seg_fname = fn
             #vec_fname = directory + '/' + d + '.ls'
             #seg_fname = directory + '/' + d + '.segs'

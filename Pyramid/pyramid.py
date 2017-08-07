@@ -9,6 +9,7 @@ from time import time
 import copy
 import pickle
 import glob
+import os
 
 
 """
@@ -205,7 +206,7 @@ for threshold in thresholds:
                     if segment.id == vector_to_find:
                         vectors.append(segment.vec)
             scu_with_vecs[scu_id] = [weight_dict[scu_id], vectors]
-        with open('../Scoring/pyramids/' + fname + '.p', 'wb') as f:
+        with open('../Scoring/pyrs/pyramids/' + fname + '.p', 'wb') as f:
             pickle.dump(scu_with_vecs, f)
         f.close()
 

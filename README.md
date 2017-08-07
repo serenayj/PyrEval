@@ -48,6 +48,16 @@ python preprocess.py mode
 ``` 
 where mode: 1: peer summries; 2: wise_crowd_summaries, 3:test_summaries. 
 
+### Step2: Build Pyramid
+The script will take input from Preprocess/wise_crowd_summaries/*, and output the pyramid as .pyr file to Pyramid/scu/. 
+
+Locate to the Pyramid folder and run the script: 
+```
+python pyramid.py 
+```
+
+### Step3: Score the summaries 
+
 
 ## Reference
 [1] Nenkova, Ani and Rebecca J. Passonneau. Evaluating content selection in summarization: The Pyramid Method. Joint Annual Meeting of Human Language Technology and the North American chapter of the Association for Computational Linguistics (HLT/NAACL). Boston, MA. June, 2004.

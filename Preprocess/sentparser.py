@@ -198,6 +198,7 @@ def Rule_SUBCONJ(sub_sent,tr,tl,numlist):
     for ind in range(0,len(sub_sent)):
         vps,ln = get_numberlist(sub_sent[ind],tl)
         left = list(set(tl)-set(vps))
+        vps = [v for v in vps if v != "'"]
         vps = sorted(list(map(int,vps))) 
         left = sorted(list(map(int,left)))  
         seg_ids.append([left,vps])
@@ -382,6 +383,7 @@ def get_segmentation(all_vpnodes,idseg,tl):
     del tmp   
     allvp = []
     for j in all_vpnodes:
+        j = [k for k in j if not (k == "'" or k == '`')]
         allvp.append(map(int,j))
     # First pass, check the main vp chunks 
     # Result in final  
@@ -392,6 +394,7 @@ def get_segmentation(all_vpnodes,idseg,tl):
         curr = []
         # Get the current segment 
         # i[0] alwas be the subject connected to the predicates  
+        i[1] = [d for d in i[1] if not( d == "'" or d == '`')]
         seg = [int(i[0])]+ [int(item) for item in i[1]]
         ###print "seg", seg
         left = set(tl).difference(set(seg))
@@ -532,6 +535,7 @@ lists_nodes = {}
 segment_set = {}
 # Sentence as basic unit
 for ind in range(1,len(all_dep_sent)):
+    used = False
 #for ind in range(1,5):
     tmp_ids = [] 
     tmp = [] 
@@ -560,6 +564,7 @@ for ind in range(1,len(all_dep_sent)):
             sentence_segmentations.append(output_sentence1)
             out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_sent[0][kk])+'\n'
             write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
+            used = True
         segmentation_count += 1 
     # Iterating in a list of vp chunks 
     if vps:
@@ -657,6 +662,7 @@ for ind in range(1,len(all_dep_sent)):
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+ '\n'  
                 write_log(seg_dir +'/'+ fname +'.segs',out_sent)
+                used = True
                 sentence_segmentations.append(out_sent)
 
             segment_count += 1
@@ -671,12 +677,17 @@ for ind in range(1,len(all_dep_sent)):
             write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
             out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+'0'+'&'+v +'\n'
             write_log(seg_dir +'/'+ fname +'.segs',out_sent)
+            used = True
             sentence_segmentations.append(out_sent)
 
         # Else, the case we just take whatever it is 
         else:
             pass 
-            
+    if used == False:
+        v = " ".join([item[0] for item in numlist]) 
+        out_sent = summary_index+'&'+str(ind)+'&'+'0'+'&'+'0'+'&'+v +'\n'
+        write_log(seg_dir +'/'+ fname +'.segs',out_sent)
+
 
 
 

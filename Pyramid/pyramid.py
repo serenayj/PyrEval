@@ -7,7 +7,6 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
 from time import time
 import copy
-import pickle
 import glob
 import xml.etree.cElementTree as ET
 
@@ -35,7 +34,7 @@ tups = [(64., 1.5), (64., 1.75), (64., 2.0),
         (110., 2.5), (120., 1.5), (120., 1.75), 
         (120., 2.0), (120., 2.25), (120., 2.5)]
 
-thresholds = [77]
+thresholds = [80]
 tups = [(175., 2.0)]
 
 for threshold in thresholds:
@@ -192,7 +191,6 @@ for threshold in thresholds:
         if cu_ids:
             for j, i in enumerate(cu_ids):
                 line = 'SCU' + '\t' + str(i) + '\t' + str(weights[j]) + '\t' + labels[j]
-                print line
                 #print(line)
                 lines.append(line)
         with open('scu/' + fname + '.pyr', 'w') as f:
@@ -201,37 +199,16 @@ for threshold in thresholds:
                 f.write(line + '\n')
         f.close()
 
-        # Pickle Dump of Pyramid
-        # weight_dict = {}
-        # for n, weight in enumerate(weights):
-        #     weight_dict[cu_ids[n]] = weight
-        # scu_with_vecs = {}
-        # for scu_id, vec_to_find_list in scu_vecs.items():
-        #     vectors = []
-        #     for vector_to_find in vec_to_find_list:
-        #         for segment in segmentpool:
-        #             if segment.id == vector_to_find:
-        #                 vectors.append(segment.vec)
-        #     scu_with_vecs[scu_id] = [weight_dict[scu_id], vectors]
         root = ET.Element('Pyramid')
         p = 0
-        first_cu_id = cu_ids[0]
-        scu = ET.SubElement(root,'scu', uid=str(first_cu_id))
+        scu = ET.SubElement(root,'scu', uid=str(p))
         for j, i in enumerate(cu_ids):
             if i > p:
-                print ET.dump(scu)
                 p = i
-                first_cu_id = j
-                scu = ET.SubElement(root,'scu', uid=str(first_cu_id))
-            ET.SubElement(scu, 'contributor').text = labels[j]
+                scu = ET.SubElement(root,'scu', uid=str(p))
+            ET.SubElement(scu, 'contributor', label = labels[j])
         tree = ET.ElementTree(root)
-        tree.write('../Scoring/pyrs/pyramids/' + fname + '.xml')
-
-        # Print out sizes
-        with open('../Scoring/sizes/' + fname + '.size', 'w') as f:
-            for n, pyr in enumerate(Pyramid_info):
-                  f.write(str(pyr.length) + '\n')
-        f.close()
+        tree.write('../Scoring/pyrs/pyramids/' + fname + '.pyr')
                   
         # Console Output
         print('With Threshold {}%'.format(threshold))

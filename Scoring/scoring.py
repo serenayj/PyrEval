@@ -1,4 +1,4 @@
-from lib_scoring import sentencesFromSegmentations, buildSCUlist, SummaryGraph, buildSCUcandidateList, filename
+from lib_scoring import sentencesFromSegmentations, SummaryGraph, buildSCUcandidateList, filename
 from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid
 import glob
 import copy
@@ -17,10 +17,8 @@ summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 #for testing
 
 # Input either a pickle file or a human pyramid
-pyramid = sys.argv[2]
-option = int(sys.argv[1])
+pyramid = sys.argv[1]
 # 1: pickle, 2: human pyramid
-how_to_process_pyramid = {1: buildSCUlist, 2: readPyramid}
 
 results_file = '../results.csv'
 f = open(results_file, 'w')
@@ -36,7 +34,7 @@ coverage_scores = {}
 comprehension_scores = {}
 
 #print "test"
-scus_og = how_to_process_pyramid[option](pyramid)
+scus_og = readPyramid(pyramid)
 for summary in summaries:
     scus = copy.deepcopy(scus_og)
     if os.path.isdir(summary):
@@ -45,7 +43,7 @@ for summary in summaries:
             #print fn 
             #if str(fn[:-5]) == '.segs':
             if fn.endswith('.ls'):
-                print "current file, ", fn
+                print "\tcurrent file, ", fn
                 summary_slash= fn.rfind('/') + 1
                 summary_dot = fn.rfind('.')
                 summary_name = fn[summary_slash:summary_dot]
@@ -54,12 +52,11 @@ for summary in summaries:
                 independentSet = Graph.independentSet
                 candidates = buildSCUcandidateList(independentSet)
                 results, possiblyUsed = processResults(candidates, independentSet)
-                for segid, res in results.items():
-                    print '\t{}: {}'.format(segid, res)
+                #for segid, res in results.items():
+                    #print '\t{}: {}'.format(segid, res)
                 rearranged_results = scusBySentences(results)
                 score, matched_cus = getScore(rearranged_results, scus)
-                size_file = pyramid.replace('.p', '.size') if option == 1 else pyramid.replace('.pyr', '.size')
-                size_file = size_file.replace('pyrs/pyramids/', 'sizes/') if option ==1 else 'sizes/' + filename(pyramid) + '.size'
+                size_file = 'sizes/' + filename(pyramid) + '.size'
                 count_by_weight, avg = getLayerSizes(size_file)
                 raw_scores[summary_name] = score
                 quality = float(score)/maxRawScore(count_by_weight, possiblyUsed)

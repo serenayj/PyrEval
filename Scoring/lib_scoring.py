@@ -178,9 +178,27 @@ def readPyramid(fname):
     scus = getSCUs(soup)
     scus = vectorizeSCUs(scus)
     scu_objects = []
+    layer_sizes = []
     for scu_id, labels in scus.items():
         scu_objects.append(SCU(scu_id, len(labels), labels))
+    size = max(scu_objects, key=lambda x: x.weight)
+    j = 0
+    for scu in scu_objects:
+        if scu.weight > size:
+            layer_sizes.append(j)
+            j = 0
+            size = scu.weight
+        else:
+            j += 1
+    fname = 'sizes/' + filename(fname) + '.size'
+    with open(fname, 'w') as f:
+        for size in layer_sizes:
+            f.write(str(size) + '\n')
+    f.close()
     return scu_objects
+
+
+
 
 """
 ============= Function Definitions ===============

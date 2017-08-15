@@ -1,6 +1,7 @@
-from lib_scoring import sentencesFromSegmentations, buildSCUlist, SummaryGraph, buildSCUcandidateList
+from lib_scoring import sentencesFromSegmentations, buildSCUlist, SummaryGraph, buildSCUcandidateList, filename
 from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid
 import glob
+import copy
 import sys
 import csv
 import os
@@ -35,7 +36,9 @@ coverage_scores = {}
 comprehension_scores = {}
 
 #print "test"
+scus_og = how_to_process_pyramid[option](pyramid)
 for summary in summaries:
+    scus = copy.deepcopy(scus_og)
     if os.path.isdir(summary):
         summ = glob.iglob(summary+'/*')
         for fn in summ:
@@ -47,17 +50,16 @@ for summary in summaries:
                 summary_dot = fn.rfind('.')
                 summary_name = fn[summary_slash:summary_dot]
                 sentences = sentencesFromSegmentations(fn)
-                scus = how_to_process_pyramid[option](pyramid)
                 Graph = SummaryGraph(sentences, scus)
                 independentSet = Graph.independentSet
                 candidates = buildSCUcandidateList(independentSet)
                 results, possiblyUsed = processResults(candidates, independentSet)
                 for segid, res in results.items():
                     print '\t{}: {}'.format(segid, res)
-                print results
                 rearranged_results = scusBySentences(results)
                 score, matched_cus = getScore(rearranged_results, scus)
-                size_file = pyramid.replace('.p', '.size').replace('pyrs/pyramids/', 'sizes/')
+                size_file = pyramid.replace('.p', '.size') if option == 1 else pyramid.replace('.pyr', '.size')
+                size_file = size_file.replace('pyrs/pyramids/', 'sizes/') if option ==1 else 'sizes/' + filename(pyramid) + '.size'
                 count_by_weight, avg = getLayerSizes(size_file)
                 raw_scores[summary_name] = score
                 quality = float(score)/maxRawScore(count_by_weight, possiblyUsed)

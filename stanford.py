@@ -8,9 +8,9 @@ import sys
 import glob 
 #from lib_preprocessing import *
 
-path_ = sys.argv[2]
-mode = sys.argv[3]
-pyrEval = sys.argv[1]
+path_ = sys.argv[1]
+mode = sys.argv[2]
+pyrEval = sys.argv[3]
 
 
 # Clean Summary before XML dump

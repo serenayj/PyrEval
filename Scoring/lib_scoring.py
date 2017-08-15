@@ -181,15 +181,17 @@ def readPyramid(fname):
     layer_sizes = []
     for scu_id, labels in scus.items():
         scu_objects.append(SCU(scu_id, len(labels), labels))
-    size = max(scu_objects, key=lambda x: x.weight)
+    size = max(scu_objects, key=lambda x: x.weight).weight
     j = 0
     for scu in scu_objects:
-        if scu.weight > size:
+        if scu.weight < size:
             layer_sizes.append(j)
-            j = 0
+            j = 1
             size = scu.weight
         else:
             j += 1
+    else:
+        layer_sizes.append(j)
     fname = 'sizes/' + filename(fname) + '.size'
     with open(fname, 'w') as f:
         for size in layer_sizes:

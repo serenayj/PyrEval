@@ -3,7 +3,7 @@
 
 # SETENCE DECOMPOSITION PARSER 
 # This is a script for handling the output from Stanford CoreNLP constutiency parser, dependency parser 
-# The script is for sentence decomposition. For a given sentence, tempract a few segmentations which contain different segments  
+# The script is for sentence decomposition. For a given sentence, we extract a few segmentations which contain different segments  
  
 # The code has four main modules: 
 # Helper functions: Accessories function for processing the tree
@@ -29,11 +29,6 @@ import os
 fname = sys.argv[1]
 sum_index = sys.argv[2]
 outpath = sys.argv[3]
-
-#fname = '/export/home/yug125/Preprocess/wise_crowd_summaries/2.stseg.txt.xml'
-#sum_index = str(2)
-#outpath = 'temp/'
-#summary_index =  sum_index
 
 content = open(fname).read()
 
@@ -682,7 +677,7 @@ write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
 write_log('../ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
 write_log('../ext/' + fname +'_log1-segment-id.txt', '', 1)
 
-seg_dir = output+'/'+str(summary_index)
+seg_dir = outpath +'/'+str(summary_index)
 if not os.path.exists(seg_dir):
     os.makedirs(seg_dir)
 
@@ -703,9 +698,9 @@ for ind in range(1,len(all_dep_sent)):
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
     raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
-    write_log('temp/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
+    write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
     raw_sentence = "===================Raw sentence: "+ " ".join([str(i[1]) for i in numlist]) + " \n"
-    write_log('temp/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
+    write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
     segmentation_count = 0
     segment_count = 0
     # Dumb rule: split the sentence by pausing point
@@ -722,6 +717,7 @@ for ind in range(1,len(all_dep_sent)):
             out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(comma_ind)+'&'+str(sl[comma_ind])+'\n'
             write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
             #used = True
+            # even though we are able to split the sentence by pausing point, we also need the raw sentence
     segmentation_count += 1
     # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
     subconj_flag,sub_sent = check_IN(tr)

@@ -7,10 +7,8 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
 from time import time
 import copy
-import pickle
 import glob
-import os
-
+import xml.etree.cElementTree as ET
 
 """
 =========================== Pipeline =================================
@@ -24,16 +22,20 @@ print("Making Segments")
 segpool = make_segs(segs, vecs)
 pairwise_test(segpool, N)
 
-# thresholds = [85, 82, 80, 78, 75, 72, 70]
-# tups = [(125, 1.0), (125, 1.5), (125, 2.0), (125, 2.5), (125, 3.0), 
-#         (150, 1.0), (150, 1.5), (150, 2.0), (150, 2.5), (150, 3.0), 
-#         (175, 1.0), (175, 1.5), (175, 2.0), (175, 2.5), (175, 3.0), 
-#         (200, 1.0), (200, 1.5), (200, 2.0), (200, 2.5), (200, 3.0), 
-#         (225, 1.0), (225, 1.5), (225, 2.0), (225, 2.5), (225, 3.0), 
-#         (250, 1.0), (250, 1.5), (250, 2.0), (250, 2.5), (250, 3.0) ]
+thresholds = [73,72,71,70,69,68,67]
+tups = [(64., 1.5), (64., 1.75), (64., 2.0), 
+        (64., 2.25), (64., 2.5), (80., 1.5), 
+        (80., 1.75), (80., 2.0), (80., 2.25), 
+        (80., 2.5), (90., 1.5), (90., 1.75), 
+        (90., 2.0), (90., 2.25), (90., 2.5), 
+        (100., 1.5), (100., 1.75), (100., 2.0), 
+        (100., 2.25), (100., 2.5), (110., 1.5), 
+        (110., 1.75), (110., 2.0), (110., 2.25), 
+        (110., 2.5), (120., 1.5), (120., 1.75), 
+        (120., 2.0), (120., 2.25), (120., 2.5)]
 
-thresholds = [77]
-tups = [(175, 2.0)]
+thresholds = [80]
+tups = [(175., 2.0)]
 
 for threshold in thresholds:
     for tup in tups:
@@ -197,27 +199,16 @@ for threshold in thresholds:
                 f.write(line + '\n')
         f.close()
 
-        # Pickle Dump of Pyramid
-        weight_dict = {}
-        for n, weight in enumerate(weights):
-            weight_dict[cu_ids[n]] = weight
-        scu_with_vecs = {}
-        for scu_id, vec_to_find_list in scu_vecs.items():
-            vectors = []
-            for vector_to_find in vec_to_find_list:
-                for segment in segmentpool:
-                    if segment.id == vector_to_find:
-                        vectors.append(segment.vec)
-            scu_with_vecs[scu_id] = [weight_dict[scu_id], vectors]
-        with open('../Scoring/pyrs/pyramids/DUC' + fname + '.p', 'wb') as f:
-            pickle.dump(scu_with_vecs, f)
-        f.close()
-
-        # Print out sizes
-        with open('../Scoring/sizes/' + fname + '.size', 'w') as f:
-            for n, pyr in enumerate(Pyramid_info):
-                  f.write(str(pyr.length) + '\n')
-        f.close()
+        root = ET.Element('Pyramid')
+        p = 0
+        scu = ET.SubElement(root,'scu', uid=str(p))
+        for j, i in enumerate(cu_ids):
+            if i > p:
+                p = i
+                scu = ET.SubElement(root,'scu', uid=str(p))
+            ET.SubElement(scu, 'contributor', label = labels[j])
+        tree = ET.ElementTree(root)
+        tree.write('../Scoring/pyrs/pyramids/' + fname + '.pyr')
                   
         # Console Output
         print('With Threshold {}%'.format(threshold))

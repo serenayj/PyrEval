@@ -27,7 +27,10 @@ class SCU():
         similarity = 0
         for embedding in self.embeddings:
             similarity += cos(embedding, segment_embedding)[0][0]
-        return [similarity / normalizer, self.weight]
+        if similarity < 0.55:
+            return None
+        else:
+            return [similarity / normalizer, self.weight]
 
 
 """
@@ -53,7 +56,9 @@ class SentenceGraph():
     def findSCUs(self, segment_embedding, scus):
         scores = {}
         for scu in scus:
-            scores[scu.id] = scu.averageSimilarity(segment_embedding)
+            average = scu.averageSimilarity(segment_embedding)
+            if average != None:
+                scores[scu.id] = average
         scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:2]
         scores = [(score[0], score[1][0]) for score in scores]
         return scores

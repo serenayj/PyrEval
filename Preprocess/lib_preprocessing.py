@@ -45,8 +45,8 @@ def CleanSegmentations(fname, directory, summ_ind):
 	segFile = file_dir +'/' + getRealName(fname) + '.segs'
 	with open(segFile, 'r') as f:
 		lines = f.readlines()
-		segments = [line.split('&')[4] for line in lines]
-		seg_ids = ['&'.join(line.split('&')[:4]) for line in lines]
+		segments = [line.split('&')[4] for line in lines if len(line) >1]
+		seg_ids = ['&'.join(line.split('&')[:4]) for line in lines if len(line) >1]
 	f.close()
 	with open(segFile + '.cl', 'w') as f:
 		for segment in segments:

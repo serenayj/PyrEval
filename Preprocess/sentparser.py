@@ -1,5 +1,5 @@
 # Author: Yanjun Gao(yug125)
-# Last update: July 3,2017 
+# Last update: Aug 20,2017 
 
 # SETENCE DECOMPOSITION PARSER 
 # This is a script for handling the output from Stanford CoreNLP constutiency parser, dependency parser 
@@ -704,7 +704,9 @@ for ind in range(1,len(all_dep_sent)):
     segmentation_count = 0
     segment_count = 0
     # Dumb rule: split the sentence by pausing point
-    sl,il,comma_flag = Rule_COMMA(numlist,pausing_point)
+    #sl,il,comma_flag = Rule_COMMA(numlist,pausing_point)
+    comma_flag = False 
+    # Stop using comma flag 
     if comma_flag:
         for comma_ind in range(0,len(sl)):
             output_sentence = "Segment " + str(comma_ind) + " from Sentence "+str(ind)+" :\n " + str(il[comma_ind])+" \n"
@@ -718,7 +720,7 @@ for ind in range(1,len(all_dep_sent)):
             write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
             #used = True
             # even though we are able to split the sentence by pausing point, we also need the raw sentence
-    segmentation_count += 1
+    #segmentation_count += 1
     # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
     subconj_flag,sub_sent = check_IN(tr)
     if subconj_flag == True:

@@ -677,7 +677,8 @@ write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
 write_log('../ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
 write_log('../ext/' + fname +'_log1-segment-id.txt', '', 1)
 
-seg_dir = outpath +'/'+str(summary_index)
+summary_index = str(sum_index)
+seg_dir = outpath +'/'+str(sum_index)
 if not os.path.exists(seg_dir):
     os.makedirs(seg_dir)
 

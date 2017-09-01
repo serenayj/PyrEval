@@ -206,21 +206,18 @@ for ind in range(1,len(all_dep_sent)):
         #res = rearrangement(result,punctuation) 
         #segment_set[ind] = reorder(res)
         _idseg = RemakeSegStructure(idseg[ind])
-        res = get_segmentation2(all_vpnodes,_idseg,tl)
-        left = get_left(res,tl)
-        seg = Rearrange2(tl,res,left)
-        nr = further_modify(res,seg)
-        nrr = []
-        for i in nr:
-            if i not in nrr:
-                nrr.append(i)
-        segment_set[ind] = nrr
+        seg_combo = get_segmentation3(_idseg)
+        new_idseg = Make_New_Segt(seg_combo,_idseg)
+        left = get_left(new_idseg,tl)
+        segs = Rearrange2(tl,new_idseg,left)
+        final = Connect_subj(new_idseg,segs)
+        segment_set[ind] = final
         for v in segment_set[ind]:
             output_sentence = "Segment " + str(segment_count) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"
-            write_log('../ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
+            write_log(ext+'/' + fname +'_log-segment-id-readable.txt',output_sentence)
             for vv in range(0,len(v)):
                 out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+'\n'
-                write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
+                #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
             segment_count += 1
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
@@ -230,9 +227,9 @@ for ind in range(1,len(all_dep_sent)):
         else:
             kk = 0
             output_sentence = "Segment " + str(kk+1) + " from Sentence "+str(ind)+" :\n " + str(tl)+" \n"
-            out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+ '&'+str(kk)+'&'+str(tl)+'\n'
+            out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+ '&'+str(kk)+'&'+str(tl)+'\n'
             write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
-            segmentation_count += 1
+            segment_count += 1
 
     if all_vpnodes:
         segment_count = segmentation_count

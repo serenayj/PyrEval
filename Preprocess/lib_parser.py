@@ -117,6 +117,34 @@ def write_listlog(filename,lists):
         pickle.dump(lists, f)
     f.close() 
 
+def Pull_Words(segment_set,ind):
+    seg = {}
+    for iind in range(0,len(segment_set[ind])):
+        unit = []
+        for j in segment_set[ind][iind]:
+            sent = []
+            for every in j:
+                for sin in numlist:
+                    if sin[1] == every:
+                        sent.append(sin[0])
+            sents = " ".join(sent)
+        unit.append(sents)
+        seg[iind] = unit
+    return seg 
+
+def Format_Sentence(mode, label, sum_ind,sent_ind,segmt_ind,seg_ind):
+    # Sentence for id-readable file
+    if mode == 1:
+        sentence = "Segment " + str(seg_ind) + " from Sentence "+str(sent_ind)+" :\n " + str(label)+" \n"
+    # Sentence for sent-readable file 
+    elif mode == 2:
+        sentence = "Segmentation " + str(segmt_ind) + " from Sentence "+str(ind)+" :\n " + str(label)+" \n"  
+    # Sentence for segment file 
+    elif mode == 3:
+        sentence = str(sum_ind)+'&'+str(sent_ind)+'&'+str(segmt_ind)+'&'+str(seg_ind)+'&'+str(label)+'\n'
+    return sentence  
+
+
 
 """
 ==================================Algorithms Start===========================================

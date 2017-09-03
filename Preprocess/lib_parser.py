@@ -7,6 +7,21 @@ import copy
 import sys
 import os
 
+
+obj = ['dobj','iobj','pobj']
+subj = ['nsubj','csubj','nsubjpass','csubjpass']
+conj = 'conj'
+comp = ['comp','acomp','ccomp','xcomp',]
+tensed_verb = ['VBZ','VBD','VBP','MD']
+sub_conj = ['after', 'although', 'as', 'as if', 'as long as', 'as much as', 'as soon as', 'as though', 'because', 'before', 'even', 'even if', 'even though', 'if', 'if only', 'if when', 'if then', 'inasmuch', 'in order that', 'just as', 'lest', 'now', 'now since', 'now that', 'now when', 'once', 'provided', 'provided that', 'rather that', 'since', 'so that', 'supposing', 'than', 'that', 'though', 'till', 'unless', 'until', 'when', 'whenever', 'where', 'whereas', 'where if', 'wherever', 'whether', 'which', 'while', 'who', 'whoever', 'why','but']
+
+wl = ['CC','CD','DT','EX','FW','IN','JJ','JJR','JJS','LS','MD','NN','NNS','NNP','NNPS','PDT','POS','PRP','PRP$','RB','RBR','RBS','RP','SYM','TO','UH','VB','VBD','VBG','VBN','VBP','VBZ','WDT','WP','WP$','WRB']
+
+pl = ['ADJP','ADVP','CONJP','FRAG','INTJ','LST','NAC','NP','NX','PP','PRN','PRT','QP','RRC','UCP','VP','WHADJP','WHAVP','WHNP','WHPP','X']
+
+cl = ['S','SBAR','SBARQ','SINV','SQ']
+
+
 """
 =============================== Helper Functions============================
 """
@@ -138,7 +153,7 @@ def Format_Sentence(mode, label, sum_ind,sent_ind,segmt_ind,seg_ind):
         sentence = "Segment " + str(seg_ind) + " from Sentence "+str(sent_ind)+" :\n " + str(label)+" \n"
     # Sentence for sent-readable file 
     elif mode == 2:
-        sentence = "Segmentation " + str(segmt_ind) + " from Sentence "+str(ind)+" :\n " + str(label)+" \n"  
+        sentence = "Segmentation " + str(segmt_ind) + " from Sentence "+str(sent_ind)+" :\n " + str(label)+" \n"  
     # Sentence for segment file 
     elif mode == 3:
         sentence = str(sum_ind)+'&'+str(sent_ind)+'&'+str(segmt_ind)+'&'+str(seg_ind)+'&'+str(label)+'\n'
@@ -279,7 +294,7 @@ def find_arcs(i,things,tl):
 # Pull out sentences with connection of subj or obj 
 # Input should be current node id, and current subtree from vps(leaves are chunks from vps)
 # E.G. leaves = i.leaves(), where [[u'contains', 11], [u'both', 12], [u'volume', 13], [u'and', 14], [u'mass', 15]]
-def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag):
+def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag,fname):
     all_obj = [] 
     # For connecting the sentences 
     sentmp = []
@@ -298,7 +313,7 @@ def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag):
                 flag = True 
                 sentmp.append(nodes_label)
                 sentmp.append(" ".join(m[0] for m in leaves))
-                ids.append([nodes_id,idlist])
+                ids.append([nodes_id,id_list])
                 #print "current ids", ids
                 sentence = "Sentence "+str(index)+" SUBJ/OBJ segment is:" + " ".join(sentmp)+ "\n"
                 sent_ids = "cover from:" + str(nodes_id) + ","+ " ".join(id_list) + "\n"
@@ -317,7 +332,7 @@ def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag):
 # Input: woa-without arcs, things-dictionary, leaves-from vps, wordlist-a list of numbers marked as nodes
 # Output: all matched id nodes, id nodes and match sentences 
 # E.G. leaves = i.leaves(), where [[u'contains', 11], [u'both', 12], [u'volume', 13], [u'and', 14], [u'mass', 15]]
-def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label):
+def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,fname):
     # For connecting ids with boats 
     all_parts = []
     big_ids = [] 
@@ -351,7 +366,7 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label):
                         sent_ids = "cover from:"+ l['dep_id'] + "," +" ".join(wordlist) + "\n" 
                         write_log('../ext/' + fname +'_log1.txt',sentence)
                         write_log('../ext/' + fname +'_log1.txt',sent_ids)
-                        all_parts.append([ids,sentence])
+                        all_parts.append([big_ids,sentence])
         # If nothing got matched...  
         if flag == False:
             backup.append(boat)

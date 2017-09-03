@@ -45,18 +45,7 @@ fname = fname[:-4]
 #print fname
 
 
-obj = ['dobj','iobj','pobj']
-subj = ['nsubj','csubj','nsubjpass','csubjpass']
-conj = 'conj'
-comp = ['comp','acomp','ccomp','xcomp',]
-tensed_verb = ['VBZ','VBD','VBP','MD']
-sub_conj = ['after', 'although', 'as', 'as if', 'as long as', 'as much as', 'as soon as', 'as though', 'because', 'before', 'even', 'even if', 'even though', 'if', 'if only', 'if when', 'if then', 'inasmuch', 'in order that', 'just as', 'lest', 'now', 'now since', 'now that', 'now when', 'once', 'provided', 'provided that', 'rather that', 'since', 'so that', 'supposing', 'than', 'that', 'though', 'till', 'unless', 'until', 'when', 'whenever', 'where', 'whereas', 'where if', 'wherever', 'whether', 'which', 'while', 'who', 'whoever', 'why','but']
 
-wl = ['CC','CD','DT','EX','FW','IN','JJ','JJR','JJS','LS','MD','NN','NNS','NNP','NNPS','PDT','POS','PRP','PRP$','RB','RBR','RBS','RP','SYM','TO','UH','VB','VBD','VBG','VBN','VBP','VBZ','WDT','WP','WP$','WRB']
-
-pl = ['ADJP','ADVP','CONJP','FRAG','INTJ','LST','NAC','NP','NX','PP','PRN','PRT','QP','RRC','UCP','VP','WHADJP','WHAVP','WHNP','WHPP','X']
-
-cl = ['S','SBAR','SBARQ','SINV','SQ']
 
 pausing_point = [',',':',';']
 
@@ -146,13 +135,13 @@ for ind in range(1,len(all_dep_sent)):
                         #print "nodes id", nodes_id
                         nodes_label = e['dep']
                         #print "nodes label", nodes_label
-                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag)
+                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
                         for each in ids:
                             tmp_ids.append(each)
                     elif e['gov_id'] not in idlist:
                         nodes_id = e['gov_id']
                         nodes_label = e['gov']
-                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag)
+                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
                         #print "ids gov", ids
                         for each in ids:
                             tmp_ids.append(each)
@@ -161,7 +150,7 @@ for ind in range(1,len(all_dep_sent)):
                 # Mark the current verb as starting node, vp always starts from a verb 
                 nodes_id = i.leaves()[0][1]
                 nodes_label = i.leaves()[0][0]
-                ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label)
+                ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,fname)
                 for each in ids:
                     tmp_ids.append(each)
             idseg[ind] = tmp_ids
@@ -188,7 +177,7 @@ for ind in range(1,len(all_dep_sent)):
         for k,v in enumerate(segment_set[ind]):
             for vv in range(0,len(v)):
                 sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
-                write_log(ext+'/' + fname +'_log-segment-id-readable.txt',sentence)
+                write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',sentence)
                 #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
         seg = Pull_Words(segment_set,ind,numlist)
         for k,v in seg.items():

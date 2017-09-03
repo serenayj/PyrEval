@@ -13,7 +13,7 @@ subj = ['nsubj','csubj','nsubjpass','csubjpass']
 conj = 'conj'
 comp = ['comp','acomp','ccomp','xcomp',]
 tensed_verb = ['VBZ','VBD','VBP','MD']
-sub_conj = ['after', 'although', 'as', 'as if', 'as long as', 'as much as', 'as soon as', 'as though', 'because', 'before', 'even', 'even if', 'even though', 'if', 'if only', 'if when', 'if then', 'inasmuch', 'in order that', 'just as', 'lest', 'now', 'now since', 'now that', 'now when', 'once', 'provided', 'provided that', 'rather that', 'since', 'so that', 'supposing', 'than', 'that', 'though', 'till', 'unless', 'until', 'when', 'whenever', 'where', 'whereas', 'where if', 'wherever', 'whether', 'which', 'while', 'who', 'whoever', 'why','but']
+sub_conj = ['after', 'although', 'as', 'because', 'before', 'even','if', 'inasmuch', 'lest', 'now', 'once', 'provided', 'since', 'supposing', 'than', 'that', 'though', 'till', 'unless', 'until', 'when', 'whenever', 'where', 'whereas', 'where if', 'wherever', 'whether', 'which', 'while', 'who', 'whoever', 'why']
 
 wl = ['CC','CD','DT','EX','FW','IN','JJ','JJR','JJS','LS','MD','NN','NNS','NNP','NNPS','PDT','POS','PRP','PRP$','RB','RBR','RBS','RP','SYM','TO','UH','VB','VBD','VBG','VBN','VBP','VBZ','WDT','WP','WP$','WRB']
 

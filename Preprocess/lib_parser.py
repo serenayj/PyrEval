@@ -117,18 +117,18 @@ def write_listlog(filename,lists):
         pickle.dump(lists, f)
     f.close() 
 
-def Pull_Words(segment_set,ind):
+def Pull_Words(segment_set,ind,numlist):
     seg = {}
     for iind in range(0,len(segment_set[ind])):
-        unit = []
+        unit = []   
         for j in segment_set[ind][iind]:
             sent = []
             for every in j:
-                for sin in numlist:
-                    if sin[1] == every:
-                        sent.append(sin[0])
-            sents = " ".join(sent)
-        unit.append(sents)
+                for single in numlist:
+                    if single[1] == every:
+                        sent.append(single[0])
+                sents = " ".join(sent)
+            unit.append(sents)
         seg[iind] = unit
     return seg 
 

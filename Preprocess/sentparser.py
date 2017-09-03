@@ -13,7 +13,7 @@
 
 # TO-DO list:
 # csubj case
-# subject assignment 
+# subject assignment(done) 
 
 
 from bs4 import BeautifulSoup
@@ -111,25 +111,8 @@ for ind in range(1,len(all_dep_sent)):
     raw_sentence = "===================Raw sentence: "+ " ".join([str(i[1]) for i in numlist]) + " \n"
     write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
     segmentation_count = 0
-    segment_count = 0
-    # Dumb rule: split the sentence by pausing point
-    #sl,il,comma_flag = Rule_COMMA(numlist,pausing_point)
-    comma_flag = False 
-    # Stop using comma flag 
-    if comma_flag:
-        for comma_ind in range(0,len(sl)):
-            output_sentence = "Segment " + str(comma_ind) + " from Sentence "+str(ind)+" :\n " + str(il[comma_ind])+" \n"
-            write_log('../ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
-            out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(comma_ind)+'&'+str(il[comma_ind])+'\n'
-            write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
-            output_sentence1 = "Segmentation " + str(comma_ind) + " from Sentence "+str(ind)+" :\n " + str(sl[comma_ind])+" \n"   
-            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
-            sentence_segmentations.append(output_sentence1)
-            out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(comma_ind)+'&'+str(sl[comma_ind])+'\n'
-            write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
-            #used = True
-            # even though we are able to split the sentence by pausing point, we also need the raw sentence
-    #segmentation_count += 1
+    #segment_count = 0
+
     # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
     subconj_flag,sub_sent = check_IN(tr)
     if subconj_flag == True:
@@ -146,7 +129,7 @@ for ind in range(1,len(all_dep_sent)):
             out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_sent[0][kk])+'\n'
             write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
             used = True
-    segmentation_count += 1 
+        segmentation_count += 1 
     # Iterating in a list of vp chunks 
     if vps:
         for i in vps:
@@ -201,7 +184,7 @@ for ind in range(1,len(all_dep_sent)):
 
     # Now, start to pull out the segments from sentences 
     if all_vpnodes:
-        segment_count = segmentation_count
+        used = True
         #result = get_segmentation(all_vpnodes,idseg[ind],tl)
         #res = rearrangement(result,punctuation) 
         #segment_set[ind] = reorder(res)
@@ -212,71 +195,32 @@ for ind in range(1,len(all_dep_sent)):
         segs = Rearrange2(tl,new_idseg,left)
         final = Connect_subj(new_idseg,segs)
         segment_set[ind] = final
-        for v in segment_set[ind]:
-            output_sentence = "Segment " + str(segment_count) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"
-            write_log(ext+'/' + fname +'_log-segment-id-readable.txt',output_sentence)
+        for k,v in enumerate(segment_set[ind]):
             for vv in range(0,len(v)):
-                out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+'\n'
+                sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
+                write_log(ext+'/' + fname +'_log-segment-id-readable.txt',sentence)
                 #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
-            segment_count += 1
+        seg = Pull_Words(segment_set,ind,numlist)
+        for k,v in seg.items():
+            print "Segmentation: ", k   
+            #write_log(ext+'/' + fname +'_log-segment-label-readable.txt',output_sentence) 
+            for vv in range(0,len(v)):
+                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
+                sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
+                write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
+                sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
+                print "segment ", vv, " label: ", v[vv] 
+                write_log(seg_dir+'/' + fname +'.segs',sent)
+        segmentation_count += k
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
         if subconj_flag == True:
-            pass
-        # Else, the case we just take whatever it is 
-        else:
-            kk = 0
-            output_sentence = "Segment " + str(kk+1) + " from Sentence "+str(ind)+" :\n " + str(tl)+" \n"
-            out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+ '&'+str(kk)+'&'+str(tl)+'\n'
-            write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
-            segment_count += 1
-
-    if all_vpnodes:
-        segment_count = segmentation_count
-        seg = {}
-        for iind in range(0,len(segment_set[ind])):
-            unit = []
-            for j in segment_set[ind][iind]:
-                sent = []
-                for every in j:
-                    for sin in numlist:
-                        if sin[1] == every:
-                            sent.append(sin[0])
-                sents = " ".join(sent)
-                unit.append(sents)
-            seg[iind] = unit
-        for k,v in seg.items():
-            output_sentence = "Segmentation " + str(k+1) + " from Sentence "+str(ind)+" :\n " + str(v)+" \n"   
-            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence) 
-            for vv in range(0,len(v)):
-                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
-                out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+str(vv)+'&'+str(v[vv])+ '\n'  
-                write_log(seg_dir +'/'+ fname +'.segs',out_sent)
-                used = True
-                sentence_segmentations.append(out_sent)
-
-            segment_count += 1
-
-    # The case where there is no tempracted and matched, so just output the whole sentence 
-    else:
-        # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
-        if subconj_flag == False:
-            segmentation_count +=1  
-            v = " ".join([item[0] for item in numlist]) 
-            output_sentence = "Segmentation 0" + " from Sentence "+str(ind)+" :\n " + v +" \n"
-            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence)
-            out_sent = summary_index+'&'+str(ind)+'&'+str(segment_count)+'&'+'0'+'&'+v +'\n'
-            write_log(seg_dir +'/'+ fname +'.segs',out_sent)
-            used = True
-            sentence_segmentations.append(out_sent)
-
-        # Else, the case we just take whatever it is 
-        else:
             pass 
+
     if used == False:
         v = " ".join([item[0] for item in numlist]) 
-        out_sent = summary_index+'&'+str(ind)+'&'+'0'+'&'+'0'+'&'+v +'\n'
-        write_log(seg_dir +'/'+ fname +'.segs',out_sent)
+        sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
+        write_log(seg_dir +'/'+ fname +'.segs',sentence)
 
 
 

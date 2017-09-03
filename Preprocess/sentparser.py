@@ -118,16 +118,13 @@ for ind in range(1,len(all_dep_sent)):
     if subconj_flag == True:
         subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist) 
         for kk in range(0,len(subconj_seg_sent[0])):
-            output_sentence = "Segment " + str(kk) + " from Sentence "+str(ind)+" :\n " + str(subconj_seg_ids[0][kk])+" \n"
+            output_sentence = Format_Sentence(1,str(subconj_seg_ids[0][kk]),summary_index,ind,segmentation_count,kk)
             write_log('../ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
-            # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
-            out_sent = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_ids[0][kk])+'\n'
-            write_log('../ext/' + fname +'_log1-segment-id.txt',out_sent)
-            output_sentence1 = "Segmentation " + str(kk) + " from Sentence "+str(ind)+" :\n " + str(subconj_seg_sent[0][kk])+" \n"   
+            output_sentence1 = Format_Sentence(2,str(subconj_seg_sent[0][kk]),summary_index,ind,segmentation_count,kk)
             write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
             sentence_segmentations.append(output_sentence1)
-            out_sent1 = summary_index+'&'+str(ind)+'&'+str(segmentation_count)+'&'+str(kk)+'&'+str(subconj_seg_sent[0][kk])+'\n'
-            write_log(seg_dir +'/'+ fname +'.segs',out_sent1)
+            out_sent = Format_Sentence(3,subconj_seg_sent[0][kk],summary_index,ind,segmentation_count,kk)
+            write_log(seg_dir +'/'+ fname +'.segs',out_sent)
             used = True
         segmentation_count += 1 
     # Iterating in a list of vp chunks 
@@ -150,8 +147,6 @@ for ind in range(1,len(all_dep_sent)):
                         nodes_label = e['dep']
                         #print "nodes label", nodes_label
                         ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag)
-                        #print "ids, dep ", ids
-                        ##print "ids", ids
                         for each in ids:
                             tmp_ids.append(each)
                     elif e['gov_id'] not in idlist:
@@ -166,9 +161,7 @@ for ind in range(1,len(all_dep_sent)):
                 # Mark the current verb as starting node, vp always starts from a verb 
                 nodes_id = i.leaves()[0][1]
                 nodes_label = i.leaves()[0][0]
-                ##print "nodes:", nodes_id, nodes_label
                 ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label)
-                ##print "ids", ids
                 for each in ids:
                     tmp_ids.append(each)
             idseg[ind] = tmp_ids
@@ -185,9 +178,6 @@ for ind in range(1,len(all_dep_sent)):
     # Now, start to pull out the segments from sentences 
     if all_vpnodes:
         used = True
-        #result = get_segmentation(all_vpnodes,idseg[ind],tl)
-        #res = rearrangement(result,punctuation) 
-        #segment_set[ind] = reorder(res)
         _idseg = RemakeSegStructure(idseg[ind])
         seg_combo = get_segmentation3(_idseg)
         new_idseg = Make_New_Segt(seg_combo,_idseg)

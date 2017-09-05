@@ -7,216 +7,204 @@
         <tokens>
           <token id="1">
             <word>People</word>
-            <CharacterOffsetBegin>1</CharacterOffsetBegin>
-            <CharacterOffsetEnd>7</CharacterOffsetEnd>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>6</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="2">
             <word>are</word>
-            <CharacterOffsetBegin>8</CharacterOffsetBegin>
-            <CharacterOffsetEnd>11</CharacterOffsetEnd>
+            <CharacterOffsetBegin>7</CharacterOffsetBegin>
+            <CharacterOffsetEnd>10</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
           <token id="3">
             <word>taking</word>
-            <CharacterOffsetBegin>12</CharacterOffsetBegin>
-            <CharacterOffsetEnd>18</CharacterOffsetEnd>
+            <CharacterOffsetBegin>11</CharacterOffsetBegin>
+            <CharacterOffsetEnd>17</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
           <token id="4">
             <word>whatever</word>
-            <CharacterOffsetBegin>19</CharacterOffsetBegin>
-            <CharacterOffsetEnd>27</CharacterOffsetEnd>
+            <CharacterOffsetBegin>18</CharacterOffsetBegin>
+            <CharacterOffsetEnd>26</CharacterOffsetEnd>
             <POS>WDT</POS>
           </token>
           <token id="5">
             <word>they</word>
-            <CharacterOffsetBegin>28</CharacterOffsetBegin>
-            <CharacterOffsetEnd>32</CharacterOffsetEnd>
+            <CharacterOffsetBegin>27</CharacterOffsetBegin>
+            <CharacterOffsetEnd>31</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="6">
             <word>want</word>
-            <CharacterOffsetBegin>33</CharacterOffsetBegin>
-            <CharacterOffsetEnd>37</CharacterOffsetEnd>
+            <CharacterOffsetBegin>32</CharacterOffsetBegin>
+            <CharacterOffsetEnd>36</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
           <token id="7">
             <word>out</word>
-            <CharacterOffsetBegin>38</CharacterOffsetBegin>
-            <CharacterOffsetEnd>41</CharacterOffsetEnd>
+            <CharacterOffsetBegin>37</CharacterOffsetBegin>
+            <CharacterOffsetEnd>40</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="8">
             <word>of</word>
-            <CharacterOffsetBegin>42</CharacterOffsetBegin>
-            <CharacterOffsetEnd>44</CharacterOffsetEnd>
+            <CharacterOffsetBegin>41</CharacterOffsetBegin>
+            <CharacterOffsetEnd>43</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="9">
             <word>it</word>
-            <CharacterOffsetBegin>45</CharacterOffsetBegin>
-            <CharacterOffsetEnd>47</CharacterOffsetEnd>
+            <CharacterOffsetBegin>44</CharacterOffsetBegin>
+            <CharacterOffsetEnd>46</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="10">
             <word>to</word>
-            <CharacterOffsetBegin>48</CharacterOffsetBegin>
-            <CharacterOffsetEnd>50</CharacterOffsetEnd>
+            <CharacterOffsetBegin>47</CharacterOffsetBegin>
+            <CharacterOffsetEnd>49</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="11">
             <word>advance</word>
-            <CharacterOffsetBegin>51</CharacterOffsetBegin>
-            <CharacterOffsetEnd>58</CharacterOffsetEnd>
+            <CharacterOffsetBegin>50</CharacterOffsetBegin>
+            <CharacterOffsetEnd>57</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="12">
             <word>their</word>
-            <CharacterOffsetBegin>59</CharacterOffsetBegin>
-            <CharacterOffsetEnd>64</CharacterOffsetEnd>
+            <CharacterOffsetBegin>58</CharacterOffsetBegin>
+            <CharacterOffsetEnd>63</CharacterOffsetEnd>
             <POS>PRP$</POS>
           </token>
           <token id="13">
             <word>own</word>
-            <CharacterOffsetBegin>65</CharacterOffsetBegin>
-            <CharacterOffsetEnd>68</CharacterOffsetEnd>
+            <CharacterOffsetBegin>64</CharacterOffsetBegin>
+            <CharacterOffsetEnd>67</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="14">
             <word>position</word>
-            <CharacterOffsetBegin>69</CharacterOffsetBegin>
-            <CharacterOffsetEnd>77</CharacterOffsetEnd>
+            <CharacterOffsetBegin>68</CharacterOffsetBegin>
+            <CharacterOffsetEnd>76</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="15">
             <word>,</word>
-            <CharacterOffsetBegin>77</CharacterOffsetBegin>
-            <CharacterOffsetEnd>78</CharacterOffsetEnd>
+            <CharacterOffsetBegin>76</CharacterOffsetBegin>
+            <CharacterOffsetEnd>77</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="16">
             <word>said</word>
-            <CharacterOffsetBegin>80</CharacterOffsetBegin>
-            <CharacterOffsetEnd>84</CharacterOffsetEnd>
+            <CharacterOffsetBegin>78</CharacterOffsetBegin>
+            <CharacterOffsetEnd>82</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
           <token id="17">
             <word>Rick</word>
-            <CharacterOffsetBegin>85</CharacterOffsetBegin>
-            <CharacterOffsetEnd>89</CharacterOffsetEnd>
+            <CharacterOffsetBegin>83</CharacterOffsetBegin>
+            <CharacterOffsetEnd>87</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="18">
             <word>Hill</word>
-            <CharacterOffsetBegin>90</CharacterOffsetBegin>
-            <CharacterOffsetEnd>94</CharacterOffsetEnd>
+            <CharacterOffsetBegin>88</CharacterOffsetBegin>
+            <CharacterOffsetEnd>92</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="19">
             <word>,</word>
-            <CharacterOffsetBegin>94</CharacterOffsetBegin>
-            <CharacterOffsetEnd>95</CharacterOffsetEnd>
+            <CharacterOffsetBegin>92</CharacterOffsetBegin>
+            <CharacterOffsetEnd>93</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="20">
             <word>chairman</word>
-            <CharacterOffsetBegin>96</CharacterOffsetBegin>
-            <CharacterOffsetEnd>104</CharacterOffsetEnd>
+            <CharacterOffsetBegin>94</CharacterOffsetBegin>
+            <CharacterOffsetEnd>102</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="21">
             <word>of</word>
-            <CharacterOffsetBegin>105</CharacterOffsetBegin>
-            <CharacterOffsetEnd>107</CharacterOffsetEnd>
+            <CharacterOffsetBegin>103</CharacterOffsetBegin>
+            <CharacterOffsetEnd>105</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="22">
             <word>the</word>
-            <CharacterOffsetBegin>108</CharacterOffsetBegin>
-            <CharacterOffsetEnd>111</CharacterOffsetEnd>
+            <CharacterOffsetBegin>106</CharacterOffsetBegin>
+            <CharacterOffsetEnd>109</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="23">
             <word>National</word>
-            <CharacterOffsetBegin>112</CharacterOffsetBegin>
-            <CharacterOffsetEnd>120</CharacterOffsetEnd>
+            <CharacterOffsetBegin>110</CharacterOffsetBegin>
+            <CharacterOffsetEnd>118</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="24">
             <word>Indian</word>
-            <CharacterOffsetBegin>121</CharacterOffsetBegin>
-            <CharacterOffsetEnd>127</CharacterOffsetEnd>
+            <CharacterOffsetBegin>119</CharacterOffsetBegin>
+            <CharacterOffsetEnd>125</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="25">
             <word>Gaming</word>
-            <CharacterOffsetBegin>128</CharacterOffsetBegin>
-            <CharacterOffsetEnd>134</CharacterOffsetEnd>
+            <CharacterOffsetBegin>126</CharacterOffsetBegin>
+            <CharacterOffsetEnd>132</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="26">
             <word>Association</word>
-            <CharacterOffsetBegin>135</CharacterOffsetBegin>
-            <CharacterOffsetEnd>146</CharacterOffsetEnd>
+            <CharacterOffsetBegin>133</CharacterOffsetBegin>
+            <CharacterOffsetEnd>144</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="27">
             <word>,</word>
-            <CharacterOffsetBegin>146</CharacterOffsetBegin>
-            <CharacterOffsetEnd>147</CharacterOffsetEnd>
+            <CharacterOffsetBegin>144</CharacterOffsetBegin>
+            <CharacterOffsetEnd>145</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="28">
             <word>which</word>
-            <CharacterOffsetBegin>148</CharacterOffsetBegin>
-            <CharacterOffsetEnd>153</CharacterOffsetEnd>
+            <CharacterOffsetBegin>146</CharacterOffsetBegin>
+            <CharacterOffsetEnd>151</CharacterOffsetEnd>
             <POS>WDT</POS>
           </token>
           <token id="29">
             <word>represents</word>
-            <CharacterOffsetBegin>154</CharacterOffsetBegin>
-            <CharacterOffsetEnd>164</CharacterOffsetEnd>
+            <CharacterOffsetBegin>152</CharacterOffsetBegin>
+            <CharacterOffsetEnd>162</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="30">
-            <word>168</word>
-            <CharacterOffsetBegin>165</CharacterOffsetBegin>
-            <CharacterOffsetEnd>168</CharacterOffsetEnd>
-            <POS>CD</POS>
-          </token>
-          <token id="31">
             <word>of</word>
-            <CharacterOffsetBegin>169</CharacterOffsetBegin>
-            <CharacterOffsetEnd>171</CharacterOffsetEnd>
+            <CharacterOffsetBegin>163</CharacterOffsetBegin>
+            <CharacterOffsetEnd>165</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="32">
+          <token id="31">
             <word>the</word>
-            <CharacterOffsetBegin>172</CharacterOffsetBegin>
-            <CharacterOffsetEnd>175</CharacterOffsetEnd>
+            <CharacterOffsetBegin>166</CharacterOffsetBegin>
+            <CharacterOffsetEnd>169</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
-          <token id="33">
-            <word>195</word>
-            <CharacterOffsetBegin>176</CharacterOffsetBegin>
-            <CharacterOffsetEnd>179</CharacterOffsetEnd>
-            <POS>CD</POS>
-          </token>
-          <token id="34">
+          <token id="32">
             <word>US</word>
-            <CharacterOffsetBegin>180</CharacterOffsetBegin>
-            <CharacterOffsetEnd>182</CharacterOffsetEnd>
+            <CharacterOffsetBegin>170</CharacterOffsetBegin>
+            <CharacterOffsetEnd>172</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
-          <token id="35">
+          <token id="33">
             <word>.</word>
-            <CharacterOffsetBegin>182</CharacterOffsetBegin>
-            <CharacterOffsetEnd>183</CharacterOffsetEnd>
+            <CharacterOffsetBegin>172</CharacterOffsetBegin>
+            <CharacterOffsetEnd>173</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (SINV (S (NP (NNS People)) (VP (VBP are) (VP (VBG taking) (SBAR (WHNP (WDT whatever)) (S (NP (PRP they)) (VP (VBP want) (ADVP (IN out) (PP (IN of) (NP (PRP it)))) (S (VP (TO to) (VP (VB advance) (NP (PRP$ their) (JJ own) (NN position))))))))))) (, ,) (VP (VBD said) (NP (NP (NNP Rick) (NNP Hill)) (, ,) (NP (NP (NN chairman)) (PP (IN of) (NP (DT the) (NNP National) (NNP Indian) (NN Gaming) (NNP Association)))) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBZ represents) (NP (NP (CD 168)) (PP (IN of) (NP (DT the) (CD 195))))))))) (NP (NNP US)) (. .))) </parse>
+        <parse>(ROOT (SINV (S (NP (NNS People)) (VP (VBP are) (VP (VBG taking) (SBAR (WHNP (WDT whatever)) (S (NP (PRP they)) (VP (VBP want) (ADVP (IN out) (PP (IN of) (NP (PRP it)))) (S (VP (TO to) (VP (VB advance) (NP (PRP$ their) (JJ own) (NN position))))))))))) (, ,) (VP (VBD said)) (NP (NP (NNP Rick) (NNP Hill)) (, ,) (NP (NP (NN chairman)) (PP (IN of) (NP (DT the) (NNP National) (NNP Indian) (NN Gaming) (NNP Association)))) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBZ represents) (PP (IN of) (NP (DT the) (NNP US))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
@@ -334,29 +322,21 @@
             <governor idx="26">Association</governor>
             <dependent idx="29">represents</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="29">represents</governor>
-            <dependent idx="30">168</dependent>
-          </dep>
           <dep type="case">
-            <governor idx="34">US</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="34">US</governor>
-            <dependent idx="32">the</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="34">US</governor>
-            <dependent idx="33">195</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="31">the</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="30">168</governor>
-            <dependent idx="34">US</dependent>
+            <governor idx="29">represents</governor>
+            <dependent idx="32">US</dependent>
           </dep>
           <dep type="punct">
             <governor idx="16">said</governor>
-            <dependent idx="35">.</dependent>
+            <dependent idx="33">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
@@ -476,29 +456,21 @@
             <governor idx="26">Association</governor>
             <dependent idx="29">represents</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="29">represents</governor>
-            <dependent idx="30">168</dependent>
-          </dep>
           <dep type="case">
-            <governor idx="34">US</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="34">US</governor>
-            <dependent idx="32">the</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="34">US</governor>
-            <dependent idx="33">195</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="31">the</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">168</governor>
-            <dependent idx="34">US</dependent>
+            <governor idx="29">represents</governor>
+            <dependent idx="32">US</dependent>
           </dep>
           <dep type="punct">
             <governor idx="16">said</governor>
-            <dependent idx="35">.</dependent>
+            <dependent idx="33">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
@@ -618,29 +590,21 @@
             <governor idx="26">Association</governor>
             <dependent idx="29">represents</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="29">represents</governor>
-            <dependent idx="30">168</dependent>
-          </dep>
           <dep type="case">
-            <governor idx="34">US</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="34">US</governor>
-            <dependent idx="32">the</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="34">US</governor>
-            <dependent idx="33">195</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="31">the</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">168</governor>
-            <dependent idx="34">US</dependent>
+            <governor idx="29">represents</governor>
+            <dependent idx="32">US</dependent>
           </dep>
           <dep type="punct">
             <governor idx="16">said</governor>
-            <dependent idx="35">.</dependent>
+            <dependent idx="33">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
@@ -768,29 +732,21 @@
             <governor idx="26">Association</governor>
             <dependent idx="29">represents</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="29">represents</governor>
-            <dependent idx="30">168</dependent>
-          </dep>
           <dep type="case">
-            <governor idx="34">US</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="34">US</governor>
-            <dependent idx="32">the</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="34">US</governor>
-            <dependent idx="33">195</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="31">the</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">168</governor>
-            <dependent idx="34">US</dependent>
+            <governor idx="29">represents</governor>
+            <dependent idx="32">US</dependent>
           </dep>
           <dep type="punct">
             <governor idx="16">said</governor>
-            <dependent idx="35">.</dependent>
+            <dependent idx="33">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
@@ -918,29 +874,21 @@
             <governor idx="26">Association</governor>
             <dependent idx="29">represents</dependent>
           </dep>
-          <dep type="det:qmod">
-            <governor idx="34">US</governor>
-            <dependent idx="30">168</dependent>
-          </dep>
-          <dep type="mwe">
-            <governor idx="30">168</governor>
-            <dependent idx="31">of</dependent>
+          <dep type="case">
+            <governor idx="32">US</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="34">US</governor>
-            <dependent idx="32">the</dependent>
+            <governor idx="32">US</governor>
+            <dependent idx="31">the</dependent>
           </dep>
-          <dep type="nummod">
-            <governor idx="34">US</governor>
-            <dependent idx="33">195</dependent>
-          </dep>
-          <dep type="dobj">
+          <dep type="nmod:of">
             <governor idx="29">represents</governor>
-            <dependent idx="34">US</dependent>
+            <dependent idx="32">US</dependent>
           </dep>
           <dep type="punct">
             <governor idx="16">said</governor>
-            <dependent idx="35">.</dependent>
+            <dependent idx="33">.</dependent>
           </dep>
         </dependencies>
       </sentence>
@@ -948,50 +896,50 @@
         <tokens>
           <token id="1">
             <word>We</word>
-            <CharacterOffsetBegin>185</CharacterOffsetBegin>
-            <CharacterOffsetEnd>187</CharacterOffsetEnd>
+            <CharacterOffsetBegin>174</CharacterOffsetBegin>
+            <CharacterOffsetEnd>176</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="2">
             <word>re</word>
-            <CharacterOffsetBegin>188</CharacterOffsetBegin>
-            <CharacterOffsetEnd>190</CharacterOffsetEnd>
+            <CharacterOffsetBegin>177</CharacterOffsetBegin>
+            <CharacterOffsetEnd>179</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
           <token id="3">
             <word>surrounded</word>
-            <CharacterOffsetBegin>191</CharacterOffsetBegin>
-            <CharacterOffsetEnd>201</CharacterOffsetEnd>
+            <CharacterOffsetBegin>180</CharacterOffsetBegin>
+            <CharacterOffsetEnd>190</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="4">
             <word>by</word>
-            <CharacterOffsetBegin>202</CharacterOffsetBegin>
-            <CharacterOffsetEnd>204</CharacterOffsetEnd>
+            <CharacterOffsetBegin>191</CharacterOffsetBegin>
+            <CharacterOffsetEnd>193</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="5">
             <word>very</word>
-            <CharacterOffsetBegin>205</CharacterOffsetBegin>
-            <CharacterOffsetEnd>209</CharacterOffsetEnd>
+            <CharacterOffsetBegin>194</CharacterOffsetBegin>
+            <CharacterOffsetEnd>198</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="6">
             <word>rich</word>
-            <CharacterOffsetBegin>210</CharacterOffsetBegin>
-            <CharacterOffsetEnd>214</CharacterOffsetEnd>
+            <CharacterOffsetBegin>199</CharacterOffsetBegin>
+            <CharacterOffsetEnd>203</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="7">
             <word>people</word>
-            <CharacterOffsetBegin>215</CharacterOffsetBegin>
-            <CharacterOffsetEnd>221</CharacterOffsetEnd>
+            <CharacterOffsetBegin>204</CharacterOffsetBegin>
+            <CharacterOffsetEnd>210</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="8">
             <word>.</word>
-            <CharacterOffsetBegin>221</CharacterOffsetBegin>
-            <CharacterOffsetEnd>222</CharacterOffsetEnd>
+            <CharacterOffsetBegin>210</CharacterOffsetBegin>
+            <CharacterOffsetEnd>211</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
@@ -1171,284 +1119,284 @@
         <tokens>
           <token id="1">
             <word>Senator</word>
-            <CharacterOffsetBegin>224</CharacterOffsetBegin>
-            <CharacterOffsetEnd>231</CharacterOffsetEnd>
+            <CharacterOffsetBegin>212</CharacterOffsetBegin>
+            <CharacterOffsetEnd>219</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="2">
             <word>Campbell</word>
-            <CharacterOffsetBegin>232</CharacterOffsetBegin>
-            <CharacterOffsetEnd>240</CharacterOffsetEnd>
+            <CharacterOffsetBegin>220</CharacterOffsetBegin>
+            <CharacterOffsetEnd>228</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="3">
             <word>hates</word>
-            <CharacterOffsetBegin>241</CharacterOffsetBegin>
-            <CharacterOffsetEnd>246</CharacterOffsetEnd>
+            <CharacterOffsetBegin>229</CharacterOffsetBegin>
+            <CharacterOffsetEnd>234</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="4">
             <word>to</word>
-            <CharacterOffsetBegin>247</CharacterOffsetBegin>
-            <CharacterOffsetEnd>249</CharacterOffsetEnd>
+            <CharacterOffsetBegin>235</CharacterOffsetBegin>
+            <CharacterOffsetEnd>237</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="5">
             <word>look</word>
-            <CharacterOffsetBegin>250</CharacterOffsetBegin>
-            <CharacterOffsetEnd>254</CharacterOffsetEnd>
+            <CharacterOffsetBegin>238</CharacterOffsetBegin>
+            <CharacterOffsetEnd>242</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="6">
             <word>a</word>
-            <CharacterOffsetBegin>255</CharacterOffsetBegin>
-            <CharacterOffsetEnd>256</CharacterOffsetEnd>
+            <CharacterOffsetBegin>243</CharacterOffsetBegin>
+            <CharacterOffsetEnd>244</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="7">
             <word>gift</word>
-            <CharacterOffsetBegin>257</CharacterOffsetBegin>
-            <CharacterOffsetEnd>261</CharacterOffsetEnd>
+            <CharacterOffsetBegin>245</CharacterOffsetBegin>
+            <CharacterOffsetEnd>249</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="8">
             <word>horse</word>
-            <CharacterOffsetBegin>262</CharacterOffsetBegin>
-            <CharacterOffsetEnd>267</CharacterOffsetEnd>
+            <CharacterOffsetBegin>250</CharacterOffsetBegin>
+            <CharacterOffsetEnd>255</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="9">
             <word>in</word>
-            <CharacterOffsetBegin>268</CharacterOffsetBegin>
-            <CharacterOffsetEnd>270</CharacterOffsetEnd>
+            <CharacterOffsetBegin>256</CharacterOffsetBegin>
+            <CharacterOffsetEnd>258</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="10">
             <word>the</word>
-            <CharacterOffsetBegin>271</CharacterOffsetBegin>
-            <CharacterOffsetEnd>274</CharacterOffsetEnd>
+            <CharacterOffsetBegin>259</CharacterOffsetBegin>
+            <CharacterOffsetEnd>262</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="11">
             <word>mouth</word>
-            <CharacterOffsetBegin>275</CharacterOffsetBegin>
-            <CharacterOffsetEnd>280</CharacterOffsetEnd>
+            <CharacterOffsetBegin>263</CharacterOffsetBegin>
+            <CharacterOffsetEnd>268</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="12">
             <word>,</word>
-            <CharacterOffsetBegin>280</CharacterOffsetBegin>
-            <CharacterOffsetEnd>281</CharacterOffsetEnd>
+            <CharacterOffsetBegin>268</CharacterOffsetBegin>
+            <CharacterOffsetEnd>269</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="13">
             <word>but</word>
-            <CharacterOffsetBegin>282</CharacterOffsetBegin>
-            <CharacterOffsetEnd>285</CharacterOffsetEnd>
+            <CharacterOffsetBegin>270</CharacterOffsetBegin>
+            <CharacterOffsetEnd>273</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="14">
             <word>he</word>
-            <CharacterOffsetBegin>286</CharacterOffsetBegin>
-            <CharacterOffsetEnd>288</CharacterOffsetEnd>
+            <CharacterOffsetBegin>274</CharacterOffsetBegin>
+            <CharacterOffsetEnd>276</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="15">
             <word>does</word>
-            <CharacterOffsetBegin>289</CharacterOffsetBegin>
-            <CharacterOffsetEnd>293</CharacterOffsetEnd>
+            <CharacterOffsetBegin>277</CharacterOffsetBegin>
+            <CharacterOffsetEnd>281</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="16">
             <word>wonder</word>
-            <CharacterOffsetBegin>294</CharacterOffsetBegin>
-            <CharacterOffsetEnd>300</CharacterOffsetEnd>
+            <CharacterOffsetBegin>282</CharacterOffsetBegin>
+            <CharacterOffsetEnd>288</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="17">
             <word>why</word>
-            <CharacterOffsetBegin>301</CharacterOffsetBegin>
-            <CharacterOffsetEnd>304</CharacterOffsetEnd>
+            <CharacterOffsetBegin>289</CharacterOffsetBegin>
+            <CharacterOffsetEnd>292</CharacterOffsetEnd>
             <POS>WRB</POS>
           </token>
           <token id="18">
             <word>it</word>
-            <CharacterOffsetBegin>305</CharacterOffsetBegin>
-            <CharacterOffsetEnd>307</CharacterOffsetEnd>
+            <CharacterOffsetBegin>293</CharacterOffsetBegin>
+            <CharacterOffsetEnd>295</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="19">
             <word>s</word>
-            <CharacterOffsetBegin>308</CharacterOffsetBegin>
-            <CharacterOffsetEnd>309</CharacterOffsetEnd>
+            <CharacterOffsetBegin>296</CharacterOffsetBegin>
+            <CharacterOffsetEnd>297</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="20">
             <word>taken</word>
-            <CharacterOffsetBegin>310</CharacterOffsetBegin>
-            <CharacterOffsetEnd>315</CharacterOffsetEnd>
+            <CharacterOffsetBegin>298</CharacterOffsetBegin>
+            <CharacterOffsetEnd>303</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="21">
             <word>eight</word>
-            <CharacterOffsetBegin>316</CharacterOffsetBegin>
-            <CharacterOffsetEnd>321</CharacterOffsetEnd>
+            <CharacterOffsetBegin>304</CharacterOffsetBegin>
+            <CharacterOffsetEnd>309</CharacterOffsetEnd>
             <POS>CD</POS>
           </token>
           <token id="22">
             <word>budgets</word>
-            <CharacterOffsetBegin>322</CharacterOffsetBegin>
-            <CharacterOffsetEnd>329</CharacterOffsetEnd>
+            <CharacterOffsetBegin>310</CharacterOffsetBegin>
+            <CharacterOffsetEnd>317</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="23">
             <word>for</word>
-            <CharacterOffsetBegin>330</CharacterOffsetBegin>
-            <CharacterOffsetEnd>333</CharacterOffsetEnd>
+            <CharacterOffsetBegin>318</CharacterOffsetBegin>
+            <CharacterOffsetEnd>321</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="24">
             <word>the</word>
-            <CharacterOffsetBegin>334</CharacterOffsetBegin>
-            <CharacterOffsetEnd>337</CharacterOffsetEnd>
+            <CharacterOffsetBegin>322</CharacterOffsetBegin>
+            <CharacterOffsetEnd>325</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="25">
             <word>president</word>
-            <CharacterOffsetBegin>338</CharacterOffsetBegin>
-            <CharacterOffsetEnd>347</CharacterOffsetEnd>
+            <CharacterOffsetBegin>326</CharacterOffsetBegin>
+            <CharacterOffsetEnd>335</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="26">
             <word>to</word>
-            <CharacterOffsetBegin>348</CharacterOffsetBegin>
-            <CharacterOffsetEnd>350</CharacterOffsetEnd>
+            <CharacterOffsetBegin>336</CharacterOffsetBegin>
+            <CharacterOffsetEnd>338</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="27">
             <word>get</word>
-            <CharacterOffsetBegin>351</CharacterOffsetBegin>
-            <CharacterOffsetEnd>354</CharacterOffsetEnd>
+            <CharacterOffsetBegin>339</CharacterOffsetBegin>
+            <CharacterOffsetEnd>342</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="28">
             <word>around</word>
-            <CharacterOffsetBegin>355</CharacterOffsetBegin>
-            <CharacterOffsetEnd>361</CharacterOffsetEnd>
+            <CharacterOffsetBegin>343</CharacterOffsetBegin>
+            <CharacterOffsetEnd>349</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="29">
             <word>to</word>
-            <CharacterOffsetBegin>362</CharacterOffsetBegin>
-            <CharacterOffsetEnd>364</CharacterOffsetEnd>
+            <CharacterOffsetBegin>350</CharacterOffsetBegin>
+            <CharacterOffsetEnd>352</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="30">
             <word>taking</word>
-            <CharacterOffsetBegin>365</CharacterOffsetBegin>
-            <CharacterOffsetEnd>371</CharacterOffsetEnd>
+            <CharacterOffsetBegin>353</CharacterOffsetBegin>
+            <CharacterOffsetEnd>359</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
           <token id="31">
             <word>a</word>
-            <CharacterOffsetBegin>372</CharacterOffsetBegin>
-            <CharacterOffsetEnd>373</CharacterOffsetEnd>
+            <CharacterOffsetBegin>360</CharacterOffsetBegin>
+            <CharacterOffsetEnd>361</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="32">
             <word>look</word>
-            <CharacterOffsetBegin>374</CharacterOffsetBegin>
-            <CharacterOffsetEnd>378</CharacterOffsetEnd>
+            <CharacterOffsetBegin>362</CharacterOffsetBegin>
+            <CharacterOffsetEnd>366</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="33">
             <word>at</word>
-            <CharacterOffsetBegin>379</CharacterOffsetBegin>
-            <CharacterOffsetEnd>381</CharacterOffsetEnd>
+            <CharacterOffsetBegin>367</CharacterOffsetBegin>
+            <CharacterOffsetEnd>369</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="34">
             <word>Indian</word>
-            <CharacterOffsetBegin>382</CharacterOffsetBegin>
-            <CharacterOffsetEnd>388</CharacterOffsetEnd>
+            <CharacterOffsetBegin>370</CharacterOffsetBegin>
+            <CharacterOffsetEnd>376</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="35">
             <word>Country</word>
-            <CharacterOffsetBegin>389</CharacterOffsetBegin>
-            <CharacterOffsetEnd>396</CharacterOffsetEnd>
+            <CharacterOffsetBegin>377</CharacterOffsetBegin>
+            <CharacterOffsetEnd>384</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="36">
             <word>,</word>
-            <CharacterOffsetBegin>396</CharacterOffsetBegin>
-            <CharacterOffsetEnd>397</CharacterOffsetEnd>
+            <CharacterOffsetBegin>384</CharacterOffsetBegin>
+            <CharacterOffsetEnd>385</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="37">
             <word>said</word>
-            <CharacterOffsetBegin>399</CharacterOffsetBegin>
-            <CharacterOffsetEnd>403</CharacterOffsetEnd>
+            <CharacterOffsetBegin>386</CharacterOffsetBegin>
+            <CharacterOffsetEnd>390</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
           <token id="38">
             <word>Chris</word>
-            <CharacterOffsetBegin>404</CharacterOffsetBegin>
-            <CharacterOffsetEnd>409</CharacterOffsetEnd>
+            <CharacterOffsetBegin>391</CharacterOffsetBegin>
+            <CharacterOffsetEnd>396</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="39">
             <word>Changery</word>
-            <CharacterOffsetBegin>410</CharacterOffsetBegin>
-            <CharacterOffsetEnd>418</CharacterOffsetEnd>
+            <CharacterOffsetBegin>397</CharacterOffsetBegin>
+            <CharacterOffsetEnd>405</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="40">
             <word>,</word>
-            <CharacterOffsetBegin>418</CharacterOffsetBegin>
-            <CharacterOffsetEnd>419</CharacterOffsetEnd>
+            <CharacterOffsetBegin>405</CharacterOffsetBegin>
+            <CharacterOffsetEnd>406</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="41">
             <word>a</word>
-            <CharacterOffsetBegin>420</CharacterOffsetBegin>
-            <CharacterOffsetEnd>421</CharacterOffsetEnd>
+            <CharacterOffsetBegin>407</CharacterOffsetBegin>
+            <CharacterOffsetEnd>408</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="42">
             <word>spokesman</word>
-            <CharacterOffsetBegin>422</CharacterOffsetBegin>
-            <CharacterOffsetEnd>431</CharacterOffsetEnd>
+            <CharacterOffsetBegin>409</CharacterOffsetBegin>
+            <CharacterOffsetEnd>418</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="43">
             <word>for</word>
-            <CharacterOffsetBegin>432</CharacterOffsetBegin>
-            <CharacterOffsetEnd>435</CharacterOffsetEnd>
+            <CharacterOffsetBegin>419</CharacterOffsetBegin>
+            <CharacterOffsetEnd>422</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="44">
             <word>the</word>
-            <CharacterOffsetBegin>436</CharacterOffsetBegin>
-            <CharacterOffsetEnd>439</CharacterOffsetEnd>
+            <CharacterOffsetBegin>423</CharacterOffsetBegin>
+            <CharacterOffsetEnd>426</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="45">
             <word>Colorado</word>
-            <CharacterOffsetBegin>440</CharacterOffsetBegin>
-            <CharacterOffsetEnd>448</CharacterOffsetEnd>
+            <CharacterOffsetBegin>427</CharacterOffsetBegin>
+            <CharacterOffsetEnd>435</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="46">
             <word>Republican</word>
-            <CharacterOffsetBegin>449</CharacterOffsetBegin>
-            <CharacterOffsetEnd>459</CharacterOffsetEnd>
+            <CharacterOffsetBegin>436</CharacterOffsetBegin>
+            <CharacterOffsetEnd>446</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="47">
             <word>.</word>
-            <CharacterOffsetBegin>459</CharacterOffsetBegin>
-            <CharacterOffsetEnd>460</CharacterOffsetEnd>
+            <CharacterOffsetBegin>446</CharacterOffsetBegin>
+            <CharacterOffsetEnd>447</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
@@ -2428,200 +2376,200 @@
         <tokens>
           <token id="1">
             <word>Cuomo</word>
-            <CharacterOffsetBegin>461</CharacterOffsetBegin>
-            <CharacterOffsetEnd>466</CharacterOffsetEnd>
+            <CharacterOffsetBegin>448</CharacterOffsetBegin>
+            <CharacterOffsetEnd>453</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="2">
             <word>said</word>
-            <CharacterOffsetBegin>467</CharacterOffsetBegin>
-            <CharacterOffsetEnd>471</CharacterOffsetEnd>
+            <CharacterOffsetBegin>454</CharacterOffsetBegin>
+            <CharacterOffsetEnd>458</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
           <token id="3">
             <word>special</word>
-            <CharacterOffsetBegin>472</CharacterOffsetBegin>
-            <CharacterOffsetEnd>479</CharacterOffsetEnd>
+            <CharacterOffsetBegin>459</CharacterOffsetBegin>
+            <CharacterOffsetEnd>466</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="4">
             <word>steps</word>
-            <CharacterOffsetBegin>480</CharacterOffsetBegin>
-            <CharacterOffsetEnd>485</CharacterOffsetEnd>
+            <CharacterOffsetBegin>467</CharacterOffsetBegin>
+            <CharacterOffsetEnd>472</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="5">
             <word>were</word>
-            <CharacterOffsetBegin>486</CharacterOffsetBegin>
-            <CharacterOffsetEnd>490</CharacterOffsetEnd>
+            <CharacterOffsetBegin>473</CharacterOffsetBegin>
+            <CharacterOffsetEnd>477</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
           <token id="6">
             <word>needed</word>
-            <CharacterOffsetBegin>491</CharacterOffsetBegin>
-            <CharacterOffsetEnd>497</CharacterOffsetEnd>
+            <CharacterOffsetBegin>478</CharacterOffsetBegin>
+            <CharacterOffsetEnd>484</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="7">
             <word>to</word>
-            <CharacterOffsetBegin>498</CharacterOffsetBegin>
-            <CharacterOffsetEnd>500</CharacterOffsetEnd>
+            <CharacterOffsetBegin>485</CharacterOffsetBegin>
+            <CharacterOffsetEnd>487</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="8">
             <word>help</word>
-            <CharacterOffsetBegin>501</CharacterOffsetBegin>
-            <CharacterOffsetEnd>505</CharacterOffsetEnd>
+            <CharacterOffsetBegin>488</CharacterOffsetBegin>
+            <CharacterOffsetEnd>492</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="9">
             <word>Indians</word>
-            <CharacterOffsetBegin>506</CharacterOffsetBegin>
-            <CharacterOffsetEnd>513</CharacterOffsetEnd>
+            <CharacterOffsetBegin>493</CharacterOffsetBegin>
+            <CharacterOffsetEnd>500</CharacterOffsetEnd>
             <POS>NNPS</POS>
           </token>
           <token id="10">
             <word>create</word>
-            <CharacterOffsetBegin>514</CharacterOffsetBegin>
-            <CharacterOffsetEnd>520</CharacterOffsetEnd>
+            <CharacterOffsetBegin>501</CharacterOffsetBegin>
+            <CharacterOffsetEnd>507</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="11">
             <word>and</word>
-            <CharacterOffsetBegin>521</CharacterOffsetBegin>
-            <CharacterOffsetEnd>524</CharacterOffsetEnd>
+            <CharacterOffsetBegin>508</CharacterOffsetBegin>
+            <CharacterOffsetEnd>511</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="12">
             <word>own</word>
-            <CharacterOffsetBegin>525</CharacterOffsetBegin>
-            <CharacterOffsetEnd>528</CharacterOffsetEnd>
+            <CharacterOffsetBegin>512</CharacterOffsetBegin>
+            <CharacterOffsetEnd>515</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="13">
             <word>houses</word>
-            <CharacterOffsetBegin>529</CharacterOffsetBegin>
-            <CharacterOffsetEnd>535</CharacterOffsetEnd>
+            <CharacterOffsetBegin>516</CharacterOffsetBegin>
+            <CharacterOffsetEnd>522</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="14">
             <word>because</word>
-            <CharacterOffsetBegin>536</CharacterOffsetBegin>
-            <CharacterOffsetEnd>543</CharacterOffsetEnd>
+            <CharacterOffsetBegin>523</CharacterOffsetBegin>
+            <CharacterOffsetEnd>530</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="15">
             <word>the</word>
-            <CharacterOffsetBegin>544</CharacterOffsetBegin>
-            <CharacterOffsetEnd>547</CharacterOffsetEnd>
+            <CharacterOffsetBegin>531</CharacterOffsetBegin>
+            <CharacterOffsetEnd>534</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="16">
             <word>nature</word>
-            <CharacterOffsetBegin>548</CharacterOffsetBegin>
-            <CharacterOffsetEnd>554</CharacterOffsetEnd>
+            <CharacterOffsetBegin>535</CharacterOffsetBegin>
+            <CharacterOffsetEnd>541</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="17">
             <word>of</word>
-            <CharacterOffsetBegin>555</CharacterOffsetBegin>
-            <CharacterOffsetEnd>557</CharacterOffsetEnd>
+            <CharacterOffsetBegin>542</CharacterOffsetBegin>
+            <CharacterOffsetEnd>544</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="18">
             <word>the</word>
-            <CharacterOffsetBegin>558</CharacterOffsetBegin>
-            <CharacterOffsetEnd>561</CharacterOffsetEnd>
+            <CharacterOffsetBegin>545</CharacterOffsetBegin>
+            <CharacterOffsetEnd>548</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="19">
             <word>land</word>
-            <CharacterOffsetBegin>562</CharacterOffsetBegin>
-            <CharacterOffsetEnd>566</CharacterOffsetEnd>
+            <CharacterOffsetBegin>549</CharacterOffsetBegin>
+            <CharacterOffsetEnd>553</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="20">
             <word>on</word>
-            <CharacterOffsetBegin>567</CharacterOffsetBegin>
-            <CharacterOffsetEnd>569</CharacterOffsetEnd>
+            <CharacterOffsetBegin>554</CharacterOffsetBegin>
+            <CharacterOffsetEnd>556</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="21">
             <word>which</word>
-            <CharacterOffsetBegin>570</CharacterOffsetBegin>
-            <CharacterOffsetEnd>575</CharacterOffsetEnd>
+            <CharacterOffsetBegin>557</CharacterOffsetBegin>
+            <CharacterOffsetEnd>562</CharacterOffsetEnd>
             <POS>WDT</POS>
           </token>
           <token id="22">
             <word>they</word>
-            <CharacterOffsetBegin>576</CharacterOffsetBegin>
-            <CharacterOffsetEnd>580</CharacterOffsetEnd>
+            <CharacterOffsetBegin>563</CharacterOffsetBegin>
+            <CharacterOffsetEnd>567</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="23">
             <word>live</word>
-            <CharacterOffsetBegin>581</CharacterOffsetBegin>
-            <CharacterOffsetEnd>585</CharacterOffsetEnd>
+            <CharacterOffsetBegin>568</CharacterOffsetBegin>
+            <CharacterOffsetEnd>572</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
           <token id="24">
             <word>effectively</word>
-            <CharacterOffsetBegin>586</CharacterOffsetBegin>
-            <CharacterOffsetEnd>597</CharacterOffsetEnd>
+            <CharacterOffsetBegin>573</CharacterOffsetBegin>
+            <CharacterOffsetEnd>584</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="25">
             <word>shuts</word>
-            <CharacterOffsetBegin>598</CharacterOffsetBegin>
-            <CharacterOffsetEnd>603</CharacterOffsetEnd>
+            <CharacterOffsetBegin>585</CharacterOffsetBegin>
+            <CharacterOffsetEnd>590</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="26">
             <word>them</word>
-            <CharacterOffsetBegin>604</CharacterOffsetBegin>
-            <CharacterOffsetEnd>608</CharacterOffsetEnd>
+            <CharacterOffsetBegin>591</CharacterOffsetBegin>
+            <CharacterOffsetEnd>595</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="27">
             <word>out</word>
-            <CharacterOffsetBegin>609</CharacterOffsetBegin>
-            <CharacterOffsetEnd>612</CharacterOffsetEnd>
+            <CharacterOffsetBegin>596</CharacterOffsetBegin>
+            <CharacterOffsetEnd>599</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="28">
             <word>of</word>
-            <CharacterOffsetBegin>613</CharacterOffsetBegin>
-            <CharacterOffsetEnd>615</CharacterOffsetEnd>
+            <CharacterOffsetBegin>600</CharacterOffsetBegin>
+            <CharacterOffsetEnd>602</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="29">
             <word>conventional</word>
-            <CharacterOffsetBegin>616</CharacterOffsetBegin>
-            <CharacterOffsetEnd>628</CharacterOffsetEnd>
+            <CharacterOffsetBegin>603</CharacterOffsetBegin>
+            <CharacterOffsetEnd>615</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="30">
             <word>home</word>
-            <CharacterOffsetBegin>629</CharacterOffsetBegin>
-            <CharacterOffsetEnd>633</CharacterOffsetEnd>
+            <CharacterOffsetBegin>616</CharacterOffsetBegin>
+            <CharacterOffsetEnd>620</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="31">
             <word>loan</word>
-            <CharacterOffsetBegin>634</CharacterOffsetBegin>
-            <CharacterOffsetEnd>638</CharacterOffsetEnd>
+            <CharacterOffsetBegin>621</CharacterOffsetBegin>
+            <CharacterOffsetEnd>625</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="32">
             <word>processes</word>
-            <CharacterOffsetBegin>639</CharacterOffsetBegin>
-            <CharacterOffsetEnd>648</CharacterOffsetEnd>
+            <CharacterOffsetBegin>626</CharacterOffsetBegin>
+            <CharacterOffsetEnd>635</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="33">
             <word>.</word>
-            <CharacterOffsetBegin>648</CharacterOffsetBegin>
-            <CharacterOffsetEnd>649</CharacterOffsetEnd>
+            <CharacterOffsetBegin>635</CharacterOffsetBegin>
+            <CharacterOffsetEnd>636</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
@@ -3341,176 +3289,176 @@
         <tokens>
           <token id="1">
             <word>Powless</word>
-            <CharacterOffsetBegin>650</CharacterOffsetBegin>
-            <CharacterOffsetEnd>657</CharacterOffsetEnd>
+            <CharacterOffsetBegin>637</CharacterOffsetBegin>
+            <CharacterOffsetEnd>644</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="2">
             <word>views</word>
-            <CharacterOffsetBegin>658</CharacterOffsetBegin>
-            <CharacterOffsetEnd>663</CharacterOffsetEnd>
+            <CharacterOffsetBegin>645</CharacterOffsetBegin>
+            <CharacterOffsetEnd>650</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="3">
             <word>the</word>
-            <CharacterOffsetBegin>664</CharacterOffsetBegin>
-            <CharacterOffsetEnd>667</CharacterOffsetEnd>
+            <CharacterOffsetBegin>651</CharacterOffsetBegin>
+            <CharacterOffsetEnd>654</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="4">
             <word>reservation</word>
-            <CharacterOffsetBegin>668</CharacterOffsetBegin>
-            <CharacterOffsetEnd>679</CharacterOffsetEnd>
+            <CharacterOffsetBegin>655</CharacterOffsetBegin>
+            <CharacterOffsetEnd>666</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="5">
             <word>as</word>
-            <CharacterOffsetBegin>680</CharacterOffsetBegin>
-            <CharacterOffsetEnd>682</CharacterOffsetEnd>
+            <CharacterOffsetBegin>667</CharacterOffsetBegin>
+            <CharacterOffsetEnd>669</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="6">
             <word>an</word>
-            <CharacterOffsetBegin>683</CharacterOffsetBegin>
-            <CharacterOffsetEnd>685</CharacterOffsetEnd>
+            <CharacterOffsetBegin>670</CharacterOffsetBegin>
+            <CharacterOffsetEnd>672</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="7">
             <word>island</word>
-            <CharacterOffsetBegin>686</CharacterOffsetBegin>
-            <CharacterOffsetEnd>692</CharacterOffsetEnd>
+            <CharacterOffsetBegin>673</CharacterOffsetBegin>
+            <CharacterOffsetEnd>679</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="8">
             <word>representing</word>
-            <CharacterOffsetBegin>693</CharacterOffsetBegin>
-            <CharacterOffsetEnd>705</CharacterOffsetEnd>
+            <CharacterOffsetBegin>680</CharacterOffsetBegin>
+            <CharacterOffsetEnd>692</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
           <token id="9">
             <word>the</word>
-            <CharacterOffsetBegin>706</CharacterOffsetBegin>
-            <CharacterOffsetEnd>709</CharacterOffsetEnd>
+            <CharacterOffsetBegin>693</CharacterOffsetBegin>
+            <CharacterOffsetEnd>696</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="10">
             <word>hundreds</word>
-            <CharacterOffsetBegin>710</CharacterOffsetBegin>
-            <CharacterOffsetEnd>718</CharacterOffsetEnd>
+            <CharacterOffsetBegin>697</CharacterOffsetBegin>
+            <CharacterOffsetEnd>705</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="11">
+            <word>of</word>
+            <CharacterOffsetBegin>706</CharacterOffsetBegin>
+            <CharacterOffsetEnd>708</CharacterOffsetEnd>
+            <POS>IN</POS>
+          </token>
+          <token id="12">
+            <word>thousands</word>
+            <CharacterOffsetBegin>709</CharacterOffsetBegin>
+            <CharacterOffsetEnd>718</CharacterOffsetEnd>
+            <POS>NNS</POS>
+          </token>
+          <token id="13">
             <word>of</word>
             <CharacterOffsetBegin>719</CharacterOffsetBegin>
             <CharacterOffsetEnd>721</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="12">
-            <word>thousands</word>
-            <CharacterOffsetBegin>722</CharacterOffsetBegin>
-            <CharacterOffsetEnd>731</CharacterOffsetEnd>
-            <POS>NNS</POS>
-          </token>
-          <token id="13">
-            <word>of</word>
-            <CharacterOffsetBegin>732</CharacterOffsetBegin>
-            <CharacterOffsetEnd>734</CharacterOffsetEnd>
-            <POS>IN</POS>
-          </token>
           <token id="14">
             <word>acres</word>
-            <CharacterOffsetBegin>735</CharacterOffsetBegin>
-            <CharacterOffsetEnd>740</CharacterOffsetEnd>
+            <CharacterOffsetBegin>722</CharacterOffsetBegin>
+            <CharacterOffsetEnd>727</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="15">
             <word>wrongfully</word>
-            <CharacterOffsetBegin>741</CharacterOffsetBegin>
-            <CharacterOffsetEnd>751</CharacterOffsetEnd>
+            <CharacterOffsetBegin>728</CharacterOffsetBegin>
+            <CharacterOffsetEnd>738</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="16">
             <word>taken</word>
-            <CharacterOffsetBegin>752</CharacterOffsetBegin>
-            <CharacterOffsetEnd>757</CharacterOffsetEnd>
+            <CharacterOffsetBegin>739</CharacterOffsetBegin>
+            <CharacterOffsetEnd>744</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="17">
             <word>by</word>
-            <CharacterOffsetBegin>758</CharacterOffsetBegin>
-            <CharacterOffsetEnd>760</CharacterOffsetEnd>
+            <CharacterOffsetBegin>745</CharacterOffsetBegin>
+            <CharacterOffsetEnd>747</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="18">
             <word>and</word>
-            <CharacterOffsetBegin>761</CharacterOffsetBegin>
-            <CharacterOffsetEnd>764</CharacterOffsetEnd>
+            <CharacterOffsetBegin>748</CharacterOffsetBegin>
+            <CharacterOffsetEnd>751</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="19">
             <word>poorly</word>
-            <CharacterOffsetBegin>765</CharacterOffsetBegin>
-            <CharacterOffsetEnd>771</CharacterOffsetEnd>
+            <CharacterOffsetBegin>752</CharacterOffsetBegin>
+            <CharacterOffsetEnd>758</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="20">
             <word>used</word>
-            <CharacterOffsetBegin>772</CharacterOffsetBegin>
-            <CharacterOffsetEnd>776</CharacterOffsetEnd>
+            <CharacterOffsetBegin>759</CharacterOffsetBegin>
+            <CharacterOffsetEnd>763</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="21">
             <word>by</word>
-            <CharacterOffsetBegin>777</CharacterOffsetBegin>
-            <CharacterOffsetEnd>779</CharacterOffsetEnd>
+            <CharacterOffsetBegin>764</CharacterOffsetBegin>
+            <CharacterOffsetEnd>766</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="22">
             <word>the</word>
-            <CharacterOffsetBegin>781</CharacterOffsetBegin>
-            <CharacterOffsetEnd>784</CharacterOffsetEnd>
+            <CharacterOffsetBegin>767</CharacterOffsetBegin>
+            <CharacterOffsetEnd>770</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="23">
             <word>Europeans</word>
-            <CharacterOffsetBegin>785</CharacterOffsetBegin>
-            <CharacterOffsetEnd>794</CharacterOffsetEnd>
+            <CharacterOffsetBegin>771</CharacterOffsetBegin>
+            <CharacterOffsetEnd>780</CharacterOffsetEnd>
             <POS>NNPS</POS>
           </token>
           <token id="24">
             <word>who</word>
-            <CharacterOffsetBegin>796</CharacterOffsetBegin>
-            <CharacterOffsetEnd>799</CharacterOffsetEnd>
+            <CharacterOffsetBegin>781</CharacterOffsetBegin>
+            <CharacterOffsetEnd>784</CharacterOffsetEnd>
             <POS>WP</POS>
           </token>
           <token id="25">
             <word>obtained</word>
-            <CharacterOffsetBegin>800</CharacterOffsetBegin>
-            <CharacterOffsetEnd>808</CharacterOffsetEnd>
+            <CharacterOffsetBegin>785</CharacterOffsetBegin>
+            <CharacterOffsetEnd>793</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
           <token id="26">
             <word>Indian</word>
-            <CharacterOffsetBegin>809</CharacterOffsetBegin>
-            <CharacterOffsetEnd>815</CharacterOffsetEnd>
+            <CharacterOffsetBegin>794</CharacterOffsetBegin>
+            <CharacterOffsetEnd>800</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="27">
             <word>properties</word>
-            <CharacterOffsetBegin>816</CharacterOffsetBegin>
-            <CharacterOffsetEnd>826</CharacterOffsetEnd>
+            <CharacterOffsetBegin>801</CharacterOffsetBegin>
+            <CharacterOffsetEnd>811</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="28">
             <word>illegally</word>
-            <CharacterOffsetBegin>827</CharacterOffsetBegin>
-            <CharacterOffsetEnd>836</CharacterOffsetEnd>
+            <CharacterOffsetBegin>812</CharacterOffsetBegin>
+            <CharacterOffsetEnd>821</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="29">
             <word>.</word>
-            <CharacterOffsetBegin>836</CharacterOffsetBegin>
-            <CharacterOffsetEnd>837</CharacterOffsetEnd>
+            <CharacterOffsetBegin>821</CharacterOffsetBegin>
+            <CharacterOffsetEnd>822</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
@@ -4130,318 +4078,324 @@
         <tokens>
           <token id="1">
             <word>The</word>
-            <CharacterOffsetBegin>838</CharacterOffsetBegin>
-            <CharacterOffsetEnd>841</CharacterOffsetEnd>
+            <CharacterOffsetBegin>823</CharacterOffsetBegin>
+            <CharacterOffsetEnd>826</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="2">
             <word>Onondagas</word>
-            <CharacterOffsetBegin>842</CharacterOffsetBegin>
-            <CharacterOffsetEnd>851</CharacterOffsetEnd>
+            <CharacterOffsetBegin>827</CharacterOffsetBegin>
+            <CharacterOffsetEnd>836</CharacterOffsetEnd>
             <POS>NNPS</POS>
           </token>
           <token id="3">
             <word>havent</word>
-            <CharacterOffsetBegin>852</CharacterOffsetBegin>
-            <CharacterOffsetEnd>858</CharacterOffsetEnd>
+            <CharacterOffsetBegin>837</CharacterOffsetBegin>
+            <CharacterOffsetEnd>843</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="4">
             <word>yet</word>
-            <CharacterOffsetBegin>859</CharacterOffsetBegin>
-            <CharacterOffsetEnd>862</CharacterOffsetEnd>
+            <CharacterOffsetBegin>844</CharacterOffsetBegin>
+            <CharacterOffsetEnd>847</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="5">
             <word>gone</word>
-            <CharacterOffsetBegin>863</CharacterOffsetBegin>
-            <CharacterOffsetEnd>867</CharacterOffsetEnd>
+            <CharacterOffsetBegin>848</CharacterOffsetBegin>
+            <CharacterOffsetEnd>852</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="6">
             <word>to</word>
-            <CharacterOffsetBegin>868</CharacterOffsetBegin>
-            <CharacterOffsetEnd>870</CharacterOffsetEnd>
+            <CharacterOffsetBegin>853</CharacterOffsetBegin>
+            <CharacterOffsetEnd>855</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="7">
             <word>court</word>
-            <CharacterOffsetBegin>871</CharacterOffsetBegin>
-            <CharacterOffsetEnd>876</CharacterOffsetEnd>
+            <CharacterOffsetBegin>856</CharacterOffsetBegin>
+            <CharacterOffsetEnd>861</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="8">
             <word>to</word>
-            <CharacterOffsetBegin>877</CharacterOffsetBegin>
-            <CharacterOffsetEnd>879</CharacterOffsetEnd>
+            <CharacterOffsetBegin>862</CharacterOffsetBegin>
+            <CharacterOffsetEnd>864</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
           <token id="9">
             <word>stake</word>
-            <CharacterOffsetBegin>880</CharacterOffsetBegin>
-            <CharacterOffsetEnd>885</CharacterOffsetEnd>
+            <CharacterOffsetBegin>865</CharacterOffsetBegin>
+            <CharacterOffsetEnd>870</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="10">
             <word>their</word>
-            <CharacterOffsetBegin>886</CharacterOffsetBegin>
-            <CharacterOffsetEnd>891</CharacterOffsetEnd>
+            <CharacterOffsetBegin>871</CharacterOffsetBegin>
+            <CharacterOffsetEnd>876</CharacterOffsetEnd>
             <POS>PRP$</POS>
           </token>
           <token id="11">
             <word>land</word>
-            <CharacterOffsetBegin>892</CharacterOffsetBegin>
-            <CharacterOffsetEnd>896</CharacterOffsetEnd>
+            <CharacterOffsetBegin>877</CharacterOffsetBegin>
+            <CharacterOffsetEnd>881</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="12">
             <word>claim</word>
-            <CharacterOffsetBegin>897</CharacterOffsetBegin>
-            <CharacterOffsetEnd>902</CharacterOffsetEnd>
+            <CharacterOffsetBegin>882</CharacterOffsetBegin>
+            <CharacterOffsetEnd>887</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="13">
             <word>,</word>
-            <CharacterOffsetBegin>902</CharacterOffsetBegin>
-            <CharacterOffsetEnd>903</CharacterOffsetEnd>
+            <CharacterOffsetBegin>887</CharacterOffsetBegin>
+            <CharacterOffsetEnd>888</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="14">
             <word>but</word>
-            <CharacterOffsetBegin>904</CharacterOffsetBegin>
-            <CharacterOffsetEnd>907</CharacterOffsetEnd>
+            <CharacterOffsetBegin>889</CharacterOffsetBegin>
+            <CharacterOffsetEnd>892</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="15">
             <word>the</word>
-            <CharacterOffsetBegin>908</CharacterOffsetBegin>
-            <CharacterOffsetEnd>911</CharacterOffsetEnd>
+            <CharacterOffsetBegin>893</CharacterOffsetBegin>
+            <CharacterOffsetEnd>896</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="16">
             <word>nation</word>
-            <CharacterOffsetBegin>912</CharacterOffsetBegin>
-            <CharacterOffsetEnd>918</CharacterOffsetEnd>
+            <CharacterOffsetBegin>897</CharacterOffsetBegin>
+            <CharacterOffsetEnd>903</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="17">
             <word>is</word>
-            <CharacterOffsetBegin>919</CharacterOffsetBegin>
-            <CharacterOffsetEnd>921</CharacterOffsetEnd>
+            <CharacterOffsetBegin>904</CharacterOffsetBegin>
+            <CharacterOffsetEnd>906</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="18">
             <word>building</word>
-            <CharacterOffsetBegin>922</CharacterOffsetBegin>
-            <CharacterOffsetEnd>930</CharacterOffsetEnd>
+            <CharacterOffsetBegin>907</CharacterOffsetBegin>
+            <CharacterOffsetEnd>915</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
           <token id="19">
             <word>a</word>
-            <CharacterOffsetBegin>931</CharacterOffsetBegin>
-            <CharacterOffsetEnd>932</CharacterOffsetEnd>
+            <CharacterOffsetBegin>916</CharacterOffsetBegin>
+            <CharacterOffsetEnd>917</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="20">
             <word>case</word>
-            <CharacterOffsetBegin>933</CharacterOffsetBegin>
-            <CharacterOffsetEnd>937</CharacterOffsetEnd>
+            <CharacterOffsetBegin>918</CharacterOffsetBegin>
+            <CharacterOffsetEnd>922</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="21">
             <word>against</word>
-            <CharacterOffsetBegin>938</CharacterOffsetBegin>
-            <CharacterOffsetEnd>945</CharacterOffsetEnd>
+            <CharacterOffsetBegin>923</CharacterOffsetBegin>
+            <CharacterOffsetEnd>930</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="22">
             <word>the</word>
-            <CharacterOffsetBegin>946</CharacterOffsetBegin>
-            <CharacterOffsetEnd>949</CharacterOffsetEnd>
+            <CharacterOffsetBegin>931</CharacterOffsetBegin>
+            <CharacterOffsetEnd>934</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="23">
             <word>state</word>
-            <CharacterOffsetBegin>950</CharacterOffsetBegin>
-            <CharacterOffsetEnd>955</CharacterOffsetEnd>
+            <CharacterOffsetBegin>935</CharacterOffsetBegin>
+            <CharacterOffsetEnd>940</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="24">
             <word>of</word>
-            <CharacterOffsetBegin>956</CharacterOffsetBegin>
-            <CharacterOffsetEnd>958</CharacterOffsetEnd>
+            <CharacterOffsetBegin>941</CharacterOffsetBegin>
+            <CharacterOffsetEnd>943</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="25">
             <word>New</word>
-            <CharacterOffsetBegin>959</CharacterOffsetBegin>
-            <CharacterOffsetEnd>962</CharacterOffsetEnd>
+            <CharacterOffsetBegin>944</CharacterOffsetBegin>
+            <CharacterOffsetEnd>947</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="26">
             <word>York</word>
-            <CharacterOffsetBegin>963</CharacterOffsetBegin>
-            <CharacterOffsetEnd>967</CharacterOffsetEnd>
+            <CharacterOffsetBegin>948</CharacterOffsetBegin>
+            <CharacterOffsetEnd>952</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="27">
             <word>that</word>
-            <CharacterOffsetBegin>968</CharacterOffsetBegin>
-            <CharacterOffsetEnd>972</CharacterOffsetEnd>
+            <CharacterOffsetBegin>953</CharacterOffsetBegin>
+            <CharacterOffsetEnd>957</CharacterOffsetEnd>
             <POS>WDT</POS>
           </token>
           <token id="28">
             <word>would</word>
-            <CharacterOffsetBegin>973</CharacterOffsetBegin>
-            <CharacterOffsetEnd>978</CharacterOffsetEnd>
+            <CharacterOffsetBegin>958</CharacterOffsetBegin>
+            <CharacterOffsetEnd>963</CharacterOffsetEnd>
             <POS>MD</POS>
           </token>
           <token id="29">
             <word>follow</word>
-            <CharacterOffsetBegin>979</CharacterOffsetBegin>
-            <CharacterOffsetEnd>985</CharacterOffsetEnd>
+            <CharacterOffsetBegin>964</CharacterOffsetBegin>
+            <CharacterOffsetEnd>970</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="30">
             <word>suits</word>
-            <CharacterOffsetBegin>986</CharacterOffsetBegin>
-            <CharacterOffsetEnd>991</CharacterOffsetEnd>
+            <CharacterOffsetBegin>971</CharacterOffsetBegin>
+            <CharacterOffsetEnd>976</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="31">
             <word>filed</word>
-            <CharacterOffsetBegin>992</CharacterOffsetBegin>
-            <CharacterOffsetEnd>997</CharacterOffsetEnd>
+            <CharacterOffsetBegin>977</CharacterOffsetBegin>
+            <CharacterOffsetEnd>982</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="32">
             <word>by</word>
-            <CharacterOffsetBegin>998</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1000</CharacterOffsetEnd>
+            <CharacterOffsetBegin>983</CharacterOffsetBegin>
+            <CharacterOffsetEnd>985</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="33">
             <word>other</word>
-            <CharacterOffsetBegin>1001</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1006</CharacterOffsetEnd>
+            <CharacterOffsetBegin>986</CharacterOffsetBegin>
+            <CharacterOffsetEnd>991</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="34">
             <word>Iroquois</word>
-            <CharacterOffsetBegin>1007</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1015</CharacterOffsetEnd>
+            <CharacterOffsetBegin>992</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1000</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="35">
             <word>nations</word>
-            <CharacterOffsetBegin>1016</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1023</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1001</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1008</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="36">
             <word>_</word>
-            <CharacterOffsetBegin>1024</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1025</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1009</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1010</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
           <token id="37">
             <word>the</word>
-            <CharacterOffsetBegin>1026</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1029</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1011</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1014</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="38">
             <word>Cayuga</word>
-            <CharacterOffsetBegin>1030</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1036</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1015</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1021</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="39">
             <word>,</word>
-            <CharacterOffsetBegin>1036</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1037</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1021</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1022</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="40">
             <word>Mohawk</word>
-            <CharacterOffsetBegin>1038</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1044</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1023</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1029</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="41">
             <word>,</word>
-            <CharacterOffsetBegin>1044</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1045</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1029</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1030</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="42">
             <word>Oneida</word>
-            <CharacterOffsetBegin>1046</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1052</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1031</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1037</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="43">
             <word>and</word>
-            <CharacterOffsetBegin>1053</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1056</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1038</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1041</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="44">
             <word>Seneca</word>
-            <CharacterOffsetBegin>1057</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1063</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1042</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1048</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="45">
             <word>_</word>
-            <CharacterOffsetBegin>1064</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1065</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1049</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1050</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
           <token id="46">
             <word>with</word>
-            <CharacterOffsetBegin>1066</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1070</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1051</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1055</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="47">
             <word>the</word>
-            <CharacterOffsetBegin>1071</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1074</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1056</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1059</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="48">
             <word>federal</word>
-            <CharacterOffsetBegin>1075</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1082</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1060</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1067</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="49">
             <word>government</word>
-            <CharacterOffsetBegin>1083</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1093</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1068</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1078</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="50">
             <word>as</word>
-            <CharacterOffsetBegin>1094</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1096</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1079</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1081</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="51">
-            <word>co-plaintiff</word>
-            <CharacterOffsetBegin>1097</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1109</CharacterOffsetEnd>
+            <word>co</word>
+            <CharacterOffsetBegin>1082</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1084</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="52">
+            <word>plaintiff</word>
+            <CharacterOffsetBegin>1085</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1094</CharacterOffsetEnd>
+            <POS>NN</POS>
+          </token>
+          <token id="53">
             <word>.</word>
-            <CharacterOffsetBegin>1109</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1110</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1094</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1095</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (S (S (NP (DT The) (NNPS Onondagas) (NN havent)) (ADVP (RB yet)) (VP (VBN gone) (PP (TO to) (NP (NN court))) (S (VP (TO to) (VP (VB stake) (NP (PRP$ their) (NN land) (NN claim))))))) (, ,) (CC but) (S (NP (DT the) (NN nation)) (VP (VBZ is) (VP (VBG building) (NP (DT a) (NN case)) (PP (IN against) (NP (NP (DT the) (NN state)) (PP (IN of) (NP (NP (NNP New) (NNP York)) (SBAR (WHNP (WDT that)) (S (VP (MD would) (VP (VB follow) (SBAR (S (NP (NP (NNS suits)) (VP (VBN filed) (PP (IN by) (NP (JJ other) (JJ Iroquois) (NNS nations))))) (VP (VBP _) (SBAR (S (NP (DT the) (NNP Cayuga) (, ,) (NNP Mohawk) (, ,) (NNP Oneida) (CC and) (NNP Seneca)) (VP (VBP _) (PP (IN with) (NP (NP (DT the) (JJ federal) (NN government)) (PP (IN as) (NP (NN co-plaintiff)))))))))))))))))))))) (. .))) </parse>
+        <parse>(ROOT (S (S (NP (DT The) (NNPS Onondagas) (NN havent)) (ADVP (RB yet)) (VP (VBN gone) (PP (TO to) (NP (NN court))) (S (VP (TO to) (VP (VB stake) (NP (PRP$ their) (NN land) (NN claim))))))) (, ,) (CC but) (S (NP (DT the) (NN nation)) (VP (VBZ is) (VP (VBG building) (NP (DT a) (NN case)) (PP (IN against) (NP (NP (DT the) (NN state)) (PP (IN of) (NP (NP (NNP New) (NNP York)) (SBAR (WHNP (WDT that)) (S (VP (MD would) (VP (VB follow) (SBAR (S (NP (NP (NNS suits)) (VP (VBN filed) (PP (IN by) (NP (JJ other) (JJ Iroquois) (NNS nations))))) (VP (VBP _) (SBAR (S (NP (DT the) (NNP Cayuga) (, ,) (NNP Mohawk) (, ,) (NNP Oneida) (CC and) (NNP Seneca)) (VP (VBP _) (PP (IN with) (NP (NP (DT the) (JJ federal) (NN government)) (PP (IN as) (NP (NN co) (NN plaintiff)))))))))))))))))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
@@ -4640,16 +4594,20 @@
             <dependent idx="49">government</dependent>
           </dep>
           <dep type="case">
-            <governor idx="51">co-plaintiff</governor>
+            <governor idx="52">plaintiff</governor>
             <dependent idx="50">as</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="52">plaintiff</governor>
+            <dependent idx="51">co</dependent>
           </dep>
           <dep type="nmod">
             <governor idx="36">_</governor>
-            <dependent idx="51">co-plaintiff</dependent>
+            <dependent idx="52">plaintiff</dependent>
           </dep>
           <dep type="punct">
             <governor idx="5">gone</governor>
-            <dependent idx="52">.</dependent>
+            <dependent idx="53">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
@@ -4850,16 +4808,20 @@
             <dependent idx="49">government</dependent>
           </dep>
           <dep type="case">
-            <governor idx="51">co-plaintiff</governor>
+            <governor idx="52">plaintiff</governor>
             <dependent idx="50">as</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="52">plaintiff</governor>
+            <dependent idx="51">co</dependent>
           </dep>
           <dep type="nmod:as">
             <governor idx="36">_</governor>
-            <dependent idx="51">co-plaintiff</dependent>
+            <dependent idx="52">plaintiff</dependent>
           </dep>
           <dep type="punct">
             <governor idx="5">gone</governor>
-            <dependent idx="52">.</dependent>
+            <dependent idx="53">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
@@ -5072,16 +5034,20 @@
             <dependent idx="49">government</dependent>
           </dep>
           <dep type="case">
-            <governor idx="51">co-plaintiff</governor>
+            <governor idx="52">plaintiff</governor>
             <dependent idx="50">as</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="52">plaintiff</governor>
+            <dependent idx="51">co</dependent>
           </dep>
           <dep type="nmod:as">
             <governor idx="36">_</governor>
-            <dependent idx="51">co-plaintiff</dependent>
+            <dependent idx="52">plaintiff</dependent>
           </dep>
           <dep type="punct">
             <governor idx="5">gone</governor>
-            <dependent idx="52">.</dependent>
+            <dependent idx="53">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
@@ -5302,16 +5268,20 @@
             <dependent idx="49">government</dependent>
           </dep>
           <dep type="case">
-            <governor idx="51">co-plaintiff</governor>
+            <governor idx="52">plaintiff</governor>
             <dependent idx="50">as</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="52">plaintiff</governor>
+            <dependent idx="51">co</dependent>
           </dep>
           <dep type="nmod:as">
             <governor idx="36">_</governor>
-            <dependent idx="51">co-plaintiff</dependent>
+            <dependent idx="52">plaintiff</dependent>
           </dep>
           <dep type="punct">
             <governor idx="5">gone</governor>
-            <dependent idx="52">.</dependent>
+            <dependent idx="53">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
@@ -5532,447 +5502,399 @@
             <dependent idx="49">government</dependent>
           </dep>
           <dep type="case">
-            <governor idx="51">co-plaintiff</governor>
+            <governor idx="52">plaintiff</governor>
             <dependent idx="50">as</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="52">plaintiff</governor>
+            <dependent idx="51">co</dependent>
           </dep>
           <dep type="nmod:as">
             <governor idx="36">_</governor>
-            <dependent idx="51">co-plaintiff</dependent>
+            <dependent idx="52">plaintiff</dependent>
           </dep>
           <dep type="punct">
             <governor idx="5">gone</governor>
-            <dependent idx="52">.</dependent>
+            <dependent idx="53">.</dependent>
           </dep>
         </dependencies>
       </sentence>
       <sentence id="7">
         <tokens>
           <token id="1">
-            <word>$</word>
-            <CharacterOffsetBegin>1111</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1112</CharacterOffsetEnd>
-            <POS>$</POS>
+            <word>million</word>
+            <CharacterOffsetBegin>1096</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1103</CharacterOffsetEnd>
+            <POS>CD</POS>
           </token>
           <token id="2">
-            <word>5</word>
-            <CharacterOffsetBegin>1112</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1113</CharacterOffsetEnd>
-            <POS>CD</POS>
+            <word>for</word>
+            <CharacterOffsetBegin>1104</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1107</CharacterOffsetEnd>
+            <POS>IN</POS>
           </token>
           <token id="3">
-            <word>million</word>
-            <CharacterOffsetBegin>1114</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1121</CharacterOffsetEnd>
-            <POS>CD</POS>
-          </token>
-          <token id="4">
-            <word>for</word>
-            <CharacterOffsetBegin>1122</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1125</CharacterOffsetEnd>
-            <POS>IN</POS>
-          </token>
-          <token id="5">
             <word>a</word>
-            <CharacterOffsetBegin>1126</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1127</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1108</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1109</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
-          <token id="6">
+          <token id="4">
             <word>Treasury</word>
-            <CharacterOffsetBegin>1128</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1136</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1110</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1118</CharacterOffsetEnd>
             <POS>NNP</POS>
+          </token>
+          <token id="5">
+            <word>Department</word>
+            <CharacterOffsetBegin>1119</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1129</CharacterOffsetEnd>
+            <POS>NNP</POS>
+          </token>
+          <token id="6">
+            <word>program</word>
+            <CharacterOffsetBegin>1130</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1137</CharacterOffsetEnd>
+            <POS>NN</POS>
           </token>
           <token id="7">
-            <word>Department</word>
-            <CharacterOffsetBegin>1137</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1147</CharacterOffsetEnd>
-            <POS>NNP</POS>
-          </token>
-          <token id="8">
-            <word>program</word>
-            <CharacterOffsetBegin>1148</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1155</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="9">
             <word>aimed</word>
-            <CharacterOffsetBegin>1156</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1161</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1138</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1143</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
-          <token id="10">
+          <token id="8">
             <word>at</word>
-            <CharacterOffsetBegin>1162</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1164</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1144</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1146</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="11">
+          <token id="9">
             <word>attracting</word>
-            <CharacterOffsetBegin>1165</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1175</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1147</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1157</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
-          <token id="12">
+          <token id="10">
             <word>companies</word>
-            <CharacterOffsetBegin>1176</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1185</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1158</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1167</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="13">
+          <token id="11">
             <word>to</word>
-            <CharacterOffsetBegin>1186</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1188</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1168</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1170</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
-          <token id="14">
+          <token id="12">
             <word>reservation</word>
-            <CharacterOffsetBegin>1189</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1200</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1171</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1182</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="15">
+          <token id="13">
             <word>areas</word>
-            <CharacterOffsetBegin>1201</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1206</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1183</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1188</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="16">
+          <token id="14">
             <word>.</word>
-            <CharacterOffsetBegin>1206</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1207</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1188</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1189</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (NP (NP (QP ($ $) (CD 5) (CD million))) (PP (IN for) (NP (DT a) (NNP Treasury) (NNP Department) (NN program))) (VP (VBN aimed) (PP (IN at) (S (VP (VBG attracting) (NP (NNS companies)) (PP (TO to) (NP (NN reservation) (NNS areas))))))) (. .))) </parse>
+        <parse>(ROOT (S (NP (NP (CD million)) (PP (IN for) (NP (DT a) (NNP Treasury) (NNP Department) (NN program)))) (VP (VBN aimed) (PP (IN at) (S (VP (VBG attracting) (NP (NNS companies)) (PP (TO to) (NP (NN reservation) (NNS areas))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="1">$</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="3">million</governor>
-            <dependent idx="2">5</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="1">$</governor>
-            <dependent idx="3">million</dependent>
+            <dependent idx="1">million</dependent>
           </dep>
           <dep type="case">
-            <governor idx="8">program</governor>
-            <dependent idx="4">for</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="2">for</dependent>
           </dep>
           <dep type="det">
-            <governor idx="8">program</governor>
-            <dependent idx="5">a</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="3">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="6">Treasury</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="4">Treasury</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="7">Department</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="5">Department</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="1">$</governor>
-            <dependent idx="8">program</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="6">program</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="8">program</governor>
-            <dependent idx="9">aimed</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="7">aimed</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">attracting</governor>
-            <dependent idx="10">at</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="8">at</dependent>
           </dep>
           <dep type="advcl">
-            <governor idx="9">aimed</governor>
-            <dependent idx="11">attracting</dependent>
+            <governor idx="7">aimed</governor>
+            <dependent idx="9">attracting</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="11">attracting</governor>
-            <dependent idx="12">companies</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="10">companies</dependent>
           </dep>
           <dep type="case">
-            <governor idx="15">areas</governor>
-            <dependent idx="13">to</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="11">to</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">areas</governor>
-            <dependent idx="14">reservation</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="12">reservation</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="11">attracting</governor>
-            <dependent idx="15">areas</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="13">areas</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="1">$</governor>
-            <dependent idx="16">.</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="14">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="1">$</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="3">million</governor>
-            <dependent idx="2">5</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="1">$</governor>
-            <dependent idx="3">million</dependent>
+            <dependent idx="1">million</dependent>
           </dep>
           <dep type="case">
-            <governor idx="8">program</governor>
-            <dependent idx="4">for</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="2">for</dependent>
           </dep>
           <dep type="det">
-            <governor idx="8">program</governor>
-            <dependent idx="5">a</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="3">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="6">Treasury</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="4">Treasury</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="7">Department</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="5">Department</dependent>
           </dep>
           <dep type="nmod:for">
-            <governor idx="1">$</governor>
-            <dependent idx="8">program</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="6">program</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="8">program</governor>
-            <dependent idx="9">aimed</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="7">aimed</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">attracting</governor>
-            <dependent idx="10">at</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="8">at</dependent>
           </dep>
           <dep type="advcl">
-            <governor idx="9">aimed</governor>
-            <dependent idx="11">attracting</dependent>
+            <governor idx="7">aimed</governor>
+            <dependent idx="9">attracting</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="11">attracting</governor>
-            <dependent idx="12">companies</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="10">companies</dependent>
           </dep>
           <dep type="case">
-            <governor idx="15">areas</governor>
-            <dependent idx="13">to</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="11">to</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">areas</governor>
-            <dependent idx="14">reservation</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="12">reservation</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="11">attracting</governor>
-            <dependent idx="15">areas</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="13">areas</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="1">$</governor>
-            <dependent idx="16">.</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="14">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="1">$</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="3">million</governor>
-            <dependent idx="2">5</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="1">$</governor>
-            <dependent idx="3">million</dependent>
+            <dependent idx="1">million</dependent>
           </dep>
           <dep type="case">
-            <governor idx="8">program</governor>
-            <dependent idx="4">for</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="2">for</dependent>
           </dep>
           <dep type="det">
-            <governor idx="8">program</governor>
-            <dependent idx="5">a</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="3">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="6">Treasury</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="4">Treasury</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="7">Department</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="5">Department</dependent>
           </dep>
           <dep type="nmod:for">
-            <governor idx="1">$</governor>
-            <dependent idx="8">program</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="6">program</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="8">program</governor>
-            <dependent idx="9">aimed</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="7">aimed</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">attracting</governor>
-            <dependent idx="10">at</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="8">at</dependent>
           </dep>
           <dep type="advcl">
-            <governor idx="9">aimed</governor>
-            <dependent idx="11">attracting</dependent>
+            <governor idx="7">aimed</governor>
+            <dependent idx="9">attracting</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="11">attracting</governor>
-            <dependent idx="12">companies</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="10">companies</dependent>
           </dep>
           <dep type="case">
-            <governor idx="15">areas</governor>
-            <dependent idx="13">to</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="11">to</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">areas</governor>
-            <dependent idx="14">reservation</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="12">reservation</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="11">attracting</governor>
-            <dependent idx="15">areas</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="13">areas</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="1">$</governor>
-            <dependent idx="16">.</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="14">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="1">$</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="3">million</governor>
-            <dependent idx="2">5</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="1">$</governor>
-            <dependent idx="3">million</dependent>
+            <dependent idx="1">million</dependent>
           </dep>
           <dep type="case">
-            <governor idx="8">program</governor>
-            <dependent idx="4">for</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="2">for</dependent>
           </dep>
           <dep type="det">
-            <governor idx="8">program</governor>
-            <dependent idx="5">a</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="3">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="6">Treasury</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="4">Treasury</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="7">Department</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="5">Department</dependent>
           </dep>
           <dep type="nmod:for">
-            <governor idx="1">$</governor>
-            <dependent idx="8">program</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="6">program</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="8">program</governor>
-            <dependent idx="9">aimed</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="7">aimed</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">attracting</governor>
-            <dependent idx="10">at</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="8">at</dependent>
           </dep>
           <dep type="advcl:at">
-            <governor idx="9">aimed</governor>
-            <dependent idx="11">attracting</dependent>
+            <governor idx="7">aimed</governor>
+            <dependent idx="9">attracting</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="11">attracting</governor>
-            <dependent idx="12">companies</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="10">companies</dependent>
           </dep>
           <dep type="case">
-            <governor idx="15">areas</governor>
-            <dependent idx="13">to</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="11">to</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">areas</governor>
-            <dependent idx="14">reservation</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="12">reservation</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="11">attracting</governor>
-            <dependent idx="15">areas</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="13">areas</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="1">$</governor>
-            <dependent idx="16">.</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="14">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="1">$</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="3">million</governor>
-            <dependent idx="2">5</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="1">$</governor>
-            <dependent idx="3">million</dependent>
+            <dependent idx="1">million</dependent>
           </dep>
           <dep type="case">
-            <governor idx="8">program</governor>
-            <dependent idx="4">for</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="2">for</dependent>
           </dep>
           <dep type="det">
-            <governor idx="8">program</governor>
-            <dependent idx="5">a</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="3">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="6">Treasury</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="4">Treasury</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="8">program</governor>
-            <dependent idx="7">Department</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="5">Department</dependent>
           </dep>
           <dep type="nmod:for">
-            <governor idx="1">$</governor>
-            <dependent idx="8">program</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="6">program</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="8">program</governor>
-            <dependent idx="9">aimed</dependent>
+            <governor idx="6">program</governor>
+            <dependent idx="7">aimed</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">attracting</governor>
-            <dependent idx="10">at</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="8">at</dependent>
           </dep>
           <dep type="advcl:at">
-            <governor idx="9">aimed</governor>
-            <dependent idx="11">attracting</dependent>
+            <governor idx="7">aimed</governor>
+            <dependent idx="9">attracting</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="11">attracting</governor>
-            <dependent idx="12">companies</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="10">companies</dependent>
           </dep>
           <dep type="case">
-            <governor idx="15">areas</governor>
-            <dependent idx="13">to</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="11">to</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">areas</governor>
-            <dependent idx="14">reservation</dependent>
+            <governor idx="13">areas</governor>
+            <dependent idx="12">reservation</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="11">attracting</governor>
-            <dependent idx="15">areas</dependent>
+            <governor idx="9">attracting</governor>
+            <dependent idx="13">areas</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="1">$</governor>
-            <dependent idx="16">.</dependent>
+            <governor idx="1">million</governor>
+            <dependent idx="14">.</dependent>
           </dep>
         </dependencies>
       </sentence>
@@ -5980,258 +5902,252 @@
         <tokens>
           <token id="1">
             <word>It</word>
-            <CharacterOffsetBegin>1208</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1210</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1190</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1192</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="2">
             <word>s</word>
-            <CharacterOffsetBegin>1211</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1212</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1193</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1194</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="3">
             <word>also</word>
-            <CharacterOffsetBegin>1213</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1217</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1195</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1199</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
           <token id="4">
             <word>the</word>
-            <CharacterOffsetBegin>1218</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1221</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1200</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1203</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="5">
             <word>first</word>
-            <CharacterOffsetBegin>1222</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1227</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1204</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1209</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="6">
             <word>step</word>
-            <CharacterOffsetBegin>1228</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1232</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1210</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1214</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="7">
             <word>in</word>
-            <CharacterOffsetBegin>1233</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1235</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1215</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1217</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="8">
             <word>a</word>
-            <CharacterOffsetBegin>1236</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1237</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1218</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1219</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="9">
             <word>welfare</word>
-            <CharacterOffsetBegin>1238</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1245</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1220</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1227</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="10">
             <word>reform</word>
-            <CharacterOffsetBegin>1246</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1252</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1228</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1234</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="11">
             <word>program</word>
-            <CharacterOffsetBegin>1253</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1260</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1235</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1242</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="12">
             <word>designed</word>
-            <CharacterOffsetBegin>1261</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1269</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1243</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1251</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="13">
             <word>by</word>
-            <CharacterOffsetBegin>1270</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1272</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1252</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1254</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="14">
             <word>the</word>
-            <CharacterOffsetBegin>1273</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1276</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1255</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1258</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="15">
             <word>Pascua</word>
-            <CharacterOffsetBegin>1277</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1283</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1259</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1265</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="16">
             <word>Yaqui</word>
-            <CharacterOffsetBegin>1284</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1289</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1266</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1271</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="17">
             <word>Tribe</word>
-            <CharacterOffsetBegin>1290</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1295</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1272</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1277</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="18">
             <word>,</word>
-            <CharacterOffsetBegin>1295</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1296</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1277</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1278</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="19">
             <word>the</word>
-            <CharacterOffsetBegin>1297</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1300</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1279</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1282</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="20">
             <word>first</word>
-            <CharacterOffsetBegin>1301</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1306</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1283</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1288</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="21">
             <word>of</word>
-            <CharacterOffsetBegin>1307</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1309</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1289</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1291</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="22">
             <word>Arizona</word>
-            <CharacterOffsetBegin>1310</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1317</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1292</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1299</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="23">
             <word>s</word>
-            <CharacterOffsetBegin>1318</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1319</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1300</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1301</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
           <token id="24">
-            <word>21</word>
-            <CharacterOffsetBegin>1320</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1322</CharacterOffsetEnd>
-            <POS>CD</POS>
+            <word>Native</word>
+            <CharacterOffsetBegin>1302</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1308</CharacterOffsetEnd>
+            <POS>JJ</POS>
           </token>
           <token id="25">
-            <word>Native</word>
-            <CharacterOffsetBegin>1323</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1329</CharacterOffsetEnd>
+            <word>American</word>
+            <CharacterOffsetBegin>1309</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1317</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="26">
-            <word>American</word>
-            <CharacterOffsetBegin>1330</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1338</CharacterOffsetEnd>
-            <POS>JJ</POS>
+            <word>communities</word>
+            <CharacterOffsetBegin>1318</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1329</CharacterOffsetEnd>
+            <POS>NNS</POS>
           </token>
           <token id="27">
-            <word>communities</word>
-            <CharacterOffsetBegin>1339</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1350</CharacterOffsetEnd>
-            <POS>NNS</POS>
+            <word>to</word>
+            <CharacterOffsetBegin>1330</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1332</CharacterOffsetEnd>
+            <POS>TO</POS>
           </token>
           <token id="28">
-            <word>to</word>
-            <CharacterOffsetBegin>1351</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1353</CharacterOffsetEnd>
-            <POS>TO</POS>
+            <word>take</word>
+            <CharacterOffsetBegin>1333</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1337</CharacterOffsetEnd>
+            <POS>VB</POS>
           </token>
           <token id="29">
-            <word>take</word>
-            <CharacterOffsetBegin>1354</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1358</CharacterOffsetEnd>
-            <POS>VB</POS>
+            <word>charge</word>
+            <CharacterOffsetBegin>1338</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1344</CharacterOffsetEnd>
+            <POS>NN</POS>
           </token>
           <token id="30">
-            <word>charge</word>
-            <CharacterOffsetBegin>1359</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1365</CharacterOffsetEnd>
-            <POS>NN</POS>
+            <word>of</word>
+            <CharacterOffsetBegin>1345</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1347</CharacterOffsetEnd>
+            <POS>IN</POS>
           </token>
           <token id="31">
-            <word>of</word>
-            <CharacterOffsetBegin>1366</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1368</CharacterOffsetEnd>
-            <POS>IN</POS>
-          </token>
-          <token id="32">
             <word>its</word>
-            <CharacterOffsetBegin>1369</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1372</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1348</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1351</CharacterOffsetEnd>
             <POS>PRP$</POS>
           </token>
-          <token id="33">
+          <token id="32">
             <word>own</word>
-            <CharacterOffsetBegin>1373</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1376</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1352</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1355</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
-          <token id="34">
+          <token id="33">
             <word>program</word>
-            <CharacterOffsetBegin>1377</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1384</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1356</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1363</CharacterOffsetEnd>
             <POS>NN</POS>
+          </token>
+          <token id="34">
+            <word>to</word>
+            <CharacterOffsetBegin>1364</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1366</CharacterOffsetEnd>
+            <POS>TO</POS>
           </token>
           <token id="35">
-            <word>to</word>
-            <CharacterOffsetBegin>1385</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1387</CharacterOffsetEnd>
-            <POS>TO</POS>
+            <word>get</word>
+            <CharacterOffsetBegin>1367</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1370</CharacterOffsetEnd>
+            <POS>VB</POS>
           </token>
           <token id="36">
-            <word>get</word>
-            <CharacterOffsetBegin>1388</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1391</CharacterOffsetEnd>
-            <POS>VB</POS>
-          </token>
-          <token id="37">
             <word>parents</word>
-            <CharacterOffsetBegin>1392</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1399</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1371</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1378</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="38">
+          <token id="37">
             <word>from</word>
-            <CharacterOffsetBegin>1400</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1404</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1379</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1383</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="39">
+          <token id="38">
             <word>welfare</word>
-            <CharacterOffsetBegin>1405</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1412</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1384</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1391</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="40">
+          <token id="39">
             <word>to</word>
-            <CharacterOffsetBegin>1413</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1415</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1392</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1394</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
-          <token id="41">
+          <token id="40">
             <word>work</word>
-            <CharacterOffsetBegin>1416</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1420</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1395</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1399</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
-          <token id="42">
+          <token id="41">
             <word>.</word>
-            <CharacterOffsetBegin>1420</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1421</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1399</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1400</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (S (S (NP (PRP It)) (VP (VBZ s) (ADVP (RB also)) (NP (NP (DT the) (JJ first) (NN step)) (PP (IN in) (NP (NP (DT a) (NN welfare) (NN reform) (NN program)) (VP (VBN designed) (PP (IN by) (NP (DT the) (NNP Pascua) (NNP Yaqui) (NNP Tribe))))))))) (, ,) (NP (NP (DT the) (JJ first)) (PP (IN of) (NP (NNP Arizona)))) (VP (VBZ s) (NP (CD 21) (JJ Native) (JJ American) (NNS communities)) (S (VP (TO to) (VP (VB take) (NP (NP (NN charge)) (PP (IN of) (NP (PRP$ its) (JJ own) (NN program)))) (S (VP (TO to) (VP (VB get) (NP (NNS parents)) (PP (IN from) (NP (NN welfare))) (S (VP (TO to) (VP (VB work))))))))))) (. .))) </parse>
+        <parse>(ROOT (S (S (NP (PRP It)) (VP (VBZ s) (ADVP (RB also)) (NP (NP (DT the) (JJ first) (NN step)) (PP (IN in) (NP (NP (DT a) (NN welfare) (NN reform) (NN program)) (VP (VBN designed) (PP (IN by) (NP (DT the) (NNP Pascua) (NNP Yaqui) (NNP Tribe))))))))) (, ,) (NP (NP (DT the) (JJ first)) (PP (IN of) (NP (NNP Arizona)))) (VP (VBZ s) (NP (JJ Native) (JJ American) (NNS communities)) (S (VP (TO to) (VP (VB take) (NP (NP (NN charge)) (PP (IN of) (NP (PRP$ its) (JJ own) (NN program)))) (S (VP (TO to) (VP (VB get) (NP (NNS parents)) (PP (IN from) (NP (NN welfare))) (S (VP (TO to) (VP (VB work))))))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
@@ -6310,7 +6226,7 @@
             <dependent idx="19">the</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="case">
@@ -6322,84 +6238,80 @@
             <dependent idx="22">Arizona</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="23">s</dependent>
           </dep>
-          <dep type="nummod">
-            <governor idx="27">communities</governor>
-            <dependent idx="24">21</dependent>
+          <dep type="amod">
+            <governor idx="26">communities</governor>
+            <dependent idx="24">Native</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="25">Native</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="26">American</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="25">American</dependent>
           </dep>
           <dep type="acl:relcl">
             <governor idx="6">step</governor>
-            <dependent idx="27">communities</dependent>
+            <dependent idx="26">communities</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="29">take</governor>
-            <dependent idx="28">to</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="27">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="27">communities</governor>
-            <dependent idx="29">take</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="28">take</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="29">take</governor>
-            <dependent idx="30">charge</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="29">charge</dependent>
           </dep>
           <dep type="case">
-            <governor idx="34">program</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="nmod:poss">
-            <governor idx="34">program</governor>
-            <dependent idx="32">its</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="31">its</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="34">program</governor>
-            <dependent idx="33">own</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="32">own</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="30">charge</governor>
-            <dependent idx="34">program</dependent>
+            <governor idx="29">charge</governor>
+            <dependent idx="33">program</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="36">get</governor>
-            <dependent idx="35">to</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="34">to</dependent>
           </dep>
           <dep type="advcl">
-            <governor idx="29">take</governor>
-            <dependent idx="36">get</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="35">get</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="36">get</governor>
-            <dependent idx="37">parents</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="36">parents</dependent>
           </dep>
           <dep type="case">
-            <governor idx="39">welfare</governor>
-            <dependent idx="38">from</dependent>
+            <governor idx="38">welfare</governor>
+            <dependent idx="37">from</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="36">get</governor>
-            <dependent idx="39">welfare</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="38">welfare</dependent>
           </dep>
           <dep type="case">
-            <governor idx="41">work</governor>
-            <dependent idx="40">to</dependent>
+            <governor idx="40">work</governor>
+            <dependent idx="39">to</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="36">get</governor>
-            <dependent idx="41">work</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="40">work</dependent>
           </dep>
           <dep type="punct">
             <governor idx="6">step</governor>
-            <dependent idx="42">.</dependent>
+            <dependent idx="41">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
@@ -6480,7 +6392,7 @@
             <dependent idx="19">the</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="case">
@@ -6492,84 +6404,80 @@
             <dependent idx="22">Arizona</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="23">s</dependent>
           </dep>
-          <dep type="nummod">
-            <governor idx="27">communities</governor>
-            <dependent idx="24">21</dependent>
+          <dep type="amod">
+            <governor idx="26">communities</governor>
+            <dependent idx="24">Native</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="25">Native</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="26">American</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="25">American</dependent>
           </dep>
           <dep type="acl:relcl">
             <governor idx="6">step</governor>
-            <dependent idx="27">communities</dependent>
+            <dependent idx="26">communities</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="29">take</governor>
-            <dependent idx="28">to</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="27">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="27">communities</governor>
-            <dependent idx="29">take</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="28">take</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="29">take</governor>
-            <dependent idx="30">charge</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="29">charge</dependent>
           </dep>
           <dep type="case">
-            <governor idx="34">program</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="nmod:poss">
-            <governor idx="34">program</governor>
-            <dependent idx="32">its</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="31">its</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="34">program</governor>
-            <dependent idx="33">own</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="32">own</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">charge</governor>
-            <dependent idx="34">program</dependent>
+            <governor idx="29">charge</governor>
+            <dependent idx="33">program</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="36">get</governor>
-            <dependent idx="35">to</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="34">to</dependent>
           </dep>
           <dep type="advcl">
-            <governor idx="29">take</governor>
-            <dependent idx="36">get</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="35">get</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="36">get</governor>
-            <dependent idx="37">parents</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="36">parents</dependent>
           </dep>
           <dep type="case">
-            <governor idx="39">welfare</governor>
-            <dependent idx="38">from</dependent>
+            <governor idx="38">welfare</governor>
+            <dependent idx="37">from</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="36">get</governor>
-            <dependent idx="39">welfare</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="38">welfare</dependent>
           </dep>
           <dep type="case">
-            <governor idx="41">work</governor>
-            <dependent idx="40">to</dependent>
+            <governor idx="40">work</governor>
+            <dependent idx="39">to</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="36">get</governor>
-            <dependent idx="41">work</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="40">work</dependent>
           </dep>
           <dep type="punct">
             <governor idx="6">step</governor>
-            <dependent idx="42">.</dependent>
+            <dependent idx="41">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
@@ -6650,7 +6558,7 @@
             <dependent idx="19">the</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="case">
@@ -6662,84 +6570,80 @@
             <dependent idx="22">Arizona</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="23">s</dependent>
           </dep>
-          <dep type="nummod">
-            <governor idx="27">communities</governor>
-            <dependent idx="24">21</dependent>
+          <dep type="amod">
+            <governor idx="26">communities</governor>
+            <dependent idx="24">Native</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="25">Native</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="26">American</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="25">American</dependent>
           </dep>
           <dep type="acl:relcl">
             <governor idx="6">step</governor>
-            <dependent idx="27">communities</dependent>
+            <dependent idx="26">communities</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="29">take</governor>
-            <dependent idx="28">to</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="27">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="27">communities</governor>
-            <dependent idx="29">take</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="28">take</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="29">take</governor>
-            <dependent idx="30">charge</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="29">charge</dependent>
           </dep>
           <dep type="case">
-            <governor idx="34">program</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="nmod:poss">
-            <governor idx="34">program</governor>
-            <dependent idx="32">its</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="31">its</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="34">program</governor>
-            <dependent idx="33">own</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="32">own</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">charge</governor>
-            <dependent idx="34">program</dependent>
+            <governor idx="29">charge</governor>
+            <dependent idx="33">program</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="36">get</governor>
-            <dependent idx="35">to</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="34">to</dependent>
           </dep>
           <dep type="advcl">
-            <governor idx="29">take</governor>
-            <dependent idx="36">get</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="35">get</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="36">get</governor>
-            <dependent idx="37">parents</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="36">parents</dependent>
           </dep>
           <dep type="case">
-            <governor idx="39">welfare</governor>
-            <dependent idx="38">from</dependent>
+            <governor idx="38">welfare</governor>
+            <dependent idx="37">from</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="36">get</governor>
-            <dependent idx="39">welfare</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="38">welfare</dependent>
           </dep>
           <dep type="case">
-            <governor idx="41">work</governor>
-            <dependent idx="40">to</dependent>
+            <governor idx="40">work</governor>
+            <dependent idx="39">to</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="36">get</governor>
-            <dependent idx="41">work</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="40">work</dependent>
           </dep>
           <dep type="punct">
             <governor idx="6">step</governor>
-            <dependent idx="42">.</dependent>
+            <dependent idx="41">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
@@ -6820,11 +6724,11 @@
             <dependent idx="19">the</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="nsubj:xsubj" extra="true">
-            <governor idx="29">take</governor>
+            <governor idx="28">take</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="case">
@@ -6836,84 +6740,80 @@
             <dependent idx="22">Arizona</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="23">s</dependent>
           </dep>
-          <dep type="nummod">
-            <governor idx="27">communities</governor>
-            <dependent idx="24">21</dependent>
+          <dep type="amod">
+            <governor idx="26">communities</governor>
+            <dependent idx="24">Native</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="25">Native</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="26">American</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="25">American</dependent>
           </dep>
           <dep type="acl:relcl">
             <governor idx="6">step</governor>
-            <dependent idx="27">communities</dependent>
+            <dependent idx="26">communities</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="29">take</governor>
-            <dependent idx="28">to</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="27">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="27">communities</governor>
-            <dependent idx="29">take</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="28">take</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="29">take</governor>
-            <dependent idx="30">charge</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="29">charge</dependent>
           </dep>
           <dep type="case">
-            <governor idx="34">program</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="nmod:poss">
-            <governor idx="34">program</governor>
-            <dependent idx="32">its</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="31">its</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="34">program</governor>
-            <dependent idx="33">own</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="32">own</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">charge</governor>
-            <dependent idx="34">program</dependent>
+            <governor idx="29">charge</governor>
+            <dependent idx="33">program</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="36">get</governor>
-            <dependent idx="35">to</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="34">to</dependent>
           </dep>
           <dep type="advcl:to">
-            <governor idx="29">take</governor>
-            <dependent idx="36">get</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="35">get</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="36">get</governor>
-            <dependent idx="37">parents</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="36">parents</dependent>
           </dep>
           <dep type="case">
-            <governor idx="39">welfare</governor>
-            <dependent idx="38">from</dependent>
+            <governor idx="38">welfare</governor>
+            <dependent idx="37">from</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="36">get</governor>
-            <dependent idx="39">welfare</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="38">welfare</dependent>
           </dep>
           <dep type="case">
-            <governor idx="41">work</governor>
-            <dependent idx="40">to</dependent>
+            <governor idx="40">work</governor>
+            <dependent idx="39">to</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="36">get</governor>
-            <dependent idx="41">work</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="40">work</dependent>
           </dep>
           <dep type="punct">
             <governor idx="6">step</governor>
-            <dependent idx="42">.</dependent>
+            <dependent idx="41">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
@@ -6994,11 +6894,11 @@
             <dependent idx="19">the</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="nsubj:xsubj" extra="true">
-            <governor idx="29">take</governor>
+            <governor idx="28">take</governor>
             <dependent idx="20">first</dependent>
           </dep>
           <dep type="case">
@@ -7010,84 +6910,80 @@
             <dependent idx="22">Arizona</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="27">communities</governor>
+            <governor idx="26">communities</governor>
             <dependent idx="23">s</dependent>
           </dep>
-          <dep type="nummod">
-            <governor idx="27">communities</governor>
-            <dependent idx="24">21</dependent>
+          <dep type="amod">
+            <governor idx="26">communities</governor>
+            <dependent idx="24">Native</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="25">Native</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="27">communities</governor>
-            <dependent idx="26">American</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="25">American</dependent>
           </dep>
           <dep type="acl:relcl">
             <governor idx="6">step</governor>
-            <dependent idx="27">communities</dependent>
+            <dependent idx="26">communities</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="29">take</governor>
-            <dependent idx="28">to</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="27">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="27">communities</governor>
-            <dependent idx="29">take</dependent>
+            <governor idx="26">communities</governor>
+            <dependent idx="28">take</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="29">take</governor>
-            <dependent idx="30">charge</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="29">charge</dependent>
           </dep>
           <dep type="case">
-            <governor idx="34">program</governor>
-            <dependent idx="31">of</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="30">of</dependent>
           </dep>
           <dep type="nmod:poss">
-            <governor idx="34">program</governor>
-            <dependent idx="32">its</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="31">its</dependent>
           </dep>
           <dep type="amod">
-            <governor idx="34">program</governor>
-            <dependent idx="33">own</dependent>
+            <governor idx="33">program</governor>
+            <dependent idx="32">own</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="30">charge</governor>
-            <dependent idx="34">program</dependent>
+            <governor idx="29">charge</governor>
+            <dependent idx="33">program</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="36">get</governor>
-            <dependent idx="35">to</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="34">to</dependent>
           </dep>
           <dep type="advcl:to">
-            <governor idx="29">take</governor>
-            <dependent idx="36">get</dependent>
+            <governor idx="28">take</governor>
+            <dependent idx="35">get</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="36">get</governor>
-            <dependent idx="37">parents</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="36">parents</dependent>
           </dep>
           <dep type="case">
-            <governor idx="39">welfare</governor>
-            <dependent idx="38">from</dependent>
+            <governor idx="38">welfare</governor>
+            <dependent idx="37">from</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="36">get</governor>
-            <dependent idx="39">welfare</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="38">welfare</dependent>
           </dep>
           <dep type="case">
-            <governor idx="41">work</governor>
-            <dependent idx="40">to</dependent>
+            <governor idx="40">work</governor>
+            <dependent idx="39">to</dependent>
           </dep>
           <dep type="nmod:to">
-            <governor idx="36">get</governor>
-            <dependent idx="41">work</dependent>
+            <governor idx="35">get</governor>
+            <dependent idx="40">work</dependent>
           </dep>
           <dep type="punct">
             <governor idx="6">step</governor>
-            <dependent idx="42">.</dependent>
+            <dependent idx="41">.</dependent>
           </dep>
         </dependencies>
       </sentence>

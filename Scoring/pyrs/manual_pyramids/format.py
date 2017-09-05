@@ -1,28 +1,28 @@
 """ Process XML Pyramids """
+"""
+from bs4 import BeautifulSoup as Soup
+import sys
 
-# from bs4 import BeautifulSoup as Soup
-# import sys
+xml_file = sys.argv[1]
+handler = open(xml_file).read()
 
-# xml_file = sys.argv[1]
-# handler = open(xml_file).read()
+soup = Soup(handler, 'lxml')
 
-# soup = Soup(handler, 'lxml')
+scus = soup.find_all('scu')
 
-# scus = soup.find_all('scu')
-
-# scu_by_weight = {}
-# for scu in scus:
-# 	contributors = scu.find_all('contributor')
-# 	if len(contributors) in scu_by_weight.keys():
-# 		scu_by_weight[len(contributors)].append([contributor['label'] for contributor in contributors])
-# 	else:
-# 		scu_by_weight[len(contributors)] = [[contributor['label'] for contributor in contributors]]
+scu_by_weight = {}
+for scu in scus:
+	contributors = scu.find_all('contributor')
+ 	if len(contributors) in scu_by_weight.keys():
+ 		scu_by_weight[len(contributors)].append([contributor['label'] for contributor in contributors])
+ 	else:
+ 		scu_by_weight[len(contributors)] = [[contributor['label'] for contributor in contributors]]
 
 
 
-# fname = xml_file[:xml_file.rfind('.')] + '.segs'
-# with open(fname, 'w') as f:
-# 	for weight, scu in scu_by_weight.items():
+ fname = xml_file[:xml_file.rfind('.')] + '.segs'
+ with open(fname, 'w') as f:
+ 	for weight, scu in scu_by_weight.items():
 # 		lines = []
 #  		line = str(weight) + '&'
 #  		for n, cu in enumerate(scu):
@@ -33,6 +33,7 @@
 #  		for line in lines:
 #  			f.write(line)
 
+"""
 
 
 import sys

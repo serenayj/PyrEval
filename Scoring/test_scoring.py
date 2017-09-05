@@ -28,7 +28,7 @@ summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
 #pyramid = sys.argv[1]
 #for testing
-pyramids = list(glob.iglob('pyrs/pyramids/*'))
+# pyramids = list(glob.iglob('pyrs/pyramids/*'))
 f = open(results_file, 'w')
 f.close()
 

@@ -27,7 +27,7 @@ class SCU():
         similarity = 0
         for embedding in self.embeddings:
             similarity += cos(embedding, segment_embedding)[0][0]
-        if similarity < 0.5:
+        if similarity / normalizer < 0.5:
             return None
         else:
             return [similarity / normalizer, self.weight]

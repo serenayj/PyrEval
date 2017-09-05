@@ -27,7 +27,7 @@ class SCU():
         similarity = 0
         for embedding in self.embeddings:
             similarity += cos(embedding, segment_embedding)[0][0]
-        if similarity < 0.55:
+        if similarity < 0.5:
             return None
         else:
             return [similarity / normalizer, self.weight]
@@ -161,11 +161,13 @@ def vecotirizationProtocol(fname):
     return vecs
 def vectorizeSCUs(scus):
     reconstruction = {}
+    scs = {}
     document = []
     scu_ids = []
     scus = sorted(scus.items(), key=lambda x: len(x[1]), reverse=True)
     for scu_id, contributor in scus:
         scu_ids.append((scu_id, len(contributor)))
+        scs[scu_id] = contributor
         document += contributor
     fname = 'temp/tmp.segs'
     with open(fname, 'w') as f:
@@ -177,14 +179,14 @@ def vectorizeSCUs(scus):
     for scu_id, length in scu_ids:
         reconstruction[scu_id] = vecs[j:length]
         vecs = vecs[length:]
-    return reconstruction
+    return reconstruction, scs
 def readPyramid(fname):
     soup = getSoup(fname)
     scus = getSCUs(soup)
-    scus = vectorizeSCUs(scus)
+    recon, scus = vectorizeSCUs(scus)
     scu_objects = []
     layer_sizes = []
-    for scu_id, labels in scus.items():
+    for scu_id, labels in recon.items():
         scu_objects.append(SCU(scu_id, len(labels), labels))
     size = max(scu_objects, key=lambda x: x.weight).weight
     j = 0
@@ -202,7 +204,7 @@ def readPyramid(fname):
         for size in layer_sizes:
             f.write(str(size) + '\n')
     f.close()
-    return scu_objects
+    return scu_objects, scus
 
 
 
@@ -221,33 +223,40 @@ def buildSCUlist(scu_pickle):
     return scus
 
 def sentencesFromSegmentations(fname):
-    f = open(fname, 'r')
-    segments = f.readlines()
-    sentences = {}
+    f = open(fname, 'r') # Read in file
+    segments = f.readlines() # Each line is a segment
+    sentences = {} # Initialize Empty Directory
     for segment in segments:
         segment = segment.split('&')
-        if segment[1] in sentences.keys():
-            embedding = segment[4].strip('\n').replace('[', '').replace(']', '')
-            embedding = [float(i) for i in embedding.split(',')]
-            sentences[segment[1]].append({'&'.join(segment[:4]):embedding})
+        if segment[1] in sentences.keys(): # segment[1] is the sentence identitiy
+            embedding = segment[4].strip('\n').replace('[', '').replace(']', '') # rip out the embedding from the line
+            embedding = [float(i) for i in embedding.split(',')] # cast elements to float with list comprehension
+            sentences[segment[1]].append({'&'.join(segment[:4]):embedding}) # segment id: embedding
         else:
             embedding = segment[4].strip('\n').replace('[', '').replace(']', '')
             embedding = [float(i) for i in embedding.split(',')]
             sentences[segment[1]] = [{'&'.join(segment[:4]):embedding}]
-    sentences = sorted(sentences.items(), key=lambda x: int(x[0]))
+    sentences = sorted(sentences.items(), key=lambda x: int(x[0])) # nested dictionary (sentence_key, sentence_stuff)
     sentences = [sentence[1] for sentence in sentences]
     sents = []
+    segmentations_in_summary = 0
+    seg_ids = []
     for sentence in sentences:
         segmentations = {}
+        count = {}
         for segment in sentence:
             for segment_id, embedding in segment.items():
+                seg_ids += [segment_id]
                 if segment_id.split('&')[2] in segmentations.keys():
                     segmentations[segment_id.split('&')[2]][segment_id] = embedding
+                    count[segment_id.split('&')[2]] += 1
                 else:
                     segmentations[segment_id.split('&')[2]] = {}
                     segmentations[segment_id.split('&')[2]][segment_id] = embedding
+                    count[segment_id.split('&')[2]] = 1
         sents.append(segmentations)
-    return dict(enumerate(sents))
+        segmentations_in_summary += max(count.items(), key=lambda x: x[1])[1]
+    return dict(enumerate(sents)), segmentations_in_summary
 
 def buildSCUcandidateList(vertices):
     scu_and_segments = {}
@@ -351,3 +360,105 @@ def getLayerSizes(fname):
         count += (n+1) * int(line.strip())
     avg = count/(n+1)
     return count_by_weight, avg
+
+def retrieveSeg(segID, seg_list):
+    for seg_id, seg in seg_list.items():
+        if segID == seg_id:
+            return seg
+
+def buildSummaryInfo(results, seg_list, sents_labels, scu_labels):
+    for seg_id, cu in results.items():
+        print seg_id, cu
+    used_seg_ids = []
+    used_sentences = []
+    sentences = {}
+    # #sentences_to_be_added = {} 
+    # for seg_id, scu in results.items():
+    #     if seg_id.split('&')[1] not in used_sentences:
+    #         used_sentences.append(seg_id.split('&')[1])
+    #     if seg_id.split('&')[1] in sentences.keys():
+    #         sentences[seg_id.split('&')[1]].append([seg_id, retrieveSeg(seg_id, seg_list), scu])
+    #         used_seg_ids.append(seg_id)
+    #     else:
+    #         sentences[seg_id.split('&')[1]] = []
+    #         sentences[seg_id.split('&')[1]].append([seg_id, retrieveSeg(seg_id, seg_list), scu])
+    #         used_seg_ids.append(seg_id)
+    # for sent, labels in sentences.items():
+    #     print sent, labels
+    # used_seg_ids = list(set(used_seg_ids))
+    # for sentence, segmentation_sets in sents_labels.items():
+    #     for seg in used_seg_ids:
+    #         if int(seg.split('&')[1]) == int(sentence):
+    #             if seg.split('&')[2] in segmentation_sets.keys():
+    #                 segments = segmentation_sets[seg.split('&')[2]]
+    #                 print segments.keys()
+
+    sentences = {}
+    for seg_id, scu in results.items():
+        used_seg_ids.append(seg_id)
+        identifier = float(seg_id.split('&')[1] + '.' + seg_id.split('&')[2])
+        if identifier in sentences.keys():
+            sentences[identifier].append([seg_id, retrieveSeg(seg_id, seg_list), scu])
+        else:
+            sentences[identifier] = [[seg_id, retrieveSeg(seg_id, seg_list), scu]]
+    for identifie in sentences.keys():
+        print identifie
+    getIdentifier = lambda seg_id: float(seg_id.split('&')[1] + '.' + seg_id.split('&')[2])
+    print used_seg_ids
+    for seg_id, seg in seg_list.items():
+        identifier = getIdentifier(seg_id)
+        if identifier in sentences.keys():
+            if seg_id not in used_seg_ids:
+                print seg_id
+
+        # if seg_id not in used_seg_ids:
+        #     identifier = getIdentifier(seg_id)
+        #     print identifier
+        #     if identifier in sentences.keys():
+        #         print seg_id, identifier
+        #         sentences[identifier].append([seg_id, retrieveSeg(seg_id, seg_list), None])
+        #     else:
+        #         for sentence, segmentations in sents_labels.items():
+        #             segmentation_we_use = max(segmentations.items(), key=lambda x: len(x[1].keys()))
+                    #print segmentation_we_use[1].keys()
+
+        
+
+
+
+
+
+
+    # # for sentence, segmentation in sents_labels.items():
+    # #     for seg_id in used_seg_ids:
+    # #         if int(seg_id.split('&')[1]) == int(sentence):
+    # #             for segtation, segments_dict in segmentation.items():
+    # #                 if int(seg_id.split('&')[2]) == int(segtation):
+    # #                     print '{} == {}'.format(seg_id.split('&')[2], segtation)
+    # #                     print segments_dict.keys()
+                                
+
+
+    # temp_dict = {}
+    # for sentence, data in sentences.items():
+    #     for sent, d in sentences_to_be_added.items():
+    #         if sent == sentence:
+    #             temp_dict[sentence] = data + d
+
+    # print temp_dict
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

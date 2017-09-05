@@ -47,7 +47,7 @@ for summary in summaries:
                 summary_slash= fn.rfind('/') + 1
                 summary_dot = fn.rfind('.')
                 summary_name = fn[summary_slash:summary_dot]
-                sentences = sentencesFromSegmentations(fn)
+                sentences, _ = sentencesFromSegmentations(fn)
                 Graph = SummaryGraph(sentences, scus)
                 independentSet = Graph.independentSet
                 candidates = buildSCUcandidateList(independentSet)

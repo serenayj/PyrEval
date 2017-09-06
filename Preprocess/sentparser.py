@@ -87,7 +87,7 @@ count = 0
 lists_nodes = {}
 segment_set = {}
 # Sentence as basic unit, ind is sentence id 
-for ind in range(1,len(all_dep_sent)):
+for ind in range(1,len(all_dep_sent)+1):
     used = False
     tmp_ids = [] 
     tmp = [] 
@@ -102,7 +102,7 @@ for ind in range(1,len(all_dep_sent)):
     segmentation_count = 0
     #segment_count = 0
 
-    # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
+    # Rule 1: Subordinating conjunctions 
     subconj_flag,sub_sent = check_IN(tr)
     if subconj_flag == True:
         subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist) 
@@ -116,6 +116,21 @@ for ind in range(1,len(all_dep_sent)):
             write_log(seg_dir +'/'+ fname +'.segs',out_sent)
             used = True
         segmentation_count += 1 
+
+    #Rule 2: [NP/VP, SBAR]
+    sbar_flag,sbar = get_SBAR(tr)
+    if sbar_flag == True:
+        sbar_ids, sbar_sent = Rule_NPSBAR(tr,tl,sbar,numlist)
+        for segmt in range(0,len(sbar_sent)): 
+            for kk in range(0,len(sbar_sent[segmt])):
+                output_sentence = Format_Sentence(1,sbar_ids[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
+                write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence) 
+                out_sent = Format_Sentence(3,sbar_sent[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
+                output_sentence1 = Format_Sentence(2,sbar_sent[segmt][kk],summary_index,ind,segmentation_count+segmt,kk) 
+                write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
+                write_log(seg_dir+'/' + fname +'.segs',out_sent)
+        segmentation_count += len(sbar)
+
     # Iterating in a list of vp chunks 
     if vps:
         for i in vps:

@@ -15,6 +15,8 @@ comp = ['comp','acomp','ccomp','xcomp',]
 tensed_verb = ['VBZ','VBD','VBP','MD']
 sub_conj = ['after', 'although', 'as', 'because', 'before', 'even','if', 'inasmuch', 'lest', 'now', 'once', 'provided', 'since', 'supposing', 'than', 'that', 'though', 'till', 'unless', 'until', 'when', 'whenever', 'where', 'whereas', 'where if', 'wherever', 'whether', 'which', 'while', 'who', 'whoever', 'why']
 
+wrb = ['WHADJP','WHAVP','WHNP','WHPP']
+
 wl = ['CC','CD','DT','EX','FW','IN','JJ','JJR','JJS','LS','MD','NN','NNS','NNP','NNPS','PDT','POS','PRP','PRP$','RB','RBR','RBS','RP','SYM','TO','UH','VB','VBD','VBG','VBN','VBP','VBZ','WDT','WP','WP$','WRB']
 
 pl = ['ADJP','ADVP','CONJP','FRAG','INTJ','LST','NAC','NP','NX','PP','PRN','PRT','QP','RRC','UCP','VP','WHADJP','WHAVP','WHNP','WHPP','X']
@@ -118,19 +120,60 @@ def vps_leaf_number(leaves):
             list_id.append(str(i[1]))
     return list_id
 
-def write_log(filename,lines, new_flag=0):
-    if new_flag == 1:
-        with open(filename, 'w') as f:
-            f.write(lines)
-    else:
-        with open (filename, 'a') as f: 
-            f.write(lines)
-    f.close()
+def make_vpsnumber(vps):
+    all_nodes = []
+    for i in vps:
+        if i[0].label() in tensed_verb:
+            unit = []
+            for j in i.leaves():
+                if len(j) == 2:
+                    unit.append(str(j[1]))
+            all_nodes.append(unit)
+    tmp = []
+    for i in all_nodes:
+        if i not in tmp:
+            tmp.append(i)
+    return tmp
 
-def write_listlog(filename,lists):
-    with open(filename, 'a') as f:
-        pickle.dump(lists, f)
-    f.close() 
+def pull_vpsnodes(nodes):
+    for i in vps:
+        for j in i.leaves():
+            # Check if it is an empty node
+            if len(j) == 2:
+                if str(j[1]) == nodes:
+                    return j[0]
+
+def get_SBAR(tr):
+    class _Node:
+        def __init__(self, data, next):
+            self.node = data
+            self.neighbor = next
+        def isCousin(self):
+            # Although most cases SBAR will be on the right-hand side of NP 
+            if (self.node == "NP") and (self.neighbor == "SBAR"):
+                return True 
+            elif (self.node == "VP") and (self.neighbor == "SBAR"):
+                return True 
+            else:
+                return False
+
+    sbar = [] 
+    flag = False 
+    for st in tr.subtrees():
+        if len(st) > 1:
+            for ind in range(len(st)):
+                if ind != (len(st)-1): 
+                    node = st[ind].label()
+                    next = st[ind+1].label()
+                    nodes = _Node(node,next)
+                    if nodes.isCousin() == True:
+                        flag = True 
+                        if st[ind].label() == 'SBAR':
+                            sbar.append(st[ind])
+                        elif st[ind+1].label() == 'SBAR':
+                            sbar.append(st[ind+1])
+    return flag,sbar
+
 
 def Pull_Words(segment_set,ind,numlist):
     seg = {}
@@ -159,6 +202,19 @@ def Format_Sentence(mode, label, sum_ind,sent_ind,segmt_ind,seg_ind):
         sentence = str(sum_ind)+'&'+str(sent_ind)+'&'+str(segmt_ind)+'&'+str(seg_ind)+'&'+str(label)+'\n'
     return sentence  
 
+def write_log(filename,lines, new_flag=0):
+    if new_flag == 1:
+        with open(filename, 'w') as f:
+            f.write(lines)
+    else:
+        with open (filename, 'a') as f: 
+            f.write(lines)
+    f.close()
+
+def write_listlog(filename,lists):
+    with open(filename, 'a') as f:
+        pickle.dump(lists, f)
+    f.close() 
 
 
 """
@@ -225,29 +281,36 @@ def Rule_SUBCONJ(sub_sent,tr,tl,numlist):
         seg_sent.append([" ".join(seg1)," ".join(seg2)])  
         return seg_ids, seg_sent
 
+# sbar_flag, sbar = get_SBAR(tr)
+# if sbar_flag == True
+def Rule_NPSBAR(tr,tl,sbar,numlist):
+    seg_ids = []
+    seg_sent = []
+    # In case it contains multiple 
+    seg_sbar = [] 
+    for ind in range(0,len(sbar)):
+        vps,ln = get_numberlist(sbar[ind],tl)
+        left = list(set(tl)-set(vps))
+        vps = sorted(list(map(int,vps))) 
+        left = sorted(list(map(int,left)))  
+        #print left 
+        seg_ids.append([left,vps])
+        seg1 = []
+        seg2 = []
+        for i in left:
+            for j in numlist:
+                if j[1] == i:
+                    nodes = j[0]
+                    seg1.append(nodes)
+        for i in vps:
+            for j in numlist:
+                if j[1] == i:
+                    nodes = j[0]
+                    seg2.append(nodes)
+    seg_sent.append([" ".join(seg1)," ".join(seg2)])  
+    return seg_ids, seg_sent
 
-def make_vpsnumber(vps):
-    all_nodes = []
-    for i in vps:
-        if i[0].label() in tensed_verb:
-            unit = []
-            for j in i.leaves():
-                if len(j) == 2:
-                    unit.append(str(j[1]))
-            all_nodes.append(unit)
-    tmp = []
-    for i in all_nodes:
-        if i not in tmp:
-            tmp.append(i)
-    return tmp
 
-def pull_vpsnodes(nodes):
-    for i in vps:
-        for j in i.leaves():
-            # Check if it is an empty node
-            if len(j) == 2:
-                if str(j[1]) == nodes:
-                    return j[0]
 
 # New algorithms for finding the arcs, just focus on whether the vps has a subj or obj 
 # i is from vps[]

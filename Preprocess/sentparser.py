@@ -92,7 +92,7 @@ for ind in range(1,len(all_dep_sent)+1):
     tmp_ids = [] 
     tmp = [] 
     things = all_dep_sent[ind]
-    novps,vps,tl,tr,numlist = get_vptree(parse[ind-1])
+    novps,vps,embedvps,tl,tr,numlist = get_vptree(parse[ind-1])
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
     raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
@@ -105,17 +105,19 @@ for ind in range(1,len(all_dep_sent)+1):
     # Rule 1: Subordinating conjunctions 
     subconj_flag,sub_sent = check_IN(tr)
     if subconj_flag == True:
-        subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist) 
-        for kk in range(0,len(subconj_seg_sent[0])):
-            output_sentence = Format_Sentence(1,str(subconj_seg_ids[0][kk]),summary_index,ind,segmentation_count,kk)
-            write_log('../ext/' + fname +'_log1-segment-id-readable.txt',output_sentence)
-            output_sentence1 = Format_Sentence(2,str(subconj_seg_sent[0][kk]),summary_index,ind,segmentation_count,kk)
-            write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',output_sentence1)
-            sentence_segmentations.append(output_sentence1)
-            out_sent = Format_Sentence(3,subconj_seg_sent[0][kk],summary_index,ind,segmentation_count,kk)
-            write_log(seg_dir +'/'+ fname +'.segs',out_sent)
-            used = True
-        segmentation_count += 1 
+        print "subconj!!"
+        used = True
+        subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist)
+        for segmt in range(0,len(subconj_seg_sent)): 
+            for kk in range(0,len(subconj_seg_sent[segmt])):
+                output_sentence = Format_Sentence(1,subconj_seg_ids[segmt][kk],summary_index,ind,segmt,kk)
+                write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence)
+                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
+                out_sent = Format_Sentence(3,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk)
+                output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk) 
+                write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
+                write_log('../ext'+'/' + fname +'.segs',out_sent)
+        segmentation_count += len(subconj_seg_sent) 
 
     #Rule 2: [NP/VP, SBAR]
     sbar_flag,sbar = get_SBAR(tr)
@@ -178,16 +180,21 @@ for ind in range(1,len(all_dep_sent)+1):
     idseg[ind] = t_seg
     punctuation = int(tl[len(tl)-1])
     tl = map(int,tl)
+    if len(embedvps) != 0:
+        _embedfinal = Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname)
+        idseg[ind] += _embedfinal 
+    else:
+        pass 
 
     # Now, start to pull out the segments from sentences 
     if all_vpnodes:
         used = True
         _idseg = RemakeSegStructure(idseg[ind])
-        seg_combo = get_segmentation3(_idseg)
-        new_idseg = Make_New_Segt(seg_combo,_idseg)
-        left = get_left(new_idseg,tl)
-        segs = Rearrange2(tl,new_idseg,left)
-        final = Connect_subj(new_idseg,segs)
+        seg_combo = with_segmentation(_idseg)
+        left = get_left(seg_combo,tl)
+        segs = Rearrange2(tl,seg_combo,left)
+        final = Connect_subj(seg_combo,segs)
+        final = Clean_Duplicate(final)
         segment_set[ind] = final
         for k,v in enumerate(segment_set[ind]):
             for vv in range(0,len(v)):

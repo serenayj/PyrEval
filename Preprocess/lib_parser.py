@@ -27,6 +27,19 @@ cl = ['S','SBAR','SBARQ','SINV','SQ']
 """
 =============================== Helper Functions============================
 """
+
+class SubVerbPhrase():
+    def __init__(self,child,parent,subject):
+        self.child = child
+        self.parent = parent
+        self.subject = subject
+    def IsSubPhrase(self):
+        if set(self.parent) > set(self.child):
+            return True 
+        else:
+            return False
+
+            
 def flatten(sublist):
     return list(chain.from_iterable(item if isinstance(item,Iterable) and not isinstance(item, basestring) else [item] for item in sublist))
 
@@ -62,11 +75,14 @@ def get_vptree(wholetree):
     vvps = []
     vps = []
     novps = []
+    embed_vps =[]
     for subtree in tr.subtrees():
         # if there is vp found, put it into vps
         if subtree.label() == 'VP':
             for i in subtree:
                 vps.append(subtree)
+                if i.label() == 'VP':
+                    embed_vps.append(i)
                     #vps.append(i)
     # else, if there is no VP found, treat it as own segments  
     if len(vps) == 0:
@@ -76,10 +92,9 @@ def get_vptree(wholetree):
                 novps.append(subtree)
     # Filter out those vps with no tensed verbs 
     for i in vps:
-        if i[0].label() in tensed_verb:
+        if (i[0].label() in tensed_verb) and (i not in vvps):
             vvps.append(i)
-
-    return novps,vvps,tl,tr,numlist 
+    return novps,vvps,embed_vps,tl,tr,numlist
 
 # Enumerate each leaf in the tree, so the leaves will be [word,number]
 # Input is a tree 
@@ -142,6 +157,47 @@ def pull_vpsnodes(nodes):
             if len(j) == 2:
                 if str(j[1]) == nodes:
                     return j[0]
+
+def Make_SubVP(embedvps):
+    embed_vps = make_vpsnumber(embedvps)
+    tmp = [] 
+    for i in range(0,len(embed_vps[:-1])):
+        for j in range(1,len(embed_vps)-1):
+            if len(embed_vps[i]) > len(embed_vps[j]):
+                subvp = SubVerbPhrase(embed_vps[j],embed_vps[i],None)           
+                if subvp.IsSubPhrase() == True:
+                    tmp.append(subvp)
+            else:
+                subvp = SubVerbPhrase(embed_vps[i],embed_vps[j],None)
+                if subvp.IsSubPhrase() == True:    
+                    tmp.append(subvp)
+    return tmp 
+
+def Update_Parent_Subject(ids,sub_vps):
+    for lst in ids:
+        predicate = lst[1]
+        subject = lst[0]
+        for subvp in sub_vps:
+            parent = subvp.parent
+            if predicate == parent:
+                subvp.subject = subject
+    return sub_vps 
+
+def Update_Child_Subject(ids,sub_vps):
+    final = [] 
+    for lst in ids:
+        predicate = lst[1]
+        subject = lst[0]
+        for subvp in sub_vps:
+            child = subvp.child
+            if predicate == child:
+                subject = subvp.subject
+            else:
+                pass
+        item = [subject,predicate]
+        if item not in final:
+            final.append(item)
+    return final 
 
 def get_SBAR(tr):
     class _Node:
@@ -439,6 +495,62 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,f
             write_log('../ext/' + fname +'_log1-no-match.txt',sentence)
             write_log('../ext/' + fname +'_log1-no-match.txt',sent_ids)
         return big_ids,all_parts 
+
+def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
+    sub_vps = Make_SubVP(embedvps) 
+    tmp_ids = []
+    # Step 0:
+    main_clause = [] 
+    subconj_flag, sub_sent = check_IN(tr)
+    if subconj_flag == True:
+        for ind in range(0,len(sub_sent)):
+            part,ln = get_numberlist(sub_sent[ind],tl)
+            prefix = list(set(tl).difference(set((map(int,part)))))
+            tmp_subj = pull_subj(things,prefix)
+            tmp_pred = [x for x in prefix if x != tmp_subj]
+            _struct = [str(tmp_subj),map(str,tmp_pred)] 
+            main_clause.append(_struct)
+    else:
+        pass 
+    #the i here is a subtree 
+    # Step 1: select subject from arcs relations
+    flag = False 
+    for i in embedvps:
+        idlist = vps_leaf_number(i.leaves())
+        wa,woa,purevps = find_arcs(i,things,tl)
+        if len(wa) >0:
+            for e in wa:
+                # There must be one of e in the idlist 
+                if e['dep_id'] not in idlist:
+                    # a verb used for finding another verb  
+                    nodes_id = e['dep_id']
+                    nodes_label = e['dep']
+                    ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
+                    print ids 
+                    for each in ids:
+                        tmp_ids.append(each)
+                elif e['gov_id'] not in idlist:
+                    nodes_id = e['gov_id']
+                    nodes_label = e['gov']
+                    ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
+                    for each in ids:
+                        tmp_ids.append(each)
+        # For complement, conjunction 
+        if len(woa) >0:
+            # Mark the current verb as starting node, vp always starts from a verb 
+            nodes_id = i.leaves()[0][1]
+            nodes_label = i.leaves()[0][0]
+            ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,ext,fname)
+            for each in ids:
+                tmp_ids.append(each)
+    # Step 2: settle down subjects from embeded vp relations
+    sub_vps = Update_Parent_Subject(tmp_ids,sub_vps)
+    final = Update_Child_Subject(tmp_ids,sub_vps)
+    if subconj_flag == True:
+        final += main_clause
+    else:
+        pass
+    return final  
 
 def RemakeSegStructure(idseg):
     tmp = []

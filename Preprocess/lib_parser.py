@@ -158,6 +158,17 @@ def pull_vpsnodes(nodes):
                 if str(j[1]) == nodes:
                     return j[0]
 
+def pull_subj(things, lst):
+    flag = False
+    for i in lst:
+        if flag == False:
+            for item in things:
+                if item['type'] in subj:
+                    if str(i) == item['dep_id']:
+                        return i 
+        else:
+            return lst[0]
+    
 def Make_SubVP(embedvps):
     embed_vps = make_vpsnumber(embedvps)
     tmp = [] 
@@ -494,7 +505,10 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,f
             sent_ids = "cover from:"+ " ".join(wordlist) + "\n"
             write_log('../ext/' + fname +'_log1-no-match.txt',sentence)
             write_log('../ext/' + fname +'_log1-no-match.txt',sent_ids)
-        return big_ids,all_parts 
+        return big_ids,all_parts
+
+
+
 
 def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
     sub_vps = Make_SubVP(embedvps) 
@@ -540,7 +554,7 @@ def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
             # Mark the current verb as starting node, vp always starts from a verb 
             nodes_id = i.leaves()[0][1]
             nodes_label = i.leaves()[0][0]
-            ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,ext,fname)
+            ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,fname)
             for each in ids:
                 tmp_ids.append(each)
     # Step 2: settle down subjects from embeded vp relations

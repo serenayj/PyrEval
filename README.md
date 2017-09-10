@@ -27,6 +27,13 @@ Here is an explanation of 4 folders under PyrEval.
 
 
 ## HOW TO USE 
+
+### Step 00(Optional but highly recommend): Split your documents into lines and clean up. Using the sciprt split-sent.py as following: 
+
+```
+python split-sent.py path_to_raw_text path_to_output
+```
+
 ### Step 0: Download and Run Stanford CoreNLP to get the preprocess xml files, see download link above.Unpack the file you will get a folder.
  
 Copy stanford.py to the Stanford CoreNLP folder, then run command: 

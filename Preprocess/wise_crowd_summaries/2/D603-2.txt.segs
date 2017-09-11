@@ -4,21 +4,21 @@
 2&1&1&2&Wetlands preventing erosion ,
 2&1&1&3&Wetlands controlling floods , and
 2&1&1&4&Wetlands preserving biodiversity .
-2&1&3&0&Wetlands , called earths kidney , are important in filtering pollutants , , conserving water ,
+2&1&2&0&Wetlands , called earths kidney , are important in filtering pollutants , , conserving water ,
+2&1&2&1&Wetlands regulating climate
+2&1&2&2&Wetlands preventing erosion ,
+2&1&2&3&Wetlands controlling floods , and
+2&1&2&4&Wetlands preserving biodiversity .
+2&1&3&0&Wetlands , called earths kidney , are important in filtering pollutants , , , preventing erosion ,
 2&1&3&1&Wetlands regulating climate
-2&1&3&2&Wetlands preventing erosion ,
+2&1&3&2&Wetlands conserving water
 2&1&3&3&Wetlands controlling floods , and
 2&1&3&4&Wetlands preserving biodiversity .
-2&1&6&0&Wetlands , called earths kidney , are important in filtering pollutants , , , preventing erosion ,
-2&1&6&1&Wetlands regulating climate
-2&1&6&2&Wetlands conserving water
-2&1&6&3&Wetlands controlling floods , and
-2&1&6&4&Wetlands preserving biodiversity .
-2&1&10&0&Wetlands , called earths kidney , are important in filtering pollutants , , , , controlling floods , and
-2&1&10&1&Wetlands regulating climate
-2&1&10&2&Wetlands conserving water
-2&1&10&3&Wetlands preventing erosion
-2&1&10&4&Wetlands preserving biodiversity .
+2&1&4&0&Wetlands , called earths kidney , are important in filtering pollutants , , , , controlling floods , and
+2&1&4&1&Wetlands regulating climate
+2&1&4&2&Wetlands conserving water
+2&1&4&3&Wetlands preventing erosion
+2&1&4&4&Wetlands preserving biodiversity .
 2&2&0&0&They can be low cost extensions of wastewater treatment plants .
 2&4&0&0&activities Human threaten wetlands in many places , including Asia , Africa , and the US , where , acres per year have been lost .
 2&4&1&0&acres Human activities threaten wetlands in many places , including Asia , Africa , and the US , where , per year have been lost .

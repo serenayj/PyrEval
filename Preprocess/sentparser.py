@@ -30,13 +30,13 @@ from rearrange import *
 
 #from draft2 import get_segmentation,rearrangement,reorder
 
-#fname = sys.argv[1]
-#sum_index = sys.argv[2]
-#outpath = sys.argv[3]
+fname = sys.argv[1]
+sum_index = sys.argv[2]
+outpath = sys.argv[3]
 
-fname = "/export/home/yug125/PyrEval/Preprocess/peer_summaries/D0603.M.250.C.6.xml"
-sum_index = str(5)
-outpath = "/export/home/yug125/PyrEval/Preprocess/peer_summaries"
+#fname = "/export/home/yug125/PyrEval/Preprocess/peer_summaries/D0603.M.250.C.35.xml"
+#sum_index = str(22)
+#outpath = "/export/home/yug125/PyrEval/Preprocess/peer_summaries"
 
 
 content = open(fname).read()

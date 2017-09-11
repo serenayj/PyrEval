@@ -1,3 +1,5 @@
+11&1&0&0&Air bags in some Mercedes Benz models are supposed to recognize and turn off the passenger air bag .
+11&1&0&1&that a BabySmart seat has been installed
 11&1&1&0&bags Air in some Mercedes Benz models are supposed to recognize that a BabySmart seat has been installed and turn off the passenger air bag .
 11&1&2&0&seat Air bags in some Mercedes Benz models are supposed to recognize that a BabySmart has been installed and
 11&1&2&1&seat turn off the passenger air bag .
@@ -22,17 +24,25 @@
 11&3&6&1&head , neck , or chest are in close proximity to the air bag at the time of deployment .
 11&3&7&0&administration In its consumer advisory , the traffic safety warned that side air bags can kill or seriously injure children whose
 11&3&7&1&head , neck , or chest are in close proximity to the air bag at the time of deployment .
+11&4&0&0&The agency also urged manufacturers to allow owners of vehicles with rear side air bags to bring them back to dealers to have them deactivated .
+11&4&0&1&if the vehicle is likely to be carrying children
 11&4&1&0&agency The also urged manufacturers to allow owners of vehicles with rear side air bags to bring them back to dealers to have them deactivated if the vehicle is likely to be carrying children .
 11&4&2&0&vehicle if the is likely to be carrying children
 11&4&2&1&agency The also urged manufacturers to allow owners of vehicles with rear side air bags to bring them back to dealers to have them deactivated .
+11&5&0&0&The companys move follows a recommendation by the National Transportation Safety Board in January .
+11&5&0&1&that a nationwide network of fitting stations for child seats be established to prevent the deaths of children in automobile accidents
 11&5&1&0&companys The move follows a recommendation by the National Transportation Safety Board in January that a nationwide network of fitting stations for child seats be established to prevent the deaths of children in automobile accidents .
 11&5&2&0&network that a nationwide of fitting stations for child seats be established to prevent the deaths of children in automobile accidents
 11&5&2&1&companys The move follows a recommendation by the National Transportation Safety Board in January .
 11&6&0&0&system The was designed to reduce the dangers of small children in child seats near air bags .
+11&7&0&0&Safety experts recommend that rear facing infant seats never be placed in front of an air bag .
+11&7&0&1&that small infants ride in rear facing child seats , but also strongly recommend
 11&7&1&0&experts Safety recommend that small infants ride in rear facing child seats , but also strongly recommend that rear facing infant seats never be placed in front of an air bag .
 11&7&2&0&infants Safety experts recommend that small ride in rear facing child seats , but also strongly recommend that rear facing infant seats never be placed in front of an air bag .
 11&7&3&0&seats Safety experts recommend that small , but also strongly recommend that rear facing infant never be placed in front of an air bag .
 11&7&3&1&infants ride in rear facing child seats
+11&8&0&0&Another safety agency , the National Transportation Safety Board , called attention to the problem of wrongly installed seats , urging creation of a network of permanent fitting stations for child seats .
+11&8&0&1&that the government , automakers and private safety agencies would operate jointly
 11&8&1&0&government that the , automakers and private safety agencies would operate jointly
 11&8&1&1&agency Another safety , the National Transportation Safety Board , called attention to the problem of wrongly installed seats , urging creation of a network of permanent fitting stations for child seats .
 11&8&2&0&automakers that the government , and private safety agencies would operate jointly

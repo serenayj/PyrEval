@@ -17,12 +17,16 @@
 4&7&3&1&seat is placed in the front
 4&8&0&0&Benz Mercedes and Volvo added air bag curtains to some models .
 4&9&0&0&.
+4&10&0&0&Air bags in some Mercedes Benz models are supposed to recognize and turn off the passenger air bag .
+4&10&0&1&that a BabySmart seat has been installed
 4&10&1&0&bags Air in some Mercedes Benz models are supposed to recognize that a BabySmart seat has been installed and turn off the passenger air bag .
 4&10&2&0&seat Air bags in some Mercedes Benz models are supposed to recognize that a BabySmart has been installed and
 4&10&2&1&seat turn off the passenger air bag .
 4&10&3&0&turn Air bags in some Mercedes Benz models are supposed to recognize that a BabySmart seat has been installed and off the passenger air bag .
 4&10&4&0&seat Air bags in some Mercedes Benz models are supposed to recognize that a BabySmart has been installed and turn off the passenger air bag .
 4&11&0&0&system The was designed to reduce the dangers of small children in child seats near air bags .
+4&12&0&0&Another safety agency , the National Highway Traffic Safety Administration , says more .
+4&12&0&1&than percent of child car seats are used improperly
 4&12&1&0&agency Another safety , the National Highway Traffic Safety Administration , says more than percent of child car seats are used improperly .
 4&12&2&0&more than percent of child car seats are used improperly
 4&12&2&1&agency Another safety , the National Highway Traffic Safety Administration , says more .
@@ -35,5 +39,7 @@
 4&14&0&1&where most children ride
 4&14&1&0&Cars should be designed with child safety first in mind , especially in the back seat where most children ride .
 4&14&2&0&children Cars should be designed with child safety first in mind , especially in the back seat where most ride .
+4&15&0&0&In a speech in January , Hall announced the safety board was recommending a nationwide network of fitting stations to check
+4&15&0&1&that child seats
 4&15&1&0&Hall In a speech in January , announced the safety board was recommending a nationwide network of fitting stations to check that child seats
 4&15&2&0&board In a speech in January , Hall announced the safety was recommending a nationwide network of fitting stations to check that child seats

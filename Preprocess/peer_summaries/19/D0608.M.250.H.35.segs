@@ -1,0 +1,53 @@
+19&1&1&0&sensor A in the belt buckle determines if the driver has buckled up ; if not , a red light on the dashboard goes on and an intermittent chime sounds until the belt is latched .
+19&1&2&0&driver A sensor in the belt buckle determines if the has buckled up ; if not , a red light on the dashboard goes on and an intermittent chime sounds until the belt is latched .
+19&1&3&0&light A sensor in the belt buckle determines if the driver has buckled up ; if not , a red on the dashboard goes on and an intermittent chime sounds until the belt is latched .
+19&1&4&0&belt A sensor in the belt buckle determines if the ; if not , a red on the dashboard and an intermittent chime sounds until the is latched .
+19&1&4&1&driver has buckled up
+19&1&4&2&light goes on
+19&2&0&0&government The should set up a nationwide network of fitting stations for child seats to help save childrens lives in car crashes , the National Transportation Safety Board recommended Wednesday .
+19&2&1&0&Board The should , the National Transportation Safety recommended Wednesday .
+19&2&1&1&government set up a nationwide network of fitting stations for child seats to help save childrens lives in car crashes
+19&2&2&0&government The should , the National Transportation Safety Board recommended Wednesday .
+19&2&2&1&government set up a nationwide network of fitting stations for child seats to help save childrens lives in car crashes
+19&3&0&0&AG DaimlerChrysler is establishing a new service at a quarter of its dealerships to advise parents on how to install car seats to protect children .
+19&4&0&0&DaimlerChrysler By next year , will have the capacity to conduct ,
+19&4&0&1&children annually to are buckled properly in child seats and child seats
+19&4&0&2&inspections are properly installed in both new and older DaimlerChrysler vehicles , the company
+19&4&0&3&officials said .
+19&4&0&4&buckled make sure children
+19&4&1&0&children By next year , will , annually to are buckled properly in child seats and child seats
+19&4&1&1&inspections are properly installed in both new and older DaimlerChrysler vehicles , the company
+19&4&1&2&officials said .
+19&4&1&3&DaimlerChrysler have the capacity to conduct
+19&4&1&4&buckled make sure children
+19&4&2&0&inspections By next year , DaimlerChrysler will have the capacity to conduct , annually to make sure children are buckled properly in child seats and child seats are properly installed in both new and older DaimlerChrysler vehicles , the company officials said .
+19&4&3&0&officials By next year , will , annually to and child seats , the company said .
+19&4&3&1&children are buckled properly in child seats
+19&4&3&2&inspections are properly installed in both new and older DaimlerChrysler vehicles
+19&4&3&3&DaimlerChrysler have the capacity to conduct
+19&4&3&4&buckled make sure children
+19&4&4&0&DaimlerChrysler By next year , will , annually to and child seats , the company officials said .
+19&4&4&1&children are buckled properly in child seats
+19&4&4&2&inspections are properly installed in both new and older DaimlerChrysler vehicles
+19&4&4&3&DaimlerChrysler have the capacity to conduct
+19&4&4&4&buckled make sure children
+19&4&5&0&officials By next year , DaimlerChrysler will have the capacity to conduct ,
+19&4&5&1&children annually to are buckled properly in child seats and child seats
+19&4&5&2&inspections are properly installed in both new and older DaimlerChrysler vehicles , the company
+19&4&5&3&officials said .
+19&4&5&4&buckled make sure children
+19&4&6&0&buckled By next year , will , annually to make sure children
+19&4&6&1&children are buckled properly in child seats and child seats
+19&4&6&2&inspections are properly installed in both new and older DaimlerChrysler vehicles , the company
+19&4&6&3&officials said .
+19&4&6&4&DaimlerChrysler have the capacity to conduct
+19&6&0&0&On Monday , police officers throughout New Jersey will have the authority to stop drivers .
+19&6&0&1&who are not wearing seat belts
+19&6&1&0&officers On Monday , police throughout New Jersey will have the authority to stop drivers who are not wearing seat belts .
+19&6&2&0&drivers On Monday , police officers throughout New Jersey will have the authority to stop who are not wearing seat belts .
+19&7&0&0&government The announced new air bag standards Friday that seek to improve protection of children and small adults .
+19&7&1&0&that The government announced new air bag standards Friday seek to improve protection of children and small adults .
+19&8&1&0&Since the mid s , General Motors Corp. has installed a sensing module along with its airbags .
+19&8&1&1&that measured and recorded airbag performance
+19&8&2&0&s Since the mid , General Motors Corp. has installed a sensing module along with its airbags that measured and recorded airbag performance .
+19&9&0&0&Convinced of the recorders benefits , James Hall , chairman of the National Transportation Safety Board , last month called for the devices on cars , trains , buses and ships .

@@ -218,7 +218,7 @@ for ind in range(1,len(all_dep_sent)+1):
                 sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
                 print "segment ", vv, " label: ", v[vv] 
                 write_log(seg_dir+'/' + fname +'.segs',sent)
-        segmentation_count += k
+        segmentation_count += len(seg)
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
         if subconj_flag == True:

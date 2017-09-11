@@ -1,28 +1,38 @@
+1&1&0&0&The seat belt is the most effective automobile safety device .
 1&2&0&0&Getting people to use them remains a
 1&2&0&1&problem , which has been addressed by installing use sensors and enacting laws to stop and fine non users .
 1&2&1&0&problem Getting people to use them remains a , which has been addressed by installing use sensors and enacting laws to stop and fine non users .
+1&2&2&0&Getting people to use them remains a problem , which has been addressed by installing use sensors and enacting laws to stop and fine non users .
 1&3&0&0&Airbags should protect , but not injure , the drivers and front seat passengers .
 1&3&1&0&Airbags should protect , but not
 1&3&1&1&Airbags injure , the drivers and front seat passengers .
+1&3&2&0&Airbags should protect , but not injure , the drivers and front seat passengers .
 1&4&0&0&Devices were installed to prevent their deployment .
 1&4&0&1&when passengers are too small
 1&4&1&0&Devices were installed to prevent their deployment when passengers are too small .
 1&4&2&0&passengers Devices were installed to prevent their deployment when are too small .
+1&4&3&0&Devices were installed to prevent their deployment when passengers are too small .
 1&5&0&0&airbags Side or curtains , again that can be deactivated ,
 1&5&0&1&airbags are being installed to prevent injuries in side collusions or rollovers .
 1&5&1&0&curtains Side or , again that can be deactivated ,
 1&5&1&1&airbags are being installed to prevent injuries in side collusions or rollovers .
 1&5&2&0&airbags Side or curtains , again that can be deactivated , are being installed to prevent injuries in side collusions or rollovers .
 1&5&3&0&curtains Side airbags or , again that can be deactivated , are being installed to prevent injuries in side collusions or rollovers .
+1&5&4&0&Side airbags or curtains , again that can be deactivated , are being installed to prevent injuries in side collusions or rollovers .
 1&6&0&0&cushioning Additional interior is used to avoid head injuries and
 1&6&0&1&having the backrest and head restraint shift backward in a rear end collusion can provide whiplash protection .
 1&6&1&0&having Additional interior cushioning is used to avoid head injuries and the backrest and head restraint shift backward in a rear end collusion can provide whiplash protection .
 1&6&2&0&having Additional interior cushioning is used to avoid head injuries and
 1&6&2&1&having the backrest and head restraint shift backward in a rear end collusion can provide whiplash protection .
+1&6&3&0&Additional interior cushioning is used to avoid head injuries and having the backrest and head restraint shift backward in a rear end collusion can provide whiplash protection .
 1&7&0&0&seats Infant car , child restraints , and booster seats , all placed in the back seat , are the keys to protecting children in a crash .
 1&7&1&0&restraints Infant car seats , child , and booster seats , all placed in the back seat , are the keys to protecting children in a crash .
+1&7&2&0&Infant car seats , child restraints , and booster seats , all placed in the back seat , are the keys to protecting children in a crash .
+1&8&0&0&Enforcing their use and programs to educate parents on the correct use and installation are key .
 1&9&0&0&tests Crash , finally beginning in China , should include child dummies in the back seat .
+1&9&1&0&Crash tests , finally beginning in China , should include child dummies in the back seat .
 1&10&0&0&Engineers are seeking ways to avoid the accident in the first place .
+1&10&1&0&Engineers are seeking ways to avoid the accident in the first place .
 1&11&0&0&brakes Anti lock , computerized stability and traction control , all wheel drive , low tire pressure detectors , reverse sensing systems , better suspension and handling , and blue tint headlights all contribute to this end .
 1&11&1&0&stability Anti lock brakes , computerized and traction control , all wheel drive , low tire pressure detectors , reverse sensing systems , better suspension and handling , and blue tint headlights all contribute to this end .
 1&11&2&0&control Anti lock brakes , computerized stability and traction , all wheel drive , low tire pressure detectors , reverse sensing systems , better suspension and handling , and blue tint headlights all contribute to this end .
@@ -30,6 +40,7 @@
 1&11&4&0&detectors Anti lock brakes , computerized stability and traction control , all wheel drive , low tire pressure , reverse sensing systems , better suspension and handling , and blue tint headlights all contribute to this end .
 1&11&5&0&systems Anti lock brakes , computerized stability and traction control , all wheel drive , low tire pressure detectors , reverse sensing , better suspension and handling , and blue tint headlights all contribute to this end .
 1&11&6&0&suspension Anti lock brakes , computerized stability and traction control , all wheel drive , low tire pressure detectors , reverse sensing systems , better and handling , and blue tint headlights all contribute to this end .
+1&11&7&0&Anti lock brakes , computerized stability and traction control , all wheel drive , low tire pressure detectors , reverse sensing systems , better suspension and handling , and blue tint headlights all contribute to this end .
 1&12&0&0&In addition , states are enacting graduated licensing laws to limit new drivers .
 1&12&0&1&until they gain experience
 1&12&1&0&In addition , states are enacting graduated licensing laws to limit new drivers .
@@ -37,9 +48,11 @@
 1&12&2&0&states In addition , are enacting graduated licensing laws to limit new drivers until they gain experience .
 1&12&3&0&they until gain experience
 1&12&3&1&states In addition , are enacting graduated licensing laws to limit new drivers .
+1&12&4&0&In addition , states are enacting graduated licensing laws to limit new drivers until they gain experience .
 1&13&0&0&Finally the installation and analysis of black boxes will allow engineers to better understand crashes and the causes of injuries .
 1&13&0&1&that record data in the last seconds before a crash
 1&13&1&0&boxes Finally the and analysis of black that record data in the last seconds before a crash
 1&13&1&1&installation will allow engineers to better understand crashes and the causes of injuries .
 1&13&2&0&installation Finally the and analysis of black boxes that record data in the last seconds before a crash will allow engineers to better understand crashes and the causes of injuries .
 1&13&3&0&analysis Finally the installation and of black boxes that record data in the last seconds before a crash will allow engineers to better understand crashes and the causes of injuries .
+1&13&4&0&Finally the installation and analysis of black boxes that record data in the last seconds before a crash will allow engineers to better understand crashes and the causes of injuries .

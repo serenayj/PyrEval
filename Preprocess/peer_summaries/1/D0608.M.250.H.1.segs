@@ -1,5 +1,6 @@
 1&1&0&0&boxes Black for cars , a technology borrowed from the airline industry , now are poised to help auto accident investigators pin the blame on drivers responsible for causing crashes .
 1&1&1&0&investigators Black boxes for cars , a technology borrowed from the airline industry , now are poised to help auto accident pin the blame on drivers responsible for causing crashes .
+1&1&2&0&Black boxes for cars , a technology borrowed from the airline industry , now are poised to help auto accident investigators pin the blame on drivers responsible for causing crashes .
 1&2&0&0&Motors Since , many General and Ford cars and trucks have been equipped with a device similar to an airliners black box , or flight data recorder , which automatically records the vehicles speed , throttle setting , braking effort and engine rpm for each of the five seconds leading to an air bag deployment .
 1&2&1&0&cars Since , many General Motors and Ford and trucks have been equipped with a device similar to an airliners black box , or flight data recorder , which automatically records the vehicles speed , throttle setting , braking effort and engine rpm for each of the five seconds leading to an air bag deployment .
 1&2&2&0&trucks Since , many General Motors and Ford cars and have been equipped with a device similar to an airliners black box , or flight data recorder , which automatically records the vehicles speed , throttle setting , braking effort and engine rpm for each of the five seconds leading to an air bag deployment .
@@ -8,12 +9,16 @@
 1&2&4&1&cars have been equipped with a device similar to an airliners black box , or flight data recorder
 1&2&5&0&recorder Since , many General Motors and Ford and trucks , which automatically records the vehicles speed , throttle setting , braking effort and engine rpm for each of the five seconds leading to an air bag deployment .
 1&2&5&1&cars have been equipped with a device similar to an airliners black box , or flight data recorder
+1&2&6&0&Since , many General Motors and Ford cars and trucks have been equipped with a device similar to an airliners black box , or flight data recorder , which automatically records the vehicles speed , throttle setting , braking effort and engine rpm for each of the five seconds leading to an air bag deployment .
 1&3&0&0&it Until now , however , was difficult to extract that information from the cars air bag control module .
+1&3&1&0&Until now , however , it was difficult to extract that information from the cars air bag control module .
 1&4&0&0&But a California company in March began selling a device .
 1&4&0&1&that connects a cars onboard computer to a laptop computer to quickly extract such key information from a crashed vehicle
 1&4&1&0&company But a California in March began selling a device that connects a cars onboard computer to a laptop computer to quickly extract such key information from a crashed vehicle .
+1&4&2&0&But a California company in March began selling a device that connects a cars onboard computer to a laptop computer to quickly extract such key information from a crashed vehicle .
 1&5&0&0&_ The , device called a Crash Data Retrieval System _ is being marketed to police departments , insurance companies and auto rental agencies to help them reconstruct crashes to determine fault .
 1&5&1&0&_ The , device _ called a Crash Data Retrieval System is being marketed to police departments , insurance companies and auto rental agencies to help them reconstruct crashes to determine fault .
+1&5&2&0&The , device _ called a Crash Data Retrieval System _ is being marketed to police departments , insurance companies and auto rental agencies to help them reconstruct crashes to determine fault .
 1&6&0&0&system The lets investigators collect objective , accurate data on crashes to enhance reconstruction of accidents ,
 1&6&0&1&Zaleski said Jim
 1&6&0&2&Corp. , president of Santa Barbara based Vetronix , which markets the device .
@@ -26,11 +31,15 @@
 1&6&3&0&system The , said Jim
 1&6&3&1&Zaleski lets investigators collect objective , accurate data on crashes to enhance reconstruction of accidents
 1&6&3&2&Corp. , president of Santa Barbara based Vetronix , which markets the device .
+1&6&4&0&The system lets investigators collect objective , accurate data on crashes to enhance reconstruction of accidents , said Jim Zaleski , president of Santa Barbara based Vetronix Corp. , which markets the device .
 1&7&0&0&This opens the door to a new generation of understanding and modeling automobile accidents ,
 1&7&0&1&he said .
 1&7&1&0&he This opens the door to a new generation of understanding and modeling automobile accidents ,
 1&7&1&1&he said .
 1&7&2&0&he This opens the door to a new generation of understanding and modeling automobile accidents , said .
+1&7&3&0&This opens the door to a new generation of understanding and modeling automobile accidents , he said .
+1&8&0&0&Some of the vehicles that have the capability to provide such data also can tell investigators and whether the passenger side air bag had been deactivated .
+1&8&0&1&whether the cars occupants were wearing seatbelts
 1&8&1&0&Some of the vehicles that have the capability to provide such data also can tell investigators .
 1&8&1&1&whether the cars occupants were wearing seatbelts and whether the passenger side air bag had been deactivated
 1&8&3&0&vehicles Some of the that have the capability to provide such data also can tell investigators whether the cars occupants were wearing seatbelts and whether the passenger side air bag had been deactivated .
@@ -40,3 +49,4 @@
 1&8&6&1&occupants were wearing seatbelts
 1&8&7&0&Some of the vehicles that have the capability to provide such data also can tell investigators whether the cars and whether the passenger side air bag had been deactivated .
 1&8&7&1&occupants were wearing seatbelts
+1&8&8&0&Some of the vehicles that have the capability to provide such data also can tell investigators whether the cars occupants were wearing seatbelts and whether the passenger side air bag had been deactivated .

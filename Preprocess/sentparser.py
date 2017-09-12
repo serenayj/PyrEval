@@ -34,9 +34,9 @@ fname = sys.argv[1]
 sum_index = sys.argv[2]
 outpath = sys.argv[3]
 
-#fname = "/export/home/yug125/PyrEval/Preprocess/peer_summaries/D0603.M.250.C.35.xml"
-#sum_index = str(22)
-#outpath = "/export/home/yug125/PyrEval/Preprocess/peer_summaries"
+#fname = "wise_crowd_summaries/D0608.M.250.H.1.xml"
+#sum_index = str(1)
+#outpath = "wise_crowd_summaries"
 
 
 content = open(fname).read()
@@ -51,9 +51,6 @@ fname = fname[:-4]
 #print fname
 
 
-
-
-pausing_point = [',',':',';']
 
 # Get a set of tags, Pl is phrase tags, Cl is clause tags, Wl is POS tags 
 soup = BeautifulSoup(content,'lxml')
@@ -116,18 +113,20 @@ for ind in range(1,len(all_dep_sent)+1):
         subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist)
         for segmt in range(0,len(subconj_seg_sent)): 
             for kk in range(0,len(subconj_seg_sent[segmt])):
-                output_sentence = Format_Sentence(1,subconj_seg_ids[segmt][kk],summary_index,ind,segmt,kk)
+                output_sentence = Format_Sentence(1,subconj_seg_ids[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
                 write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence)
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                 out_sent = Format_Sentence(3,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk)
                 output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk) 
                 write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
-                write_log('../ext'+'/' + fname +'.segs',out_sent)
+                write_log(seg_dir+'/' + fname +'.segs',out_sent)
         segmentation_count += len(subconj_seg_sent) 
 
     #Rule 2: [NP/VP, SBAR]
     sbar_flag,sbar = get_SBAR(tr)
     if sbar_flag == True:
+        used = True 
+        print "embedded vps! "
         sbar_ids, sbar_sent = Rule_NPSBAR(tr,tl,sbar,numlist)
         for segmt in range(0,len(sbar_sent)): 
             for kk in range(0,len(sbar_sent[segmt])):
@@ -209,14 +208,14 @@ for ind in range(1,len(all_dep_sent)+1):
                 #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
         seg = Pull_Words(segment_set,ind,numlist)
         for k,v in seg.items():
-            print "Segmentation: ", k   
+            #print "Segmentation: ", k   
             #write_log(ext+'/' + fname +'_log-segment-label-readable.txt',output_sentence) 
             for vv in range(0,len(v)):
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                 sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
                 write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
                 sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
-                print "segment ", vv, " label: ", v[vv] 
+                #print "segment ", vv, " label: ", v[vv] 
                 write_log(seg_dir+'/' + fname +'.segs',sent)
         segmentation_count += len(seg)
     else:
@@ -224,10 +223,10 @@ for ind in range(1,len(all_dep_sent)+1):
         if subconj_flag == True:
             pass 
 
-    if used == False:
-        v = " ".join([item[0] for item in numlist]) 
-        sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
-        write_log(seg_dir +'/'+ fname +'.segs',sentence)
+    #Just output whatever it is 
+    v = " ".join([item[0] for item in numlist]) 
+    sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
+    write_log(seg_dir +'/'+ fname +'.segs',sentence)
 
 
 

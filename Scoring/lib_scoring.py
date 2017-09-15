@@ -419,7 +419,6 @@ def retrieveSeg(segID, seg_list):
             return seg
 
 def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels, pyramid_name):
-
     w,h = terminal_size()
     summary_name_len = len(summary_name)
     

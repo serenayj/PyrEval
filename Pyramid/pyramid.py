@@ -215,6 +215,7 @@ for threshold in thresholds:
         # print('a: {} | b: {}').format(tup[0], tup[1])  
         # print('cost: %.2f' % cost)
         # print('was: %.2f' % was)
+        print('Pyramid: %s' % fname)
         print('Time: {}'.format(str(done - timer)))
         print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramid')
         print('Pyramid .size file stored in PyrEval/Scoring/sizes')

@@ -16,7 +16,7 @@ import os
 parser = optparse.OptionParser()
 parser.add_option('-a', '--all', action="store_true", dest="a", default=False)
 parser.add_option('-t', '--table', action="store_true", dest="t", default=False)
-parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/...")
+parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyamids/...")
 parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
 options, args = parser.parse_args()
 

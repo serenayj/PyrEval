@@ -24,7 +24,7 @@ print_all = options.a
 print_table = options.t
 pyramid_path = options.pyramid
 results_file = options.output
-pyramids = list(glob.glob(pyramid_path+'/*.pyr'))
+pyramids = list(glob.glob(pyramid_path))
 
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder

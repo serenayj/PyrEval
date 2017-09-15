@@ -104,7 +104,7 @@ for ind in range(1,len(all_dep_sent)+1):
     # Rule 1: Subordinating conjunctions 
     subconj_flag,sub_sent = check_IN(tr)
     if subconj_flag == True:
-        print "subconj!!"
+        #print "subconj!!"
         used = True
         subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist)
         for segmt in range(0,len(subconj_seg_sent)): 

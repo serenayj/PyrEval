@@ -14,11 +14,11 @@ import xml.etree.cElementTree as ET
 =========================== Pipeline =================================
 """ 
 
-print("Reading Content")
+#print("Reading Content")
 #directories = glob.iglob('wise_crowd/*')
 directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
 segs, vecs, N = readFiles(directories)
-print("Making Segments")
+#print("Making Segments")
 segpool = make_segs(segs, vecs)
 pairwise_test(segpool, N)
 

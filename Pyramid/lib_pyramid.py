@@ -292,7 +292,7 @@ def pairwise(segmentpool, N, threshold):
                 scores.append(sc)
                 result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
     Q3 = np.percentile(np.asarray(scores), threshold)
-    print('\tCosine Score for Quantile: %.3f' % Q3)
+    #print('\tCosine Score for Quantile: %.3f' % Q3)
     rresult = []
     for res in result:
         if (res['WAS'] / 2) > Q3:

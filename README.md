@@ -77,8 +77,20 @@ SCU_index Weight Segment_Label
 ### Step 3: Score the peer summaries 
 This step will take preprocessed peer summaries under Preprocess/peer_summaries/ and your selected pyramid as input and generate the scores. Switch to Scoring folder and run the script: 
 ```
-python scoring.py selected_pyramid
+python scoring.py -options
 ```
+
+-options:
+-p <path/to/pyramid or pyramids>
+-a print verbose
+-t print scoring table
+-o specify output (default is '../results.csv')
+
+Eg:
+```
+python scoring.py -p pyramids/example_pyramid.pyr -a -t -o my_results.csv
+```
+
 Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p. 
 
 Output of Step 3 is a .csv file, located under PyrEval. 

@@ -16,7 +16,7 @@ import os
 parser = optparse.OptionParser()
 parser.add_option('-a', '--all', action="store_true", dest="a", default=False)
 parser.add_option('-t', '--table', action="store_true", dest="t", default=False)
-parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyamids/...")
+parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyamids/*")
 parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
 options, args = parser.parse_args()
 
@@ -24,7 +24,7 @@ print_all = options.a
 print_table = options.t
 pyramid_path = options.pyramid
 results_file = options.output
-pyramids = list(glob.glob(pyramid_path, '*.pyr'))
+pyramids = list(glob.glob(pyramid_path))
 
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
@@ -39,19 +39,14 @@ f.close()
 
 #getFname = lambda fname: fname[:fname.rfind('.')]
 #sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getFname(j[0]))))]
-sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][j[0].rfind('.') + 1:])))]
+sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][:(j[0].rfind('.'))])))]
 
 
 """
 ====================== Scores to Compare With ========================
 """
 score_tables = ['raw', 'quality', 'coverage', 'comprehension']
-# RAW = [47,38,38,22,
-#                     46,51,34,60,
-#                     13,10,22,19,
-#                     54,26,44,43,
-#                     16,36,25,40]
-                   
+RAW = [16,43,22,40,34,54,25,46,47,51,26,36,22,10,38,38,19,13,13,60]              
 # QUALITY = [0.7705,0.6552,0.5938,0.4231,
 #                     0.7188,0.8361,0.7907,0.8571,
 #                     0.3333,0.2857,0.5641,0.7037,
@@ -64,7 +59,8 @@ score_tables = ['raw', 'quality', 'coverage', 'comprehension']
 #                         0.1111,
 #                         0.2442,
 #                         0.2111,0.6,
-#                         0.2889,0.4778,0.4889,
+#                         0.2889,0.4778,0.4889,s
+
 #                         0.1778,0.4,0.2778,0.4444]
 
 # COMP = [0.6463,0.5387,0.508,0.3337,
@@ -161,21 +157,28 @@ for pyramid in pyramids:
                             w.writerow(output)
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
 
-    with open(correlation_file, 'a') as f:
-        corr_w = csv.writer(f)
-        raw_sc = sort(raw_scores)
-        #quality_sc = sort(quality_scores)
-        #coverage_sc = sort(quality_scores)
-        #comprehension_sc = sort(comprehension_scores)
+    # with open(correlation_file, 'a') as f:
+    # #     corr_w = csv.writer(f)
+    #     raw_sc = sort(raw_scores)
+    # #     #quality_sc = sort(quality_scores)
+    # #     #coverage_sc = sort(quality_scores)
+    # #     #comprehension_sc = sort(comprehension_scores)
 
-        raw_corr = pearson(raw_sc, RAW)[0]
-        #quality_corr = pearson(quality_sc, QUALITY)[0]
-        #coverage_corr = pearson(coverage_sc, COVERAGE)[0]
-        #comprehension_corr = pearson(comprehension_sc, COMP)[0]
+    #     raw_corr = pearson(raw_sc, RAW)[0]
+    #     print raw_corr
+    # #     #quality_corr = pearson(quality_sc, QUALITY)[0]
+    # #     #coverage_corr = pearson(coverage_sc, COVERAGE)[0]
+    # #     #comprehension_corr = pearson(comprehension_sc, COMP)[0]
 
-        #line = [pyramid_name, raw_corr, quality_corr, coverage_corr, comprehension_corr]
-        line = [pyramid_name, raw_corr]
-        corr_w.writerow(line)
+    # #     #line = [pyramid_name, raw_corr, quality_corr, coverage_corr, comprehension_corr]
+    # #     line = [pyramid_name, raw_corr]
+    # #     corr_w.writerow(line)
+
+
+
+print '\n'
+print 'Results written to %s' % results_file
+print '\n'
 
 
 

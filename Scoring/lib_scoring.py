@@ -12,6 +12,41 @@ from weiwei import vectorize
 
 
 
+"""
+===================== Segments =====================
+"""
+
+class Segment():
+    def __init__(self, sentence_id, segment_id, segments = []):
+        self.sentence_id = sentence_id
+        self.segment_id = segment_id
+        self.segments = segments
+        self.length = len(segments)
+        self.used = False
+        self.text = {}
+        self.scu_text_pairs = {}
+    def addSegment(self, segment):
+        self.segments += segment
+    def setText(self, text):
+        self.text = text
+    def setSCUTextPairs(self, scu_text_pairs):
+        self.scu_text_pairs = scu_text_pairs
+
+def parseMaxSegment(segment_list, number_of_sentences, used_sentence_list):
+    candidates = [segment for segment in segment_list if segment.used == False]
+    return_list = []
+    for i in range(1, number_of_sentences + 1):
+        if i not in used_sentence_list:
+            max_c = 0
+            for candidate in candidates:
+                if candidate.sentence_id == i:
+                    if candidate.length > max_c:
+                        max_c = candidate
+            if max_c != 0:
+                max_c.used = True
+                return_list.append(max_c)
+    return return_list
+
 
 """
 ===================== SCU ======================
@@ -69,6 +104,8 @@ class Vertex():
         self.scu_list = scu_list
         self.neighbors = []
         self.useMe = True
+        self.max = False
+        self.used = True
     def getWeight(self):
         ###### Weight Scheme 1
         #return sum([scu[1] for scu in self.scu_list]) / len(self.scu_list)
@@ -208,7 +245,6 @@ def readPyramid(fname):
 
 
 
-
 """
 ============= Function Definitions ===============
 """
@@ -241,7 +277,7 @@ def sentencesFromSegmentations(fname):
     sents = []
     segmentations_in_summary = 0
     seg_ids = []
-    for sentence in sentences:
+    for n, sentence in enumerate(sentences):
         segmentations = {}
         count = {}
         for segment in sentence:
@@ -256,7 +292,23 @@ def sentencesFromSegmentations(fname):
                     count[segment_id.split('&')[2]] = 1
         sents.append(segmentations)
         segmentations_in_summary += max(count.items(), key=lambda x: x[1])[1]
-    return dict(enumerate(sents)), segmentations_in_summary
+    segment_list = sortSegmentations(dict(enumerate(sents)))
+    return dict(enumerate(sents)), segmentations_in_summary, segment_list
+
+def sortSegmentations(segmentation_dict):
+    segment_list = []
+    for sentence, segmentations in segmentation_dict.items():
+        sentence_id = int(sentence) + 1
+        #print sentence_id
+        for segment_id, segmentation_list in segmentations.items():
+            for segment_id, segmentation in segmentation_list.items():
+                segment_id = int(segment_id.split('&')[2])
+
+                segment_list += [Segment(sentence_id,segment_id, segmentation)]
+    return segment_list
+
+
+
 
 def buildSCUcandidateList(vertices):
     scu_and_segments = {}
@@ -366,86 +418,124 @@ def retrieveSeg(segID, seg_list):
         if segID == seg_id:
             return seg
 
-def buildSummaryInfo(results, seg_list, sents_labels, scu_labels):
-    for seg_id, cu in results.items():
-        print seg_id, cu
-    used_seg_ids = []
-    used_sentences = []
-    sentences = {}
-    # #sentences_to_be_added = {} 
-    # for seg_id, scu in results.items():
-    #     if seg_id.split('&')[1] not in used_sentences:
-    #         used_sentences.append(seg_id.split('&')[1])
-    #     if seg_id.split('&')[1] in sentences.keys():
-    #         sentences[seg_id.split('&')[1]].append([seg_id, retrieveSeg(seg_id, seg_list), scu])
-    #         used_seg_ids.append(seg_id)
-    #     else:
-    #         sentences[seg_id.split('&')[1]] = []
-    #         sentences[seg_id.split('&')[1]].append([seg_id, retrieveSeg(seg_id, seg_list), scu])
-    #         used_seg_ids.append(seg_id)
-    # for sent, labels in sentences.items():
-    #     print sent, labels
-    # used_seg_ids = list(set(used_seg_ids))
-    # for sentence, segmentation_sets in sents_labels.items():
-    #     for seg in used_seg_ids:
-    #         if int(seg.split('&')[1]) == int(sentence):
-    #             if seg.split('&')[2] in segmentation_sets.keys():
-    #                 segments = segmentation_sets[seg.split('&')[2]]
-    #                 print segments.keys()
+def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels, pyramid_name):
 
-    sentences = {}
-    for seg_id, scu in results.items():
-        used_seg_ids.append(seg_id)
-        identifier = float(seg_id.split('&')[1] + '.' + seg_id.split('&')[2])
-        if identifier in sentences.keys():
-            sentences[identifier].append([seg_id, retrieveSeg(seg_id, seg_list), scu])
-        else:
-            sentences[identifier] = [[seg_id, retrieveSeg(seg_id, seg_list), scu]]
-    for identifie in sentences.keys():
-        print identifie
-    getIdentifier = lambda seg_id: float(seg_id.split('&')[1] + '.' + seg_id.split('&')[2])
-    print used_seg_ids
-    for seg_id, seg in seg_list.items():
-        identifier = getIdentifier(seg_id)
-        if identifier in sentences.keys():
-            if seg_id not in used_seg_ids:
-                print seg_id
+    w,h = terminal_size()
+    summary_name_len = len(summary_name)
+    
+    used_sentence_list = []
+    check_tups = []
+    for res, scu in results.items():
+        r = res.split('&')
+        sentence_id = int(r[1])
+        segment_id = int(r[2])
+        for s in segment_list:
+            if s.sentence_id == sentence_id:
+                if s.segment_id == segment_id:
+                    check_tup = (s.sentence_id, s.segment_id)
+                    if check_tup not in check_tups:
+                        check_tups.append(check_tup)
+                        s.used = True
+                        s.scu_text_pairs[int(r[3])] = scu
+                        if sentence_id not in used_sentence_list:
+                            used_sentence_list.append(sentence_id)
 
-        # if seg_id not in used_seg_ids:
-        #     identifier = getIdentifier(seg_id)
-        #     print identifier
-        #     if identifier in sentences.keys():
-        #         print seg_id, identifier
-        #         sentences[identifier].append([seg_id, retrieveSeg(seg_id, seg_list), None])
-        #     else:
-        #         for sentence, segmentations in sents_labels.items():
-        #             segmentation_we_use = max(segmentations.items(), key=lambda x: len(x[1].keys()))
-                    #print segmentation_we_use[1].keys()
+    for s in [s for s in segment_list if s.used == True]:
+        for segment_id, segment in segs.items():
+            sentence_id = int(segment_id.split('&')[1])
+            segmentation_id = int(segment_id.split('&')[3])
+            segment_id = int(segment_id.split('&')[2])
+            if sentence_id == s.sentence_id:
+                if segment_id == s.segment_id:
+                    s.text[segmentation_id] = segment
 
-        
+    non_used_segments = parseMaxSegment(segment_list, num_sentences, used_sentence_list)
+    for s in non_used_segments:
+        for segment_id, segment in segs.items():
+            sentence_id = int(segment_id.split('&')[1])
+            segmentation_id = int(segment_id.split('&')[3])
+            segment_id = int(segment_id.split('&')[2])
+            if sentence_id == s.sentence_id:
+                if segment_id == s.segment_id:
+                    s.text[segmentation_id] = segment
+    
+    newSegmentList = [s for s in segment_list if s.used == True]
+
+    cu_list = []
+    for s in newSegmentList:
+        for seg_index, text in s.text.items():
+            if seg_index in s.scu_text_pairs.keys():
+                cu = (s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))
+                cu_list.append(cu)
+    cu_list = sorted(cu_list, key=lambda x:x[1], reverse=True)
+    cu_line = ''
+    for cu in cu_list[:len(cu_list)-1]:
+        cu_line += str(cu[0]) + ': ' + str(cu[1]) + ', '
+    cu_line += str(cu_list[len(cu_list)-1][0]) + ': ' + str(cu_list[len(cu_list)-1][1])
 
 
 
+    print '\n' + '#'*(w/2 - summary_name_len + 2) + '  ' + summary_name + '  ' + '#'*(w/2 - summary_name_len + 2) + '\n'
+    print 'Pyramid: %s' % pyramid_name
+    print 'No. Segments in Summary: {}'.format(segment_count)
+    print '{:>17}: {:>10}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}'.format('Raw', score, 'Quality', quality, 'Coverage', coverage, 'Comprehensive', comprehension)
+    print '{:>17}: \t{}\n'.format('Content Unit List', cu_line)
+
+
+    for s in newSegmentList:
+        print "Sentence: %d, Segmentation %d" % (s.sentence_id, s.segment_id)
+        for seg_index, text in s.text.items():
+            if seg_index in s.scu_text_pairs.keys():
+                print "\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))
+                print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
+                content_unit = scu_labels[s.scu_text_pairs[seg_index]]
+                for n, cu_part in enumerate(content_unit):
+                    if n == 0:
+                        print wrap_string(cu_part, '\tContent Unit: ............ (%d) ' % (n+1))
+                    else:
+                        print wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) "  % (n+1))                            
+            else:
+                print "\tSegment: %d | Content Unit: None" % seg_index
+                print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
+        print "\n"
+    print "\n"
+    print "="*w
+    print "\n"
+
+
+"""
+======= etc ==========
+"""
+
+def terminal_size():
+    import fcntl, termios, struct
+    h, w, hp, wp = struct.unpack('HHHH',
+        fcntl.ioctl(0, termios.TIOCGWINSZ,
+        struct.pack('HHHH', 0, 0, 0, 0)))
+    return w, h
+
+def wrap_string(text, starter_text):
+    # text is the part of the string that your want to wrap
+    # started_text could also be a point about which the text wraps
+    w,h = terminal_size()
+    text = text.replace('\n', '')
+    tabs = starter_text.count('\t')
+    new_starter_text = starter_text.replace('\t', '')
+    wrap_point = len(new_starter_text) + 8*tabs
+    wrap_indicator = int(w) - wrap_point
+    num_line_wraps = len(text) / wrap_indicator
+    left_over = len(text) % wrap_indicator
+    lines = []
+    for i in range(num_line_wraps):
+        lines.append(text[i:((i+1)*wrap_indicator)] + '\n')
+    lines.append(text[-left_over:])
+    lines = [starter_text + lines[0]] + [" "*wrap_point + line for line in lines[1:]]
+    return ''.join(lines)
 
 
 
-    # # for sentence, segmentation in sents_labels.items():
-    # #     for seg_id in used_seg_ids:
-    # #         if int(seg_id.split('&')[1]) == int(sentence):
-    # #             for segtation, segments_dict in segmentation.items():
-    # #                 if int(seg_id.split('&')[2]) == int(segtation):
-    # #                     print '{} == {}'.format(seg_id.split('&')[2], segtation)
-    # #                     print segments_dict.keys()
-                                
 
 
-    # temp_dict = {}
-    # for sentence, data in sentences.items():
-    #     for sent, d in sentences_to_be_added.items():
-    #         if sent == sentence:
-    #             temp_dict[sentence] = data + d
-
-    # print temp_dict
 
 
 

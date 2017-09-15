@@ -22,24 +22,24 @@ print("Making Segments")
 segpool = make_segs(segs, vecs)
 pairwise_test(segpool, N)
 
-thresholds = [73,72,71,70,69,68,67]
-tups = [(64., 1.5), (64., 1.75), (64., 2.0), 
-        (64., 2.25), (64., 2.5), (80., 1.5), 
-        (80., 1.75), (80., 2.0), (80., 2.25), 
-        (80., 2.5), (90., 1.5), (90., 1.75), 
-        (90., 2.0), (90., 2.25), (90., 2.5), 
-        (100., 1.5), (100., 1.75), (100., 2.0), 
-        (100., 2.25), (100., 2.5), (110., 1.5), 
-        (110., 1.75), (110., 2.0), (110., 2.25), 
-        (110., 2.5), (120., 1.5), (120., 1.75), 
-        (120., 2.0), (120., 2.25), (120., 2.5)]
+# thresholds = [73,72,71,70,69,68,67]
+# tups = [(64., 1.5), (64., 1.75), (64., 2.0), 
+#         (64., 2.25), (64., 2.5), (80., 1.5), 
+#         (80., 1.75), (80., 2.0), (80., 2.25), 
+#         (80., 2.5), (90., 1.5), (90., 1.75), 
+#         (90., 2.0), (90., 2.25), (90., 2.5), 
+#         (100., 1.5), (100., 1.75), (100., 2.0), 
+#         (100., 2.25), (100., 2.5), (110., 1.5), 
+#         (110., 1.75), (110., 2.0), (110., 2.25), 
+#         (110., 2.5), (120., 1.5), (120., 1.75), 
+#         (120., 2.0), (120., 2.25), (120., 2.5)]
 
-thresholds = [80]
+thresholds = [77]
 tups = [(175., 2.0)]
 
 for threshold in thresholds:
     for tup in tups:
-        print('Using Threshold {}\n\ta = {} and b = {}'.format(threshold, tup[0], tup[1]))
+        #print('Using Threshold {}\n\ta = {} and b = {}'.format(threshold, tup[0], tup[1]))
         
         # Make Deep Copy of Segment Pool
         segmentpool = copy.deepcopy(segpool)
@@ -65,7 +65,7 @@ for threshold in thresholds:
 
         # Build the first N -> 2 Layers of the Pyramid
         for n in range(N,1, -1):
-            print "Building Layer %d" % n
+            #print "Building Layer %d" % n
 
             y_n = power_law(n, bf_dict)
             
@@ -98,7 +98,7 @@ for threshold in thresholds:
             
             # If we are looking at any layer between N-1 and 2 and the contraint is False...
             if (constraint == False) and (n != N):
-                print("\tCalling Local Backtracking")
+                #print("\tCalling Local Backtracking")
                 status, segmentpool, Pyramid, Pyramid_info, current = localBackTracking(layer, n,
                                                                                       segmentpool,
                                                                                       Pyramid_info,
@@ -118,7 +118,7 @@ for threshold in thresholds:
             segmentpool = RecursiveSettling(Pyramid, segmentpool)
 
         # Build Layer 1
-        print "Building Layer 1"
+        #print "Building Layer 1"
         bs1, segmentpool = ComposeLayer1(segmentpool)
         Pyramid[0] = bs1
         bottom = Layer(0)
@@ -211,18 +211,21 @@ for threshold in thresholds:
         tree.write('../Scoring/pyrs/pyramids/' + fname + '.pyr')
                   
         # Console Output
-        print('With Threshold {}%'.format(threshold))
-        print('a: {} | b: {}').format(tup[0], tup[1])  
-        print('cost: %.2f' % cost)
-        print('was: %.2f' % was)
+        # print('With Threshold {}%'.format(threshold))
+        # print('a: {} | b: {}').format(tup[0], tup[1])  
+        # print('cost: %.2f' % cost)
+        # print('was: %.2f' % was)
         print('Time: {}'.format(str(done - timer)))
-        for n, pyr in enumerate(Pyramid_info):
-            print('Layer {} has size {} | Upperbound {}'.format(n+1, pyr.length, pyr.capacity))
-        if len(all_seg_ids) == len(set(all_seg_ids)):
-            print('Length of Segment Pool as Beginning: {} vs Length at End {}'.format(segmentpool_length,
-                                                                                      len(segmentpool)))
-            print('Number of Segments Used: %d' % len(all_seg_ids))
-            print('All Segment IDs are Unique')
+        print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramid')
+        print('Pyramid .size file stored in PyrEval/Scoring/sizes')
+        print('Readable pyramid file stored in PyrEval/Scoring/scus')
+        # for n, pyr in enumerate(Pyramid_info):
+        #     print('Layer {} has size {} | Upperbound {}'.format(n+1, pyr.length, pyr.capacity))
+        # if len(all_seg_ids) == len(set(all_seg_ids)):
+        #     print('Length of Segment Pool as Beginning: {} vs Length at End {}'.format(segmentpool_length,
+        #                                                                               len(segmentpool)))
+        #     print('Number of Segments Used: %d' % len(all_seg_ids))
+        #     print('All Segment IDs are Unique')
 
 
 

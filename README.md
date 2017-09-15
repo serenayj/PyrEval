@@ -80,11 +80,11 @@ This step will take preprocessed peer summaries under Preprocess/peer_summaries/
 python scoring.py -options
 ```
 
--options:
--p <path/to/pyramid or pyramids>
--a print verbose
--t print scoring table
--o specify output (default is '../results.csv')
+-options:\n
+-p <path/to/pyramid or pyramids>\n
+-a print verbose\n
+-t print scoring table\n
+-o specify output (default is '../results.csv')\n
 
 Eg:
 ```

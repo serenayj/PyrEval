@@ -30,7 +30,7 @@ def getVectorization(DATA, MODEL):
         V = np.zeros((DIM, N_DOCS))
     else:
         N_DOCS = 0
-        V = np.zeros(DIM, 0)
+        V = np.zeros((DIM, 0))
 
     PPTW = P.dot(P.transpose())
     PPTW = PPTW*W_M[0]

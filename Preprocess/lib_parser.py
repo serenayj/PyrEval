@@ -448,7 +448,7 @@ def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag,fname)
                 #print "current ids", ids
                 sentence = "Sentence "+str(index)+" SUBJ/OBJ segment is:" + " ".join(sentmp)+ "\n"
                 sent_ids = "cover from:" + str(nodes_id) + ","+ " ".join(id_list) + "\n"
-                print sentence
+                #print sentence
                 write_log('../ext/' + fname +'_log1.txt',sentence)
                 write_log('../ext/' + fname +'_log1.txt',sent_ids)
                 all_obj.append([ids, " ".join(sentmp)])
@@ -548,7 +548,7 @@ def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
                         nodes_id = e['dep_id']
                         nodes_label = e['dep']
                         ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
-                        print ids 
+                        #print ids 
                         for each in ids:
                             tmp_ids.append(each)
                     elif e['gov_id'] not in idlist:
@@ -577,7 +577,7 @@ def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
 def RemakeSegStructure(idseg):
     tmp = []
     for i in idseg:
-        print "test i", i
+        #print "test i", i
         pre = [int(x) for x in i[1]]
         item = {'subject':int(i[0]),'predicate':pre}
         tmp.append(item)

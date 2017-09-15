@@ -202,7 +202,8 @@ def Update_Child_Subject(ids,sub_vps):
         for subvp in sub_vps:
             child = subvp.child
             if predicate == child:
-                subject = subvp.subject
+                if subvp.subject is not None:
+                    subject = subvp.subject
             else:
                 pass
         item = [subject,predicate]
@@ -511,6 +512,8 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,f
 
 
 def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
+    # Flag for future use 
+    embed_flag = False 
     sub_vps = Make_SubVP(embedvps) 
     tmp_ids = []
     # Step 0:
@@ -529,41 +532,46 @@ def Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname):
     #the i here is a subtree 
     # Step 1: select subject from arcs relations
     flag = False 
-    for i in embedvps:
-        idlist = vps_leaf_number(i.leaves())
-        wa,woa,purevps = find_arcs(i,things,tl)
-        if len(wa) >0:
-            for e in wa:
-                # There must be one of e in the idlist 
-                if e['dep_id'] not in idlist:
-                    # a verb used for finding another verb  
-                    nodes_id = e['dep_id']
-                    nodes_label = e['dep']
-                    ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
-                    print ids 
-                    for each in ids:
-                        tmp_ids.append(each)
-                elif e['gov_id'] not in idlist:
-                    nodes_id = e['gov_id']
-                    nodes_label = e['gov']
-                    ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
-                    for each in ids:
-                        tmp_ids.append(each)
-        # For complement, conjunction 
-        if len(woa) >0:
-            # Mark the current verb as starting node, vp always starts from a verb 
-            nodes_id = i.leaves()[0][1]
-            nodes_label = i.leaves()[0][0]
-            ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,fname)
-            for each in ids:
-                tmp_ids.append(each)
-    # Step 2: settle down subjects from embeded vp relations
-    sub_vps = Update_Parent_Subject(tmp_ids,sub_vps)
-    final = Update_Child_Subject(tmp_ids,sub_vps)
-    if subconj_flag == True:
-        final += main_clause
+    if len(sub_vps) == 0:
+        embed_flag = False 
+        final = []
     else:
-        pass
+        embed_flag = True 
+        for i in embedvps:
+            idlist = vps_leaf_number(i.leaves())
+            wa,woa,purevps = find_arcs(i,things,tl)
+            if len(wa) >0:
+                for e in wa:
+                    # There must be one of e in the idlist 
+                    if e['dep_id'] not in idlist:
+                        # a verb used for finding another verb  
+                        nodes_id = e['dep_id']
+                        nodes_label = e['dep']
+                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
+                        print ids 
+                        for each in ids:
+                            tmp_ids.append(each)
+                    elif e['gov_id'] not in idlist:
+                        nodes_id = e['gov_id']
+                        nodes_label = e['gov']
+                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
+                        for each in ids:
+                            tmp_ids.append(each)
+            # For complement, conjunction 
+            if len(woa) >0:
+                # Mark the current verb as starting node, vp always starts from a verb 
+                nodes_id = i.leaves()[0][1]
+                nodes_label = i.leaves()[0][0]
+                ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,fname)
+                for each in ids:
+                    tmp_ids.append(each)
+        # Step 2: settle down subjects from embeded vp relations
+        sub_vps = Update_Parent_Subject(tmp_ids,sub_vps)
+        final = Update_Child_Subject(tmp_ids,sub_vps)
+        if subconj_flag == True:
+            final += main_clause
+        else:
+            pass
     return final  
 
 def RemakeSegStructure(idseg):

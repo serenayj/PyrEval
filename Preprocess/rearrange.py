@@ -40,7 +40,8 @@ class _CompatibleSeg:
         self.conflict = False
         for item in self.lst:
             if bool(set(item['predicate'])&set(candidate['predicate'])) == False:
-                print "candidate ", candidate, "is Compatible"  
+                #print "candidate ", candidate, "is Compatible" 
+                pass 
             else:
                 self.conflict = True 
         if self.conflict == True:
@@ -120,13 +121,6 @@ def Insertion(j,ele,case,tail,head):
             ele = sorted(ele)
         #print "this case, ele is", ele
         j.used = True
-    #elif case == 5:
-    #    rest = []
-    #    min_val = 100
-    #    for seg in st:
-    #        if (seg['predicate'][0] -  
-    #        rest.append()
-    #    absval = [] 
     else:
         pass
     return ele 
@@ -154,7 +148,7 @@ def Rearrange2(tl,res,left):
             #for iind in range(0,len(i)):
                 # because i is a list of dictionary  
             ele = copy.deepcopy(st[iind]['predicate'])
-            print ele
+            #print ele
             #print "current element: ", ele
             for j in new_left[ind]:
                 if j.used == False:
@@ -196,7 +190,7 @@ def Rearrange2(tl,res,left):
                             pass
             #print "element after...", ele 
             tmp[iind] = sorted(ele)
-            print tmp[iind]  
+            #print tmp[iind]  
         seg[ind] = tmp
         for final in new_left[ind]:
             if final.used == False:

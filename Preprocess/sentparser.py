@@ -34,10 +34,6 @@ fname = sys.argv[1]
 sum_index = sys.argv[2]
 outpath = sys.argv[3]
 
-#fname = "wise_crowd_summaries/D0608.M.250.H.1.xml"
-#sum_index = str(1)
-#outpath = "wise_crowd_summaries"
-
 
 content = open(fname).read()
 
@@ -126,7 +122,7 @@ for ind in range(1,len(all_dep_sent)+1):
     sbar_flag,sbar = get_SBAR(tr)
     if sbar_flag == True:
         used = True 
-        print "embedded vps! "
+        #print "embedded vps! "
         sbar_ids, sbar_sent = Rule_NPSBAR(tr,tl,sbar,numlist)
         for segmt in range(0,len(sbar_sent)): 
             for kk in range(0,len(sbar_sent[segmt])):
@@ -201,23 +197,22 @@ for ind in range(1,len(all_dep_sent)+1):
         final = Connect_subj(seg_combo,segs)
         final = Clean_Duplicate(final)
         segment_set[ind] = final
-        for k,v in enumerate(segment_set[ind]):
-            for vv in range(0,len(v)):
-                sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
-                write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',sentence)
-                #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
-        seg = Pull_Words(segment_set,ind,numlist)
-        for k,v in seg.items():
-            #print "Segmentation: ", k   
-            #write_log(ext+'/' + fname +'_log-segment-label-readable.txt',output_sentence) 
-            for vv in range(0,len(v)):
-                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
-                sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
-                write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
-                sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
-                #print "segment ", vv, " label: ", v[vv] 
-                write_log(seg_dir+'/' + fname +'.segs',sent)
-        segmentation_count += len(seg)
+        if len(segment_set[ind]) != 0:
+            for k,v in enumerate(segment_set[ind]):
+                for vv in range(0,len(v)):
+                    sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
+                    write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',sentence)
+                    #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
+            seg = Pull_Words(segment_set,ind,numlist)
+            for k,v in seg.items():
+                for vv in range(0,len(v)):
+                    # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
+                    sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
+                    write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
+                    sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
+                    #print "segment ", vv, " label: ", v[vv] 
+                    write_log(seg_dir+'/' + fname +'.segs',sent)
+            segmentation_count += len(seg)
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
         if subconj_flag == True:

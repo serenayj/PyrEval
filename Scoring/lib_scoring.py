@@ -364,6 +364,7 @@ def getScore(sentences, scus):
         for segment, scu in segments.items():
             for s in scus:
                 if scu == s.id:
+                    #print s.weight
                     lil_score += s.weight
                     matched_cus += 1
         sentence_scores[sentence] = lil_score
@@ -423,21 +424,32 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
     summary_name_len = len(summary_name)
     
     used_sentence_list = []
-    check_tups = []
-    for res, scu in results.items():
-        r = res.split('&')
-        sentence_id = int(r[1])
-        segment_id = int(r[2])
-        for s in segment_list:
+    check_tups = {}
+    
+    for s in segment_list:
+        for res, scu in results.items():
+            r = res.split('&')
+            sentence_id = int(r[1])
+            segment_id = int(r[2])
+            segtation_id = int(r[3])
+        
             if s.sentence_id == sentence_id:
                 if s.segment_id == segment_id:
                     check_tup = (s.sentence_id, s.segment_id)
-                    if check_tup not in check_tups:
-                        check_tups.append(check_tup)
+                    if check_tup in check_tups.keys():
+
+                        if segtation_id not in check_tups[check_tup]:
+                            check_tups[check_tup].append(segtation_id)
+                            s.scu_text_pairs[int(r[3])] = scu
+                            if sentence_id not in used_sentence_list:
+                                used_sentence_list.append(sentence_id)
+                    else:
+                        check_tups[check_tup] = [segtation_id]
                         s.used = True
                         s.scu_text_pairs[int(r[3])] = scu
                         if sentence_id not in used_sentence_list:
-                            used_sentence_list.append(sentence_id)
+                                used_sentence_list.append(sentence_id)
+
 
     for s in [s for s in segment_list if s.used == True]:
         for segment_id, segment in segs.items():
@@ -466,11 +478,14 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
             if seg_index in s.scu_text_pairs.keys():
                 cu = (s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))
                 cu_list.append(cu)
-    cu_list = sorted(cu_list, key=lambda x:x[1], reverse=True)
-    cu_line = ''
-    for cu in cu_list[:len(cu_list)-1]:
-        cu_line += str(cu[0]) + ': ' + str(cu[1]) + ', '
-    cu_line += str(cu_list[len(cu_list)-1][0]) + ': ' + str(cu_list[len(cu_list)-1][1])
+    if len(cu_list) != 0:
+        cu_list = sorted(cu_list, key=lambda x:x[1], reverse=True)
+        cu_line = ''
+        for cu in cu_list[:len(cu_list)-1]:
+            cu_line += str(cu[0]) + ': ' + str(cu[1]) + ', '
+        cu_line += str(cu_list[len(cu_list)-1][0]) + ': ' + str(cu_list[len(cu_list)-1][1])
+    else:
+        cu_line = 'No Content Units'
 
 
 
@@ -530,11 +545,6 @@ def wrap_string(text, starter_text):
     lines.append(text[-left_over:])
     lines = [starter_text + lines[0]] + [" "*wrap_point + line for line in lines[1:]]
     return ''.join(lines)
-
-
-
-
-
 
 
 

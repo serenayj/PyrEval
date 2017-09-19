@@ -46,7 +46,7 @@ sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lam
 ====================== Scores to Compare With ========================
 """
 score_tables = ['raw', 'quality', 'coverage', 'comprehension']
-RAW = [16,43,22,40,34,54,25,46,47,51,26,36,22,10,38,38,19,13,13,60]              
+#RAW = [16,43,22,40,34,54,25,46,47,51,26,36,22,10,38,38,19,13,13,60]              
 # QUALITY = [0.7705,0.6552,0.5938,0.4231,
 #                     0.7188,0.8361,0.7907,0.8571,
 #                     0.3333,0.2857,0.5641,0.7037,
@@ -72,7 +72,7 @@ RAW = [16,43,22,40,34,54,25,46,47,51,26,36,22,10,38,38,19,13,13,60]
 #                                 0.4778,0.6523,0.6444,
 #                                 0.3469,0.5462,0.4594,0.6303]
 
-RAW = [9,14,20,11,0,12,23,4,12,6,7,11,20,19,18,2,16,9,11,6,17,8]
+#RAW = [9,14,20,11,0,12,23,4,12,6,7,11,20,19,18,2,16,9,11,6,17,8]
 
 """
 ====================== Scoring Pipeline ========================
@@ -108,13 +108,11 @@ for pyramid in pyramids:
                     segs = open(segs, 'r').readlines()
                     num_sentences = int(segs[len(segs)-1].split('&')[1])
                     segs = {'&'.join(seg.split('&')[:4]): seg.split('&')[4] for seg in segs}
-
                     sentences, segment_count, segment_list = sentencesFromSegmentations(fn)
                     Graph = SummaryGraph(sentences, scus)
                     independentSet = Graph.independentSet
                     candidates = buildSCUcandidateList(independentSet)
                     results, possiblyUsed = processResults(candidates, independentSet)
-
                     keys = [res.split('&') for res in results]
                     rearranged_results = scusBySentences(results)
                     score, matched_cus = getScore(rearranged_results, scus)

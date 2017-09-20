@@ -38,47 +38,47 @@ for pyr in pyramids:
 f = open(results_file, 'w')
 f.close()
 
-#getFname = lambda fname: fname[:fname.rfind('.')]
-#sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getFname(j[0]))))]
-sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][:(j[0].rfind('.'))])))]
 
 
 """
-====================== Scores to Compare With ========================
+================ Scoring Mechanisms ======================
 """
 score_tables = ['raw', 'quality', 'coverage', 'comprehension']
-#RAW = [16,43,22,40,34,54,25,46,47,51,26,36,22,10,38,38,19,13,13,60]              
-# QUALITY = [0.7705,0.6552,0.5938,0.4231,
-#                     0.7188,0.8361,0.7907,0.8571,
-#                     0.3333,0.2857,0.5641,0.7037,
-#                     0.7714,0.6667,0.8269,0.8,
-#                     0.5161,0.6923,0.641,0.8163]
 
-# COVERAGE = [0.5222,0.4222,0.4222,0.2444,
-#                         0.5111,0.5667,0.3778,
-#                         0.6667,0.1444,
-#                         0.1111,
-#                         0.2442,
-#                         0.2111,0.6,
-#                         0.2889,0.4778,0.4889,s
+"""
+==== What is Matter Test Data Set ====
+"""
+#sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][:(j[0].rfind('.'))])))]
+#RAW = [49,39,33,24,24,49,22,37,23,20,24,21,52,28,39,26,23,39,32,43]
 
-#                         0.1778,0.4,0.2778,0.4444]
+"""
+=== DUC Test Data Sets ====
+"""
+def getName(name):
+    num = name.rfind('.')
+    name = name[num+1:]
+    return name
+sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0]))))]
 
-# COMP = [0.6463,0.5387,0.508,0.3337,
-#                                 0.6149,0.7014,0.5842,
-#                                 0.7619,0.2389,
-#                                 0.1984,
-#                                 0.4042,
-#                                 0.4574,0.6857,
-#                                 0.4778,0.6523,0.6444,
-#                                 0.3469,0.5462,0.4594,0.6303]
-RAW = [49,39,33,24,24,49,22,37,23,20,24,21,52,28,39,26,23,39,32,43]
+### D0608
+#RAW = [8,7,8,6,4,10,20,6,6,4,3,3,2,9,1,3,8,1,3,6,5,6]
+
+### D0624
+RAW = [14,20,22,20,20,18,26,18,19,11,19,16,21,26,20,19,22,19,15,13,19,5]
+
+### D0605
+#RAW = [0,15,6, 9, 8,17, 9, 2, 14, 4, 2, 4, 1, 6, 6, 0, 14, 3, 6, 6, 3, 4, ]
+
+### D0615
+#RAW = [4,9,8,4,8,7,11,10,6,7,1,3,2,8,8,7,9,6,5,10,6,1]
+
+
 
 """
 ====================== Scoring Pipeline ========================
 """
 
-correlation_file = '../correlation-simple.csv'
+correlation_file = '../correlation.csv'
 corr = open(correlation_file, 'w')
 corr_w = csv.writer(corr)
 corr_w.writerow(['Pyramid'] + score_tables)
@@ -138,6 +138,8 @@ for pyramid in pyramids:
     if print_table:
         with open(results_file, 'a') as f:
             w = csv.writer(f)
+            w.writerow([pyramid_name])
+            print pyramid_name
             w.writerow(['Summary'] + score_tables)
             print '{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehension score")
             for n, summary in enumerate(summaries):
@@ -156,25 +158,14 @@ for pyramid in pyramids:
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
             raw_sc = sort(raw_scores)
             raw_corr = pearson(raw_sc, RAW)[0]
-            w.writerow(['Correlation'] + [raw_corr])
             print('{:>16} | {:>.2f}'.format('Correlation', raw_corr*100))
+            print '\n'
 
     with open(correlation_file, 'a') as f:
-    #     corr_w = csv.writer(f)
+        w = csv.writer(f)
         raw_sc = sort(raw_scores)
-    #     #quality_sc = sort(quality_scores)
-    #     #coverage_sc = sort(quality_scores)
-    #     #comprehension_sc = sort(comprehension_scores)
-
         raw_corr = pearson(raw_sc, RAW)[0]
-        print "\tRaw Pearson Correlation", raw_corr
-    #     #quality_corr = pearson(quality_sc, QUALITY)[0]
-    #     #coverage_corr = pearson(coverage_sc, COVERAGE)[0]
-    #     #comprehension_corr = pearson(comprehension_sc, COMP)[0]
-
-    #     #line = [pyramid_name, raw_corr, quality_corr, coverage_corr, comprehension_corr]
-    #     line = [pyramid_name, raw_corr]
-    #     corr_w.writerow(line)
+        w.writerow([pyramid_name] + [raw_corr])
 
 
 

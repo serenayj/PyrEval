@@ -28,7 +28,7 @@ def removesymbols(text):
 	ele = ' '.join(rmv0)
 	return ele
 
-for filename in glob.glob(os.path.join(inpath,"*.txt")):
+for filename in glob.glob(inpath + '/*'):
 	content = open(filename).read()
 	content = removesymbols(content)
 	sent_list = sent_tokenize(content)

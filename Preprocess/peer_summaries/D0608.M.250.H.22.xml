@@ -6687,83 +6687,77 @@
             <POS>IN</POS>
           </token>
           <token id="16">
-            <word>air</word>
+            <word>air-bag-equipped</word>
             <CharacterOffsetBegin>1443</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1446</CharacterOffsetEnd>
-            <POS>NN</POS>
+            <CharacterOffsetEnd>1459</CharacterOffsetEnd>
+            <POS>JJ</POS>
           </token>
           <token id="17">
-            <word>bag</word>
-            <CharacterOffsetBegin>1447</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1450</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="18">
-            <word>equipped</word>
-            <CharacterOffsetBegin>1451</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1459</CharacterOffsetEnd>
-            <POS>VBD</POS>
-          </token>
-          <token id="19">
             <word>GM</word>
             <CharacterOffsetBegin>1460</CharacterOffsetBegin>
             <CharacterOffsetEnd>1462</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
-          <token id="20">
+          <token id="18">
             <word>cars</word>
             <CharacterOffsetBegin>1463</CharacterOffsetBegin>
             <CharacterOffsetEnd>1467</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="21">
+          <token id="19">
             <word>dating</word>
             <CharacterOffsetBegin>1468</CharacterOffsetBegin>
             <CharacterOffsetEnd>1474</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
-          <token id="22">
+          <token id="20">
             <word>to</word>
             <CharacterOffsetBegin>1475</CharacterOffsetBegin>
             <CharacterOffsetEnd>1477</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
-          <token id="23">
-            <word>,</word>
+          <token id="21">
+            <word>1990</word>
             <CharacterOffsetBegin>1478</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1479</CharacterOffsetEnd>
+            <CharacterOffsetEnd>1482</CharacterOffsetEnd>
+            <POS>CD</POS>
+          </token>
+          <token id="22">
+            <word>,</word>
+            <CharacterOffsetBegin>1482</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1483</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
-          <token id="24">
+          <token id="23">
             <word>company</word>
-            <CharacterOffsetBegin>1480</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1487</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1484</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1491</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="25">
+          <token id="24">
             <word>officials</word>
-            <CharacterOffsetBegin>1488</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1497</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1492</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1501</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="26">
+          <token id="25">
             <word>said</word>
-            <CharacterOffsetBegin>1498</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1502</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1502</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1506</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
-          <token id="27">
+          <token id="26">
             <word>.</word>
-            <CharacterOffsetBegin>1502</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1503</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1506</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1507</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (S (S (NP (NNP Vetronix)) (ADVP (RB also)) (VP (VBZ plans) (S (VP (TO to) (VP (VB develop) (NP (NP (NN software)) (PP (IN in) (NP (NN concert)))) (PP (IN with) (NP (NNP GM))) (S (VP (TO to) (VP (VB retrieve) (NP (DT the) (NNS data)) (PP (IN from) (NP (NP (NN air) (NN bag)) (SBAR (S (VP (VBD equipped) (NP (NNP GM) (NNS cars)) (S (VP (VBG dating) (PP (TO to))))))))))))))))) (, ,) (NP (NN company) (NNS officials)) (VP (VBD said)) (. .))) </parse>
+        <parse>(ROOT (S (S (NP (NNP Vetronix)) (ADVP (RB also)) (VP (VBZ plans) (S (VP (TO to) (VP (VB develop) (NP (NP (NN software)) (PP (IN in) (NP (NN concert)))) (PP (IN with) (NP (NNP GM))) (S (VP (TO to) (VP (VB retrieve) (NP (DT the) (NNS data)) (PP (IN from) (NP (NP (JJ air-bag-equipped) (NNP GM) (NNS cars)) (VP (VBG dating) (PP (TO to) (NP (CD 1990)))))))))))))) (, ,) (NP (NN company) (NNS officials)) (VP (VBD said)) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="26">said</dependent>
+            <dependent idx="25">said</dependent>
           </dep>
           <dep type="nsubj">
             <governor idx="3">plans</governor>
@@ -6774,7 +6768,7 @@
             <dependent idx="2">also</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="26">said</governor>
+            <governor idx="25">said</governor>
             <dependent idx="3">plans</dependent>
           </dep>
           <dep type="mark">
@@ -6822,58 +6816,54 @@
             <dependent idx="14">data</dependent>
           </dep>
           <dep type="case">
-            <governor idx="17">bag</governor>
+            <governor idx="18">cars</governor>
             <dependent idx="15">from</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="18">cars</governor>
+            <dependent idx="16">air-bag-equipped</dependent>
+          </dep>
           <dep type="compound">
-            <governor idx="17">bag</governor>
-            <dependent idx="16">air</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="17">GM</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="12">retrieve</governor>
-            <dependent idx="17">bag</dependent>
-          </dep>
-          <dep type="xcomp">
-            <governor idx="3">plans</governor>
-            <dependent idx="18">equipped</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="20">cars</governor>
-            <dependent idx="19">GM</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="18">equipped</governor>
-            <dependent idx="20">cars</dependent>
+            <governor idx="14">data</governor>
+            <dependent idx="18">cars</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="20">cars</governor>
-            <dependent idx="21">dating</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="19">dating</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="21">1990</governor>
+            <dependent idx="20">to</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="21">dating</governor>
-            <dependent idx="22">to</dependent>
+            <governor idx="19">dating</governor>
+            <dependent idx="21">1990</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="23">,</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="22">,</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">officials</governor>
-            <dependent idx="24">company</dependent>
+            <governor idx="24">officials</governor>
+            <dependent idx="23">company</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="26">said</governor>
-            <dependent idx="25">officials</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="24">officials</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="27">.</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="26">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="26">said</dependent>
+            <dependent idx="25">said</dependent>
           </dep>
           <dep type="nsubj">
             <governor idx="3">plans</governor>
@@ -6884,7 +6874,7 @@
             <dependent idx="2">also</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="26">said</governor>
+            <governor idx="25">said</governor>
             <dependent idx="3">plans</dependent>
           </dep>
           <dep type="mark">
@@ -6932,58 +6922,54 @@
             <dependent idx="14">data</dependent>
           </dep>
           <dep type="case">
-            <governor idx="17">bag</governor>
+            <governor idx="18">cars</governor>
             <dependent idx="15">from</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="18">cars</governor>
+            <dependent idx="16">air-bag-equipped</dependent>
+          </dep>
           <dep type="compound">
-            <governor idx="17">bag</governor>
-            <dependent idx="16">air</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="17">GM</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="12">retrieve</governor>
-            <dependent idx="17">bag</dependent>
-          </dep>
-          <dep type="xcomp">
-            <governor idx="3">plans</governor>
-            <dependent idx="18">equipped</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="20">cars</governor>
-            <dependent idx="19">GM</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="18">equipped</governor>
-            <dependent idx="20">cars</dependent>
+            <governor idx="14">data</governor>
+            <dependent idx="18">cars</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="20">cars</governor>
-            <dependent idx="21">dating</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="19">dating</dependent>
           </dep>
-          <dep type="nmod">
-            <governor idx="21">dating</governor>
-            <dependent idx="22">to</dependent>
+          <dep type="case">
+            <governor idx="21">1990</governor>
+            <dependent idx="20">to</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="19">dating</governor>
+            <dependent idx="21">1990</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="23">,</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="22">,</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">officials</governor>
-            <dependent idx="24">company</dependent>
+            <governor idx="24">officials</governor>
+            <dependent idx="23">company</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="26">said</governor>
-            <dependent idx="25">officials</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="24">officials</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="27">.</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="26">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="26">said</dependent>
+            <dependent idx="25">said</dependent>
           </dep>
           <dep type="nsubj">
             <governor idx="3">plans</governor>
@@ -6994,7 +6980,7 @@
             <dependent idx="2">also</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="26">said</governor>
+            <governor idx="25">said</governor>
             <dependent idx="3">plans</dependent>
           </dep>
           <dep type="mark">
@@ -7042,58 +7028,54 @@
             <dependent idx="14">data</dependent>
           </dep>
           <dep type="case">
-            <governor idx="17">bag</governor>
+            <governor idx="18">cars</governor>
             <dependent idx="15">from</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="18">cars</governor>
+            <dependent idx="16">air-bag-equipped</dependent>
+          </dep>
           <dep type="compound">
-            <governor idx="17">bag</governor>
-            <dependent idx="16">air</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="17">GM</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="12">retrieve</governor>
-            <dependent idx="17">bag</dependent>
-          </dep>
-          <dep type="xcomp">
-            <governor idx="3">plans</governor>
-            <dependent idx="18">equipped</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="20">cars</governor>
-            <dependent idx="19">GM</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="18">equipped</governor>
-            <dependent idx="20">cars</dependent>
+            <governor idx="14">data</governor>
+            <dependent idx="18">cars</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="20">cars</governor>
-            <dependent idx="21">dating</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="19">dating</dependent>
           </dep>
-          <dep type="nmod">
-            <governor idx="21">dating</governor>
-            <dependent idx="22">to</dependent>
+          <dep type="case">
+            <governor idx="21">1990</governor>
+            <dependent idx="20">to</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="19">dating</governor>
+            <dependent idx="21">1990</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="23">,</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="22">,</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">officials</governor>
-            <dependent idx="24">company</dependent>
+            <governor idx="24">officials</governor>
+            <dependent idx="23">company</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="26">said</governor>
-            <dependent idx="25">officials</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="24">officials</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="27">.</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="26">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="26">said</dependent>
+            <dependent idx="25">said</dependent>
           </dep>
           <dep type="nsubj">
             <governor idx="3">plans</governor>
@@ -7108,7 +7090,7 @@
             <dependent idx="2">also</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="26">said</governor>
+            <governor idx="25">said</governor>
             <dependent idx="3">plans</dependent>
           </dep>
           <dep type="mark">
@@ -7156,58 +7138,54 @@
             <dependent idx="14">data</dependent>
           </dep>
           <dep type="case">
-            <governor idx="17">bag</governor>
+            <governor idx="18">cars</governor>
             <dependent idx="15">from</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="18">cars</governor>
+            <dependent idx="16">air-bag-equipped</dependent>
+          </dep>
           <dep type="compound">
-            <governor idx="17">bag</governor>
-            <dependent idx="16">air</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="17">GM</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="12">retrieve</governor>
-            <dependent idx="17">bag</dependent>
-          </dep>
-          <dep type="xcomp">
-            <governor idx="3">plans</governor>
-            <dependent idx="18">equipped</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="20">cars</governor>
-            <dependent idx="19">GM</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="18">equipped</governor>
-            <dependent idx="20">cars</dependent>
+            <governor idx="14">data</governor>
+            <dependent idx="18">cars</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="20">cars</governor>
-            <dependent idx="21">dating</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="19">dating</dependent>
           </dep>
-          <dep type="nmod">
-            <governor idx="21">dating</governor>
-            <dependent idx="22">to</dependent>
+          <dep type="case">
+            <governor idx="21">1990</governor>
+            <dependent idx="20">to</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="19">dating</governor>
+            <dependent idx="21">1990</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="23">,</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="22">,</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">officials</governor>
-            <dependent idx="24">company</dependent>
+            <governor idx="24">officials</governor>
+            <dependent idx="23">company</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="26">said</governor>
-            <dependent idx="25">officials</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="24">officials</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="27">.</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="26">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="26">said</dependent>
+            <dependent idx="25">said</dependent>
           </dep>
           <dep type="nsubj">
             <governor idx="3">plans</governor>
@@ -7222,7 +7200,7 @@
             <dependent idx="2">also</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="26">said</governor>
+            <governor idx="25">said</governor>
             <dependent idx="3">plans</dependent>
           </dep>
           <dep type="mark">
@@ -7270,52 +7248,48 @@
             <dependent idx="14">data</dependent>
           </dep>
           <dep type="case">
-            <governor idx="17">bag</governor>
+            <governor idx="18">cars</governor>
             <dependent idx="15">from</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="18">cars</governor>
+            <dependent idx="16">air-bag-equipped</dependent>
+          </dep>
           <dep type="compound">
-            <governor idx="17">bag</governor>
-            <dependent idx="16">air</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="17">GM</dependent>
           </dep>
           <dep type="nmod:from">
-            <governor idx="12">retrieve</governor>
-            <dependent idx="17">bag</dependent>
-          </dep>
-          <dep type="xcomp">
-            <governor idx="3">plans</governor>
-            <dependent idx="18">equipped</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="20">cars</governor>
-            <dependent idx="19">GM</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="18">equipped</governor>
-            <dependent idx="20">cars</dependent>
+            <governor idx="14">data</governor>
+            <dependent idx="18">cars</dependent>
           </dep>
           <dep type="acl">
-            <governor idx="20">cars</governor>
-            <dependent idx="21">dating</dependent>
+            <governor idx="18">cars</governor>
+            <dependent idx="19">dating</dependent>
           </dep>
-          <dep type="nmod">
-            <governor idx="21">dating</governor>
-            <dependent idx="22">to</dependent>
+          <dep type="case">
+            <governor idx="21">1990</governor>
+            <dependent idx="20">to</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="19">dating</governor>
+            <dependent idx="21">1990</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="23">,</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="22">,</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">officials</governor>
-            <dependent idx="24">company</dependent>
+            <governor idx="24">officials</governor>
+            <dependent idx="23">company</dependent>
           </dep>
           <dep type="nsubj">
-            <governor idx="26">said</governor>
-            <dependent idx="25">officials</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="24">officials</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="26">said</governor>
-            <dependent idx="27">.</dependent>
+            <governor idx="25">said</governor>
+            <dependent idx="26">.</dependent>
           </dep>
         </dependencies>
       </sentence>

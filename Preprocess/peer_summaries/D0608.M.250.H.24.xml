@@ -30,699 +30,673 @@
             <POS>DT</POS>
           </token>
           <token id="5">
-            <word>Mercedes</word>
+            <word>Mercedes-Benz</word>
             <CharacterOffsetBegin>17</CharacterOffsetBegin>
-            <CharacterOffsetEnd>25</CharacterOffsetEnd>
-            <POS>NNP</POS>
-          </token>
-          <token id="6">
-            <word>Benz</word>
-            <CharacterOffsetBegin>26</CharacterOffsetBegin>
             <CharacterOffsetEnd>30</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
-          <token id="7">
+          <token id="6">
             <word>models</word>
             <CharacterOffsetBegin>31</CharacterOffsetBegin>
             <CharacterOffsetEnd>37</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="8">
+          <token id="7">
             <word>are</word>
             <CharacterOffsetBegin>38</CharacterOffsetBegin>
             <CharacterOffsetEnd>41</CharacterOffsetEnd>
             <POS>VBP</POS>
           </token>
-          <token id="9">
+          <token id="8">
             <word>supposed</word>
             <CharacterOffsetBegin>42</CharacterOffsetBegin>
             <CharacterOffsetEnd>50</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
-          <token id="10">
+          <token id="9">
             <word>to</word>
             <CharacterOffsetBegin>51</CharacterOffsetBegin>
             <CharacterOffsetEnd>53</CharacterOffsetEnd>
             <POS>TO</POS>
           </token>
-          <token id="11">
+          <token id="10">
             <word>recognize</word>
             <CharacterOffsetBegin>54</CharacterOffsetBegin>
             <CharacterOffsetEnd>63</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
-          <token id="12">
+          <token id="11">
             <word>that</word>
             <CharacterOffsetBegin>64</CharacterOffsetBegin>
             <CharacterOffsetEnd>68</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="13">
+          <token id="12">
             <word>a</word>
             <CharacterOffsetBegin>69</CharacterOffsetBegin>
             <CharacterOffsetEnd>70</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
-          <token id="14">
+          <token id="13">
             <word>BabySmart</word>
             <CharacterOffsetBegin>71</CharacterOffsetBegin>
             <CharacterOffsetEnd>80</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
-          <token id="15">
+          <token id="14">
             <word>seat</word>
             <CharacterOffsetBegin>81</CharacterOffsetBegin>
             <CharacterOffsetEnd>85</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="16">
+          <token id="15">
             <word>has</word>
             <CharacterOffsetBegin>86</CharacterOffsetBegin>
             <CharacterOffsetEnd>89</CharacterOffsetEnd>
             <POS>VBZ</POS>
           </token>
-          <token id="17">
+          <token id="16">
             <word>been</word>
             <CharacterOffsetBegin>90</CharacterOffsetBegin>
             <CharacterOffsetEnd>94</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
-          <token id="18">
+          <token id="17">
             <word>installed</word>
             <CharacterOffsetBegin>95</CharacterOffsetBegin>
             <CharacterOffsetEnd>104</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
-          <token id="19">
+          <token id="18">
             <word>and</word>
             <CharacterOffsetBegin>105</CharacterOffsetBegin>
             <CharacterOffsetEnd>108</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
-          <token id="20">
+          <token id="19">
             <word>turn</word>
             <CharacterOffsetBegin>109</CharacterOffsetBegin>
             <CharacterOffsetEnd>113</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
-          <token id="21">
+          <token id="20">
             <word>off</word>
             <CharacterOffsetBegin>114</CharacterOffsetBegin>
             <CharacterOffsetEnd>117</CharacterOffsetEnd>
             <POS>RP</POS>
           </token>
-          <token id="22">
+          <token id="21">
             <word>the</word>
             <CharacterOffsetBegin>118</CharacterOffsetBegin>
             <CharacterOffsetEnd>121</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
-          <token id="23">
+          <token id="22">
             <word>passenger</word>
             <CharacterOffsetBegin>122</CharacterOffsetBegin>
             <CharacterOffsetEnd>131</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="24">
+          <token id="23">
             <word>air</word>
             <CharacterOffsetBegin>132</CharacterOffsetBegin>
             <CharacterOffsetEnd>135</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="25">
+          <token id="24">
             <word>bag</word>
             <CharacterOffsetBegin>136</CharacterOffsetBegin>
             <CharacterOffsetEnd>139</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="26">
+          <token id="25">
             <word>.</word>
             <CharacterOffsetBegin>139</CharacterOffsetBegin>
             <CharacterOffsetEnd>140</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (S (NP (NP (NNP Air) (NNS bags)) (PP (IN in) (NP (DT some) (NNP Mercedes) (NNP Benz) (NNS models)))) (VP (VBP are) (VP (VBN supposed) (S (VP (TO to) (VP (VP (VB recognize) (SBAR (IN that) (S (NP (DT a) (NNP BabySmart) (NN seat)) (VP (VBZ has) (VP (VBN been) (VP (VBN installed))))))) (CC and) (VP (VB turn) (PRT (RP off)) (NP (DT the) (NN passenger) (NN air) (NN bag)))))))) (. .))) </parse>
+        <parse>(ROOT (S (NP (NP (NNP Air) (NNS bags)) (PP (IN in) (NP (DT some) (NNP Mercedes-Benz) (NNS models)))) (VP (VBP are) (VP (VBN supposed) (S (VP (TO to) (VP (VP (VB recognize) (SBAR (IN that) (S (NP (DT a) (NNP BabySmart) (NN seat)) (VP (VBZ has) (VP (VBN been) (VP (VBN installed))))))) (CC and) (VP (VB turn) (PRT (RP off)) (NP (DT the) (NN passenger) (NN air) (NN bag)))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="9">supposed</dependent>
+            <dependent idx="8">supposed</dependent>
           </dep>
           <dep type="compound">
             <governor idx="2">bags</governor>
             <dependent idx="1">Air</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="9">supposed</governor>
+            <governor idx="8">supposed</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="case">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="3">in</dependent>
           </dep>
           <dep type="det">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="4">some</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="5">Mercedes</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="6">Benz</dependent>
+            <governor idx="6">models</governor>
+            <dependent idx="5">Mercedes-Benz</dependent>
           </dep>
           <dep type="nmod">
             <governor idx="2">bags</governor>
-            <dependent idx="7">models</dependent>
+            <dependent idx="6">models</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="9">supposed</governor>
-            <dependent idx="8">are</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="7">are</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">recognize</governor>
-            <dependent idx="10">to</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="9">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="9">supposed</governor>
-            <dependent idx="11">recognize</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="10">recognize</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="18">installed</governor>
-            <dependent idx="12">that</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="11">that</dependent>
           </dep>
           <dep type="det">
-            <governor idx="15">seat</governor>
-            <dependent idx="13">a</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="12">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">seat</governor>
-            <dependent idx="14">BabySmart</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="13">BabySmart</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="18">installed</governor>
-            <dependent idx="16">has</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="15">has</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="17">been</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="16">been</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="11">recognize</governor>
-            <dependent idx="18">installed</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="17">installed</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="18">installed</governor>
-            <dependent idx="19">and</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="18">and</dependent>
           </dep>
           <dep type="conj">
-            <governor idx="18">installed</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="compound:prt">
-            <governor idx="20">turn</governor>
-            <dependent idx="21">off</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="20">off</dependent>
           </dep>
           <dep type="det">
-            <governor idx="25">bag</governor>
-            <dependent idx="22">the</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="21">the</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="23">passenger</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="22">passenger</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="24">air</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="23">air</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="20">turn</governor>
-            <dependent idx="25">bag</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="24">bag</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">supposed</governor>
-            <dependent idx="26">.</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="25">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="9">supposed</dependent>
+            <dependent idx="8">supposed</dependent>
           </dep>
           <dep type="compound">
             <governor idx="2">bags</governor>
             <dependent idx="1">Air</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="9">supposed</governor>
+            <governor idx="8">supposed</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="case">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="3">in</dependent>
           </dep>
           <dep type="det">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="4">some</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="5">Mercedes</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="6">Benz</dependent>
+            <governor idx="6">models</governor>
+            <dependent idx="5">Mercedes-Benz</dependent>
           </dep>
           <dep type="nmod:in">
             <governor idx="2">bags</governor>
-            <dependent idx="7">models</dependent>
+            <dependent idx="6">models</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="9">supposed</governor>
-            <dependent idx="8">are</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="7">are</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">recognize</governor>
-            <dependent idx="10">to</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="9">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="9">supposed</governor>
-            <dependent idx="11">recognize</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="10">recognize</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="18">installed</governor>
-            <dependent idx="12">that</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="11">that</dependent>
           </dep>
           <dep type="det">
-            <governor idx="15">seat</governor>
-            <dependent idx="13">a</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="12">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">seat</governor>
-            <dependent idx="14">BabySmart</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="13">BabySmart</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="18">installed</governor>
-            <dependent idx="16">has</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="15">has</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="17">been</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="16">been</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="11">recognize</governor>
-            <dependent idx="18">installed</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="17">installed</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="18">installed</governor>
-            <dependent idx="19">and</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="18">and</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="18">installed</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="compound:prt">
-            <governor idx="20">turn</governor>
-            <dependent idx="21">off</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="20">off</dependent>
           </dep>
           <dep type="det">
-            <governor idx="25">bag</governor>
-            <dependent idx="22">the</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="21">the</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="23">passenger</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="22">passenger</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="24">air</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="23">air</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="20">turn</governor>
-            <dependent idx="25">bag</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="24">bag</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">supposed</governor>
-            <dependent idx="26">.</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="25">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="9">supposed</dependent>
+            <dependent idx="8">supposed</dependent>
           </dep>
           <dep type="compound">
             <governor idx="2">bags</governor>
             <dependent idx="1">Air</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="9">supposed</governor>
+            <governor idx="8">supposed</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="case">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="3">in</dependent>
           </dep>
           <dep type="det">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="4">some</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="5">Mercedes</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="6">Benz</dependent>
+            <governor idx="6">models</governor>
+            <dependent idx="5">Mercedes-Benz</dependent>
           </dep>
           <dep type="nmod:in">
             <governor idx="2">bags</governor>
-            <dependent idx="7">models</dependent>
+            <dependent idx="6">models</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="9">supposed</governor>
-            <dependent idx="8">are</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="7">are</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">recognize</governor>
-            <dependent idx="10">to</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="9">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="9">supposed</governor>
-            <dependent idx="11">recognize</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="10">recognize</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="18">installed</governor>
-            <dependent idx="12">that</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="11">that</dependent>
           </dep>
           <dep type="det">
-            <governor idx="15">seat</governor>
-            <dependent idx="13">a</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="12">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">seat</governor>
-            <dependent idx="14">BabySmart</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="13">BabySmart</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="nsubj" extra="true">
-            <governor idx="20">turn</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="18">installed</governor>
-            <dependent idx="16">has</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="15">has</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="17">been</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="16">been</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="11">recognize</governor>
-            <dependent idx="18">installed</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="17">installed</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="18">installed</governor>
-            <dependent idx="19">and</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="18">and</dependent>
           </dep>
           <dep type="ccomp" extra="true">
-            <governor idx="11">recognize</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="18">installed</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="compound:prt">
-            <governor idx="20">turn</governor>
-            <dependent idx="21">off</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="20">off</dependent>
           </dep>
           <dep type="det">
-            <governor idx="25">bag</governor>
-            <dependent idx="22">the</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="21">the</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="23">passenger</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="22">passenger</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="24">air</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="23">air</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="20">turn</governor>
-            <dependent idx="25">bag</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="24">bag</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">supposed</governor>
-            <dependent idx="26">.</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="25">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="9">supposed</dependent>
+            <dependent idx="8">supposed</dependent>
           </dep>
           <dep type="compound">
             <governor idx="2">bags</governor>
             <dependent idx="1">Air</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="9">supposed</governor>
+            <governor idx="8">supposed</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="nsubj:xsubj" extra="true">
-            <governor idx="11">recognize</governor>
+            <governor idx="10">recognize</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="case">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="3">in</dependent>
           </dep>
           <dep type="det">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="4">some</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="5">Mercedes</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="6">Benz</dependent>
+            <governor idx="6">models</governor>
+            <dependent idx="5">Mercedes-Benz</dependent>
           </dep>
           <dep type="nmod:in">
             <governor idx="2">bags</governor>
-            <dependent idx="7">models</dependent>
+            <dependent idx="6">models</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="9">supposed</governor>
-            <dependent idx="8">are</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="7">are</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">recognize</governor>
-            <dependent idx="10">to</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="9">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="9">supposed</governor>
-            <dependent idx="11">recognize</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="10">recognize</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="18">installed</governor>
-            <dependent idx="12">that</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="11">that</dependent>
           </dep>
           <dep type="det">
-            <governor idx="15">seat</governor>
-            <dependent idx="13">a</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="12">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">seat</governor>
-            <dependent idx="14">BabySmart</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="13">BabySmart</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="nsubj" extra="true">
-            <governor idx="20">turn</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="18">installed</governor>
-            <dependent idx="16">has</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="15">has</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="17">been</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="16">been</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="11">recognize</governor>
-            <dependent idx="18">installed</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="17">installed</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="18">installed</governor>
-            <dependent idx="19">and</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="18">and</dependent>
           </dep>
           <dep type="ccomp" extra="true">
-            <governor idx="11">recognize</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="18">installed</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="compound:prt">
-            <governor idx="20">turn</governor>
-            <dependent idx="21">off</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="20">off</dependent>
           </dep>
           <dep type="det">
-            <governor idx="25">bag</governor>
-            <dependent idx="22">the</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="21">the</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="23">passenger</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="22">passenger</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="24">air</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="23">air</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="20">turn</governor>
-            <dependent idx="25">bag</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="24">bag</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">supposed</governor>
-            <dependent idx="26">.</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="25">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="9">supposed</dependent>
+            <dependent idx="8">supposed</dependent>
           </dep>
           <dep type="compound">
             <governor idx="2">bags</governor>
             <dependent idx="1">Air</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="9">supposed</governor>
+            <governor idx="8">supposed</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="nsubj:xsubj" extra="true">
-            <governor idx="11">recognize</governor>
+            <governor idx="10">recognize</governor>
             <dependent idx="2">bags</dependent>
           </dep>
           <dep type="case">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="3">in</dependent>
           </dep>
           <dep type="det">
-            <governor idx="7">models</governor>
+            <governor idx="6">models</governor>
             <dependent idx="4">some</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="5">Mercedes</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="7">models</governor>
-            <dependent idx="6">Benz</dependent>
+            <governor idx="6">models</governor>
+            <dependent idx="5">Mercedes-Benz</dependent>
           </dep>
           <dep type="nmod:in">
             <governor idx="2">bags</governor>
-            <dependent idx="7">models</dependent>
+            <dependent idx="6">models</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="9">supposed</governor>
-            <dependent idx="8">are</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="7">are</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="11">recognize</governor>
-            <dependent idx="10">to</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="9">to</dependent>
           </dep>
           <dep type="xcomp">
-            <governor idx="9">supposed</governor>
-            <dependent idx="11">recognize</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="10">recognize</dependent>
           </dep>
           <dep type="mark">
-            <governor idx="18">installed</governor>
-            <dependent idx="12">that</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="11">that</dependent>
           </dep>
           <dep type="det">
-            <governor idx="15">seat</governor>
-            <dependent idx="13">a</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="12">a</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="15">seat</governor>
-            <dependent idx="14">BabySmart</dependent>
+            <governor idx="14">seat</governor>
+            <dependent idx="13">BabySmart</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="nsubj" extra="true">
-            <governor idx="20">turn</governor>
-            <dependent idx="15">seat</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="14">seat</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="18">installed</governor>
-            <dependent idx="16">has</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="15">has</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="18">installed</governor>
-            <dependent idx="17">been</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="16">been</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="11">recognize</governor>
-            <dependent idx="18">installed</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="17">installed</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="18">installed</governor>
-            <dependent idx="19">and</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="18">and</dependent>
           </dep>
           <dep type="ccomp" extra="true">
-            <governor idx="11">recognize</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="10">recognize</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="18">installed</governor>
-            <dependent idx="20">turn</dependent>
+            <governor idx="17">installed</governor>
+            <dependent idx="19">turn</dependent>
           </dep>
           <dep type="compound:prt">
-            <governor idx="20">turn</governor>
-            <dependent idx="21">off</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="20">off</dependent>
           </dep>
           <dep type="det">
-            <governor idx="25">bag</governor>
-            <dependent idx="22">the</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="21">the</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="23">passenger</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="22">passenger</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="25">bag</governor>
-            <dependent idx="24">air</dependent>
+            <governor idx="24">bag</governor>
+            <dependent idx="23">air</dependent>
           </dep>
           <dep type="dobj">
-            <governor idx="20">turn</governor>
-            <dependent idx="25">bag</dependent>
+            <governor idx="19">turn</governor>
+            <dependent idx="24">bag</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">supposed</governor>
-            <dependent idx="26">.</dependent>
+            <governor idx="8">supposed</governor>
+            <dependent idx="25">.</dependent>
           </dep>
         </dependencies>
       </sentence>
@@ -5020,151 +4994,139 @@
             <POS>IN</POS>
           </token>
           <token id="9">
-            <word>rear</word>
+            <word>rear-facing</word>
             <CharacterOffsetBegin>1050</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1054</CharacterOffsetEnd>
+            <CharacterOffsetEnd>1061</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="10">
-            <word>facing</word>
-            <CharacterOffsetBegin>1055</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1061</CharacterOffsetEnd>
-            <POS>VBG</POS>
-          </token>
-          <token id="11">
             <word>child</word>
             <CharacterOffsetBegin>1062</CharacterOffsetBegin>
             <CharacterOffsetEnd>1067</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="12">
+          <token id="11">
             <word>seats</word>
             <CharacterOffsetBegin>1068</CharacterOffsetBegin>
             <CharacterOffsetEnd>1073</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="13">
+          <token id="12">
             <word>,</word>
             <CharacterOffsetBegin>1073</CharacterOffsetBegin>
             <CharacterOffsetEnd>1074</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
-          <token id="14">
+          <token id="13">
             <word>but</word>
             <CharacterOffsetBegin>1075</CharacterOffsetBegin>
             <CharacterOffsetEnd>1078</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
-          <token id="15">
+          <token id="14">
             <word>also</word>
             <CharacterOffsetBegin>1079</CharacterOffsetBegin>
             <CharacterOffsetEnd>1083</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
-          <token id="16">
+          <token id="15">
             <word>strongly</word>
             <CharacterOffsetBegin>1084</CharacterOffsetBegin>
             <CharacterOffsetEnd>1092</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
-          <token id="17">
+          <token id="16">
             <word>recommend</word>
             <CharacterOffsetBegin>1093</CharacterOffsetBegin>
             <CharacterOffsetEnd>1102</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
-          <token id="18">
+          <token id="17">
             <word>that</word>
             <CharacterOffsetBegin>1103</CharacterOffsetBegin>
             <CharacterOffsetEnd>1107</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="19">
-            <word>rear</word>
+          <token id="18">
+            <word>rear-facing</word>
             <CharacterOffsetBegin>1108</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1112</CharacterOffsetEnd>
+            <CharacterOffsetEnd>1119</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
-          <token id="20">
-            <word>facing</word>
-            <CharacterOffsetBegin>1113</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1119</CharacterOffsetEnd>
-            <POS>VBG</POS>
-          </token>
-          <token id="21">
+          <token id="19">
             <word>infant</word>
             <CharacterOffsetBegin>1120</CharacterOffsetBegin>
             <CharacterOffsetEnd>1126</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="22">
+          <token id="20">
             <word>seats</word>
             <CharacterOffsetBegin>1127</CharacterOffsetBegin>
             <CharacterOffsetEnd>1132</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
-          <token id="23">
+          <token id="21">
             <word>never</word>
             <CharacterOffsetBegin>1133</CharacterOffsetBegin>
             <CharacterOffsetEnd>1138</CharacterOffsetEnd>
             <POS>RB</POS>
           </token>
-          <token id="24">
+          <token id="22">
             <word>be</word>
             <CharacterOffsetBegin>1139</CharacterOffsetBegin>
             <CharacterOffsetEnd>1141</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
-          <token id="25">
+          <token id="23">
             <word>placed</word>
             <CharacterOffsetBegin>1142</CharacterOffsetBegin>
             <CharacterOffsetEnd>1148</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
-          <token id="26">
+          <token id="24">
             <word>in</word>
             <CharacterOffsetBegin>1149</CharacterOffsetBegin>
             <CharacterOffsetEnd>1151</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="27">
+          <token id="25">
             <word>front</word>
             <CharacterOffsetBegin>1152</CharacterOffsetBegin>
             <CharacterOffsetEnd>1157</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="28">
+          <token id="26">
             <word>of</word>
             <CharacterOffsetBegin>1158</CharacterOffsetBegin>
             <CharacterOffsetEnd>1160</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
-          <token id="29">
+          <token id="27">
             <word>an</word>
             <CharacterOffsetBegin>1161</CharacterOffsetBegin>
             <CharacterOffsetEnd>1163</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
-          <token id="30">
+          <token id="28">
             <word>air</word>
             <CharacterOffsetBegin>1164</CharacterOffsetBegin>
             <CharacterOffsetEnd>1167</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="31">
+          <token id="29">
             <word>bag</word>
             <CharacterOffsetBegin>1168</CharacterOffsetBegin>
             <CharacterOffsetEnd>1171</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="32">
+          <token id="30">
             <word>.</word>
             <CharacterOffsetBegin>1171</CharacterOffsetBegin>
             <CharacterOffsetEnd>1172</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (S (NP (NN Safety) (NNS experts)) (VP (VBP recommend) (SBAR (IN that) (S (NP (JJ small) (NNS infants)) (VP (VP (VBP ride) (PP (IN in) (NP (NP (JJ rear)) (VP (VBG facing) (NP (NN child) (NNS seats)))))) (, ,) (CC but) (VP (ADVP (RB also)) (ADVP (RB strongly)) (VB recommend))))) (SBAR (IN that) (S (NP (NP (JJ rear)) (VP (VBG facing) (NP (NN infant) (NNS seats)) (ADVP (RB never)))) (VP (VB be) (VP (VBN placed) (PP (IN in) (NP (NP (NN front)) (PP (IN of) (NP (DT an) (NN air) (NN bag)))))))))) (. .))) </parse>
+        <parse>(ROOT (S (NP (NN Safety) (NNS experts)) (VP (VBP recommend) (SBAR (IN that) (S (NP (JJ small) (NNS infants)) (VP (VP (VBP ride) (PP (IN in) (NP (JJ rear-facing) (NN child) (NNS seats)))) (, ,) (CC but) (VP (ADVP (RB also)) (ADVP (RB strongly)) (VB recommend))))) (SBAR (IN that) (S (NP (JJ rear-facing) (NN infant) (NNS seats)) (ADVP (RB never)) (VP (VB be) (VP (VBN placed) (PP (IN in) (NP (NP (NN front)) (PP (IN of) (NP (DT an) (NN air) (NN bag)))))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
@@ -5194,105 +5156,97 @@
             <governor idx="3">recommend</governor>
             <dependent idx="7">ride</dependent>
           </dep>
-          <dep type="advmod">
-            <governor idx="7">ride</governor>
+          <dep type="case">
+            <governor idx="11">seats</governor>
             <dependent idx="8">in</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="8">in</governor>
-            <dependent idx="9">rear</dependent>
-          </dep>
-          <dep type="dep">
-            <governor idx="9">rear</governor>
-            <dependent idx="10">facing</dependent>
+          <dep type="amod">
+            <governor idx="11">seats</governor>
+            <dependent idx="9">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="12">seats</governor>
-            <dependent idx="11">child</dependent>
+            <governor idx="11">seats</governor>
+            <dependent idx="10">child</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="10">facing</governor>
-            <dependent idx="12">seats</dependent>
+          <dep type="nmod">
+            <governor idx="7">ride</governor>
+            <dependent idx="11">seats</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">rear</governor>
-            <dependent idx="13">,</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="12">,</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="9">rear</governor>
-            <dependent idx="14">but</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="13">but</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="15">also</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="14">also</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="16">strongly</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="15">strongly</dependent>
           </dep>
           <dep type="conj">
-            <governor idx="9">rear</governor>
-            <dependent idx="17">recommend</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="16">recommend</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="17">recommend</governor>
-            <dependent idx="18">that</dependent>
+          <dep type="mark">
+            <governor idx="23">placed</governor>
+            <dependent idx="17">that</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="18">that</governor>
-            <dependent idx="19">rear</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="19">rear</governor>
-            <dependent idx="20">facing</dependent>
+          <dep type="amod">
+            <governor idx="20">seats</governor>
+            <dependent idx="18">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="22">seats</governor>
-            <dependent idx="21">infant</dependent>
+            <governor idx="20">seats</governor>
+            <dependent idx="19">infant</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="22">seats</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="20">seats</dependent>
           </dep>
           <dep type="neg">
-            <governor idx="25">placed</governor>
-            <dependent idx="23">never</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="21">never</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="24">be</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="22">be</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="20">facing</governor>
-            <dependent idx="25">placed</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="23">placed</dependent>
           </dep>
           <dep type="case">
-            <governor idx="27">front</governor>
-            <dependent idx="26">in</dependent>
+            <governor idx="25">front</governor>
+            <dependent idx="24">in</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="25">placed</governor>
-            <dependent idx="27">front</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="25">front</dependent>
           </dep>
           <dep type="case">
-            <governor idx="31">bag</governor>
-            <dependent idx="28">of</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="26">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="31">bag</governor>
-            <dependent idx="29">an</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="27">an</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="31">bag</governor>
-            <dependent idx="30">air</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="28">air</dependent>
           </dep>
           <dep type="nmod">
-            <governor idx="27">front</governor>
-            <dependent idx="31">bag</dependent>
+            <governor idx="25">front</governor>
+            <dependent idx="29">bag</dependent>
           </dep>
           <dep type="punct">
             <governor idx="3">recommend</governor>
-            <dependent idx="32">.</dependent>
+            <dependent idx="30">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
@@ -5324,105 +5278,97 @@
             <governor idx="3">recommend</governor>
             <dependent idx="7">ride</dependent>
           </dep>
-          <dep type="advmod">
-            <governor idx="7">ride</governor>
+          <dep type="case">
+            <governor idx="11">seats</governor>
             <dependent idx="8">in</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="8">in</governor>
-            <dependent idx="9">rear</dependent>
-          </dep>
-          <dep type="dep">
-            <governor idx="9">rear</governor>
-            <dependent idx="10">facing</dependent>
+          <dep type="amod">
+            <governor idx="11">seats</governor>
+            <dependent idx="9">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="12">seats</governor>
-            <dependent idx="11">child</dependent>
+            <governor idx="11">seats</governor>
+            <dependent idx="10">child</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="10">facing</governor>
-            <dependent idx="12">seats</dependent>
+          <dep type="nmod:in">
+            <governor idx="7">ride</governor>
+            <dependent idx="11">seats</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">rear</governor>
-            <dependent idx="13">,</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="12">,</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="9">rear</governor>
-            <dependent idx="14">but</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="13">but</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="15">also</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="14">also</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="16">strongly</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="15">strongly</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="9">rear</governor>
-            <dependent idx="17">recommend</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="16">recommend</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="17">recommend</governor>
-            <dependent idx="18">that</dependent>
+          <dep type="mark">
+            <governor idx="23">placed</governor>
+            <dependent idx="17">that</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="18">that</governor>
-            <dependent idx="19">rear</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="19">rear</governor>
-            <dependent idx="20">facing</dependent>
+          <dep type="amod">
+            <governor idx="20">seats</governor>
+            <dependent idx="18">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="22">seats</governor>
-            <dependent idx="21">infant</dependent>
+            <governor idx="20">seats</governor>
+            <dependent idx="19">infant</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="22">seats</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="20">seats</dependent>
           </dep>
           <dep type="neg">
-            <governor idx="25">placed</governor>
-            <dependent idx="23">never</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="21">never</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="24">be</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="22">be</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="20">facing</governor>
-            <dependent idx="25">placed</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="23">placed</dependent>
           </dep>
           <dep type="case">
-            <governor idx="31">bag</governor>
-            <dependent idx="26">in</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="24">in</dependent>
           </dep>
           <dep type="mwe">
-            <governor idx="26">in</governor>
-            <dependent idx="27">front</dependent>
+            <governor idx="24">in</governor>
+            <dependent idx="25">front</dependent>
           </dep>
           <dep type="mwe">
-            <governor idx="26">in</governor>
-            <dependent idx="28">of</dependent>
+            <governor idx="24">in</governor>
+            <dependent idx="26">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="31">bag</governor>
-            <dependent idx="29">an</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="27">an</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="31">bag</governor>
-            <dependent idx="30">air</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="28">air</dependent>
           </dep>
           <dep type="nmod:in_front_of">
-            <governor idx="25">placed</governor>
-            <dependent idx="31">bag</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="29">bag</dependent>
           </dep>
           <dep type="punct">
             <governor idx="3">recommend</governor>
-            <dependent idx="32">.</dependent>
+            <dependent idx="30">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
@@ -5450,113 +5396,109 @@
             <governor idx="7">ride</governor>
             <dependent idx="6">infants</dependent>
           </dep>
+          <dep type="nsubj" extra="true">
+            <governor idx="16">recommend</governor>
+            <dependent idx="6">infants</dependent>
+          </dep>
           <dep type="ccomp">
             <governor idx="3">recommend</governor>
             <dependent idx="7">ride</dependent>
           </dep>
-          <dep type="advmod">
-            <governor idx="7">ride</governor>
+          <dep type="case">
+            <governor idx="11">seats</governor>
             <dependent idx="8">in</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="8">in</governor>
-            <dependent idx="9">rear</dependent>
-          </dep>
-          <dep type="dep">
-            <governor idx="9">rear</governor>
-            <dependent idx="10">facing</dependent>
+          <dep type="amod">
+            <governor idx="11">seats</governor>
+            <dependent idx="9">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="12">seats</governor>
-            <dependent idx="11">child</dependent>
+            <governor idx="11">seats</governor>
+            <dependent idx="10">child</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="10">facing</governor>
-            <dependent idx="12">seats</dependent>
+          <dep type="nmod:in">
+            <governor idx="7">ride</governor>
+            <dependent idx="11">seats</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">rear</governor>
-            <dependent idx="13">,</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="12">,</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="9">rear</governor>
-            <dependent idx="14">but</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="13">but</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="15">also</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="14">also</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="16">strongly</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="15">strongly</dependent>
           </dep>
-          <dep type="dep" extra="true">
-            <governor idx="8">in</governor>
-            <dependent idx="17">recommend</dependent>
+          <dep type="ccomp" extra="true">
+            <governor idx="3">recommend</governor>
+            <dependent idx="16">recommend</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="9">rear</governor>
-            <dependent idx="17">recommend</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="16">recommend</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="17">recommend</governor>
-            <dependent idx="18">that</dependent>
+          <dep type="mark">
+            <governor idx="23">placed</governor>
+            <dependent idx="17">that</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="18">that</governor>
-            <dependent idx="19">rear</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="19">rear</governor>
-            <dependent idx="20">facing</dependent>
+          <dep type="amod">
+            <governor idx="20">seats</governor>
+            <dependent idx="18">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="22">seats</governor>
-            <dependent idx="21">infant</dependent>
+            <governor idx="20">seats</governor>
+            <dependent idx="19">infant</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="22">seats</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="20">seats</dependent>
           </dep>
           <dep type="neg">
-            <governor idx="25">placed</governor>
-            <dependent idx="23">never</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="21">never</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="24">be</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="22">be</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="20">facing</governor>
-            <dependent idx="25">placed</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="23">placed</dependent>
           </dep>
           <dep type="case">
-            <governor idx="31">bag</governor>
-            <dependent idx="26">in</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="24">in</dependent>
           </dep>
           <dep type="mwe">
-            <governor idx="26">in</governor>
-            <dependent idx="27">front</dependent>
+            <governor idx="24">in</governor>
+            <dependent idx="25">front</dependent>
           </dep>
           <dep type="mwe">
-            <governor idx="26">in</governor>
-            <dependent idx="28">of</dependent>
+            <governor idx="24">in</governor>
+            <dependent idx="26">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="31">bag</governor>
-            <dependent idx="29">an</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="27">an</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="31">bag</governor>
-            <dependent idx="30">air</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="28">air</dependent>
           </dep>
           <dep type="nmod:in_front_of">
-            <governor idx="25">placed</governor>
-            <dependent idx="31">bag</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="29">bag</dependent>
           </dep>
           <dep type="punct">
             <governor idx="3">recommend</governor>
-            <dependent idx="32">.</dependent>
+            <dependent idx="30">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
@@ -5584,113 +5526,109 @@
             <governor idx="7">ride</governor>
             <dependent idx="6">infants</dependent>
           </dep>
+          <dep type="nsubj" extra="true">
+            <governor idx="16">recommend</governor>
+            <dependent idx="6">infants</dependent>
+          </dep>
           <dep type="ccomp">
             <governor idx="3">recommend</governor>
             <dependent idx="7">ride</dependent>
           </dep>
-          <dep type="advmod">
-            <governor idx="7">ride</governor>
+          <dep type="case">
+            <governor idx="11">seats</governor>
             <dependent idx="8">in</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="8">in</governor>
-            <dependent idx="9">rear</dependent>
-          </dep>
-          <dep type="dep">
-            <governor idx="9">rear</governor>
-            <dependent idx="10">facing</dependent>
+          <dep type="amod">
+            <governor idx="11">seats</governor>
+            <dependent idx="9">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="12">seats</governor>
-            <dependent idx="11">child</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="10">facing</governor>
-            <dependent idx="12">seats</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="9">rear</governor>
-            <dependent idx="13">,</dependent>
-          </dep>
-          <dep type="cc">
-            <governor idx="9">rear</governor>
-            <dependent idx="14">but</dependent>
-          </dep>
-          <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="15">also</dependent>
-          </dep>
-          <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="16">strongly</dependent>
-          </dep>
-          <dep type="dep" extra="true">
-            <governor idx="8">in</governor>
-            <dependent idx="17">recommend</dependent>
-          </dep>
-          <dep type="conj:and">
-            <governor idx="9">rear</governor>
-            <dependent idx="17">recommend</dependent>
-          </dep>
-          <dep type="dobj">
-            <governor idx="17">recommend</governor>
-            <dependent idx="18">that</dependent>
-          </dep>
-          <dep type="dep">
-            <governor idx="18">that</governor>
-            <dependent idx="19">rear</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="19">rear</governor>
-            <dependent idx="20">facing</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="22">seats</governor>
-            <dependent idx="21">infant</dependent>
-          </dep>
-          <dep type="nsubjpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="22">seats</dependent>
-          </dep>
-          <dep type="neg">
-            <governor idx="25">placed</governor>
-            <dependent idx="23">never</dependent>
-          </dep>
-          <dep type="auxpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="24">be</dependent>
-          </dep>
-          <dep type="ccomp">
-            <governor idx="20">facing</governor>
-            <dependent idx="25">placed</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="27">front</governor>
-            <dependent idx="26">in</dependent>
+            <governor idx="11">seats</governor>
+            <dependent idx="10">child</dependent>
           </dep>
           <dep type="nmod:in">
-            <governor idx="25">placed</governor>
-            <dependent idx="27">front</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="11">seats</dependent>
           </dep>
-          <dep type="case">
-            <governor idx="31">bag</governor>
-            <dependent idx="28">of</dependent>
+          <dep type="punct">
+            <governor idx="7">ride</governor>
+            <dependent idx="12">,</dependent>
           </dep>
-          <dep type="det">
-            <governor idx="31">bag</governor>
-            <dependent idx="29">an</dependent>
+          <dep type="cc">
+            <governor idx="7">ride</governor>
+            <dependent idx="13">but</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="16">recommend</governor>
+            <dependent idx="14">also</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="16">recommend</governor>
+            <dependent idx="15">strongly</dependent>
+          </dep>
+          <dep type="ccomp" extra="true">
+            <governor idx="3">recommend</governor>
+            <dependent idx="16">recommend</dependent>
+          </dep>
+          <dep type="conj:and">
+            <governor idx="7">ride</governor>
+            <dependent idx="16">recommend</dependent>
+          </dep>
+          <dep type="mark">
+            <governor idx="23">placed</governor>
+            <dependent idx="17">that</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="20">seats</governor>
+            <dependent idx="18">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="31">bag</governor>
-            <dependent idx="30">air</dependent>
+            <governor idx="20">seats</governor>
+            <dependent idx="19">infant</dependent>
+          </dep>
+          <dep type="nsubjpass">
+            <governor idx="23">placed</governor>
+            <dependent idx="20">seats</dependent>
+          </dep>
+          <dep type="neg">
+            <governor idx="23">placed</governor>
+            <dependent idx="21">never</dependent>
+          </dep>
+          <dep type="auxpass">
+            <governor idx="23">placed</governor>
+            <dependent idx="22">be</dependent>
+          </dep>
+          <dep type="ccomp">
+            <governor idx="16">recommend</governor>
+            <dependent idx="23">placed</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="25">front</governor>
+            <dependent idx="24">in</dependent>
+          </dep>
+          <dep type="nmod:in">
+            <governor idx="23">placed</governor>
+            <dependent idx="25">front</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="29">bag</governor>
+            <dependent idx="26">of</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="29">bag</governor>
+            <dependent idx="27">an</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="29">bag</governor>
+            <dependent idx="28">air</dependent>
           </dep>
           <dep type="nmod:of">
-            <governor idx="27">front</governor>
-            <dependent idx="31">bag</dependent>
+            <governor idx="25">front</governor>
+            <dependent idx="29">bag</dependent>
           </dep>
           <dep type="punct">
             <governor idx="3">recommend</governor>
-            <dependent idx="32">.</dependent>
+            <dependent idx="30">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
@@ -5718,113 +5656,109 @@
             <governor idx="7">ride</governor>
             <dependent idx="6">infants</dependent>
           </dep>
+          <dep type="nsubj" extra="true">
+            <governor idx="16">recommend</governor>
+            <dependent idx="6">infants</dependent>
+          </dep>
           <dep type="ccomp">
             <governor idx="3">recommend</governor>
             <dependent idx="7">ride</dependent>
           </dep>
-          <dep type="advmod">
-            <governor idx="7">ride</governor>
+          <dep type="case">
+            <governor idx="11">seats</governor>
             <dependent idx="8">in</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="8">in</governor>
-            <dependent idx="9">rear</dependent>
-          </dep>
-          <dep type="dep">
-            <governor idx="9">rear</governor>
-            <dependent idx="10">facing</dependent>
+          <dep type="amod">
+            <governor idx="11">seats</governor>
+            <dependent idx="9">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="12">seats</governor>
-            <dependent idx="11">child</dependent>
+            <governor idx="11">seats</governor>
+            <dependent idx="10">child</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="10">facing</governor>
-            <dependent idx="12">seats</dependent>
+          <dep type="nmod:in">
+            <governor idx="7">ride</governor>
+            <dependent idx="11">seats</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="9">rear</governor>
-            <dependent idx="13">,</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="12">,</dependent>
           </dep>
           <dep type="cc">
-            <governor idx="9">rear</governor>
-            <dependent idx="14">but</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="13">but</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="15">also</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="14">also</dependent>
           </dep>
           <dep type="advmod">
-            <governor idx="17">recommend</governor>
-            <dependent idx="16">strongly</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="15">strongly</dependent>
           </dep>
-          <dep type="dep" extra="true">
-            <governor idx="8">in</governor>
-            <dependent idx="17">recommend</dependent>
+          <dep type="ccomp" extra="true">
+            <governor idx="3">recommend</governor>
+            <dependent idx="16">recommend</dependent>
           </dep>
           <dep type="conj:and">
-            <governor idx="9">rear</governor>
-            <dependent idx="17">recommend</dependent>
+            <governor idx="7">ride</governor>
+            <dependent idx="16">recommend</dependent>
           </dep>
-          <dep type="dobj">
-            <governor idx="17">recommend</governor>
-            <dependent idx="18">that</dependent>
+          <dep type="mark">
+            <governor idx="23">placed</governor>
+            <dependent idx="17">that</dependent>
           </dep>
-          <dep type="dep">
-            <governor idx="18">that</governor>
-            <dependent idx="19">rear</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="19">rear</governor>
-            <dependent idx="20">facing</dependent>
+          <dep type="amod">
+            <governor idx="20">seats</governor>
+            <dependent idx="18">rear-facing</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="22">seats</governor>
-            <dependent idx="21">infant</dependent>
+            <governor idx="20">seats</governor>
+            <dependent idx="19">infant</dependent>
           </dep>
           <dep type="nsubjpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="22">seats</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="20">seats</dependent>
           </dep>
           <dep type="neg">
-            <governor idx="25">placed</governor>
-            <dependent idx="23">never</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="21">never</dependent>
           </dep>
           <dep type="auxpass">
-            <governor idx="25">placed</governor>
-            <dependent idx="24">be</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="22">be</dependent>
           </dep>
           <dep type="ccomp">
-            <governor idx="20">facing</governor>
-            <dependent idx="25">placed</dependent>
+            <governor idx="16">recommend</governor>
+            <dependent idx="23">placed</dependent>
           </dep>
           <dep type="case">
-            <governor idx="31">bag</governor>
-            <dependent idx="26">in</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="24">in</dependent>
           </dep>
           <dep type="mwe">
-            <governor idx="26">in</governor>
-            <dependent idx="27">front</dependent>
+            <governor idx="24">in</governor>
+            <dependent idx="25">front</dependent>
           </dep>
           <dep type="mwe">
-            <governor idx="26">in</governor>
-            <dependent idx="28">of</dependent>
+            <governor idx="24">in</governor>
+            <dependent idx="26">of</dependent>
           </dep>
           <dep type="det">
-            <governor idx="31">bag</governor>
-            <dependent idx="29">an</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="27">an</dependent>
           </dep>
           <dep type="compound">
-            <governor idx="31">bag</governor>
-            <dependent idx="30">air</dependent>
+            <governor idx="29">bag</governor>
+            <dependent idx="28">air</dependent>
           </dep>
           <dep type="nmod:in_front_of">
-            <governor idx="25">placed</governor>
-            <dependent idx="31">bag</dependent>
+            <governor idx="23">placed</governor>
+            <dependent idx="29">bag</dependent>
           </dep>
           <dep type="punct">
             <governor idx="3">recommend</governor>
-            <dependent idx="32">.</dependent>
+            <dependent idx="30">.</dependent>
           </dep>
         </dependencies>
       </sentence>

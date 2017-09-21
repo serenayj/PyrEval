@@ -4661,941 +4661,822 @@
             <POS>DT</POS>
           </token>
           <token id="2">
-            <word>top</word>
+            <word>top-of-the-line</word>
             <CharacterOffsetBegin>1052</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1055</CharacterOffsetEnd>
-            <POS>NN</POS>
+            <CharacterOffsetEnd>1067</CharacterOffsetEnd>
+            <POS>JJ</POS>
           </token>
           <token id="3">
-            <word>of</word>
-            <CharacterOffsetBegin>1056</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1058</CharacterOffsetEnd>
-            <POS>IN</POS>
-          </token>
-          <token id="4">
-            <word>the</word>
-            <CharacterOffsetBegin>1059</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1062</CharacterOffsetEnd>
-            <POS>DT</POS>
-          </token>
-          <token id="5">
-            <word>line</word>
-            <CharacterOffsetBegin>1063</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1067</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="6">
             <word>engine</word>
             <CharacterOffsetBegin>1068</CharacterOffsetBegin>
             <CharacterOffsetEnd>1074</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
-          <token id="7">
+          <token id="4">
             <word>will</word>
             <CharacterOffsetBegin>1075</CharacterOffsetBegin>
             <CharacterOffsetEnd>1079</CharacterOffsetEnd>
             <POS>MD</POS>
           </token>
-          <token id="8">
+          <token id="5">
             <word>be</word>
             <CharacterOffsetBegin>1080</CharacterOffsetBegin>
             <CharacterOffsetEnd>1082</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
-          <token id="9">
+          <token id="6">
             <word>the</word>
             <CharacterOffsetBegin>1083</CharacterOffsetBegin>
             <CharacterOffsetEnd>1086</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
-          <token id="10">
-            <word>T</word>
+          <token id="7">
+            <word>T6</word>
             <CharacterOffsetBegin>1087</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1088</CharacterOffsetEnd>
+            <CharacterOffsetEnd>1089</CharacterOffsetEnd>
             <POS>NN</POS>
+          </token>
+          <token id="8">
+            <word>,</word>
+            <CharacterOffsetBegin>1089</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1090</CharacterOffsetEnd>
+            <POS>,</POS>
+          </token>
+          <token id="9">
+            <word>a</word>
+            <CharacterOffsetBegin>1091</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1092</CharacterOffsetEnd>
+            <POS>DT</POS>
+          </token>
+          <token id="10">
+            <word>2.8-liter</word>
+            <CharacterOffsetBegin>1093</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1102</CharacterOffsetEnd>
+            <POS>JJ</POS>
           </token>
           <token id="11">
             <word>,</word>
-            <CharacterOffsetBegin>1088</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1089</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1102</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1103</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="12">
-            <word>a</word>
-            <CharacterOffsetBegin>1090</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1091</CharacterOffsetEnd>
-            <POS>DT</POS>
+            <word>inline</word>
+            <CharacterOffsetBegin>1104</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1110</CharacterOffsetEnd>
+            <POS>JJ</POS>
           </token>
           <token id="13">
+            <word>six-cylinder</word>
+            <CharacterOffsetBegin>1111</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1123</CharacterOffsetEnd>
+            <POS>NN</POS>
+          </token>
+          <token id="14">
+            <word>with</word>
+            <CharacterOffsetBegin>1124</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1128</CharacterOffsetEnd>
+            <POS>IN</POS>
+          </token>
+          <token id="15">
+            <word>double</word>
+            <CharacterOffsetBegin>1129</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1135</CharacterOffsetEnd>
+            <POS>JJ</POS>
+          </token>
+          <token id="16">
+            <word>turbochargers</word>
+            <CharacterOffsetBegin>1136</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1149</CharacterOffsetEnd>
+            <POS>NNS</POS>
+          </token>
+          <token id="17">
+            <word>,</word>
+            <CharacterOffsetBegin>1149</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1150</CharacterOffsetEnd>
+            <POS>,</POS>
+          </token>
+          <token id="18">
+            <word>rated</word>
+            <CharacterOffsetBegin>1151</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1156</CharacterOffsetEnd>
+            <POS>VBN</POS>
+          </token>
+          <token id="19">
+            <word>at</word>
+            <CharacterOffsetBegin>1157</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1159</CharacterOffsetEnd>
+            <POS>IN</POS>
+          </token>
+          <token id="20">
+            <word>a</word>
+            <CharacterOffsetBegin>1160</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1161</CharacterOffsetEnd>
+            <POS>DT</POS>
+          </token>
+          <token id="21">
+            <word>whopping</word>
+            <CharacterOffsetBegin>1162</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1170</CharacterOffsetEnd>
+            <POS>JJ</POS>
+          </token>
+          <token id="22">
+            <word>272</word>
+            <CharacterOffsetBegin>1171</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1174</CharacterOffsetEnd>
+            <POS>CD</POS>
+          </token>
+          <token id="23">
+            <word>horsepower</word>
+            <CharacterOffsetBegin>1175</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1185</CharacterOffsetEnd>
+            <POS>NN</POS>
+          </token>
+          <token id="24">
             <word>.</word>
-            <CharacterOffsetBegin>1092</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1093</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1185</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1186</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
-        <parse>(ROOT (S (NP (NP (DT The) (NN top)) (PP (IN of) (NP (DT the) (NN line) (NN engine)))) (VP (MD will) (VP (VB be) (NP (NP (DT the) (NN T)) (, ,) (NP (DT a))))) (. .))) </parse>
+        <parse>(ROOT (S (NP (DT The) (JJ top-of-the-line) (NN engine)) (VP (MD will) (VP (VB be) (NP (NP (NP (DT the) (NN T6)) (, ,) (NP (NP (DT a) (JJ 2.8-liter) (, ,) (JJ inline) (NN six-cylinder)) (PP (IN with) (NP (JJ double) (NNS turbochargers)))) (, ,)) (VP (VBN rated) (PP (IN at) (NP (DT a) (JJ whopping) (CD 272) (NN horsepower))))))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="10">T</dependent>
+            <dependent idx="7">T6</dependent>
           </dep>
           <dep type="det">
-            <governor idx="2">top</governor>
+            <governor idx="3">engine</governor>
             <dependent idx="1">The</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="3">engine</governor>
+            <dependent idx="2">top-of-the-line</dependent>
+          </dep>
           <dep type="nsubj">
-            <governor idx="10">T</governor>
-            <dependent idx="2">top</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="6">engine</governor>
-            <dependent idx="3">of</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="6">engine</governor>
-            <dependent idx="4">the</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="6">engine</governor>
-            <dependent idx="5">line</dependent>
-          </dep>
-          <dep type="nmod">
-            <governor idx="2">top</governor>
-            <dependent idx="6">engine</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="3">engine</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="10">T</governor>
-            <dependent idx="7">will</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="4">will</dependent>
           </dep>
           <dep type="cop">
-            <governor idx="10">T</governor>
-            <dependent idx="8">be</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="5">be</dependent>
           </dep>
           <dep type="det">
-            <governor idx="10">T</governor>
-            <dependent idx="9">the</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="6">the</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
+            <governor idx="7">T6</governor>
+            <dependent idx="8">,</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="9">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="10">2.8-liter</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="13">six-cylinder</governor>
             <dependent idx="11">,</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="12">inline</dependent>
+          </dep>
           <dep type="appos">
-            <governor idx="10">T</governor>
-            <dependent idx="12">a</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="13">six-cylinder</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="14">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="15">double</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="16">turbochargers</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
-            <dependent idx="13">.</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="17">,</dependent>
+          </dep>
+          <dep type="acl">
+            <governor idx="7">T6</governor>
+            <dependent idx="18">rated</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="19">at</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="20">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="21">whopping</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="22">272</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="18">rated</governor>
+            <dependent idx="23">horsepower</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="7">T6</governor>
+            <dependent idx="24">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="10">T</dependent>
+            <dependent idx="7">T6</dependent>
           </dep>
           <dep type="det">
-            <governor idx="2">top</governor>
+            <governor idx="3">engine</governor>
             <dependent idx="1">The</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="3">engine</governor>
+            <dependent idx="2">top-of-the-line</dependent>
+          </dep>
           <dep type="nsubj">
-            <governor idx="10">T</governor>
-            <dependent idx="2">top</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="6">engine</governor>
-            <dependent idx="3">of</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="6">engine</governor>
-            <dependent idx="4">the</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="6">engine</governor>
-            <dependent idx="5">line</dependent>
-          </dep>
-          <dep type="nmod:of">
-            <governor idx="2">top</governor>
-            <dependent idx="6">engine</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="3">engine</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="10">T</governor>
-            <dependent idx="7">will</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="4">will</dependent>
           </dep>
           <dep type="cop">
-            <governor idx="10">T</governor>
-            <dependent idx="8">be</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="5">be</dependent>
           </dep>
           <dep type="det">
-            <governor idx="10">T</governor>
-            <dependent idx="9">the</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="6">the</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
+            <governor idx="7">T6</governor>
+            <dependent idx="8">,</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="9">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="10">2.8-liter</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="13">six-cylinder</governor>
             <dependent idx="11">,</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="12">inline</dependent>
+          </dep>
           <dep type="appos">
-            <governor idx="10">T</governor>
-            <dependent idx="12">a</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="13">six-cylinder</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="14">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="15">double</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="16">turbochargers</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
-            <dependent idx="13">.</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="17">,</dependent>
+          </dep>
+          <dep type="acl">
+            <governor idx="7">T6</governor>
+            <dependent idx="18">rated</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="19">at</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="20">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="21">whopping</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="22">272</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="18">rated</governor>
+            <dependent idx="23">horsepower</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="7">T6</governor>
+            <dependent idx="24">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="10">T</dependent>
+            <dependent idx="7">T6</dependent>
           </dep>
           <dep type="det">
-            <governor idx="2">top</governor>
+            <governor idx="3">engine</governor>
             <dependent idx="1">The</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="3">engine</governor>
+            <dependent idx="2">top-of-the-line</dependent>
+          </dep>
           <dep type="nsubj">
-            <governor idx="10">T</governor>
-            <dependent idx="2">top</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="6">engine</governor>
-            <dependent idx="3">of</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="6">engine</governor>
-            <dependent idx="4">the</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="6">engine</governor>
-            <dependent idx="5">line</dependent>
-          </dep>
-          <dep type="nmod:of">
-            <governor idx="2">top</governor>
-            <dependent idx="6">engine</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="3">engine</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="10">T</governor>
-            <dependent idx="7">will</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="4">will</dependent>
           </dep>
           <dep type="cop">
-            <governor idx="10">T</governor>
-            <dependent idx="8">be</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="5">be</dependent>
           </dep>
           <dep type="det">
-            <governor idx="10">T</governor>
-            <dependent idx="9">the</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="6">the</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
+            <governor idx="7">T6</governor>
+            <dependent idx="8">,</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="9">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="10">2.8-liter</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="13">six-cylinder</governor>
             <dependent idx="11">,</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="12">inline</dependent>
+          </dep>
           <dep type="appos">
-            <governor idx="10">T</governor>
-            <dependent idx="12">a</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="13">six-cylinder</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="14">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="15">double</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="16">turbochargers</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
-            <dependent idx="13">.</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="17">,</dependent>
+          </dep>
+          <dep type="acl">
+            <governor idx="7">T6</governor>
+            <dependent idx="18">rated</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="19">at</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="20">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="21">whopping</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="22">272</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="18">rated</governor>
+            <dependent idx="23">horsepower</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="7">T6</governor>
+            <dependent idx="24">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="10">T</dependent>
+            <dependent idx="7">T6</dependent>
           </dep>
           <dep type="det">
-            <governor idx="2">top</governor>
+            <governor idx="3">engine</governor>
             <dependent idx="1">The</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="3">engine</governor>
+            <dependent idx="2">top-of-the-line</dependent>
+          </dep>
           <dep type="nsubj">
-            <governor idx="10">T</governor>
-            <dependent idx="2">top</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="6">engine</governor>
-            <dependent idx="3">of</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="6">engine</governor>
-            <dependent idx="4">the</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="6">engine</governor>
-            <dependent idx="5">line</dependent>
-          </dep>
-          <dep type="nmod:of">
-            <governor idx="2">top</governor>
-            <dependent idx="6">engine</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="3">engine</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="10">T</governor>
-            <dependent idx="7">will</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="4">will</dependent>
           </dep>
           <dep type="cop">
-            <governor idx="10">T</governor>
-            <dependent idx="8">be</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="5">be</dependent>
           </dep>
           <dep type="det">
-            <governor idx="10">T</governor>
-            <dependent idx="9">the</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="6">the</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
+            <governor idx="7">T6</governor>
+            <dependent idx="8">,</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="9">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="10">2.8-liter</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="13">six-cylinder</governor>
             <dependent idx="11">,</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="12">inline</dependent>
+          </dep>
           <dep type="appos">
-            <governor idx="10">T</governor>
-            <dependent idx="12">a</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="13">six-cylinder</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="14">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="15">double</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="16">turbochargers</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
-            <dependent idx="13">.</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="17">,</dependent>
+          </dep>
+          <dep type="acl">
+            <governor idx="7">T6</governor>
+            <dependent idx="18">rated</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="19">at</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="20">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="21">whopping</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="22">272</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="18">rated</governor>
+            <dependent idx="23">horsepower</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="7">T6</governor>
+            <dependent idx="24">.</dependent>
           </dep>
         </dependencies>
         <dependencies type="enhanced-plus-plus-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="10">T</dependent>
+            <dependent idx="7">T6</dependent>
           </dep>
           <dep type="det">
-            <governor idx="2">top</governor>
+            <governor idx="3">engine</governor>
             <dependent idx="1">The</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="3">engine</governor>
+            <dependent idx="2">top-of-the-line</dependent>
+          </dep>
           <dep type="nsubj">
-            <governor idx="10">T</governor>
-            <dependent idx="2">top</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="6">engine</governor>
-            <dependent idx="3">of</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="6">engine</governor>
-            <dependent idx="4">the</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="6">engine</governor>
-            <dependent idx="5">line</dependent>
-          </dep>
-          <dep type="nmod:of">
-            <governor idx="2">top</governor>
-            <dependent idx="6">engine</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="3">engine</dependent>
           </dep>
           <dep type="aux">
-            <governor idx="10">T</governor>
-            <dependent idx="7">will</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="4">will</dependent>
           </dep>
           <dep type="cop">
-            <governor idx="10">T</governor>
-            <dependent idx="8">be</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="5">be</dependent>
           </dep>
           <dep type="det">
-            <governor idx="10">T</governor>
-            <dependent idx="9">the</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="6">the</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
+            <governor idx="7">T6</governor>
+            <dependent idx="8">,</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="9">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="10">2.8-liter</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="13">six-cylinder</governor>
             <dependent idx="11">,</dependent>
           </dep>
+          <dep type="amod">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="12">inline</dependent>
+          </dep>
           <dep type="appos">
-            <governor idx="10">T</governor>
-            <dependent idx="12">a</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="13">six-cylinder</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="14">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="16">turbochargers</governor>
+            <dependent idx="15">double</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="13">six-cylinder</governor>
+            <dependent idx="16">turbochargers</dependent>
           </dep>
           <dep type="punct">
-            <governor idx="10">T</governor>
-            <dependent idx="13">.</dependent>
+            <governor idx="7">T6</governor>
+            <dependent idx="17">,</dependent>
+          </dep>
+          <dep type="acl">
+            <governor idx="7">T6</governor>
+            <dependent idx="18">rated</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="19">at</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="20">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="21">whopping</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="23">horsepower</governor>
+            <dependent idx="22">272</dependent>
+          </dep>
+          <dep type="nmod:at">
+            <governor idx="18">rated</governor>
+            <dependent idx="23">horsepower</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="7">T6</governor>
+            <dependent idx="24">.</dependent>
           </dep>
         </dependencies>
       </sentence>
       <sentence id="9">
         <tokens>
           <token id="1">
-            <word>liter</word>
-            <CharacterOffsetBegin>1094</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1099</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="2">
-            <word>,</word>
-            <CharacterOffsetBegin>1099</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1100</CharacterOffsetEnd>
-            <POS>,</POS>
-          </token>
-          <token id="3">
-            <word>inline</word>
-            <CharacterOffsetBegin>1101</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1107</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="4">
-            <word>six</word>
-            <CharacterOffsetBegin>1108</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1111</CharacterOffsetEnd>
-            <POS>CD</POS>
-          </token>
-          <token id="5">
-            <word>cylinder</word>
-            <CharacterOffsetBegin>1112</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1120</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="6">
-            <word>with</word>
-            <CharacterOffsetBegin>1121</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1125</CharacterOffsetEnd>
-            <POS>IN</POS>
-          </token>
-          <token id="7">
-            <word>double</word>
-            <CharacterOffsetBegin>1126</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1132</CharacterOffsetEnd>
-            <POS>JJ</POS>
-          </token>
-          <token id="8">
-            <word>turbochargers</word>
-            <CharacterOffsetBegin>1133</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1146</CharacterOffsetEnd>
-            <POS>NNS</POS>
-          </token>
-          <token id="9">
-            <word>,</word>
-            <CharacterOffsetBegin>1146</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1147</CharacterOffsetEnd>
-            <POS>,</POS>
-          </token>
-          <token id="10">
-            <word>rated</word>
-            <CharacterOffsetBegin>1148</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1153</CharacterOffsetEnd>
-            <POS>VBN</POS>
-          </token>
-          <token id="11">
-            <word>at</word>
-            <CharacterOffsetBegin>1154</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1156</CharacterOffsetEnd>
-            <POS>IN</POS>
-          </token>
-          <token id="12">
-            <word>a</word>
-            <CharacterOffsetBegin>1157</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1158</CharacterOffsetEnd>
-            <POS>DT</POS>
-          </token>
-          <token id="13">
-            <word>whopping</word>
-            <CharacterOffsetBegin>1159</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1167</CharacterOffsetEnd>
-            <POS>JJ</POS>
-          </token>
-          <token id="14">
-            <word>horsepower</word>
-            <CharacterOffsetBegin>1168</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1178</CharacterOffsetEnd>
-            <POS>NN</POS>
-          </token>
-          <token id="15">
-            <word>.</word>
-            <CharacterOffsetBegin>1178</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1179</CharacterOffsetEnd>
-            <POS>.</POS>
-          </token>
-        </tokens>
-        <parse>(ROOT (S (NP (NP (NN liter)) (, ,) (NP (NP (NN inline) (CD six) (NN cylinder)) (PP (IN with) (NP (JJ double) (NNS turbochargers)))) (, ,)) (VP (VBN rated) (PP (IN at) (NP (DT a) (JJ whopping) (NN horsepower)))) (. .))) </parse>
-        <dependencies type="basic-dependencies">
-          <dep type="root">
-            <governor idx="0">ROOT</governor>
-            <dependent idx="1">liter</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="2">,</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="3">inline</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="4">six</dependent>
-          </dep>
-          <dep type="appos">
-            <governor idx="1">liter</governor>
-            <dependent idx="5">cylinder</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="6">with</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="7">double</dependent>
-          </dep>
-          <dep type="nmod">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="8">turbochargers</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="9">,</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="1">liter</governor>
-            <dependent idx="10">rated</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="11">at</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="12">a</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="13">whopping</dependent>
-          </dep>
-          <dep type="nmod">
-            <governor idx="10">rated</governor>
-            <dependent idx="14">horsepower</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="15">.</dependent>
-          </dep>
-        </dependencies>
-        <dependencies type="collapsed-dependencies">
-          <dep type="root">
-            <governor idx="0">ROOT</governor>
-            <dependent idx="1">liter</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="2">,</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="3">inline</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="4">six</dependent>
-          </dep>
-          <dep type="appos">
-            <governor idx="1">liter</governor>
-            <dependent idx="5">cylinder</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="6">with</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="7">double</dependent>
-          </dep>
-          <dep type="nmod:with">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="8">turbochargers</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="9">,</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="1">liter</governor>
-            <dependent idx="10">rated</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="11">at</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="12">a</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="13">whopping</dependent>
-          </dep>
-          <dep type="nmod:at">
-            <governor idx="10">rated</governor>
-            <dependent idx="14">horsepower</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="15">.</dependent>
-          </dep>
-        </dependencies>
-        <dependencies type="collapsed-ccprocessed-dependencies">
-          <dep type="root">
-            <governor idx="0">ROOT</governor>
-            <dependent idx="1">liter</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="2">,</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="3">inline</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="4">six</dependent>
-          </dep>
-          <dep type="appos">
-            <governor idx="1">liter</governor>
-            <dependent idx="5">cylinder</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="6">with</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="7">double</dependent>
-          </dep>
-          <dep type="nmod:with">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="8">turbochargers</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="9">,</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="1">liter</governor>
-            <dependent idx="10">rated</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="11">at</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="12">a</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="13">whopping</dependent>
-          </dep>
-          <dep type="nmod:at">
-            <governor idx="10">rated</governor>
-            <dependent idx="14">horsepower</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="15">.</dependent>
-          </dep>
-        </dependencies>
-        <dependencies type="enhanced-dependencies">
-          <dep type="root">
-            <governor idx="0">ROOT</governor>
-            <dependent idx="1">liter</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="2">,</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="3">inline</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="4">six</dependent>
-          </dep>
-          <dep type="appos">
-            <governor idx="1">liter</governor>
-            <dependent idx="5">cylinder</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="6">with</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="7">double</dependent>
-          </dep>
-          <dep type="nmod:with">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="8">turbochargers</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="9">,</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="1">liter</governor>
-            <dependent idx="10">rated</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="11">at</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="12">a</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="13">whopping</dependent>
-          </dep>
-          <dep type="nmod:at">
-            <governor idx="10">rated</governor>
-            <dependent idx="14">horsepower</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="15">.</dependent>
-          </dep>
-        </dependencies>
-        <dependencies type="enhanced-plus-plus-dependencies">
-          <dep type="root">
-            <governor idx="0">ROOT</governor>
-            <dependent idx="1">liter</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="2">,</dependent>
-          </dep>
-          <dep type="compound">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="3">inline</dependent>
-          </dep>
-          <dep type="nummod">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="4">six</dependent>
-          </dep>
-          <dep type="appos">
-            <governor idx="1">liter</governor>
-            <dependent idx="5">cylinder</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="6">with</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="8">turbochargers</governor>
-            <dependent idx="7">double</dependent>
-          </dep>
-          <dep type="nmod:with">
-            <governor idx="5">cylinder</governor>
-            <dependent idx="8">turbochargers</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="9">,</dependent>
-          </dep>
-          <dep type="acl">
-            <governor idx="1">liter</governor>
-            <dependent idx="10">rated</dependent>
-          </dep>
-          <dep type="case">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="11">at</dependent>
-          </dep>
-          <dep type="det">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="12">a</dependent>
-          </dep>
-          <dep type="amod">
-            <governor idx="14">horsepower</governor>
-            <dependent idx="13">whopping</dependent>
-          </dep>
-          <dep type="nmod:at">
-            <governor idx="10">rated</governor>
-            <dependent idx="14">horsepower</dependent>
-          </dep>
-          <dep type="punct">
-            <governor idx="1">liter</governor>
-            <dependent idx="15">.</dependent>
-          </dep>
-        </dependencies>
-      </sentence>
-      <sentence id="10">
-        <tokens>
-          <token id="1">
             <word>Convinced</word>
-            <CharacterOffsetBegin>1180</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1189</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1187</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1196</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="2">
             <word>of</word>
-            <CharacterOffsetBegin>1190</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1192</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1197</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1199</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="3">
             <word>the</word>
-            <CharacterOffsetBegin>1193</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1196</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1200</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1203</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="4">
             <word>recorders</word>
-            <CharacterOffsetBegin>1197</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1206</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1204</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1213</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="5">
             <word>benefits</word>
-            <CharacterOffsetBegin>1207</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1215</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1214</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1222</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="6">
             <word>,</word>
-            <CharacterOffsetBegin>1215</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1216</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1222</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1223</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="7">
             <word>James</word>
-            <CharacterOffsetBegin>1217</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1222</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1224</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1229</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="8">
             <word>Hall</word>
-            <CharacterOffsetBegin>1223</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1227</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1230</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1234</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="9">
             <word>,</word>
-            <CharacterOffsetBegin>1227</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1228</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1234</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1235</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="10">
             <word>chairman</word>
-            <CharacterOffsetBegin>1229</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1237</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1236</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1244</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="11">
             <word>of</word>
-            <CharacterOffsetBegin>1238</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1240</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1245</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1247</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="12">
             <word>the</word>
-            <CharacterOffsetBegin>1241</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1244</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1248</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1251</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="13">
             <word>National</word>
-            <CharacterOffsetBegin>1245</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1253</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1252</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1260</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="14">
             <word>Transportation</word>
-            <CharacterOffsetBegin>1254</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1268</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1261</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1275</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="15">
             <word>Safety</word>
-            <CharacterOffsetBegin>1269</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1275</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1276</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1282</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="16">
             <word>Board</word>
-            <CharacterOffsetBegin>1276</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1281</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1283</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1288</CharacterOffsetEnd>
             <POS>NNP</POS>
           </token>
           <token id="17">
             <word>,</word>
-            <CharacterOffsetBegin>1281</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1282</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1288</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1289</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="18">
             <word>last</word>
-            <CharacterOffsetBegin>1283</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1287</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1290</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1294</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="19">
             <word>called</word>
-            <CharacterOffsetBegin>1288</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1294</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1295</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1301</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="20">
             <word>for</word>
-            <CharacterOffsetBegin>1295</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1298</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1302</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1305</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="21">
             <word>the</word>
-            <CharacterOffsetBegin>1299</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1302</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1306</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1309</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="22">
             <word>devices</word>
-            <CharacterOffsetBegin>1303</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1310</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1310</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1317</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="23">
             <word>on</word>
-            <CharacterOffsetBegin>1311</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1313</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1318</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1320</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="24">
             <word>cars</word>
-            <CharacterOffsetBegin>1314</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1318</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1321</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1325</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="25">
             <word>,</word>
-            <CharacterOffsetBegin>1318</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1319</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1325</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1326</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="26">
             <word>trains</word>
-            <CharacterOffsetBegin>1320</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1326</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1327</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1333</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="27">
             <word>,</word>
-            <CharacterOffsetBegin>1326</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1327</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1333</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1334</CharacterOffsetEnd>
             <POS>,</POS>
           </token>
           <token id="28">
             <word>buses</word>
-            <CharacterOffsetBegin>1328</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1333</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1335</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1340</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="29">
             <word>and</word>
-            <CharacterOffsetBegin>1334</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1337</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1341</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1344</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="30">
             <word>ships</word>
-            <CharacterOffsetBegin>1338</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1343</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1345</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1350</CharacterOffsetEnd>
             <POS>NNS</POS>
           </token>
           <token id="31">
             <word>.</word>
-            <CharacterOffsetBegin>1343</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1344</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1350</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1351</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>
@@ -6267,210 +6148,210 @@
           </dep>
         </dependencies>
       </sentence>
-      <sentence id="11">
+      <sentence id="10">
         <tokens>
           <token id="1">
             <word>She</word>
-            <CharacterOffsetBegin>1345</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1348</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1352</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1355</CharacterOffsetEnd>
             <POS>PRP</POS>
           </token>
           <token id="2">
             <word>acknowledged</word>
-            <CharacterOffsetBegin>1349</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1361</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1356</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1368</CharacterOffsetEnd>
             <POS>VBD</POS>
           </token>
           <token id="3">
             <word>a</word>
-            <CharacterOffsetBegin>1362</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1363</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1369</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1370</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="4">
             <word>child</word>
-            <CharacterOffsetBegin>1364</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1369</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1371</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1376</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="5">
             <word>lying</word>
-            <CharacterOffsetBegin>1370</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1375</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1377</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1382</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
           <token id="6">
             <word>on</word>
-            <CharacterOffsetBegin>1376</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1378</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1383</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1385</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="7">
             <word>the</word>
-            <CharacterOffsetBegin>1379</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1382</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1386</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1389</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="8">
             <word>rear</word>
-            <CharacterOffsetBegin>1383</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1387</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1390</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1394</CharacterOffsetEnd>
             <POS>JJ</POS>
           </token>
           <token id="9">
             <word>seat</word>
-            <CharacterOffsetBegin>1388</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1392</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1395</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1399</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="10">
             <word>with</word>
-            <CharacterOffsetBegin>1393</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1397</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1400</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1404</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="11">
             <word>his</word>
-            <CharacterOffsetBegin>1398</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1401</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1405</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1408</CharacterOffsetEnd>
             <POS>PRP$</POS>
           </token>
           <token id="12">
             <word>head</word>
-            <CharacterOffsetBegin>1402</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1406</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1409</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1413</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="13">
             <word>near</word>
-            <CharacterOffsetBegin>1407</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1411</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1414</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1418</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="14">
             <word>the</word>
-            <CharacterOffsetBegin>1412</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1415</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1419</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1422</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="15">
             <word>door</word>
-            <CharacterOffsetBegin>1416</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1420</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1423</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1427</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="16">
             <word>or</word>
-            <CharacterOffsetBegin>1421</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1423</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1428</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1430</CharacterOffsetEnd>
             <POS>CC</POS>
           </token>
           <token id="17">
             <word>kneeling</word>
-            <CharacterOffsetBegin>1424</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1432</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1431</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1439</CharacterOffsetEnd>
             <POS>VBG</POS>
           </token>
           <token id="18">
             <word>with</word>
-            <CharacterOffsetBegin>1433</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1437</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1440</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1444</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="19">
             <word>his</word>
-            <CharacterOffsetBegin>1438</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1441</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1445</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1448</CharacterOffsetEnd>
             <POS>PRP$</POS>
           </token>
           <token id="20">
             <word>chest</word>
-            <CharacterOffsetBegin>1442</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1447</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1449</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1454</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="21">
             <word>against</word>
-            <CharacterOffsetBegin>1448</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1455</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1455</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1462</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="22">
             <word>the</word>
-            <CharacterOffsetBegin>1456</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1459</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1463</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1466</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="23">
             <word>door</word>
-            <CharacterOffsetBegin>1460</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1464</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1467</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1471</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="24">
             <word>would</word>
-            <CharacterOffsetBegin>1465</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1470</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1472</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1477</CharacterOffsetEnd>
             <POS>MD</POS>
           </token>
           <token id="25">
             <word>be</word>
-            <CharacterOffsetBegin>1471</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1473</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1478</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1480</CharacterOffsetEnd>
             <POS>VB</POS>
           </token>
           <token id="26">
             <word>in</word>
-            <CharacterOffsetBegin>1474</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1476</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1481</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1483</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="27">
             <word>danger</word>
-            <CharacterOffsetBegin>1477</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1483</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1484</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1490</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="28">
             <word>if</word>
-            <CharacterOffsetBegin>1484</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1486</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1491</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1493</CharacterOffsetEnd>
             <POS>IN</POS>
           </token>
           <token id="29">
             <word>the</word>
-            <CharacterOffsetBegin>1487</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1490</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1494</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1497</CharacterOffsetEnd>
             <POS>DT</POS>
           </token>
           <token id="30">
             <word>side</word>
-            <CharacterOffsetBegin>1491</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1495</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1498</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1502</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="31">
             <word>air</word>
-            <CharacterOffsetBegin>1496</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1499</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1503</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1506</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="32">
             <word>bag</word>
-            <CharacterOffsetBegin>1500</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1503</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1507</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1510</CharacterOffsetEnd>
             <POS>NN</POS>
           </token>
           <token id="33">
             <word>deployed</word>
-            <CharacterOffsetBegin>1504</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1512</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1511</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1519</CharacterOffsetEnd>
             <POS>VBN</POS>
           </token>
           <token id="34">
             <word>.</word>
-            <CharacterOffsetBegin>1512</CharacterOffsetBegin>
-            <CharacterOffsetEnd>1513</CharacterOffsetEnd>
+            <CharacterOffsetBegin>1519</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1520</CharacterOffsetEnd>
             <POS>.</POS>
           </token>
         </tokens>

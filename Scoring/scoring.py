@@ -64,7 +64,7 @@ sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lam
 #RAW = [8,7,8,6,4,10,20,6,6,4,3,3,2,9,1,3,8,1,3,6,5,6]
 
 ### D0624
-RAW = [14,20,22,20,20,18,26,18,19,11,19,16,21,26,20,19,22,19,15,13,19,5]
+#RAW = [14,20,22,20,20,18,26,18,19,11,19,16,21,26,20,19,22,19,15,13,19,5]
 
 ### D0605
 #RAW = [0,15,6, 9, 8,17, 9, 2, 14, 4, 2, 4, 1, 6, 6, 0, 14, 3, 6, 6, 3, 4, ]
@@ -156,6 +156,7 @@ for pyramid in pyramids:
                             output = [summary_name, raw_scores[summary_name],quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]]
                             w.writerow(output)
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
+            """
             raw_sc = sort(raw_scores)
             raw_corr = pearson(raw_sc, RAW)[0]
             print('{:>16} | {:>.2f}'.format('Correlation', raw_corr*100))
@@ -173,6 +174,6 @@ print '\n'
 print 'Results written to %s' % results_file
 print '\n'
 
-
+"""
 
 

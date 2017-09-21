@@ -298,7 +298,7 @@ def check_IN(tr):
             st = subtree
             if st[0].label() == 'IN':
                 if st[0].leaves()[0][0] in sub_conj:
-                    print "Found subbordinating conjunction!!!:", st[0].leaves()[0][0]
+                    #print "Found subbordinating conjunction!!!:", st[0].leaves()[0][0]
                     sub_sent.append(st)
                     flag = True 
     return flag, sub_sent 

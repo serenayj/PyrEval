@@ -1,0 +1,1 @@
+../Preprocess/wise_crowd_summaries/1/1.stseg.txt.segs../Preprocess/wise_crowd_summaries/2/2.stseg.txt.segs../Preprocess/wise_crowd_summaries/3/3.stseg.txt.segs../Preprocess/wise_crowd_summaries/4/4.stseg.txt.segs../Preprocess/wise_crowd_summaries/5/5.stseg.txt.segs

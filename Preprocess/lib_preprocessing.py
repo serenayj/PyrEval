@@ -29,7 +29,7 @@ def getRealName(fname):
 #	os.system(mv)
 
 def DecomposeSummary(fname, summ_ind, dir1):
-	print "DECOMPOSING SENTENCES FROM SUMMARY {}",fname
+	print "DECOMPOSING SENTENCES FROM SUMMARY {}".format(fname)
 	""" Reads in XML file from CoreNLP_XMLs, facilitates sentence decomposition, outputs .segs file """
 	#cmd = 'python sentparser.py ' + fname + '.xml ' + str(summ_ind)
 	cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1

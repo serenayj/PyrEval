@@ -17,6 +17,7 @@ import xml.etree.cElementTree as ET
 #print("Reading Content")
 #directories = glob.iglob('wise_crowd/*')
 directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
+print directories
 segs, vecs, N = readFiles(directories)
 #print("Making Segments")
 segpool = make_segs(segs, vecs)
@@ -24,7 +25,7 @@ pairwise_test(segpool, N)
 
 
 
-thresholds = [70, 73, 75, 77, 80, 83, 85]
+#thresholds = [70, 73, 75, 77, 80, 83, 85]
 """
 =========== What is Matter Parameters ===================
 """
@@ -34,7 +35,10 @@ thresholds = [70, 73, 75, 77, 80, 83, 85]
 """
 =========== DUC Data ==========
 """
-tups = [(64.0, 1.0), (64.0, 1.5), (64.0, 2.0), (64.0, 2.5), (70.0, 1.0), (70.0, 1.5), (70.0, 2.0), (70.0, 2.5), (76.0, 1.0), (76.0, 1.5), (76.0, 2.0), (76.0, 2.5), (82.0, 1.0), (82.0, 1.5), (82.0, 2.0), (82.0, 2.5), (88.0, 1.0), (88.0, 1.5), (88.0, 2.0), (88.0, 2.5), (96.0, 1.0), (96.0, 1.5), (96.0, 2.0), (96.0, 2.5), (100.0, 1.0), (100.0, 1.5), (100.0, 2.0), (100.0, 2.5)]
+#tups = [(64.0, 1.0), (64.0, 1.5), (64.0, 2.0), (64.0, 2.5), (70.0, 1.0), (70.0, 1.5), (70.0, 2.0), (70.0, 2.5), (76.0, 1.0), (76.0, 1.5), (76.0, 2.0), (76.0, 2.5), (82.0, 1.0), (82.0, 1.5), (82.0, 2.0), (82.0, 2.5), (88.0, 1.0), (88.0, 1.5), (88.0, 2.0), (88.0, 2.5), (96.0, 1.0), (96.0, 1.5), (96.0, 2.0), (96.0, 2.5), (100.0, 1.0), (100.0, 1.5), (100.0, 2.0), (100.0, 2.5)]
+
+thresholds = [83]
+tups = [(100.0, 2.5)]
 
 for threshold in thresholds:
     for tup in tups:
@@ -133,6 +137,8 @@ for threshold in thresholds:
         # Global Backtracking settles contraints problems in all Layers
         segmentpool, Pyramid_info, Pyramid = GLobalBT(Pyramid_info, Pyramid, 
                                                       N, segmentpool, bf_dict, BigSet2)
+        print Pyramid_info
+        print Pyramid
         # DONE!
         done = time()
 
@@ -190,9 +196,10 @@ for threshold in thresholds:
         if cu_ids:
             for j, i in enumerate(cu_ids):
                 line = 'SCU' + '\t' + str(i) + '\t' + str(weights[j]) + '\t' + labels[j]
+                print line
                 #print(line)
                 lines.append(line)
-        with open('scu/' + fname + '.pyr', 'w') as f:
+        with open('../Scoring/scu/' + fname + '.pyr', 'w') as f:
             for line in lines:
                 #print(line)
                 f.write(line + '\n')
@@ -216,9 +223,9 @@ for threshold in thresholds:
         # print('was: %.2f' % was)
         print('Pyramid: %s' % fname)
         print('Time: {}'.format(str(done - timer)))
-        print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramid')
-        print('Pyramid .size file stored in PyrEval/Scoring/sizes')
-        print('Readable pyramid file stored in PyrEval/Scoring/scus')
+        print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/')
+        print('Pyramid .size file stored in PyrEval/Scoring/sizes/')
+        print('Readable pyramid file stored in PyrEval/Scoring/scu/')
         # for n, pyr in enumerate(Pyramid_info):
         #     print('Layer {} has size {} | Upperbound {}'.format(n+1, pyr.length, pyr.capacity))
         # if len(all_seg_ids) == len(set(all_seg_ids)):

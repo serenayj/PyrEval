@@ -108,8 +108,9 @@ def ComposeSegSets(BigSet2, segmentpool, n):
         res = {}
         for n, seg_id in enumerate(seg_ids):
             res[seg_id] = edges[n]
-        res['WAS'] = graph.size(weight='weight') / 2
-        results.append(res)
+        if graph.size() != 0:
+            res['WAS'] = graph.size(weight='weight') / 2
+            results.append(res)
     return results
 
 
@@ -292,6 +293,8 @@ def pairwise(segmentpool, N, threshold):
                 scores.append(sc)
                 result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
     Q3 = np.percentile(np.asarray(scores), threshold)
+    fifty = np.percentile(np.asarray(scores), 50)
+    print fifty
     #print('\tCosine Score for Quantile: %.3f' % Q3)
     rresult = []
     for res in result:
@@ -587,29 +590,31 @@ def localBackTracking(current, n, segmentpool, Pyramid_info, Pyramid, BigSet2, N
 
             ans = checkDirections(lengths[max_was[2]], max_was[2], pyramid_info_copy, pyramid_copy) 
             if ans == False:
-                flag, fakepool, pyramid_copy, pyramid_info_copy, new_other_layer = localBackTracking(pyramid_copy[max_was[2]], 
-                                                                                                        max_was[2] + 1, 
-                                                                                                        fakepool, 
-                                                                                                        pyramid_info_copy, 
-                                                                                                        pyramid_copy, 
-                                                                                                        BigSet2, N, bf_dict)
-                if flag:
-                    obj = pyramid_info_copy[max_was[2]]
-                    obj.length = len(new_other_layer)
-                    obj.size = len(new_other_layer) * (max_was[2]+1)
-                    lengths[max_was[2]] = obj.length
-                    obj.constraint1 = True
-                    pyramid_copy[max_was[2]] = new_other_layer
-                    pyramid_info_copy[max_was[2]] = obj
-                    global_solutions = [solution for solution in global_solutions if solution[2] != max_was[2]]
-                    global_solutions += getSolutionMap(max_was[2], fakepool, pyramid_copy,  n, BigSet2, pyramid_info_copy, N, segmentpool, bf_dict)
-                    max_was = max(global_solutions, key=lambda x:x[1])
-                    continue
-                else:
+                
+                    flag, fakepool, pyramid_copy, pyramid_info_copy, new_other_layer = localBackTracking(pyramid_copy[max_was[2]], 
+                                                                                                            max_was[2] + 1, 
+                                                                                                            fakepool, 
+                                                                                                            pyramid_info_copy, 
+                                                                                                            pyramid_copy, 
+                                                                                                            BigSet2, N, bf_dict)
+                    if flag:
+                        obj = pyramid_info_copy[max_was[2]]
+                        obj.length = len(new_other_layer)
+                        obj.size = len(new_other_layer) * (max_was[2]+1)
+                        lengths[max_was[2]] = obj.length
+                        obj.constraint1 = True
+                        pyramid_copy[max_was[2]] = new_other_layer
+                        pyramid_info_copy[max_was[2]] = obj
+                        global_solutions = [solution for solution in global_solutions if solution[2] != max_was[2]]
+                        global_solutions += getSolutionMap(max_was[2], fakepool, pyramid_copy,  n, BigSet2, pyramid_info_copy, N, segmentpool, bf_dict)
+                        max_was = max(global_solutions, key=lambda x:x[1])
+                        continue
+                    else:
+                 
                     #print '\t\tCannot Back Track from Layer', max_was[2] + 1
-                    del lengths[max_was[2]]
-                    Directions.remove(max_was[2])
-                    global_solutions = [solution for solution in global_solutions if solution[2] != max_was[2]]
+                        del lengths[max_was[2]]
+                        Directions.remove(max_was[2])
+                        global_solutions = [solution for solution in global_solutions if solution[2] != max_was[2]]
 
             if len(global_solutions) != 0:
                 max_was = max(global_solutions, key=lambda x:x[1])
@@ -642,15 +647,18 @@ def GLobalBT(Pyramid_info,Pyramid, N, segmentpool, bf_dict, BigSet2):
         #print(current)
         #print(current.constraint1)
         if current.constraint1 == False:
-            flag, segmentpool, Pyramid, Pyramid_info, current = localBackTracking(Pyramid[ind], ind+1, segmentpool, Pyramid_info, Pyramid, BigSet2, N, bf_dict)
-            layer = current
-            length = len(layer)
-            obj = Pyramid_info[ind]
-            obj.length = length
-            obj.size = length * n
-            Pyramid_info[ind] = obj
-            Pyramid[ind] = layer
-            segmentpool = SettleNodes(layer, ind + 1, segmentpool)
+            try:
+                flag, segmentpool, Pyramid, Pyramid_info, current = localBackTracking(Pyramid[ind], ind+1, segmentpool, Pyramid_info, Pyramid, BigSet2, N, bf_dict)
+                layer = current
+                length = len(layer)
+                obj = Pyramid_info[ind]
+                obj.length = length
+                obj.size = length * n
+                Pyramid_info[ind] = obj
+                Pyramid[ind] = layer
+                segmentpool = SettleNodes(layer, ind + 1, segmentpool)
+            except ValueError:
+                pass
     # Second, if there is any segment marked as False, feed them into layer1 
     for seg in segmentpool:
         if seg.status == False:
@@ -689,6 +697,8 @@ def ComposeLayer2(BigSet2, segmentpool):
         seg2id = pair['seg2id']
         if seg1id not in candidates or seg2id not in candidates:
             bs2.remove(pair)
+        elif pair in bs2:
+            bs2[bs2.index(pair)]['WAS'] /= 2
     return bs2
 
 def ComposeLayer1(segmentpool):

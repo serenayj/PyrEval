@@ -25,7 +25,7 @@ print_table = options.t
 pyramid_path = options.pyramid
 results_file = options.output
 
-pyramids = list(glob.glob(pyramid_path))
+pyramids = list(glob.iglob(pyramid_path))
 
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
@@ -64,7 +64,7 @@ sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lam
 #RAW = [8,7,8,6,4,10,20,6,6,4,3,3,2,9,1,3,8,1,3,6,5,6]
 
 ### D0624
-RAW = [14,20,22,20,20,18,26,18,19,11,19,16,21,26,20,19,22,19,15,13,19,5]
+#RAW = [14,20,22,20,20,18,26,18,19,11,19,16,21,26,20,19,22,19,15,13,19,5]
 
 ### D0605
 #RAW = [0,15,6, 9, 8,17, 9, 2, 14, 4, 2, 4, 1, 6, 6, 0, 14, 3, 6, 6, 3, 4, ]
@@ -72,13 +72,16 @@ RAW = [14,20,22,20,20,18,26,18,19,11,19,16,21,26,20,19,22,19,15,13,19,5]
 ### D0615
 #RAW = [4,9,8,4,8,7,11,10,6,7,1,3,2,8,8,7,9,6,5,10,6,1]
 
+### D0601
+RAW = [9,14,20,11,0,12,23,4,12,6,7,11,20,19,18,2,16,9,11,6,17,8]
+
 
 
 """
 ====================== Scoring Pipeline ========================
 """
 
-correlation_file = '../correlation.csv'
+correlation_file = '../D0601_correlation.csv'
 corr = open(correlation_file, 'w')
 corr_w = csv.writer(corr)
 corr_w.writerow(['Pyramid'] + score_tables)

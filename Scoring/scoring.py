@@ -159,6 +159,7 @@ for pyramid in pyramids:
                             output = [summary_name, raw_scores[summary_name],quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]]
                             w.writerow(output)
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
+            """
             raw_sc = sort(raw_scores)
             raw_corr = pearson(raw_sc, RAW)[0]
             print('{:>16} | {:>.2f}'.format('Correlation', raw_corr*100))
@@ -176,6 +177,6 @@ print '\n'
 print 'Results written to %s' % results_file
 print '\n'
 
-
+"""
 
 

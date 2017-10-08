@@ -9,7 +9,7 @@ PyrEval is a tool to construct a content model of semantically coherent units di
 1. Python 2.7 (or Anaconda2)
 2. Perl
 3. Stanford CoreNLP System[6], see download https://stanfordnlp.github.io/CoreNLP/index.html. 
-4. Python Pacakges: nltk, glob, sklearn, bs4, numpy, scipy, networkx, statistics
+4. Python Pacakges: nltk, glob, sklearn, bs4, lxml, numpy, scipy, networkx, statistics
 
 ## Raw texts
 At the very beginning, you need to split your raw text into one sentence per line. There are three folders for you to place your raw texts. 

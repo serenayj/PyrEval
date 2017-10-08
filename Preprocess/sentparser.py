@@ -34,7 +34,9 @@ fname = sys.argv[1]
 sum_index = sys.argv[2]
 outpath = sys.argv[3]
 
-
+#fname = "wise_crowd_summaries/2.stseg.txt.xml"
+#sum_index = 2 
+#outpath = 'wise_crowd_summaries'+ str(2)+'/'
 content = open(fname).read()
 
 #dot = fname.rfind('.')
@@ -210,7 +212,7 @@ for ind in range(1,len(all_dep_sent)+1):
                     sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
                     write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
                     sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
-                    #print "segment ", vv, " label: ", v[vv] 
+                    #print "segment ", vv, " label: ", v[vv]
                     write_log(seg_dir+'/' + fname +'.segs',sent)
             segmentation_count += len(seg)
     else:
@@ -221,7 +223,8 @@ for ind in range(1,len(all_dep_sent)+1):
     #Just output whatever it is 
     v = " ".join([item[0] for item in numlist]) 
     sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
-    write_log(seg_dir +'/'+ fname +'.segs',sentence)
+    if sentence.split('&')[4].strip() != '.':
+        write_log(seg_dir +'/'+ fname +'.segs',sentence)
 
 
 

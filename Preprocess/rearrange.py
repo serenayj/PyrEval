@@ -133,13 +133,20 @@ def Rearrange2(tl,res,left):
     new_left = range(len(res))
     for index,each in enumerate(left):
         new_left[index] = left_segment(each)
+    #print new_left
     for ind, st in enumerate(res):
+        #print ind
         # Iterating thru segmentations
-        # i is each segment
         # length of each segmentation(#segments in a segmentation)
-        tmp = range(len(st)) 
-        for j in new_left[ind]:
-                j.used = False
+        tmp = range(len(st))
+        if new_left[ind] is not None: 
+            for j in new_left[ind]:
+                if j is None:
+                    pass
+                else: 
+                    j.used = False
+        else:
+            pass 
         for iind in range(0,len(st)):
             #print "curr ind", ind
             # Set fragments are false before iterating thru each segmentation 
@@ -150,65 +157,75 @@ def Rearrange2(tl,res,left):
             ele = copy.deepcopy(st[iind]['predicate'])
             #print ele
             #print "current element: ", ele
-            for j in new_left[ind]:
-                if j.used == False:
-                    #print "current fragment:", j.nodes
-                    head = j.nodes[0]
-                    tail = j.nodes[len(j.nodes)-1]
-                else:
-                    pass
-                # Case 0, special case of case 1, just directly append to the head 
-                # If tails equals the very first word in the very first predicate
-                if (tail+1 == st[iind]['predicate'][0]) and (j.used == False):
-                    case = 0
-                    Insertion(j,ele,case,tail,head)
-                    #print "Hit case 0"
-                else:
-                    for iiind in range(0,len(st[iind]['predicate'])):
-                        # Case 1, prepend to X+1 
-                        if (tail+1 == st[iind]['predicate'][iiind]) and (tail not in ele) and (j.used == False):
-                            case = 1
-                            ele = Insertion(j,ele,case,tail,head)
-                            #print "Hit case 1"
-                        # Case 2, append to X-1
-                        elif (head-1 ==  st[iind]['predicate'][iiind]) and (head not in ele) and (j.used == False):
-                            case = 2 
-                            ele = Insertion(j,ele,case,tail,head)
-                            #print "Hit case 2"
-                        elif (head > st[iind]['predicate'][len(st[iind]['predicate'])-1]) and (j.used == False):
-                            case = 3 
-                            if iind != len(st)-1:
-                                j.used = False 
-                            else:
+            if new_left[ind] is not None: 
+                for j in new_left[ind]:
+                    if (j.used == False):
+                        #print "current fragment:", j.nodes
+                        head = j.nodes[0]
+                        tail = j.nodes[len(j.nodes)-1]
+                    else:
+                        pass
+                    # Case 0, special case of case 1, just directly append to the head 
+                    # If tails equals the very first word in the very first predicate
+                    if (tail+1 == st[iind]['predicate'][0]) and (j.used == False):
+                        case = 0
+                        Insertion(j,ele,case,tail,head)
+                        #print "Hit case 0"
+                    elif (j is not None):
+                        for iiind in range(0,len(st[iind]['predicate'])):
+                            # Case 1, prepend to X+1 
+                            if (tail+1 == st[iind]['predicate'][iiind]) and (tail not in ele) and (j.used == False):
+                                case = 1
                                 ele = Insertion(j,ele,case,tail,head)
-                                #print "Hit case 3"
-                        elif (tail < st[iind]['predicate'][0]) and (j.used == False):
-                            case = 4
-                            ele = Insertion(j,ele,case,tail,head)
-                            #print "Hit case 4"  
-                        else:
-                            pass
-            #print "element after...", ele 
-            tmp[iind] = sorted(ele)
-            #print tmp[iind]  
-        seg[ind] = tmp
-        for final in new_left[ind]:
-            if final.used == False:
-                print "Fragment in ", ind, " left to be unused: ", final.nodes 
+                                #print "Hit case 1"
+                            # Case 2, append to X-1
+                            elif (head-1 ==  st[iind]['predicate'][iiind]) and (head not in ele) and (j.used == False):
+                                case = 2 
+                                ele = Insertion(j,ele,case,tail,head)
+                                #print "Hit case 2"
+                            elif (head > st[iind]['predicate'][len(st[iind]['predicate'])-1]) and (j.used == False):
+                                case = 3 
+                                if iind != len(st)-1:
+                                    j.used = False 
+                                else:
+                                    ele = Insertion(j,ele,case,tail,head)
+                                    #print "Hit case 3"
+                            elif (tail < st[iind]['predicate'][0]) and (j.used == False):
+                                case = 4
+                                ele = Insertion(j,ele,case,tail,head)
+                                #print "Hit case 4"  
+                            else:
+                                pass
+                #print "element after...", ele 
+                tmp[iind] = sorted(ele)
+                #print tmp[iind]  
+            else:
+                pass 
+        if new_left[ind] is not None:
+            seg[ind] = tmp
+            for final in new_left[ind]:
+                if final.used == False:
+                    print "Fragment in ", ind, " left to be unused: ", final.nodes 
+        else:
+            seg[ind] = None
     return seg 
 
 # Connect segments and subject 
 def Connect_subj(res, seg):
-    final = (range(len(seg)))
+    #final = (range(len(seg)))
+    final = [] 
     for ind, st in enumerate(res):
-        tmp = []
-        for iind,segt in enumerate(st): 
-            #for iind, ii in enumerate(segt):
-            subj = segt['subject']
-            item = [subj]+ seg[ind][iind] 
-            #print "find match: predicate ",seg[ind][iind], "subject: ",subj
-            tmp.append(item)
-        final[ind] = tmp 
+        if seg[ind] is not None:
+            tmp = []
+            for iind,segt in enumerate(st): 
+                #for iind, ii in enumerate(segt):
+                subj = segt['subject']
+                item = [subj]+ seg[ind][iind] 
+                #print "find match: predicate ",seg[ind][iind], "subject: ",subj
+                tmp.append(item)
+            final.append(tmp)
+        else:
+            pass  
     return final 
 
 # After seg = Rearrange2
@@ -234,38 +251,41 @@ def further_modify(res,seg):
     return new_res 
     
 def left_segment(nl):
-    ttmp = []
-    tmp = []
-    for i in range(0,len(nl)):
-        if i == 0:
-            ttmp.append(nl[0])
-            continue
-        elif i != len(nl)-1:
-            if (nl[i] - nl[i-1]) != 1:
-                tmp.append(ttmp)
-                ttmp = []
-                ttmp.append(nl[i])
+    if len(nl) == 0:
+        return None 
+    else:
+        ttmp = []
+        tmp = []
+        for i in range(0,len(nl)):
+            if i == 0:
+                ttmp.append(nl[0])
+                continue
+            elif i != len(nl)-1:
+                if (nl[i] - nl[i-1]) != 1:
+                    tmp.append(ttmp)
+                    ttmp = []
+                    ttmp.append(nl[i])
+                else:
+                    ttmp.append(nl[i])
             else:
-                ttmp.append(nl[i])
-        else:
-            if (nl[i] - nl[i-1]) != 1:
-                tmp.append(ttmp)
-                ttmp = []
-                ttmp.append(nl[i])
-            else:
-                ttmp.append(nl[i-1])
-                ttmp.append(nl[i])
-    non_duplicate = []
-    for t in ttmp:
-        if t not in non_duplicate:
-            non_duplicate.append(t)
-    tmp.append(non_duplicate)
-    del ttmp 
-    fragment = [] 
-    for item in tmp:
-        _fra = _Fragment(item)
-        fragment.append(_fra)
-    return fragment 
+                if (nl[i] - nl[i-1]) != 1:
+                    tmp.append(ttmp)
+                    ttmp = []
+                    ttmp.append(nl[i])
+                else:
+                    ttmp.append(nl[i-1])
+                    ttmp.append(nl[i])
+        non_duplicate = []
+        for t in ttmp:
+            if t not in non_duplicate:
+                non_duplicate.append(t)
+        tmp.append(non_duplicate)
+        del ttmp 
+        fragment = [] 
+        for item in tmp:
+            _fra = _Fragment(item)
+            fragment.append(_fra)
+        return fragment 
 
 def reorder(tmp):
     tt = []

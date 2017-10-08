@@ -1,6 +1,7 @@
 import os
 import glob
 import sys
+from time import time
 from lib_preprocessing import getRealName, CleanSegmentations, VectorizeSummary, DecomposeSummary, getRoot
 mode = sys.argv[1]
 
@@ -15,6 +16,7 @@ mode = sys.argv[1]
 peer_summaries = []
 wise_crowd = []
 test_summaries = []
+timer = time()
 
 error_file = '../Preprocess/errors-file.txt'
 errors = [] 
@@ -42,7 +44,8 @@ if (dir1):
 	#with open(error_file,'w') as f:
 	#	for each in errors:
 	#		f.write(each)
-
+done = time()
+print('Time: {}'.format(str(done - timer)))
 #if int(mode) ==2:
 #	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
 #	os.system(command)

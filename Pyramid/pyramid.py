@@ -226,6 +226,10 @@ for threshold in thresholds:
         print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/')
         print('Pyramid .size file stored in PyrEval/Scoring/sizes/')
         print('Readable pyramid file stored in PyrEval/Scoring/scu/')
+        with open('../Scoring/sizes/' + fname + '.size', 'w') as f:
+            for n,pyr in enumerate(Pyramid_info):
+                f.write(str(pyr.length) + "\n")
+        f.close()
         # for n, pyr in enumerate(Pyramid_info):
         #     print('Layer {} has size {} | Upperbound {}'.format(n+1, pyr.length, pyr.capacity))
         # if len(all_seg_ids) == len(set(all_seg_ids)):

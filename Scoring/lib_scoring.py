@@ -27,6 +27,7 @@ import sys
 import os
 sys.path.append('../Preprocess/')
 from weiwei import vectorize
+import numpy as np 
 
 
 
@@ -78,7 +79,16 @@ class SCU():
     def averageSimilarity(self, segment_embedding):
         normalizer = len(self.embeddings)
         similarity = 0
+        segment_embedding = np.array([segment_embedding])
+        segment_embedding.reshape(-1,1)
         for embedding in self.embeddings:
+            # By Yanjun: For testing 
+            embedding = np.array([embedding])
+            #print "embedding", embedding
+            
+            #print "embedding", segment_embedding
+            embedding.reshape(-1,1)
+            
             similarity += cos(embedding, segment_embedding)[0][0]
         if similarity / normalizer < 0.5:
             return None

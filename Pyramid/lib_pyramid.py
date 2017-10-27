@@ -10,7 +10,8 @@ import networkx as nx
 import copy
 import math
 from itertools import combinations
-from sklearn.metrics.pairwise import cosine_similarity as cos
+#from sklearn.metrics.pairwise import cosine_similarity as cos
+from js_similarity import cos 
 import numpy as np
 import os
 import glob
@@ -106,8 +107,15 @@ def ComposeSegSets(BigSet2, segmentpool, n):
     for graph in graphs:
         edges = copy.deepcopy(graph.nodes())
         res = {}
-        for n, seg_id in enumerate(seg_ids):
-            res[seg_id] = edges[n]
+        #for n, seg_id in enumerate(seg_ids):
+            #res[seg_id] = edges[n]
+
+        # Modifying by Yanjun: Work for networkx 2.0 
+        count = 0 
+        for i in edges:
+            seg_id = seg_ids[count]
+            res[seg_id] = i 
+            count += 1 
         if graph.size() != 0:
             res['WAS'] = graph.size(weight='weight') / 2
             results.append(res)
@@ -289,7 +297,8 @@ def pairwise(segmentpool, N, threshold):
     for summ_pair in summ_pairs:
         for segment in summ_pair[0]:
             for seg in summ_pair[1]:
-                sc = cos(segment.vec, seg.vec)[0][0]
+                #sc = cos(segment.vec, seg.vec)[0][0]
+                sc = cos(segment.vec, seg.vec)
                 scores.append(sc)
                 result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
     Q3 = np.percentile(np.asarray(scores), threshold)
@@ -312,7 +321,8 @@ def pairwise_test(segmentpool,N):
     for summ_pair in summ_pairs:
         for segment in summ_pair[0]:
             for seg in summ_pair[1]:
-                sc = cos(segment.vec, seg.vec)[0][0]
+                #sc = cos(segment.vec, seg.vec)[0][0]
+                sc = cos(segment.vec,seg.vec)
                 #if sc > 0.5:
                 #result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
                 result.append(sc)

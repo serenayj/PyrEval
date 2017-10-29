@@ -16,10 +16,9 @@ PyrEval is a tool to construct a content model of semantically coherent units di
 3. Stanford CoreNLP System[6], see download https://stanfordnlp.github.io/CoreNLP/index.html. 
 4. Python Pacakges: nltk, glob, sklearn, bs4, lxml, numpy, scipy, networkx, statistics
 
-## Raw texts
-At the very beginning, you need to split your raw text into one sentence per line. There are three folders for you to place your raw texts. 
-- Preprocess/wise_crowd_summaries: the folder for model(referenced) summaries
-- Preprocess/peer_summaries: the folder for the summaries you want to score 
+## Data Requirement 
+4 to 5 human-written summaries in plain text files (referred throughout as “wise crowd” summaries); any number of summaries to score (referred throughout as “peer” summaries) 
+
 
 ## Components and Directories
 This package contains two major components: Build the pyramid and Score the peer summaries by the pyramid.  
@@ -33,13 +32,14 @@ Here is an explanation of 4 folders under PyrEval.
 
 ## HOW TO USE 
 
-### Step 00(Optional but highly recommend): Split your documents into lines and clean up. Using the sciprt split-sent.py as following: 
+### Step 00(If your data is already one sentence per line and special characters removed, you don’t need this step): Split your documents into lines and clean up. Using the sciprt split-sent.py as following: 
 
 ```
 python split-sent.py path_to_raw_text path_to_output
 ```
+This step has to be done twice, once for wise crowd summaries, once for peer summaries.
 
-### Step 0: Download and Run Stanford CoreNLP to get the preprocess xml files, see download link above.Unpack the file you will get a folder.
+### Step 0: Download and Run Stanford CoreNLP to get the preprocess xml files, see download link above.Unpack the file you will get a folder. This step has to be done twice, once for wise crowd summaries, once for peer summaries
  
 Copy stanford.py to the Stanford CoreNLP folder, then run command: 
 ```

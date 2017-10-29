@@ -447,7 +447,7 @@ def retrieveSeg(segID, seg_list):
         if segID == seg_id:
             return seg
 
-def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels, pyramid_name):
+def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels, pyramid_name, log_file):
     w,h = terminal_size()
     summary_name_len = len(summary_name)
     
@@ -515,34 +515,62 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
     else:
         cu_line = 'No Content Units'
 
-
+    
+    handler = open(log_file, 'w') if log_file else None
 
     print '\n' + '#'*(w/2 - summary_name_len + 2) + '  ' + summary_name + '  ' + '#'*(w/2 - summary_name_len + 2) + '\n'
+    handler.write('\n' + '#'*(w/2 - summary_name_len + 2) + '  ' + summary_name + '  ' + '#'*(w/2 - summary_name_len + 2) + '\n') if handler else None
     print 'Pyramid: %s' % pyramid_name
+    handler.write('Pyramid: %s\n' % pyramid_name) if handler else None
+    
     print 'No. Segments in Summary: {}'.format(segment_count)
+    handler.write('No. Segments in Summary: {}\n'.format(segment_count)) if handler else None
+
     print '{:>17}: {:>10}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}'.format('Raw', score, 'Quality', quality, 'Coverage', coverage, 'Comprehensive', comprehension)
+    handler.write('{:>17}: {:>10}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n'.format('Raw', score, 'Quality', quality, 'Coverage', coverage, 'Comprehensive', comprehension)) if handler else None
+
     print '{:>17}: \t{}\n'.format('Content Unit List', cu_line)
+    handler.write( '{:>17}: \t{}\n'.format('Content Unit List', cu_line)) if handler else None
+
 
 
     for s in newSegmentList:
         print "Sentence: %d, Segmentation %d" % (s.sentence_id, s.segment_id)
+        handler.write( "Sentence: %d, Segmentation %d\n" % (s.sentence_id, s.segment_id)) if handler else None
+
+
         for seg_index, text in s.text.items():
             if seg_index in s.scu_text_pairs.keys():
-                print "\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))
+                print "\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]])) 
+
+                handler.write("\tSegment: %d | Content Unit: %d [Weight: %d]\n" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))) if handler else None
+
                 print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
+                handler.write(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. \n')) if handler else None
+
                 content_unit = scu_labels[s.scu_text_pairs[seg_index]]
                 for n, cu_part in enumerate(content_unit):
                     if n == 0:
                         print wrap_string(cu_part, '\tContent Unit: ............ (%d) ' % (n+1))
+                        handler.write(wrap_string(cu_part, '\tContent Unit: ............ (%d) \n' % (n+1))) if handler else None
+
                     else:
                         print wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) "  % (n+1))                            
+                        handler.write(cu_part, "\t" + " "*13 + " ............ (%d) \n"  % (n+1)) if handler else None 
             else:
-                print "\tSegment: %d | Content Unit: None" % seg_index
+                print "\tSegment: %d | Content Unit: None" % seg_index 
+                handler.write("\tSegment: %d | Content Unit: None\n" % seg_index)
+
                 print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
+                handler.write((wrap_string(s.text[seg_index].strip(), '\tSegment: ................. \n')) if handler else None
+)
         print "\n"
     print "\n"
+    handler.write("\n\n") if handler else None
     print "="*w
+    handler.write("="*w) if handler else None
     print "\n"
+    handler.write("\n") if handler else None
 
 
 """

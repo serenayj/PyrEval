@@ -26,7 +26,6 @@ import csv
 import os
 
 
-
 """
 ============================ Input==============================
 """
@@ -36,14 +35,16 @@ parser.add_option('-a', '--all', action="store_true", dest="a", default=False)
 parser.add_option('-t', '--table', action="store_true", dest="t", default=False)
 parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyramids/*")
 parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
+parser.add_option('-l', '--log', action='store', dest='log', default=None)
 options, args = parser.parse_args()
 
 print_all = options.a
 print_table = options.t
 pyramid_path = options.pyramid
 results_file = options.output
+log = options.log
 
-pyramids = list(glob.iglob(pyramid_path))
+pyramids = list(glob.iglob(pyramid_path + '/*'))
 
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
@@ -55,7 +56,6 @@ for pyr in pyramids:
     print pyr
 f = open(results_file, 'w')
 f.close()
-
 
 
 """
@@ -152,7 +152,7 @@ for pyramid in pyramids:
                 else:
                     pass
             if print_all:
-                formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels,pyramid_name)
+                formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log)
 
 
     #scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores]

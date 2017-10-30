@@ -95,6 +95,8 @@ python scoring.py -options
 
 -o specify output (default is '../results.csv')
 
+-l specify path for log file (default is None)
+
 
 Eg:
 ```

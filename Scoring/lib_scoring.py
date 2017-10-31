@@ -16,8 +16,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-#from sklearn.metrics.pairwise import cosine_similarity as cos
-from js_similarity import cos 
+from sklearn.metrics.pairwise import cosine_similarity as cos
+#from js_similarity import cos 
 import pickle
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -90,10 +90,11 @@ class SCU():
             #print "embedding", segment_embedding
             embedding.reshape(-1,1)
             
-            #similarity += cos(embedding, segment_embedding)[0][0]
-            similarity += cos(embedding, segment_embedding)
+            similarity += cos(embedding, segment_embedding)[0][0]
+            #similarity += cos(embedding, segment_embedding)
             # For testing purpose, change simiarity threshold to 4.0  
-        if similarity / normalizer < 4.35146819363:
+        #if similarity / normalizer < 4.35146819363:
+        if similarity / normalizer <0.5:
             return None
         else:
             return [similarity / normalizer, self.weight]

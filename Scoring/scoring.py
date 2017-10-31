@@ -119,7 +119,7 @@ for pyramid in pyramids:
         scus = copy.deepcopy(scus_og)
         if os.path.isdir(summary):
             summ = glob.iglob(summary+'/*')
-            
+            #fn is the summary name 
             for fn in summ:
                 if fn.endswith('.ls'):
                     summary_slash= fn.rfind('/') + 1

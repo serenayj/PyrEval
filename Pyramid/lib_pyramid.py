@@ -10,8 +10,8 @@ import networkx as nx
 import copy
 import math
 from itertools import combinations
-#from sklearn.metrics.pairwise import cosine_similarity as cos
-from js_similarity import cos 
+from sklearn.metrics.pairwise import cosine_similarity as cos
+#from js_similarity import cos 
 import numpy as np
 import os
 import glob
@@ -294,11 +294,31 @@ def pairwise(segmentpool, N, threshold):
         summs[doc].append(segment)
     summ_pairs = combinations(summs, 2)
     scores = []
+
     for summ_pair in summ_pairs:
         for segment in summ_pair[0]:
+            if type(segment.vec) is list:
+                segment.vec = np.array([segment.vec])
+                segment.vec.reshape(-1,1)
+            else:
+                if segment.vec.shape == (1,100):
+                    segment.vec.reshape(-1,1)
+                else:
+                    pass 
+            #segment.vec = np.array([segment.vec])
+            #segment.vec.reshape(-1,1)
             for seg in summ_pair[1]:
-                #sc = cos(segment.vec, seg.vec)[0][0]
-                sc = cos(segment.vec, seg.vec)
+                if type(seg.vec) is list:
+                    seg.vec = np.array([seg.vec])
+                    seg.vec.reshape(-1,1)
+                else:
+                    if seg.vec.shape == (1,100):
+                        seg.vec.reshape(-1,1)
+                    else:
+                        pass 
+                sc = cos(segment.vec, seg.vec)[0][0]
+                #print sc
+                #sc = cos(segment.vec, seg.vec)
                 scores.append(sc)
                 result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
     Q3 = np.percentile(np.asarray(scores), threshold)
@@ -318,11 +338,32 @@ def pairwise_test(segmentpool,N):
         doc = segment.docid - 1
         summs[doc].append(segment)
     summ_pairs = combinations(summs, 2)
+
     for summ_pair in summ_pairs:
         for segment in summ_pair[0]:
+            if type(segment.vec) is list:
+                segment.vec = np.array([segment.vec])
+                segment.vec.reshape(-1,1)
+            else:
+                if segment.vec.shape == (1,100):
+                    segment.vec.reshape(-1,1)
+                else:
+                    pass 
+            #segment.vec = np.array([segment.vec])
+            #segment.vec.reshape(-1,1)
+            #print "segment shape", segment.vec.shape
             for seg in summ_pair[1]:
-                #sc = cos(segment.vec, seg.vec)[0][0]
-                sc = cos(segment.vec,seg.vec)
+                if type(seg.vec) is list:
+                    seg.vec = np.array([seg.vec])
+                    seg.vec.reshape(-1,1)
+                else:
+                    if seg.vec.shape == (1,100):
+                        seg.vec.reshape(-1,1)
+                    else:
+                        pass 
+                #print "seg shape", seg.vec.shape 
+                sc = cos(segment.vec, seg.vec)[0][0]
+                #sc = cos(segment.vec,seg.vec)
                 #if sc > 0.5:
                 #result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
                 result.append(sc)

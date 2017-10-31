@@ -44,7 +44,7 @@ pyramid_path = options.pyramid
 results_file = options.output
 log = options.log
 
-pyramids = list(glob.iglob(pyramid_path + '/*'))
+pyramids = list(glob.iglob(pyramid_path + '*'))
 
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder

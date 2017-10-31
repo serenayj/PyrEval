@@ -563,7 +563,7 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
                         handler.write(wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) \n"  % (n+1))) if handler else None 
             else:
                 print "\tSegment: %d | Content Unit: None" % seg_index 
-                handler.write("\tSegment: %d | Content Unit: None\n" % seg_index)
+                handler.write("\tSegment: %d | Content Unit: None\n" % seg_index) if handler else None
 
                 print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
                 handler.write((wrap_string(s.text[seg_index].strip(), '\tSegment: ................. \n')) if handler else None

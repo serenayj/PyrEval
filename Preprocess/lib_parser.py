@@ -366,6 +366,45 @@ def Rule_SUBCONJ(sub_sent,tr,tl,numlist):
         seg_sent.append([" ".join(seg1)," ".join(seg2)])  
         return seg_ids, seg_sent
 
+# New subordinting conjuction rules:
+def Rule_IN(tr,numlist):
+    #IN = list(tr.subtrees(filter = lambda x:x.leaves()[0][0] in sub_conj or x.leaves()[0][0] in wrb))
+    in_list = []
+    for item in numlist:
+        if (item[0] in sub_conj) or (item[0] in wrb):
+            if item not in in_list:
+                in_list.append(item)
+    if len(in_list) >0:
+        flag = True 
+        sent = range(len(in_list)+1)
+        # Pointer scanning the in_list 
+        count = 0
+        while count<= len(sent):
+            if count == 0:
+                end = in_list[count][1]-1
+                sent[count] = numlist[0:end]
+            else:
+                if count < len(in_list): 
+                    start = end
+                    end = in_list[count][1]-1
+                    sent[count] = numlist[start:end]
+                elif count == len(in_list):
+                    sent[count] = numlist[end:]
+            count += 1
+        # Concatenate the sentence together 
+        raw_sent = range(len(sent))
+        raw_id = range(len(sent))
+        for ind in range(0,len(sent)):
+            tmp = [item[0] for item in sent[ind]]
+            raw_sent[ind] = " ".join(tmp)
+            ttmp = [str(item[1]) for item in sent[ind]]
+            raw_id[ind] = ",".join(ttmp)
+    else:
+        flag = False 
+        raw_sent = [] 
+        raw_id = [] 
+    return flag, raw_sent,raw_id 
+
 # sbar_flag, sbar = get_SBAR(tr)
 # if sbar_flag == True
 def Rule_NPSBAR(tr,tl,sbar,numlist):

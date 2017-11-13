@@ -118,11 +118,12 @@ for ind in range(1,len(all_dep_sent)+1):
     #segment_count = 0
 
     # Rule 1: Subordinating conjunctions 
-    subconj_flag,sub_sent = check_IN(tr)
+    subconj_flag,sub_sent,sub_id = Rule_IN(tr,numlist)
     if subconj_flag == True:
         #print "subconj!!"
         used = True
-        subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist)
+        #subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist)
+        """
         for segmt in range(0,len(subconj_seg_sent)): 
             for kk in range(0,len(subconj_seg_sent[segmt])):
                 output_sentence = Format_Sentence(1,subconj_seg_ids[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
@@ -132,7 +133,15 @@ for ind in range(1,len(all_dep_sent)+1):
                 output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk) 
                 write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
                 write_log(seg_dir+'/' + fname +'.segs',out_sent)
-        segmentation_count += len(subconj_seg_sent) 
+        """
+        for s_ind in range(0,len(sub_sent)):
+            output_sentence = Format_Sentence(1,sub_id[s_ind],summary_index,ind,0,s_ind)
+            write_log('../ext/' + fname +'_log-segment-id-readable.txt',output_sentence)
+            out_sent = Format_Sentence(3,sub_sent[s_ind],summary_index,ind,0,s_ind)
+            output_sentence1 = Format_Sentence(2,sub_sent[s_ind],summary_index,ind,0,s_ind)
+            write_log('../ext/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
+            write_log(seg_dir+'/' + fname +'.segs',out_sent)
+        segmentation_count += 1 
 
     #Rule 2: [NP/VP, SBAR]
     sbar_flag,sbar = get_SBAR(tr)

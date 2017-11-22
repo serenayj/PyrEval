@@ -14,7 +14,7 @@ PyrEval is a tool to construct a content model of semantically coherent units di
 1. Python 2.7 (or Anaconda2)
 2. Perl
 3. Stanford CoreNLP System[6], see download https://stanfordnlp.github.io/CoreNLP/index.html. 
-4. Python Pacakges: nltk, glob, sklearn, bs4, lxml, numpy, scipy, networkx, statistics
+4. Python Pacakges: nltk (punkt required to be installed), glob, sklearn, bs4, lxml, numpy, scipy, networkx, statistics
 
 ## Data Requirement 
 4 to 5 human-written summaries in plain text files (referred throughout as “wise crowd” summaries); any number of summaries to score (referred throughout as “peer” summaries) 

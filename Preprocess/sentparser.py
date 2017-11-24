@@ -249,6 +249,21 @@ for ind in range(1,len(all_dep_sent)+1):
     if sentence.split('&')[4].strip() != '.':
         write_log(seg_dir +'/'+ fname +'.segs',sentence)
 
+# Remove empty lines to prevent WTMF errors 
+ffname = seg_dir +'/'+ fname +'.segs'
+
+all_text = open(ffname).readlines()
+all_text[len(all_text)-1] = all_text[len(all_text)-1].replace("\n","")
+
+with open(ffname,'wb') as f:
+    for i in all_text:
+        f.write(i)
+f.close()
+
+print "Sentence decomposition parser done with cleaning files!"
+
+
+
 
 
 

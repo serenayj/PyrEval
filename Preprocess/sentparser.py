@@ -41,6 +41,7 @@ import sys
 import os
 from lib_parser import * 
 from rearrange import *
+from sbar import * 
 
 #from draft2 import get_segmentation,rearrangement,reorder
 
@@ -76,7 +77,7 @@ parse = []
 for links in soup.find_all("parse"):
     parse.append(links)
 
-
+tokens = soup.find_all("tokens")
 
 """
 =========================================Main Procedure====================================
@@ -107,6 +108,9 @@ for ind in range(1,len(all_dep_sent)+1):
     tmp_ids = [] 
     tmp = [] 
     things = all_dep_sent[ind]
+    # New: POS tags 
+    token = tokens[ind-1]
+    taglist = POS_Tags(token)
     novps,vps,embedvps,tl,tr,numlist = get_vptree(parse[ind-1])
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
@@ -116,34 +120,26 @@ for ind in range(1,len(all_dep_sent)+1):
     write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
     segmentation_count = 0
     #segment_count = 0
-
-    # Rule 1: Subordinating conjunctions 
-    subconj_flag,sub_sent,sub_id = Rule_IN(tr,numlist)
-    if subconj_flag == True:
-        #print "subconj!!"
+    # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
+    # New rule: subordinating conjunction + sbars, as long as there is a subclauses 
+    valid_sbar = Valid_SubClauses(tr, taglist)
+    if len(valid_sbar) >0:
+        print "subconj!!"
         used = True
-        #subconj_seg_ids, subconj_seg_sent = Rule_SUBCONJ(sub_sent,tr,tl,numlist)
-        """
+        subconj_seg_sent,subconj_seg_ids = Rule_SBAR(valid_sbar,numlist)
         for segmt in range(0,len(subconj_seg_sent)): 
-            for kk in range(0,len(subconj_seg_sent[segmt])):
-                output_sentence = Format_Sentence(1,subconj_seg_ids[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
-                write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence)
-                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
-                out_sent = Format_Sentence(3,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk)
-                output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt][kk],summary_index,ind,segmt,kk) 
-                write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
-                write_log(seg_dir+'/' + fname +'.segs',out_sent)
-        """
-        for s_ind in range(0,len(sub_sent)):
-            output_sentence = Format_Sentence(1,sub_id[s_ind],summary_index,ind,0,s_ind)
+            #for kk in range(0,len(subconj_seg_sent[segmt])):
+            output_sentence = Format_Sentence(1,subconj_seg_ids[segmt],summary_index,ind,segmentation_count,segmt)
             write_log('../ext/' + fname +'_log-segment-id-readable.txt',output_sentence)
-            out_sent = Format_Sentence(3,sub_sent[s_ind],summary_index,ind,0,s_ind)
-            output_sentence1 = Format_Sentence(2,sub_sent[s_ind],summary_index,ind,0,s_ind)
+                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
+            out_sent = Format_Sentence(3,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt)
+            output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt) 
             write_log('../ext/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
-            write_log(seg_dir+'/' + fname +'.segs',out_sent)
-        segmentation_count += 1 
+            write_log('../ext/' + fname +'.segs',out_sent)
+        segmentation_count += 1  
 
     #Rule 2: [NP/VP, SBAR]
+    # Parallel NP/VP SBAR
     sbar_flag,sbar = get_SBAR(tr)
     if sbar_flag == True:
         used = True 
@@ -242,12 +238,14 @@ for ind in range(1,len(all_dep_sent)+1):
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
         if subconj_flag == True:
             pass 
-
-    #Just output whatever it is 
-    v = " ".join([item[0] for item in numlist]) 
-    sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
-    if sentence.split('&')[4].strip() != '.':
-        write_log(seg_dir +'/'+ fname +'.segs',sentence)
+    if segmentation_count == 0:
+        #Just output whatever it is 
+        v = " ".join([item[0] for item in numlist]) 
+        sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
+        if sentence.split('&')[4].strip() != '.':
+            write_log(seg_dir +'/'+ fname +'.segs',sentence)
+    else:
+        pass
 
 # Remove empty lines to prevent WTMF errors 
 ffname = seg_dir +'/'+ fname +'.segs'

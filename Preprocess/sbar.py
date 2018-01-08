@@ -52,7 +52,7 @@ def Valid_SubClauses(tr, taglist):
 def Difference(list1, list2):
 	diff = list(set(list2)-set(list1))  
 	cover = list(set(list1).intersection(set(list2)))
-	print "cover, ", cover
+	#print "cover, ", cover
 	return diff,cover   
 
 def Find_Words(ids, numlist):
@@ -77,8 +77,8 @@ def Rule_SBAR(valid_sbar,numlist):
 	segments = []
 	valids = sorted(valids,key=len)
 	while ind < len(valids):
-		print "current lst2, ", lst2 
-		print "current valids, ", valids[ind]
+		#print "current lst2, ", lst2 
+		#print "current valids, ", valids[ind]
 		lst2,cover = Difference(valids[ind],lst2)
 		segments.append(sorted(cover))
 		ind += 1

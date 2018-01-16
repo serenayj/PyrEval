@@ -124,7 +124,7 @@ for ind in range(1,len(all_dep_sent)+1):
     # New rule: subordinating conjunction + sbars, as long as there is a subclauses 
     valid_sbar = Valid_SubClauses(tr, taglist)
     if len(valid_sbar) >0:
-        print "subconj!!"
+        #print "subconj!!"
         used = True
         subconj_seg_sent,subconj_seg_ids = Rule_SBAR(valid_sbar,numlist)
         for segmt in range(0,len(subconj_seg_sent)): 
@@ -236,8 +236,9 @@ for ind in range(1,len(all_dep_sent)+1):
             segmentation_count += len(seg)
     else:
         # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
-        if subconj_flag == True:
-            pass 
+        #if subconj_flag == True:
+        #    pass
+        pass 
     if segmentation_count == 0:
         #Just output whatever it is 
         v = " ".join([item[0] for item in numlist]) 

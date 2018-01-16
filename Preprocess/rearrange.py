@@ -320,14 +320,14 @@ def Clean_Duplicate(sets):
         # How many segmentations does this current length share?  
         bound = len(curr_option)
         if bound >= 2:
-            print "bound", bound 
+            #print "bound", bound 
             temp = [] 
             #flag = False
             for ind in range(0,bound):
                 if curr_option[ind]:
                     if set(curr_option[ind][0]) not in temp:
-                        print "current index", ind 
-                        print curr_option[ind]
+                        #print "current index", ind 
+                        #print curr_option[ind]
                         temp.append(set(curr_option[ind][0]))
                         #temp.append(set(curr_option[ind][1]))
                         tmp.append(curr_option[ind])

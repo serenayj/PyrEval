@@ -1,20 +1,5 @@
 # Script for rearrranging the segmentations based on the rules 
 
-#    Copyright (C) 2017 Yanjun Gao
-
-#    This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 from bs4 import BeautifulSoup
 import csv
 from nltk.tree import Tree 
@@ -54,6 +39,7 @@ class _CompatibleSeg:
     def IsCompatible(self,anchor,candidate):
         self.conflict = False
         for item in self.lst:
+            # Simple way to check if two predicates are overlapped 
             if bool(set(item['predicate'])&set(candidate['predicate'])) == False:
                 #print "candidate ", candidate, "is Compatible" 
                 pass 
@@ -313,8 +299,39 @@ def reorder(tmp):
     return tt 
 
 def Clean_Duplicate(sets):
-    tmp = [] 
+    final = [] 
     for st in sets:
-        if st not in tmp:
-            tmp.append(st)
+        if st not in final:
+            final.append(st)
+    # After removing the duplicated, start removing combintations that sharing same elements 
+    length = {}
+    for ind in range(0,len(final)):
+        curr_len = len(final[ind])
+        if length.has_key(curr_len):
+            length[curr_len].append(final[ind])
+        else:
+            length[curr_len] = []
+            length[curr_len].append(final[ind])
+    t = {}
+    tmp = [] 
+    for k,v in enumerate(length):
+        # How long is this current length? 
+        curr_option = length[v]
+        # How many segmentations does this current length share?  
+        bound = len(curr_option)
+        if bound >= 2:
+            print "bound", bound 
+            temp = [] 
+            #flag = False
+            for ind in range(0,bound):
+                if curr_option[ind]:
+                    if set(curr_option[ind][0]) not in temp:
+                        print "current index", ind 
+                        print curr_option[ind]
+                        temp.append(set(curr_option[ind][0]))
+                        #temp.append(set(curr_option[ind][1]))
+                        tmp.append(curr_option[ind])
+                    else:
+                        pass 
+
     return tmp 

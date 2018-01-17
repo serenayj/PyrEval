@@ -104,6 +104,7 @@ lists_nodes = {}
 segment_set = {}
 # Sentence as basic unit, ind is sentence id 
 for ind in range(1,len(all_dep_sent)+1):
+    default_rule = False 
     used = False
     tmp_ids = [] 
     tmp = [] 
@@ -135,7 +136,7 @@ for ind in range(1,len(all_dep_sent)+1):
             out_sent = Format_Sentence(3,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt)
             output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt) 
             write_log('../ext/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
-            write_log('../ext/' + fname +'.segs',out_sent)
+            write_log(seg_dir+'/'+ fname +'.segs',out_sent)
         segmentation_count += 1  
 
     #Rule 2: [NP/VP, SBAR]
@@ -239,11 +240,15 @@ for ind in range(1,len(all_dep_sent)+1):
         #if subconj_flag == True:
         #    pass
         pass 
+    #if used == False:
     if segmentation_count == 0:
         #Just output whatever it is 
-        v = " ".join([item[0] for item in numlist]) 
-        sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
-        if sentence.split('&')[4].strip() != '.':
+        print "defalut rule! "
+        defalut_rule = True 
+        if defalut_rule:
+            v = " ".join([item[0] for item in numlist]) 
+            sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
+            #if sentence.split('&')[4].strip() != '.':
             write_log(seg_dir +'/'+ fname +'.segs',sentence)
     else:
         pass

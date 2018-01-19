@@ -86,9 +86,9 @@ tokens = soup.find_all("tokens")
 
 sentence_segmentations = []
 all_dep_sent = get_depparse(basic)
-write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
-write_log('../ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
-write_log('../ext/' + fname +'_log1-segment-id.txt', '', 1)
+#write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
+#write_log('../ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
+#write_log('../ext/' + fname +'_log1-segment-id.txt', '', 1)
 
 summary_index = str(sum_index)
 seg_dir = outpath +'/'+str(sum_index)
@@ -116,9 +116,9 @@ for ind in range(1,len(all_dep_sent)+1):
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
     raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
-    write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
+    #write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
     raw_sentence = "===================Raw sentence: "+ " ".join([str(i[1]) for i in numlist]) + " \n"
-    write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
+    #write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
     segmentation_count = 0
     #segment_count = 0
     # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
@@ -131,11 +131,11 @@ for ind in range(1,len(all_dep_sent)+1):
         for segmt in range(0,len(subconj_seg_sent)): 
             #for kk in range(0,len(subconj_seg_sent[segmt])):
             output_sentence = Format_Sentence(1,subconj_seg_ids[segmt],summary_index,ind,segmentation_count,segmt)
-            write_log('../ext/' + fname +'_log-segment-id-readable.txt',output_sentence)
+            #write_log('../ext/' + fname +'_log-segment-id-readable.txt',output_sentence)
                 # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
             out_sent = Format_Sentence(3,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt)
             output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt) 
-            write_log('../ext/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
+            #write_log('../ext/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
             write_log(seg_dir+'/'+ fname +'.segs',out_sent)
         segmentation_count += 1  
 
@@ -149,10 +149,10 @@ for ind in range(1,len(all_dep_sent)+1):
         for segmt in range(0,len(sbar_sent)): 
             for kk in range(0,len(sbar_sent[segmt])):
                 output_sentence = Format_Sentence(1,sbar_ids[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
-                write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence) 
+                #write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence) 
                 out_sent = Format_Sentence(3,sbar_sent[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
                 output_sentence1 = Format_Sentence(2,sbar_sent[segmt][kk],summary_index,ind,segmentation_count+segmt,kk) 
-                write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
+                #write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
                 write_log(seg_dir+'/' + fname +'.segs',out_sent)
         segmentation_count += len(sbar)
 
@@ -223,14 +223,14 @@ for ind in range(1,len(all_dep_sent)+1):
             for k,v in enumerate(segment_set[ind]):
                 for vv in range(0,len(v)):
                     sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
-                    write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',sentence)
+                    #write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',sentence)
                     #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
             seg = Pull_Words(segment_set,ind,numlist)
             for k,v in seg.items():
                 for vv in range(0,len(v)):
                     # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                     sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
-                    write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
+                    #write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
                     sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
                     #print "segment ", vv, " label: ", v[vv]
                     write_log(seg_dir+'/' + fname +'.segs',sent)

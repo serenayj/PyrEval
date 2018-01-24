@@ -40,9 +40,13 @@ def Valid_SubClauses(tr, taglist):
 		leaves = item.leaves()
 		for node in leaves:
 			# Sbar must contain a phrase with tensed verb 
-			if taglist[node[1]] in tensed_verb:
-				if leaves not in valid_sbar:
-					valid_sbar.append(leaves)
+			# Need to check if the key exists
+			if taglist.has_key(node[1]):
+				if taglist[node[1]] in tensed_verb:
+					if leaves not in valid_sbar:
+						valid_sbar.append(leaves)
+			else:
+				pass
 	# return lists of leaves or trees? 
 	return valid_sbar
 

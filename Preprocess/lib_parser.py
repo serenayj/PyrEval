@@ -501,19 +501,17 @@ def pull_subj_parts(things,leaves,nodes_id,nodes_label,id_list,index,flag,fname)
                 sentmp.append(nodes_label)
                 sentmp.append(" ".join(m[0] for m in leaves))
                 ids.append([nodes_id,id_list])
-                #print "current ids", ids
                 sentence = "Sentence "+str(index)+" SUBJ/OBJ segment is:" + " ".join(sentmp)+ "\n"
-                sent_ids = "cover from:" + str(nodes_id) + ","+ " ".join(id_list) + "\n"
-                #print sentence
-                write_log('../ext/' + fname +'_log1.txt',sentence)
-                write_log('../ext/' + fname +'_log1.txt',sent_ids)
+                #sent_ids = "cover from:" + str(nodes_id) + ","+ " ".join(id_list) + "\n"
+                write_log('../ext/' + fname +'_log.txt',sentence)
+                #write_log( ext+'/' + fname +'_log.txt',sent_ids)
                 all_obj.append([ids, " ".join(sentmp)])
-                #print "what is inside all_obj", all_obj
     # If nothing ever got mached, just put it into no-match             
     if flag == False:
+        #pass
         ##print "Not found", " ".join(m[0] for m in leaves)
-        write_log('../ext/' + fname +'_log1-no-match.txt'," ".join(m[0] for m in leaves))
-        write_log('../ext/' + fname +'_log1-no-match.txt',id_list)
+        write_log('../ext/' + fname +'_log-no-match.txt'," ".join(m[0] for m in leaves))
+        write_log('../ext/' + fname +'_log-no-match.txt',id_list)
     return ids, all_obj
 
 # Input: woa-without arcs, things-dictionary, leaves-from vps, wordlist-a list of numbers marked as nodes
@@ -531,11 +529,11 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,f
             # anchor is the verb for connecting arcs and vps 
             anchor = k['gov_id']
             # k['dep_id'], if one of the verb in wordlist, then use the other one to trace the subjects 
-            #print "tracing back by: dep", anchor
+            ##print "tracing back by:", anchor
         elif k['gov_id'] == str(nodes_id):
             anchor = k['dep_id']
             # either dep or gov 
-            #print "tracing back by: gov", anchor
+            ##print "tracing back by:", anchor
         else:
             anchor = None 
         if anchor is not None:
@@ -550,9 +548,9 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,f
                         senten = l['dep'] +" "+ boat
                         big_ids.append([l['dep_id'],wordlist])
                         sentence = "Sentence "+str(index)+" COMP/CONJ segment is:" + senten + "\n"
-                        sent_ids = "cover from:"+ l['dep_id'] + "," +" ".join(wordlist) + "\n" 
-                        write_log('../ext/' + fname +'_log1.txt',sentence)
-                        write_log('../ext/' + fname +'_log1.txt',sent_ids)
+                        #sent_ids = "cover from:"+ l['dep_id'] + "," +" ".join(wordlist) + "\n" 
+                        #write_log(ext+'/' + fname +'_log.txt',sentence)
+                        #write_log(ext+'/' + fname +'_log.txt',sent_ids)
                         all_parts.append([big_ids,sentence])
         # If nothing got matched...  
         if flag == False:
@@ -560,9 +558,9 @@ def pull_comp_parts(woa,things,leaves,wordlist,index,flag,nodes_id,nodes_label,f
             backup_id.append(wordlist)
             sentence = "Sentence "+str(index)+" segment is:" + boat + "\n"
             sent_ids = "cover from:"+ " ".join(wordlist) + "\n"
-            write_log('../ext/' + fname +'_log1-no-match.txt',sentence)
-            write_log('../ext/' + fname +'_log1-no-match.txt',sent_ids)
-        return big_ids,all_parts
+            write_log('../ext/' + fname +'_log-no-match.txt',sentence)
+            write_log('../ext/' + fname +'_log-no-match.txt',sent_ids)
+        return big_ids,all_parts 
 
 
 

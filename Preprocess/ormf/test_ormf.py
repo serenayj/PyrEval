@@ -5,6 +5,7 @@ from numpy import loadtxt
 import numpy as np
 
 def getVectorization(DATA, MODEL):
+    print "test", DATA
     FILE = open(DATA, 'r')
     LINES = FILE.readlines()
 
@@ -20,6 +21,7 @@ def getVectorization(DATA, MODEL):
 
     if len(LINES) != 0:
         STUFF = loadtxt(DATA)
+        print "stuff"
         ROWS = STUFF[:, 0].astype(int)
         HEIGHT = ROWS.max()
         COLS = STUFF[:, 1].astype(int)
@@ -29,12 +31,13 @@ def getVectorization(DATA, MODEL):
         N_DOCS = DATA.shape[1]
         V = np.zeros((DIM, N_DOCS))
     else:
+        print "no stuff"
         N_DOCS = 0
         V = np.zeros((DIM, 0))
 
     PPTW = P.dot(P.transpose())
     PPTW = PPTW*W_M[0]
-
+    
     T = find(DATA)
     A = T[0].tolist()
     B = T[1].tolist()

@@ -71,12 +71,23 @@ def CleanSegmentations(fname, directory, summ_ind):
 	f.close()
 	return segFile, seg_ids
 
-def VectorizeSummary(fname, seg_ids, directory, summ_ind):
-	print "VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname + '.cl')
-	vectors = vectorize(fname + '.cl')
+#def VectorizeSummary(fname, seg_ids, directory, summ_ind):
+#	print "VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname + '.cl')
+#	vectors = vectorize(fname + '.cl')
+#	fname = directory +'/'+str(summ_ind)+ '/' + getRealName(fname) + '.ls'
+#	with open(fname, 'w') as f:
+#		for n, vec in enumerate(vectors):
+#			line = seg_ids[n] + '&' + str(vec) + '\n'
+#			f.write(line)
+#	f.close()
+
+def VectorizeSummary(fname, directory, summ_ind, mode=None):
+	print "VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname)
+	segFile = directory + '/' + str(summ_ind) + '/' + getRealName(fname) + '.segs'
+	vectors = vectorize(segFile, mode)
 	fname = directory +'/'+str(summ_ind)+ '/' + getRealName(fname) + '.ls'
 	with open(fname, 'w') as f:
 		for n, vec in enumerate(vectors):
-			line = seg_ids[n] + '&' + str(vec) + '\n'
-			f.write(line)
-	f.close()
+			f.write(vec + '\n')
+
+

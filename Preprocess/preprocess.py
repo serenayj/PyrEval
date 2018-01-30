@@ -18,7 +18,7 @@ import os
 import glob
 import sys
 from time import time
-from lib_preprocessing import getRealName, CleanSegmentations, VectorizeSummary, DecomposeSummary, getRoot
+from lib_preprocessing import *
 mode = sys.argv[1]
 
 #mode = 2
@@ -51,8 +51,8 @@ if (dir1):
 	for n, summary in enumerate(summaries):
 		#try:
 		DecomposeSummary(summary, n + 1,dir1)
-		summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
-		VectorizeSummary(summary, seg_ids, dir1,n+1)
+		#summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
+		VectorizeSummary(summary, dir1,n+1, 'preprocess')
 		#except:
 		#	print "current file failed: ", n, " ", summary
 		#	errors.append(summary)

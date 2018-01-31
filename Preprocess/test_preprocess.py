@@ -18,11 +18,11 @@ import os
 import glob
 import sys
 from time import time
-from lib_preprocessing import getRealName, CleanSegmentations, VectorizeSummary, DecomposeSummary, getRoot
-from sif_embedding import SIF_master
+
+from lib_preprocessing import *
 mode = sys.argv[1]
-model = sys.argv[2]
-file_dir = sys.argv[3]
+file_dir = sys.argv[2]
+
 #mode = 2
 
 """
@@ -34,7 +34,9 @@ file_dir = sys.argv[3]
 peer_summaries = []
 wise_crowd = []
 test_summaries = []
+
 timer = time()
+
 
 error_file = '../Preprocess/errors-file.txt'
 errors = [] 
@@ -43,13 +45,12 @@ if int(mode) == 1:
 	dir1 = file_dir + "/Preprocess/peer_summaries"
 	#dir1 = file_dir + "/Preprocess/peer_summaries"
 	print "currently preprocessing ", dir1 
+
 elif int(mode) == 2:
 	#dir1 = "../Preprocess/wise_crowd_summaries"
-	dir1 = file_dir + "/wise_crowd_summaries"
-	#dir1 = file_dir + "/Preprocess/wise_crowd_summaries"
+	dir1 = file_dir + "/Preprocess/wise_crowd_summaries"
 	print "currently preprocessing ", dir1 
-#elif int(mode) == 3:
-	#dir1 = "../Preprocess/test_summaries"
+
 else:
 	dir1 = None
 	print "Option doesn't exist!!!"
@@ -59,17 +60,7 @@ if (dir1):
 	for n, summary in enumerate(summaries):
 		try:
 			DecomposeSummary(summary, n + 1,dir1)
-			summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
-			if int(model) == 1:
-				VectorizeSummary(summary, seg_ids, dir1,n+1)
-			else:
-				print "SIF Modeling"
-				print summary 
-				clfile = summary + ".cl"
-				#segf = summary[:summary.rfind(".")]
-				#realname = getRealName(segf)
-				SIF_master(summary,clfile,dir1,n+1)
-				#VectorizeSummary(summary, seg_ids, dir1,n+1)
+			VectorizeSummary(summary, dir1,n+1, 'preprocess')
 		except:
 			print "current file failed: ", n, " ", summary
 			errors.append(summary)
@@ -82,5 +73,18 @@ print('Time: {}'.format(str(done - timer)))
 #if int(mode) ==2:
 #	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
 #	os.system(command)
+
+error_file = '../Preprocess/errors-file.txt'
+errors = [] 
+# if int(mode) == 1:
+# 	dir1 = "../Preprocess/peer_summaries"
+# elif int(mode) == 2:
+# 	dir1 = "../Preprocess/wise_crowd_summaries"
+# #elif int(mode) == 3:
+# 	#dir1 = "../Preprocess/test_summaries"
+# else:
+# 	dir1 = None
+# 	print "Option doesn't exist!!!"
+
 
 print "Finish Preprocess!!!"

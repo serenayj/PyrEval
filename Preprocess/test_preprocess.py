@@ -13,13 +13,16 @@
 
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import os
 import glob
 import sys
 from time import time
+
 from lib_preprocessing import *
 mode = sys.argv[1]
 file_dir = sys.argv[2]
+
 #mode = 2
 
 """
@@ -32,18 +35,22 @@ peer_summaries = []
 wise_crowd = []
 test_summaries = []
 
+timer = time()
+
+
 error_file = '../Preprocess/errors-file.txt'
 errors = [] 
 if int(mode) == 1:
 	#dir1 = "../Preprocess/peer_summaries"
 	dir1 = file_dir + "/Preprocess/peer_summaries"
+	#dir1 = file_dir + "/Preprocess/peer_summaries"
 	print "currently preprocessing ", dir1 
+
 elif int(mode) == 2:
 	#dir1 = "../Preprocess/wise_crowd_summaries"
 	dir1 = file_dir + "/Preprocess/wise_crowd_summaries"
 	print "currently preprocessing ", dir1 
-#elif int(mode) == 3:
-	#dir1 = "../Preprocess/test_summaries"
+
 else:
 	dir1 = None
 	print "Option doesn't exist!!!"
@@ -51,11 +58,21 @@ else:
 if (dir1):
 	summaries = sorted(list(glob.iglob(dir1+ '/*.xml')))
 	for n, summary in enumerate(summaries):
-		#try:
-		DecomposeSummary(summary, n + 1,dir1)
-		#summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
-		#VectorizeSummary(summary, seg_ids, dir1,n+1)
-		VectorizeSummary(summary, dir1,n+1, 'preprocess')
+		try:
+			DecomposeSummary(summary, n + 1,dir1)
+			VectorizeSummary(summary, dir1,n+1, 'preprocess')
+		except:
+			print "current file failed: ", n, " ", summary
+			errors.append(summary)
+	
+	#with open(error_file,'w') as f:
+	#	for each in errors:
+	#		f.write(each)
+done = time()
+print('Time: {}'.format(str(done - timer)))
+#if int(mode) ==2:
+#	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
+#	os.system(command)
 
 error_file = '../Preprocess/errors-file.txt'
 errors = [] 
@@ -68,5 +85,6 @@ errors = []
 # else:
 # 	dir1 = None
 # 	print "Option doesn't exist!!!"
+
 
 print "Finish Preprocess!!!"

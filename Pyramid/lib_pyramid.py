@@ -235,10 +235,10 @@ def readFiles(directories):
             for fn in ii:
                 if fn[-3:] == '.ls':
                     vec_fname = fn
-                    print vec_fname
+                    #print vec_fname
                 if fn[-5:] == '.segs':
                     seg_fname = fn
-                    print seg_fname
+                    #print seg_fname
             #vec_fname = directory + '/' + d + '.ls'
             #seg_fname = directory + '/' + d + '.segs'
             with open(vec_fname, 'r') as f:

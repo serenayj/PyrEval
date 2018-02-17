@@ -23,7 +23,7 @@ import cProfile
 =========================== Pipeline =================================
 """ 
 fname = sys.argv[1]
-
+#fname = "D1004A"
 #fname = "test-1045a"
 #fname = "test-1045a"
 N = 4
@@ -40,7 +40,7 @@ segs, vecs, N = readFiles(directories)
 segpool = make_segs(segs, vecs)
 #pairwise_test(segpool, N)
 
-threshold = 80
+threshold = 83
 tups = (100,2.0)
 #tups = (125,2.0)
 bf_dict = tups
@@ -88,7 +88,7 @@ adj_matrix = AdjancencyMatrix(cand_graphs,cu_table)
 # Global info about which node is visited 
 nodelist = range(len(cand_graphs)-1)
 
-Check = check_point[N-2]
+Check = check_point[N-1] + check_point[N-2] + check_point[N]
 # Meaning if there are things located in top 2 layers 
 
 if Check > 0:

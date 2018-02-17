@@ -17,9 +17,22 @@ def conflict(cu1_ind, cu2_ind,cu_table):
 def pull_WAS(path,graphlist,start):
     #print "path : ", path
     was = 0
+    count = {}
+    a_s = {}
     #print path
     for item in path:
-        was += graphlist[item].WAS 
+        # k: current layer index 
+        k = len(graphlist[item].members)
+        if count.has_key(k):
+            count[k] += 1 
+        else:
+            count[k] = 1 
+        if a_s.has_key(k):
+            a_s[k] += float(graphlist[item].WAS)/k 
+        else:
+            a_s[k] = float(graphlist[item].WAS)/k
+    for key, value in count.items():
+        was += a_s[key] / value 
     #was += graphlist[start].WAS
     return was 
 

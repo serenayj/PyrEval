@@ -117,7 +117,8 @@ def ComposeSegSets(BigSet2, segmentpool, n):
             res[seg_id] = i 
             count += 1 
         if graph.size() != 0:
-            res['WAS'] = graph.size(weight='weight') / 2
+            #res['WAS'] = graph.size(weight='weight') / 2
+            res['WAS'] = float(graph.size(weight='weight')) / graph.size()
             results.append(res)
     return results
 
@@ -234,13 +235,16 @@ def readFiles(directories):
             for fn in ii:
                 if fn[-3:] == '.ls':
                     vec_fname = fn
+                    print vec_fname
                 if fn[-5:] == '.segs':
                     seg_fname = fn
+                    print seg_fname
             #vec_fname = directory + '/' + d + '.ls'
             #seg_fname = directory + '/' + d + '.segs'
             with open(vec_fname, 'r') as f:
                 lines = f.readlines()
                 vecs += lines
+                #vecs += lines.strip("\n")
             f.close()
             with open(seg_fname, 'r') as f:
                 lines = f.readlines()
@@ -255,15 +259,19 @@ def make_segs(text, vecs):
     content = []
     vectors = []
     for i in text:
+        # By Yanjun: using SIF needs strip out the line breaker 
         if len(i) > 2: # filter out the empty line 
             i = i.split('&')
             content.append(i)
     for i in vecs:
+        i = i.strip("\n")
         if len(i) > 2:
             i = i.split('&')
             i = i[4].strip('\n').replace('[', '').replace(']', '')
             i = [float(j) for j in i.split(',')]
             vectors.append(i)
+    print len(vectors)
+    print len(content)
     ccontent = [] 
     for n, each in enumerate(content):
         index = '.'.join(each[:4])

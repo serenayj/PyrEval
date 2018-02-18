@@ -75,9 +75,9 @@ cu_table,cu_combos = ConflictGraph(cand_graphs,segtable)
 Pyramid = range(N)
 Pyramid_info = range(N)
 
-for n in range(1,N+1):
-	y_n = power_law(n, bf_dict)
-	Pyramid_info[n-1] = y_n
+# for n in range(1,N+1):
+# 	#y_n = power_law(n, bf_dict)
+# 	Pyramid_info[n-1] = y_n
 
 print "Pyramid shapes, from 1 to ", N, " ", Pyramid_info
 timer = time()
@@ -140,6 +140,15 @@ for ind in range(init_len,total_length):
 	#print "iind,", iind 
 	SCUs[ind] = sent_tokenize(layer1[iind])
 
+Pyramid_size = {}
+for k,v in SCUs.items():
+	weight = len(v)
+	if Pyramid_size.has_key(weight):
+		Pyramid_size[weight] += 1 
+	else:
+		Pyramid_size[weight] = 1 
+
+
 with open("scu/"+fname+"-readable.pyr",'w') as f:
 	for k,v in enumerate(SCUs):
 		labels = SCUs[k]
@@ -160,7 +169,13 @@ for j, i in enumerate(SCUs):
 		ET.SubElement(scu, 'contributor', label = SCUs[j][ele])
 
 tree = ET.ElementTree(root)
-tree.write("../Scoring/pyrs/pyramids/"+fname + '.pyr')
+#tree.write("../Scoring/pyrs/pyramids/"+fname + '.pyr')
+tree.write("../Scoring/EDUA-test/"+fname + '.pyr')
+
+with open('../Scoring/sizes/' + fname + '.size', 'w') as f:
+	for n,pyr in enumerate(Pyramid_size):
+		f.write(str(Pyramid_size[pyr]) + "\n")
+
 
 
 

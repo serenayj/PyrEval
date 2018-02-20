@@ -150,11 +150,20 @@ def BottomUPWAS(layern,n,N, Pyramid_info):
     # A function calculates the overall WAS started from the current layer.
     # Because input might be a fake layer, so we start from summing WAS of fake layer 
     overallWAS = 0
+    ### Test by Yanjun 
     for segset in layern:
         overallWAS += segset['WAS']
+    if len(layern) != 0:
+        overallWAS = float(overallWAS)/len(layern)
     for i in range(n+1,N+1):
         if type(Pyramid_info[i-1]) != int:
-            overallWAS += Pyramid_info[i-1].WAS
+            if Pyramid_info[i-1].length !=0:
+                temp = float(Pyramid_info[i-1].WAS)/Pyramid_info[i-1].length
+                overallWAS += temp
+            else:
+                overallWAS += Pyramid_info[i-1].WAS
+            #overallWAS += Pyramid_info[i-1].WAS
+    #print "Update Attration! ", overallWAS
     return overallWAS
 
 def LayerWAS(layern):

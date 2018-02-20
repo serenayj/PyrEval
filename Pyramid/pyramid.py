@@ -8,24 +8,33 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 from time import time
 import copy
 import glob
+import itertools
 import xml.etree.cElementTree as ET
+import csv
+import sys
 
 """
 =========================== Pipeline =================================
 """ 
 
-#print("Reading Content")
-#directories = glob.iglob('wise_crowd/*')
+#fname = sys.argv[1]
+
+#directories = list(glob.iglob(dir1+'/*'))
 directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
+
+
 print directories
 segs, vecs, N = readFiles(directories)
 #print("Making Segments")
 segpool = make_segs(segs, vecs)
+print len(segpool)
 pairwise_test(segpool, N)
 
+time_records = str(N)+"-models-time.csv"
 
 
-#thresholds = [70, 73, 75, 77, 80, 83, 85]
+thresholds = [83]
+#thresholds = [60,63,65,67,70,73, 75, 77, 80, 83, 85,87]
 """
 =========== What is Matter Parameters ===================
 """
@@ -37,8 +46,17 @@ pairwise_test(segpool, N)
 """
 #tups = [(64.0, 1.0), (64.0, 1.5), (64.0, 2.0), (64.0, 2.5), (70.0, 1.0), (70.0, 1.5), (70.0, 2.0), (70.0, 2.5), (76.0, 1.0), (76.0, 1.5), (76.0, 2.0), (76.0, 2.5), (82.0, 1.0), (82.0, 1.5), (82.0, 2.0), (82.0, 2.5), (88.0, 1.0), (88.0, 1.5), (88.0, 2.0), (88.0, 2.5), (96.0, 1.0), (96.0, 1.5), (96.0, 2.0), (96.0, 2.5), (100.0, 1.0), (100.0, 1.5), (100.0, 2.0), (100.0, 2.5)]
 
-thresholds = [83]
-tups = [(100.0, 2.5)]
+#b = [1.0,1.5,2.0,2.5,3.0]
+# alpha should be from [10,40]
+#a = range(len(segpool)+10,len(segpool)+60,10)
+#tups = list(itertools.product(a,b))
+#print "Alll combinations ", tups
+#tups = [(125, 1.0), (125, 1.5), (125, 2.0), (125, 2.5), (125, 3.0), (135, 1.0), (135, 1.5), (135, 2.0), (135, 2.5), (135, 3.0), (145, 1.0), (145, 1.5), (145, 2.0), (145, 2.5), (145, 3.0), (155, 1.0), (155, 1.5), (155, 2.0), (155, 2.5), (155, 3.0), (165, 1.0), (165, 1.5), (165, 2.0), (165, 2.5), (165, 3.0)]
+#thresholds = [83]
+
+### Settle down the parameters 
+
+tups = [(len(segpool)+10, 2.5)]
 
 for threshold in thresholds:
     for tup in tups:
@@ -214,7 +232,9 @@ for threshold in thresholds:
                 scu = ET.SubElement(root,'scu', uid=str(p))
             ET.SubElement(scu, 'contributor', label = labels[j])
         tree = ET.ElementTree(root)
-        tree.write('../Scoring/pyrs/pyramids/' + fname + '.pyr')
+        tree.write("../Scoring/pyrs/pyramids/"+fname+".pyr")
+        #tree.write("../Scoring/EDUAG/"+fname+".pyr")
+        #tree.write('../Scoring/311-4-2/pyramids/' + fname + '.pyr')
                   
         # Console Output
         # print('With Threshold {}%'.format(threshold))
@@ -223,6 +243,9 @@ for threshold in thresholds:
         # print('was: %.2f' % was)
         print('Pyramid: %s' % fname)
         print('Time: {}'.format(str(done - timer)))
+        with open(time_records,"a") as f:
+            wr = csv.writer(f)
+            wr.writerow([str(done-timer)])
         print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/')
         print('Pyramid .size file stored in PyrEval/Scoring/sizes/')
         print('Readable pyramid file stored in PyrEval/Scoring/scu/')

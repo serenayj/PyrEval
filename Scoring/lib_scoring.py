@@ -28,7 +28,10 @@ import sys
 import os
 sys.path.append('../Preprocess/')
 from weiwei import vectorize
+from sif_embedding import vectorize_sif
 import numpy as np 
+sys.path.append('../Preprocess/src')
+import data_io, params, SIF_embedding
 
 
 
@@ -79,6 +82,8 @@ class SCU():
         self.weight = weight
     def averageSimilarity(self, segment_embedding):
         normalizer = len(self.embeddings)
+        if normalizer == 0:
+            print self.id 
         similarity = 0
         segment_embedding = np.array([segment_embedding])
         segment_embedding.reshape(-1,1)
@@ -225,7 +230,10 @@ def vecotirizationProtocol(fname):
     cwd = os.getcwd()
     os.chdir('../Preprocess/')
     fname = '../Scoring/' + fname
+    #By Yanjun : weiwei's method
     vecs = vectorize(fname)
+    #By Yanjun: SIF method 
+    #vecs = vectorize_sif(fname)
     os.chdir(cwd)
     return vecs
 def vectorizeSCUs(scus):
@@ -253,9 +261,12 @@ def readPyramid(fname):
     soup = getSoup(fname)
     scus = getSCUs(soup)
     recon, scus = vectorizeSCUs(scus)
+    #print "recon, ", recon
     scu_objects = []
     layer_sizes = []
     for scu_id, labels in recon.items():
+        #print "scu id ", scu_id
+        #print "labels ", labels 
         scu_objects.append(SCU(scu_id, len(labels), labels))
     size = max(scu_objects, key=lambda x: x.weight).weight
     j = 0
@@ -540,33 +551,36 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
 
     for s in newSegmentList:
         print "Sentence: %d, Segmentation %d" % (s.sentence_id, s.segment_id)
-        handler.write( "Sentence: %d, Segmentation %d\n" % (s.sentence_id, s.segment_id)) if handler else None
+        handler.write( "\nSentence: %d, Segmentation %d\n" % (s.sentence_id, s.segment_id)) if handler else None
 
 
         for seg_index, text in s.text.items():
             if seg_index in s.scu_text_pairs.keys():
                 print "\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]])) 
 
-                handler.write("\tSegment: %d | Content Unit: %d [Weight: %d]\n" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))) if handler else None
-
+                handler.write("\n\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))) if handler else None
+                #handler.write("\n\t")
                 print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
-                handler.write(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. \n')) if handler else None
+                #handler.write(wrap_string(s.text[seg_index].strip(), '\n\tSegment: ................. ')) if handler else None
+                handler.write("\n\tSegment: ................. "+s.text[seg_index].strip())
 
                 content_unit = scu_labels[s.scu_text_pairs[seg_index]]
                 for n, cu_part in enumerate(content_unit):
                     if n == 0:
                         print wrap_string(cu_part, '\tContent Unit: ............ (%d) ' % (n+1))
-                        handler.write(wrap_string(cu_part, '\tContent Unit: ............ (%d) \n' % (n+1))) if handler else None
+                        #handler.write(wrap_string(cu_part, '\n\tContent Unit: ............ (%d) \n' % (n+1))) if handler else None
+                        handler.write('\n\tContent Unit: ............ (%d)' % (n+1)+ " "+cu_part+"\n")
 
                     else:
                         print wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) "  % (n+1))                            
-                        handler.write(wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) \n"  % (n+1))) if handler else None 
+                        #handler.write(wrap_string(cu_part, "\n\t" + " "*13 + " ............ (%d) "  % (n+1))) if handler else None 
+                        handler.write("\n\t" + " "*13 + " ............ (%d) "  % (n+1)+ " "+cu_part)
             else:
                 print "\tSegment: %d | Content Unit: None" % seg_index 
-                handler.write("\tSegment: %d | Content Unit: None\n" % seg_index) if handler else None
+                handler.write("\n\tSegment: %d | Content Unit: None\n" % seg_index) if handler else None
 
                 print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
-                handler.write(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. \n')) if handler else None
+                handler.write(wrap_string(s.text[seg_index].strip(), '\n\tSegment: ................. \n')) if handler else None
 
         print "\n"
     print "\n"
@@ -575,6 +589,8 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
     handler.write("="*w) if handler else None
     print "\n"
     handler.write("\n") if handler else None
+
+    handler.close() 
 
 
 """

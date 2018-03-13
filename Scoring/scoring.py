@@ -42,7 +42,7 @@ parser.add_option('-a', '--all', action="store_true", dest="a", default=False)
 parser.add_option('-t', '--table', action="store_true", dest="t", default=False)
 parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyramids")
 parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
-parser.add_option('-l', '--log', action='store', dest='log', default='../log/log.txt')
+parser.add_option('-l', '--log', action='store', dest='log', default=False)
 parser.add_option('-m', '--model', action='store', dest='model', default=1)
 options, args = parser.parse_args()
 
@@ -96,7 +96,7 @@ def getName(name):
 #sort = lambda score_dict: [x[1].index(type(x),x) for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0]))))]
 #sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0])) if str(getName(j[0])).isdigit()) + sorted(score_dict.items(), key=lambda j: str(getName(j[0])) if not str(getName(j[0])).isdigit()))]
 
-sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0]))))]
+#sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0]))))]
 
 
 """
@@ -165,9 +165,10 @@ for pyramid in pyramids:
 
                 else:
                     pass
-            if print_all:
-                log = "../log/"+summary_name+".txt"
-                formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log)
+            if (print_all) or log:
+                #log_f = log + summary_name
+                log_f = "../log/"+summary_name
+                formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
 
     #raw_scores = sort(raw_scores)
     #print type(raw_scores)

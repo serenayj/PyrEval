@@ -206,8 +206,8 @@ for pyramid in pyramids:
                             w.writerow(output)
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
             
-            print "sorted raw scores, ", raw_scores
-            raw_sc = sort(raw_scores)
+            #print "sorted raw scores, ", raw_scores
+            #raw_sc = sort(raw_scores)
             # raw_corr = pearson(raw_sc, RAW)[0]
             #raw_corr = spearman(new_raw_sc, RAW)[0]
             # print "Sorted Pan file scores, ", RAW

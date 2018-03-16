@@ -95,12 +95,12 @@ python scoring.py -options
 
 -o specify output (default is '../results.csv')
 
--l specify path for log file (default is None)
+-l specify path for log file (default is "../log")
 
 
 Eg:
 ```
-python scoring.py -p pyramids/example_pyramid.pyr -a -t -o my_results.csv
+python scoring.py -p pyramids/ -a -t -o my_results.csv -l log
 ```
 
 Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p. 

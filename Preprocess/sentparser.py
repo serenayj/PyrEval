@@ -243,7 +243,7 @@ for ind in range(1,len(all_dep_sent)+1):
     #if used == False:
     if segmentation_count == 0:
         #Just output whatever it is 
-        print "defalut rule! "
+        #print "defalut rule! "
         defalut_rule = True 
         if defalut_rule:
             v = " ".join([item[0] for item in numlist]) 

@@ -5,7 +5,8 @@ PyrEval  Copyright (C) 2017 Yanjun Gao
 
 This is the package for running PyrEval. 
 
-[Here](https://youtu.be/i_wdH3__urY) is a demo presented in CLIEDE2017. 
+[Here](https://youtu.be/i_wdH3__urY) is a demo presented in CLIEDE2017. Please cite this paper if you use our code.
+[1] Gao, Yanjun, Andrew Warner, and Rebecca J. Passonneau. "Pyreval: An automated method for summary content analysis." Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC). 2018.
 
 ## Introduction 
 PyrEval is a tool to construct a content model of semantically coherent units discovered from a small sample of expert reference summaries of one or more source texts, and to apply the content model to automatically evaluate the content of new summaries. It automates a manual method that was developed over a decade ago [1], and found to be extremely reliable [2, 3]. The tool is aimed at two audiences. It can help educators evaluate students’ summaries for content; this is important because summarization is a commonly used vehicle to teach reading and writing skills, and to assess students’ knowledge of content [4, 5]. It can also be used in evaluation of automated summarizers [5]. 

@@ -22,7 +22,13 @@ import sys
 #directories = list(glob.iglob(dir1+'/*'))
 directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
 
+#summ_dir = sys.argv[1]
 
+#directories = list(glob.iglob(summ_dir+'/Preprocess/wise_crowd_summaries/*'))
+
+#fname = "RAMDS-Topic-"+ summ_dir[summ_dir.rfind("/")+1:]
+
+#fname = "RAMDS-Topic-9"
 print directories
 segs, vecs, N = readFiles(directories)
 #print("Making Segments")
@@ -30,10 +36,11 @@ segpool = make_segs(segs, vecs)
 print len(segpool)
 pairwise_test(segpool, N)
 
-time_records = str(N)+"-models-time.csv"
+#time_records = str(N)+"-models-time.csv"
 
 
 thresholds = [83]
+#thresholds = [77, 80, 83]
 #thresholds = [60,63,65,67,70,73, 75, 77, 80, 83, 85,87]
 """
 =========== What is Matter Parameters ===================
@@ -56,7 +63,11 @@ thresholds = [83]
 
 ### Settle down the parameters 
 
-tups = [(len(segpool)+10, 2.5)]
+# tups = [(len(segpool)+10, 2.5), (len(segpool)+10, 3), (len(segpool)+20, 2.5), (len(segpool)+20, 3), (len(segpool)+30, 2.5),(len(segpool)+20, 3)]
+tups = [(len(segpool)+10,2.5)]
+#tups = [(175,2.0)]
+#tups = [(len(segpool)+10,3)]
+
 
 for threshold in thresholds:
     for tup in tups:
@@ -233,7 +244,7 @@ for threshold in thresholds:
             ET.SubElement(scu, 'contributor', label = labels[j])
         tree = ET.ElementTree(root)
         tree.write("../Scoring/pyrs/pyramids/"+fname+".pyr")
-        #tree.write("../Scoring/EDUAG/"+fname+".pyr")
+        tree.write("../Scoring/EDUAG/"+fname+".pyr")
         #tree.write('../Scoring/311-4-2/pyramids/' + fname + '.pyr')
                   
         # Console Output
@@ -243,9 +254,9 @@ for threshold in thresholds:
         # print('was: %.2f' % was)
         print('Pyramid: %s' % fname)
         print('Time: {}'.format(str(done - timer)))
-        with open(time_records,"a") as f:
-            wr = csv.writer(f)
-            wr.writerow([str(done-timer)])
+        # with open(time_records,"a") as f:
+        #     wr = csv.writer(f)
+        #     wr.writerow([str(done-timer)])
         print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/')
         print('Pyramid .size file stored in PyrEval/Scoring/sizes/')
         print('Readable pyramid file stored in PyrEval/Scoring/scu/')

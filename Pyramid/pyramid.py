@@ -4,6 +4,7 @@ from lib_pyramid import ComposeSegSets, SortDescendingWAS, BestFit, CheckConstra
 from lib_pyramid import localBackTracking, RecursiveSettling, ComposeLayer1, Layer, GLobalBT
 from lib_pyramid import pairwise_test
 import warnings
+from sanitycheck import * 
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
 from time import time
 import copy
@@ -166,6 +167,13 @@ for threshold in thresholds:
         # Global Backtracking settles contraints problems in all Layers
         segmentpool, Pyramid_info, Pyramid = GLobalBT(Pyramid_info, Pyramid, 
                                                       N, segmentpool, bf_dict, BigSet2)
+        
+        flag, problem, belongs = check_problem(segmentpool, Pyramid)
+        if flag:
+            print "======Trigger Sanity Check ======="
+            new = detail_check(problem,belongs, Pyramid)
+            Pyramid, Pyramid_info = Final_Solutions(new, Pyramid, Pyramid_info)
+
         print Pyramid_info
         print Pyramid
         # DONE!

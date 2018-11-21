@@ -141,11 +141,11 @@ def ConflictSegTable(segmentpool):
 		# Same sentence, different segmentation
 		if (seg1.split('.')[0] == seg2.split('.')[0]) and (seg1.split('.')[1] == seg2.split('.')[1]) and (seg1.split('.')[2] != seg2.split('.')[2]):
 			conflict_seg[item] = True
-			print "conflict,", seg1, seg2
+			#print "conflict,", seg1, seg2
 		# Same segmentation, same segment
 		elif (seg1.split('.')[0] == seg2.split('.')[0]) and (seg1.split('.')[1] == seg2.split('.')[1]) and (seg1.split('.')[2] == seg2.split('.')[2]) and (seg1.split('.')[3] == seg2.split('.')[3]):
 			conflict_seg[item] = True
-			print "conflict,", seg1, seg2
+			#print "conflict,", seg1, seg2
 		# The only case that is legal: same segmentation, different segment 
 		else:
 			conflict_seg[item] = False
@@ -295,6 +295,18 @@ def candidate_grpahs(graphlist,N,g):
 			pass
 	return cand_graphs
 
+def ConstraintSeg(seg1,seg2):
+	s1 = seg1.split(".")
+	s2 = seg2.split(".")
+	### e.g. '4.2.0.0' and '4.2.1.0'
+	if (s1[0] == s2[0]) and (s1[1] == s2[1]) and (s1[2] != s2[2]):
+		return False 
+	### e.g. '4.2.0.0' and '4.2.0.0'
+	elif (s1[0] == s2[0]) and (s1[1] == s2[1]) and (s1[2] == s2[2]) and (s1[3] == s2[3]):
+		return False 
+	else:
+		return True 
+
 # Pick the left over segment as layer1(noises)
 def make_layer1(segmentpool,abovelayer):
 	hitid = []
@@ -314,14 +326,28 @@ def make_layer1(segmentpool,abovelayer):
 				seg_canused.commit_invalid = True 
 			else:
 				pass
-
 	layer1 = []
 	layer1_id = [] 
+	usedid = []
 	for item in segmentpool:
 		if (segmentpool[item].commit_invalid == False) and (segmentpool[item].status == False):
-			layer1.append(segmentpool[item].seg) 
-			layer1_id.append(segmentpool[item].id)
-			segmentpool[item].status = True  
+			if len(usedid) == 0:
+				layer1.append(segmentpool[item].seg) 
+				layer1_id.append(segmentpool[item].id)
+				segmentpool[item].status = True 
+				usedid.append(segmentpool[item].id) 
+			else:
+				accept = True 
+				for each in usedid:
+					if ConstraintSeg(each,segmentpool[item].id):
+						pass 
+					else:
+						accept = False 
+				if accept:
+					usedid.append(segmentpool[item].id)
+					layer1.append(segmentpool[item].seg) 
+					layer1_id.append(segmentpool[item].id)
+					segmentpool[item].status = True  
 	return layer1, layer1_id 
 
 

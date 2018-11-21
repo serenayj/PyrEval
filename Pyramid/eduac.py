@@ -22,7 +22,13 @@ import cProfile
 """
 =========================== Pipeline =================================
 """ 
-fname = sys.argv[1]
+
+#fname = "D614"
+#sum_dir = sys.argv[1]
+
+#topic = sum_dir[sum_dir.rfind("/")+1:]
+#topic = "6"
+#fname = "RAMDS-Topic-"+topic
 #fname = "D1004A"
 #fname = "test-1045a"
 #fname = "test-1045a"
@@ -30,15 +36,17 @@ N = 4
 k = 10
 #print("Reading Content")
 #directories = glob.iglob('wise_crowd/*')
-sum_dir = '../Preprocess/TAC10/'+str(fname)+'/Preprocess/wise_crowd_summaries/*'
-directories = list(glob.iglob(sum_dir))
-print directories
+# sum_dir = '../Missing/'+str(fname)+'/Preprocess/wise_crowd_summaries/*'
+# directories = list(glob.iglob(sum_dir))
+# print directories
+# segs, vecs, N = readFiles(directories)
+#directories = list(glob.iglob(sum_dir+'/Preprocess/wise_crowd_summaries/*'))
+directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
 segs, vecs, N = readFiles(directories)
-#directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
-#segs, vecs, N = readFiles(directories)
 #print("Making Segments")
 segpool = make_segs(segs, vecs)
 #pairwise_test(segpool, N)
+fname = "0925B"
 
 threshold = 83
 tups = (100,2.0)
@@ -88,7 +96,7 @@ adj_matrix = AdjancencyMatrix(cand_graphs,cu_table)
 # Global info about which node is visited 
 nodelist = range(len(cand_graphs)-1)
 
-Check = check_point[N-1] + check_point[N-2] + check_point[N]
+Check = check_point[N-1] + check_point[N]
 # Meaning if there are things located in top 2 layers 
 
 if Check > 0:

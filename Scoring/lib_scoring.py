@@ -17,7 +17,6 @@
 
 
 from sklearn.metrics.pairwise import cosine_similarity as cos
-#from js_similarity import cos 
 import pickle
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -30,8 +29,6 @@ sys.path.append('../Preprocess/')
 from weiwei import vectorize
 from sif_embedding import vectorize_sif
 import numpy as np 
-sys.path.append('../Preprocess/src')
-import data_io, params, SIF_embedding
 
 
 
@@ -445,6 +442,19 @@ def maxRawScore(count_by_weight, num):
             result = result + (num*count[0])
             num = 0
     return result
+
+def new_getlayersize(sizefile, numsmodel):
+    lines = open(sizefile).readlines()
+    count = 0 
+    count_by_weight = {}
+    for ind in range(len(lines),0,-1):
+        nums = int(lines[len(lines)-ind].strip()) * ind 
+        print "layer: ", ind, " nums of SCU: ", int(lines[len(lines)-ind].strip())
+        count_by_weight[ind] = int(lines[len(lines)-ind].strip()) 
+        count += nums 
+    avg = count / numsmodel
+    return count_by_weight, avg 
+
 
 def getLayerSizes(fname):
     f = open(fname, 'r')

@@ -17,7 +17,7 @@
 
 
 from lib_scoring import sentencesFromSegmentations, SummaryGraph, buildSCUcandidateList, filename, formatVerboseOutput
-from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid
+from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid, new_getlayersize
 from scipy.stats import pearsonr as pearson
 from scipy.stats import spearmanr as spearman 
 import optparse
@@ -44,6 +44,7 @@ parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="py
 parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
 parser.add_option('-l', '--log', action='store', dest='log', default=False)
 parser.add_option('-m', '--model', action='store', dest='model', default=1)
+#parser.add_option('-n', '--numsmodel', action='store', dest='numsmodel', default=4)
 options, args = parser.parse_args()
 
 print_all = options.a
@@ -53,10 +54,13 @@ results_file = options.output
 log = options.log
 model = options.model
 
+
 #pyramids = list(glob.iglob(pyramid_path + '*.pyr'))
 pyramids = list(glob.iglob(pyramid_path + '/*.pyr'))
 #pyramids = list(glob.iglob(dir1+"/*.pyr"))
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
+numsmodel = len(list(glob.iglob('../Preprocess/wise_crowd_summaries/*.xml')))
+print "Numbers of contributors: ", numsmodel
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
 #pyramid = sys.argv[1]
 #for testing
@@ -76,7 +80,15 @@ score_tables = ['raw', 'quality', 'coverage', 'comprehension']
 """
 ==== What is Matter Test Data Set ====
 """
-#sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][:(j[0].rfind('.'))])))]
+# sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][:(j[0].rfind('.'))])))]
+
+# RAW={}
+# with open("gs-WIM.csv","rU") as f:
+#     rea = csv.reader(f)
+#     for l in rea:
+#         RAW[l[0]] = int(l[1])
+# RAW = sort(RAW)
+
 """
 Raw scores from scores.csv, a column 
 """
@@ -106,14 +118,13 @@ def getName(name):
 """
 for TAC
 """
-#data = pd.read_csv("/Users/Serena/Desktop/Dataset/LREC-datasets/TAC10/scores.csv",index_col = 0)
-#RAW = [data[dataset_ind][i] for i in range(1,43)]
-
+# data = pd.read_csv("/Users/Serena/Desktop/Dataset/ductac/TAC-Nine/scores.csv",index_col = 0)
+# RAW = list(data['D0925B'])
+#RAW = [data['D0925B'][i] for i in range(1,55)]
 #RAW = [4,13,19,14,30,18,14,12,14,7,7,17,12,26,11,8,15,21,14,14,20,8]
 ## For D05
-#correlation_file =  "1004testcorrelation.csv"
-#correlation_file = '../311correlation-6-1-sp.csv'
-# correlation_file = "../614-corr.csv"
+
+# correlation_file='../WIM-newvec.csv'
 # corr = open(correlation_file, 'w')
 # corr_w = csv.writer(corr)
 # corr_w.writerow(['Pyramid'] + score_tables)
@@ -135,10 +146,17 @@ for pyramid in pyramids:
             summ = glob.iglob(summary+'/*')
             #fn is the summary name 
             for fn in summ:
+                #print "current filename: ", fn
                 if fn.endswith('.ls'):
                     summary_slash= fn.rfind('/') + 1
                     summary_dot = fn.rfind('.')
                     summary_name = fn[summary_slash:summary_dot]
+                    if os.path.getsize(fn) == 0:
+                        raw_scores[summary_name] = 0
+                        quality_scores[summary_name] = 0
+                        coverage_scores[summary_name] = 0
+                        comprehension_scores[summary_name] = 0
+                        continue
                     segs = fn[:fn.rfind('/')] + '/' + summary_name + '.segs'
                     segs = open(segs, 'r').readlines()
                     num_sentences = int(segs[len(segs)-1].split('&')[1])
@@ -152,10 +170,15 @@ for pyramid in pyramids:
                     rearranged_results = scusBySentences(results)
                     score, matched_cus = getScore(rearranged_results, scus)
                     size_file = 'sizes/' + filename(pyramid) + '.size'
-                    count_by_weight, avg = getLayerSizes(size_file)
+                    #count_by_weight, avg = getLayerSizes(size_file)
+                    # New get layersize 
+                    count_by_weight, avg = new_getlayersize(size_file,4)
+                    print "AVG SCU: ", avg 
                     raw_scores[summary_name] = score
                     q_max = maxRawScore(count_by_weight, possiblyUsed)
+                    print "MAXSUM for numbers of matched SCU", q_max 
                     c_max = maxRawScore(count_by_weight, avg)
+                    print "MAXSUM for avg scu: ", c_max 
                     quality = 0 if not q_max else float(score)/q_max
                     coverage = 0 if not c_max else float(score)/c_max
                     comprehension = float((quality + coverage)) / 2
@@ -231,6 +254,7 @@ for pyramid in pyramids:
             # print('{:>16} | {:>.2f}'.format('Correlation', raw_corr*100))
             # print '\n'
 
+    ### Only for correlation 
     # with open(correlation_file, 'a') as f:
     #     w = csv.writer(f)
     #     raw_sc = collections.OrderedDict(sorted(raw_scores.items()))
@@ -239,7 +263,6 @@ for pyramid in pyramids:
     #     for k,v in enumerate(raw_sc):
     #         print k,v, raw_sc[v]
     #         new_raw_sc.append(raw_sc[v])
-    #     #raw_corr = spearman(new_raw_sc, RAW)[0]
     #     raw_corr = pearson(new_raw_sc, RAW)[0]
     #     w.writerow([pyramid_name] + [raw_corr])
 

@@ -172,7 +172,7 @@ for pyramid in pyramids:
                     size_file = 'sizes/' + filename(pyramid) + '.size'
                     #count_by_weight, avg = getLayerSizes(size_file)
                     # New get layersize 
-                    count_by_weight, avg = new_getlayersize(size_file,4)
+                    count_by_weight, avg = new_getlayersize(size_file,numsmodel)
                     print "AVG SCU: ", avg 
                     raw_scores[summary_name] = score
                     q_max = maxRawScore(count_by_weight, possiblyUsed)

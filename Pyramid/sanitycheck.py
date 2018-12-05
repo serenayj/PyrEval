@@ -1,6 +1,9 @@
 import collections 
 from operator import itemgetter 
 import copy
+import pandas as pd
+
+
 ### Check which layer the segment committed to 
 def check_problem(segmentpool, Pyramid):
 	belongs = collections.defaultdict(list)
@@ -112,6 +115,7 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 			continue
 		else:
 			abandons.append(new[ind])
+	print "abandons: ", abandons 
 	### Construct New Pyramid 
 	newpyramid = range(len(Pyramid))
 	for _ in range(len(Pyramid)):
@@ -125,6 +129,106 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 		Pyramid_info[_].size = len(newpyramid)
 	return newpyramid, Pyramid_info  
 
+def Pickup_used(Pyramid):
+	alls = [] 
+	for _ in range(len(Pyramid),0,-1):
+		for item in Pyramid[_-1]:
+			weight = get_weight(item)
+			keys = ['seg%did' % (p + 1) for p in range(weight)]
+			used1 = [item[k] for k in keys]
+			alls.extend(used1)
+	return alls 
+
+def Extract_Segset(df,used):
+	test = []
+	for i in used:
+		d = i.split(".")[0]
+		st = i.split(".")[1]
+		sgm = i.split(".")[2]
+		test.append(df[df.Doc==d][df.Sent==st][df.Segm==sgm])
+	return test 
+
+# Build records for all used segments in Pyramid layer N to 2 
+def Build_All_Record(segmentpool, Pyramid):
+	#segs = [seg.id for seg in segmentpool]
+	sumlst = [i.id.split(".")[0] for i in segmentpool]
+	sentlst = [i.id.split(".")[1] for i in segmentpool]
+	segmtlst = [i.id.split(".")[2] for i in segmentpool]
+	seglst = [i.id.split(".")[3] for i in segmentpool]
+	data_seg = pd.DataFrame(list(zip(sumlst,sentlst,segmtlst,seglst)),columns=['Doc','Sent','Segm','Seg'])
+	used = []
+	for _ in range(len(Pyramid),1,-1):
+		for item in Pyramid[_-1]:
+			weight = get_weight(item)
+			keys = ['seg%did' % (p + 1) for p in range(weight)]
+			used1 = [item[k] for k in keys]
+			used.extend(Extract_Segset(data_seg,used1))
+	#print used 
+	return used 
+
+# Clean layer1, remove segments that are not adopted  
+def Iterate_Clean_Record(used,Pyramid):
+	allshouldbeused = []
+	for every in used:
+		for ind,r in every.iterrows():
+			seg = r['Doc']+"."+r["Sent"]+"."+r["Segm"]+"."+r["Seg"]
+			if seg not in allshouldbeused:
+				allshouldbeused.append(seg)
+	### Next step: filter out the duplicate elements in layer1 
+	#print allused 
+	layer1segs = [item['seg1id'] for item in Pyramid[0]]
+	segshouldberemoved = list(set(layer1segs).difference(set(allshouldbeused)))
+	if len(segshouldberemoved) >0:
+		candidate = copy.deepcopy(Pyramid[0])
+		for s in Pyramid[0]:
+			if s['seg1id'] in segshouldberemoved:
+				candidate.remove(s)
+		Pyramid[0] = candidate 
+		print "Remove segments that are not supposed to be in layer 1"
+	return Pyramid[0]
+
+
+def Getmax(lst):
+	lst = map(int,lst)
+	return max(set(lst))
+
+def Update_Record(data,alls):
+	test = []
+	for i in alls:
+		d = i.split(".")[0]
+		st = i.split(".")[1]
+		sgm = i.split(".")[2]
+		test.append(data[data.Doc==d][data.Sent==st][data.Segm==sgm])
+	results = []
+	for item in test:
+		for ind,r in item.iterrows():
+			seg = r['Doc']+"."+r["Sent"]+"."+r["Segm"]+"."+r["Seg"]
+			#print "found seg: ", seg
+			results.append(seg)
+	missings = list(set(results).difference(set(alls)))
+	return missings
+
+def Update_AllocRecord(data,alls):
+	test = []
+	for i in alls:
+		d = i.split(".")[0]
+		st = i.split(".")[1]
+		sgm = i.split(".")[2]
+		test.append(data[data.Doc==d][data.Sent==st][data.Segm==sgm])
+	results = []
+	for item in test:
+		for ind,r in item.iterrows():
+			seg = r['Doc']+"."+r["Sent"]+"."+r["Segm"]+"."+r["Seg"]
+			#print "found seg: ", seg
+			results.append(seg)
+	missings = list(set(results).difference(set(alls)))
+	return missings
+
+def Extension(missings,segmentpool):
+	tmp = []
+	for item in segmentpool:
+		if item.id in missings:
+			tmp.append({'seg1id':item.id,'WAS':1,'seg1':item.seg})
 
 
 

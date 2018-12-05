@@ -13,6 +13,8 @@ import itertools
 import xml.etree.cElementTree as ET
 import csv
 import sys
+import pandas as pd 
+import pdb 
 
 """
 =========================== Pipeline =================================
@@ -21,7 +23,13 @@ import sys
 #fname = sys.argv[1]
 
 #directories = list(glob.iglob(dir1+'/*'))
+#dataset_path = sys.argv[1]
+#sum_dir = dataset_path + "/Preprocess/wise_crowd_summaries/*"
+### Normal path 
 directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
+
+### Paper experiment
+#directories = list(glob.iglob(sum_dir))
 
 #summ_dir = sys.argv[1]
 
@@ -37,35 +45,38 @@ segpool = make_segs(segs, vecs)
 print len(segpool)
 pairwise_test(segpool, N)
 
+allsegs = [i.id for i in segpool]
+
+#time_records = str(N)+"-models-time.csv"
+
+sumlst = [i.id.split(".")[0] for i in segpool]
+sentlst = [i.id.split(".")[1] for i in segpool]
+segmtlst = [i.id.split(".")[2] for i in segpool]
+seglst = [i.id.split(".")[3] for i in segpool]
+
+data_record = pd.DataFrame(list(zip(sumlst,sentlst,segmtlst,seglst)),columns=['Doc','Sent','Segm','Seg'])
+
 #time_records = str(N)+"-models-time.csv"
 
 
 thresholds = [83]
 #thresholds = [77, 80, 83]
-#thresholds = [60,63,65,67,70,73, 75, 77, 80, 83, 85,87]
+thresholds = [63,65,67,70,73,75,77,80,83,85,87]
 """
 =========== What is Matter Parameters ===================
 """
 #tups = [(125.0, 1.0), (125.0, 1.5), (125.0, 2.0), (125.0, 2.5), (125.0, 3.0), (150.0, 1.0), (150.0, 1.5), (150.0, 2.0), (150.0, 2.5), (150.0, 3.0), (175.0, 1.0), (175.0, 1.5), (175.0, 2.0), (175.0, 2.5), (175.0, 3.0), (200.0, 1.0), (200.0, 1.5), (200.0, 2.0), (200.0, 2.5), (200.0, 3.0), (225.0, 1.0), (225.0, 1.5), (225.0, 2.0), (225.0, 2.5), (225.0, 3.0), (250.0, 1.0), (250.0, 1.5), (250.0, 2.0), (250.0, 2.5), (250.0, 3.0)]
 
+tups = [(200.0, 1.0), (200.0, 1.5), (200.0, 2.0), (200.0, 2.5), (200.0, 3.0), (225.0, 1.0), (225.0, 1.5), (225.0, 2.0), (225.0, 2.5), (225.0, 3.0), (250.0, 1.0), (250.0, 1.5), (250.0, 2.0), (250.0, 2.5), (250.0, 3.0)]
 
 """
 =========== DUC Data ==========
 """
-#tups = [(64.0, 1.0), (64.0, 1.5), (64.0, 2.0), (64.0, 2.5), (70.0, 1.0), (70.0, 1.5), (70.0, 2.0), (70.0, 2.5), (76.0, 1.0), (76.0, 1.5), (76.0, 2.0), (76.0, 2.5), (82.0, 1.0), (82.0, 1.5), (82.0, 2.0), (82.0, 2.5), (88.0, 1.0), (88.0, 1.5), (88.0, 2.0), (88.0, 2.5), (96.0, 1.0), (96.0, 1.5), (96.0, 2.0), (96.0, 2.5), (100.0, 1.0), (100.0, 1.5), (100.0, 2.0), (100.0, 2.5)]
-
-#b = [1.0,1.5,2.0,2.5,3.0]
-# alpha should be from [10,40]
-#a = range(len(segpool)+10,len(segpool)+60,10)
-#tups = list(itertools.product(a,b))
-#print "Alll combinations ", tups
-#tups = [(125, 1.0), (125, 1.5), (125, 2.0), (125, 2.5), (125, 3.0), (135, 1.0), (135, 1.5), (135, 2.0), (135, 2.5), (135, 3.0), (145, 1.0), (145, 1.5), (145, 2.0), (145, 2.5), (145, 3.0), (155, 1.0), (155, 1.5), (155, 2.0), (155, 2.5), (155, 3.0), (165, 1.0), (165, 1.5), (165, 2.0), (165, 2.5), (165, 3.0)]
-#thresholds = [83]
 
 ### Settle down the parameters 
 
 # tups = [(len(segpool)+10, 2.5), (len(segpool)+10, 3), (len(segpool)+20, 2.5), (len(segpool)+20, 3), (len(segpool)+30, 2.5),(len(segpool)+20, 3)]
-tups = [(len(segpool)+10,2.5)]
+#tups = [(len(segpool)+10,2.5)]
 #tups = [(175,2.0)]
 #tups = [(len(segpool)+10,3)]
 
@@ -174,6 +185,25 @@ for threshold in thresholds:
             new = detail_check(problem,belongs, Pyramid)
             Pyramid, Pyramid_info = Final_Solutions(new, Pyramid, Pyramid_info)
 
+        ### Constraints Check:
+        ### Check if there is any segment that is not supposed to be used but gets adopted
+        segshouldbeused_df = Build_All_Record(segmentpool, Pyramid)
+        Pyramid[0] = Iterate_Clean_Record(segshouldbeused_df,Pyramid)  
+        alls = Pickup_used(Pyramid)
+        # Here is 
+        missings = Update_Record(data_record,alls)
+        if len(missings) >0:
+            print "Found missing segments: ", missings 
+            for each in missings:
+                segtext = [s.seg for s in segmentpool if s.id == each][0]
+                item = {'seg1id': each,'WAS': 1,'seg1':segtext}
+                Pyramid[0].append(item)
+
+        # Update pyramid information for the cleaned layer1 
+        Pyramid_info[0].length = len(Pyramid[0]) 
+        print "Current layer1: ", Pyramid[0]
+
+
         print Pyramid_info
         print Pyramid
         # DONE!
@@ -251,8 +281,9 @@ for threshold in thresholds:
                 scu = ET.SubElement(root,'scu', uid=str(p))
             ET.SubElement(scu, 'contributor', label = labels[j])
         tree = ET.ElementTree(root)
+        ### Normal Path 
         tree.write("../Scoring/pyrs/pyramids/"+fname+".pyr")
-        tree.write("../Scoring/EDUAG/"+fname+".pyr")
+        #tree.write("../Scoring/EDUAG/"+fname+".pyr")
         #tree.write('../Scoring/311-4-2/pyramids/' + fname + '.pyr')
                   
         # Console Output

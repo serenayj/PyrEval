@@ -56,7 +56,7 @@ fname = fname[(slash + 1):dot]
 if not os.path.exists(seg_dir):
     os.makedirs(seg_dir)
 
-
+print "current filename: ", fname 
 soup = BeautifulSoup(content,'lxml')
 
 basic = []
@@ -95,7 +95,7 @@ segment_set = {}
 # No index 0, all starts from 1
 for ind in range(1,len(all_dep_sent)+1):
 #for ind in range(4,5):
-    print "============ Currnet Sentence, ", ind, "============"
+    #print "============ Currnet Sentence, ", ind, "============"
     used = False
     tmp_ids = [] 
     tmp = [] 
@@ -104,7 +104,7 @@ for ind in range(1,len(all_dep_sent)+1):
     token = tokens[ind-1]
     taglist = POS_Tags(token)
     novps,vps,embedvps,tl,tr,numlist = get_vptree(parse[ind-1])
-    tr.pretty_print() 
+    #tr.pretty_print() 
     lists_nodes[ind] = tl  
     all_vpnodes = make_vpsnumber(vps)
     raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
@@ -119,7 +119,7 @@ for ind in range(1,len(all_dep_sent)+1):
     valid_sbar = Valid_SubClauses(tr, taglist)
     #print valid_sbar
     if len(valid_sbar) >0:
-        print "subconj!!"
+        #print "subconj!!"
         used = True
         subconj_seg_sent,subconj_seg_ids = Rule_SBAR(valid_sbar,numlist,taglist, tr)
         for segmt in range(0,len(subconj_seg_sent)):
@@ -137,7 +137,7 @@ for ind in range(1,len(all_dep_sent)+1):
     # Check the parallel [NP,SBAR]
     sbar_flag,sbar = get_SBAR(tr)
     if sbar_flag == True:
-        print "sbar!!"
+        #print "sbar!!"
         sbar_ids, sbar_sent = Rule_NPSBAR(tr,tl,sbar,numlist)
         for segmt in range(0,len(sbar_sent)): 
             for kk in range(0,len(sbar_sent[segmt])):
@@ -219,21 +219,21 @@ for ind in range(1,len(all_dep_sent)+1):
         # segment_set is with ids 
         if len(segment_set[ind]) != 0:
             for k,v in enumerate(segment_set[ind]):
-                print "Segmentation: ", k 
+                #print "Segmentation: ", k 
                 for vv in range(0,len(v)):
                     sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
-                    print "segment ", vv, " label: ", v[vv]
+                    #print "segment ", vv, " label: ", v[vv]
             # Match with actual words 
             # seg is with actual words 
             seg = Pull_Words(segment_set,ind,numlist)
             #segmentation_count = tmp_count 
             for k,v in seg.items():
-                print "Segmentation: ", k   
+                #print "Segmentation: ", k   
                 for vv in range(0,len(v)):
                     # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
                     sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
                     sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
-                    print "segment ", vv, " label: ", v[vv] 
+                    #print "segment ", vv, " label: ", v[vv] 
                     write_log(seg_dir+'/' + fname +'.segs',sent)
                     #sentence_segmentations.append(out_sent)
         segmentation_count += len(segment_set[ind])
@@ -249,7 +249,7 @@ for ind in range(1,len(all_dep_sent)+1):
         v = " ".join([item[0] for item in numlist]) 
         sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
         write_log(seg_dir +'/'+ fname +'.segs',sentence)
-        print "Special case2: segmentation ", segmentation_count, " label: ", v 
+        #print "Special case2: segmentation ", segmentation_count, " label: ", v 
     else:
         pass
 

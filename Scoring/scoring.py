@@ -60,6 +60,7 @@ pyramids = list(glob.iglob(pyramid_path + '/*.pyr'))
 #pyramids = list(glob.iglob(dir1+"/*.pyr"))
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 numsmodel = len(list(glob.iglob('../Preprocess/wise_crowd_summaries/*.xml')))
+#numsmodel = 5
 print "Numbers of contributors: ", numsmodel
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
 #pyramid = sys.argv[1]
@@ -75,7 +76,7 @@ for pyr in pyramids:
 """
 ================ Scoring Mechanisms ======================
 """
-score_tables = ['raw', 'quality', 'coverage', 'comprehension']
+score_tables = ['raw', 'quality', 'coverage', 'Comprehensive']
 
 """
 ==== What is Matter Test Data Set ====
@@ -166,6 +167,7 @@ for pyramid in pyramids:
                     independentSet = Graph.independentSet
                     candidates = buildSCUcandidateList(independentSet)
                     results, possiblyUsed = processResults(candidates, independentSet)
+                    print "Possibly used: ", possiblyUsed
                     keys = [res.split('&') for res in results]
                     rearranged_results = scusBySentences(results)
                     score, matched_cus = getScore(rearranged_results, scus)
@@ -175,12 +177,19 @@ for pyramid in pyramids:
                     count_by_weight, avg = new_getlayersize(size_file,numsmodel)
                     print "AVG SCU: ", avg 
                     raw_scores[summary_name] = score
-                    q_max = maxRawScore(count_by_weight, possiblyUsed)
+                    # temporary fix to number of sentences 
+                    #q_max = maxRawScore(count_by_weight, possiblyUsed)
+                    q_max = maxRawScore(count_by_weight, num_sentences)
                     print "MAXSUM for numbers of matched SCU", q_max 
                     c_max = maxRawScore(count_by_weight, avg)
                     print "MAXSUM for avg scu: ", c_max 
+                    print "score divided by max obtainable scores: ", q_max
                     quality = 0 if not q_max else float(score)/q_max
+                    if quality > 1:
+                        quality = 1 
                     coverage = 0 if not c_max else float(score)/c_max
+                    if coverage > 1:
+                        coverage = 1 
                     comprehension = float((quality + coverage)) / 2
                     quality_scores[summary_name] = quality
                     coverage_scores[summary_name] = coverage
@@ -213,7 +222,7 @@ for pyramid in pyramids:
             w.writerow([pyramid_name])
             print pyramid_name
             w.writerow(['Summary'] + score_tables)
-            print '{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehension score")
+            print '{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehensive score")
             for n, summary in enumerate(summaries):
                 #w.writerow([filename(summary)] + [s[n] for s in scores])
                 if os.path.isdir(summary):

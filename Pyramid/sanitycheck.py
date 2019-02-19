@@ -115,7 +115,7 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 			continue
 		else:
 			abandons.append(new[ind])
-	print "abandons: ", abandons 
+	#print "abandons: ", abandons 
 	### Construct New Pyramid 
 	newpyramid = range(len(Pyramid))
 	for _ in range(len(Pyramid)):
@@ -185,7 +185,7 @@ def Iterate_Clean_Record(used,Pyramid):
 			if s['seg1id'] in segshouldberemoved:
 				candidate.remove(s)
 		Pyramid[0] = candidate 
-		print "Remove segments that are not supposed to be in layer 1"
+		#print "Remove segments that are not supposed to be in layer 1"
 	return Pyramid[0]
 
 
@@ -217,6 +217,38 @@ def SelectNonconflict(clist):
 					continue
 	return cclst 
 
+# Build records about documents and their sentences 
+def BuildSentenceRecord(data):
+	record = {}
+	for r,v in data.iterrows():
+		doc = v["Doc"]
+		if record.has_key(doc):
+			if v['Sent'] not in record:
+				record[doc].append(v['Sent'])
+		else:
+			record[doc] = [v["Sent"]]
+	return record
+
+# test is a list of df from all used segments  
+def CheckleftSentence(sentrecord,test,data):
+	#tmp = []
+	for docid,v in sentrecord.items():
+		doc_sents = copy.deepcopy(v) 
+		for each in test:
+			for r,vv in each.iterrows():
+				if (vv['Doc'] == docid) and (vv['Sent'] in doc_sents):
+					#".".join(v.tolist())
+					doc_sents.remove(vv['Sent'])
+		sentrecord[docid] = doc_sents
+	tmp = []
+	for docid,v in sentrecord.items():
+		if len(v) > 0:
+			for sent in v:
+				for r, vv in data.iterrows():
+					if (vv['Doc'] == docid) and (vv['Sent'] == sent) and (vv['Segm'] == '0'):
+						tmp.append(".".join(vv.tolist()))
+	return tmp 
+
 def Update_Record(data,alls):
 	docs = []
 	for i,r in data.iterrows():
@@ -241,16 +273,15 @@ def Update_Record(data,alls):
 	missings = list(set(results).difference(set(alls)))
 	missings_docs = set(docs).difference(set(tmp_docs))
 	missings_docs_segs = []
-	#print
 	for each in missings_docs:
 		for r,v in data[data.Doc==each].iterrows():
-			print "v: ", v 
-			#missings_docs_segs.append(".".join(v.tolist()))
+			#print "v: ", v 
 			missings.append(".".join(v.tolist()))
-	print missings
 	newmissings = SelectNonconflict(missings)
-	#newmissings = [] 		
-	#return missings,missings_docs_segs
+	## Sentence missing from documents 
+	sentrecord = BuildSentenceRecord(data)
+	missing_sents = CheckleftSentence(sentrecord, test,data)
+	newmissings = list(set(newmissings).union(set(missing_sents)))
 	return newmissings
 
 def Update_AllocRecord(data,alls):

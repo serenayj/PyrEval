@@ -163,7 +163,7 @@ def Build_All_Record(segmentpool, Pyramid):
 			keys = ['seg%did' % (p + 1) for p in range(weight)]
 			used1 = [item[k] for k in keys]
 			used.extend(Extract_Segset(data_seg,used1))
-	#print used 
+	print "Build_All_Record" , used 
 	return used 
 
 # Clean layer1, remove segments that are not adopted  
@@ -178,6 +178,7 @@ def Iterate_Clean_Record(used,Pyramid):
 	#print allused 
 	layer1segs = [item['seg1id'] for item in Pyramid[0]]
 	segshouldberemoved = list(set(layer1segs).difference(set(allshouldbeused)))
+	print "segs should be removed: ", segshouldberemoved
 	if len(segshouldberemoved) >0:
 		candidate = copy.deepcopy(Pyramid[0])
 		for s in Pyramid[0]:
@@ -192,13 +193,45 @@ def Getmax(lst):
 	lst = map(int,lst)
 	return max(set(lst))
 
+def Conflict(seg1, seg2):
+	if (seg1.split('.')[0] == seg2.split('.')[0]) and (seg1.split('.')[1] == seg2.split('.')[1]) and (seg1.split('.')[2] != seg2.split('.')[2]):
+		return True 
+	else:
+		return False
+
+def SelectNonconflict(clist):
+	#tmp = [] 
+	#anchor = list[0]
+	#tmp.append(anchor)
+	cclst = copy.deepcopy(clist)
+	flag = False 
+	for i in range(0,len(clist)-1):
+		seg1 = clist[i]
+		print "seg1: ", seg1 
+		for j in range(1,len(clist)):
+			seg2 = clist[j]
+			if Conflict(seg1,seg2):
+				if seg2 in cclst:
+					cclst.remove(seg2)
+				else:
+					continue
+	return cclst 
+
 def Update_Record(data,alls):
+	docs = []
+	for i,r in data.iterrows():
+		if r['Doc'] not in docs:
+			docs.append(r['Doc'])
+	test = []
+	tmp_docs = []
 	test = []
 	for i in alls:
 		d = i.split(".")[0]
 		st = i.split(".")[1]
 		sgm = i.split(".")[2]
 		test.append(data[data.Doc==d][data.Sent==st][data.Segm==sgm])
+		if (d in docs) and (d not in tmp_docs):
+			tmp_docs.append(d)
 	results = []
 	for item in test:
 		for ind,r in item.iterrows():
@@ -206,15 +239,34 @@ def Update_Record(data,alls):
 			#print "found seg: ", seg
 			results.append(seg)
 	missings = list(set(results).difference(set(alls)))
-	return missings
+	missings_docs = set(docs).difference(set(tmp_docs))
+	missings_docs_segs = []
+	#print
+	for each in missings_docs:
+		for r,v in data[data.Doc==each].iterrows():
+			print "v: ", v 
+			#missings_docs_segs.append(".".join(v.tolist()))
+			missings.append(".".join(v.tolist()))
+	print missings
+	newmissings = SelectNonconflict(missings)
+	#newmissings = [] 		
+	#return missings,missings_docs_segs
+	return newmissings
 
 def Update_AllocRecord(data,alls):
+	docs = []
+	for i,r in data.iterrows():
+		if r['Doc'] not in docs:
+			docs.append(r['Doc'])
 	test = []
+	tmp_docs = [] 
 	for i in alls:
 		d = i.split(".")[0]
 		st = i.split(".")[1]
 		sgm = i.split(".")[2]
 		test.append(data[data.Doc==d][data.Sent==st][data.Segm==sgm])
+		if (d in docs) and (d not in tmp_docs):
+			tmp_docs.append(d)
 	results = []
 	for item in test:
 		for ind,r in item.iterrows():

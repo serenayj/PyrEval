@@ -1,8 +1,15 @@
+"""PS: MUST RUN UNDER PYTHON 3.6 WITH ALLENNLP INSTALLED! """ 
 import sys
 #import data_io, params, SIF_embedding
-from lib_preprocessing import getRealName
-from embedding_ELMO.elmo_sif_api import * 
+#from lib_preprocessing import getRealName
+from elmo_sif_api import * 
 
+def getRealName(fname):
+	fname = getRoot(fname)
+	dot = fname.rfind('.')
+	if dot == -1:
+		dot = None
+	return fname[:dot]
 
 def SIF_master(segfile,cleanfile,directory,summ_ind):
 	print("segfile: ", segfile)
@@ -30,7 +37,7 @@ def SIF_master(segfile,cleanfile,directory,summ_ind):
 	#fname = directory +'/'+str(summ_ind)+ '/' + getRealName(segfile) + '.ls'
 	#fname = directory +'/'+str(summ_ind)+ '/' + segfile + '.ls'
 	fname = directory +'/'+str(summ_ind)+ '/' +getRealName(segfile)
-	print fname 
+	#print(fname) 
 	with open(fname+".ls", "w") as file:
 		for item in matches:
 			file.write(item+"\n")

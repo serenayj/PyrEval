@@ -1,71 +1,26 @@
-# Author: Yanjun Gao(yug125)
-# Last update: Aug 20,2017 
+# Written by: Purushartha Singh
+# Last Update: 07/04/19
+# The code is written with Yanjun Gao's package by the same name as reference
 
-# SETENCE DECOMPOSITION PARSER 
-# This is a script for handling the output from Stanford CoreNLP constutiency parser, dependency parser 
-# The script is for sentence decomposition. For a given sentence, we extract a few segmentations which contain different segments  
+# Libraries needed: bs4(beautifulSoup4), nltk
 
-#Copyright (C) 2017  Yanjun Gao
+# Add import statements
+from lib_parser import *
 
-#This program is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
-
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
- 
-# The code has four main modules: 
-# Helper functions: Accessories function for processing the tree
-# Algorithm starts: Pull out dependency relations from phrase tress and dependency trees, and compose to segment
-# Sentence Segmentation: Rearrange the segment into a complete pieces 
-# Main Procedure: A complete pipeline  
-
-
-
-
-from bs4 import BeautifulSoup
-#import BeautifulSoup
-import csv
-from nltk.tree import Tree 
-import string
-import pickle
-import copy
-import sys
-import os
-from lib_parser import * 
-from rearrange import *
-from sbar import * 
-
-#from draft2 import get_segmentation,rearrangement,reorder
-
+# Command line arguments for filename, output directory, and summary index
 fname = sys.argv[1]
-sum_index = sys.argv[2]
-outpath = sys.argv[3]
+ext = sys.argv[3]
+summary_index = sys.argv[2]
 
-#fname = "wise_crowd_summaries/2.stseg.txt.xml"
-#sum_index = 2 
-#outpath = 'wise_crowd_summaries'+ str(2)+'/'
+# Initial input initialization
 content = open(fname).read()
+fname = getFilename(fname)
 
-#dot = fname.rfind('.')
-#fname = fname[:dot]
-#dot = fname.rfind('.')
-#fname = fname[:dot]
-slash = fname.rfind('/')
-fname = fname[(slash + 1):]
-fname = fname[:-4]
-#print fname
+ext = ext+"/"+str(summary_index)
 
+if not os.path.exists(ext):
+    os.makedirs(ext)
 
-
-# Get a set of tags, Pl is phrase tags, Cl is clause tags, Wl is POS tags 
 soup = BeautifulSoup(content,'lxml')
 
 basic = []
@@ -79,205 +34,152 @@ for links in soup.find_all("parse"):
 
 tokens = soup.find_all("tokens")
 
-"""
-=========================================Main Procedure====================================
-""" 
-   
+###################################################################################################
+# Processing
+###################################################################################################
 
 sentence_segmentations = []
-all_dep_sent = get_depparse(basic)
-#write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt', '', 1)
-#write_log('../ext/' + fname +'_log1-segment-id-readable.txt', '', 1)
-#write_log('../ext/' + fname +'_log1-segment-id.txt', '', 1)
+dep_sentences = get_depparse(basic)
 
-summary_index = str(sum_index)
-seg_dir = outpath +'/'+str(sum_index)
-if not os.path.exists(seg_dir):
-    os.makedirs(seg_dir)
+# Insert write logs?
 
-write_log(seg_dir +'/'+ fname +'.segs', '', 1)
+# Variable Declaration. Check usage
 
-segments = {}
+# segments = {}
 idseg = {}
-count = 0 
+# count
 lists_nodes = {}
 segment_set = {}
-# Sentence as basic unit, ind is sentence id 
-for ind in range(1,len(all_dep_sent)+1):
-    default_rule = False 
-    used = False
-    tmp_ids = [] 
-    tmp = [] 
-    things = all_dep_sent[ind]
-    # New: POS tags 
-    token = tokens[ind-1]
-    taglist = POS_Tags(token)
-    novps,vps,embedvps,tl,tr,numlist = get_vptree(parse[ind-1])
-    lists_nodes[ind] = tl  
-    all_vpnodes = make_vpsnumber(vps)
-    raw_sentence = "===================Raw sentence: "+ " ".join([i[0] for i in numlist]) + " \n"
-    #write_log('../ext/' + fname +'_log1-segment-sentence-readable.txt',raw_sentence)
-    raw_sentence = "===================Raw sentence: "+ " ".join([str(i[1]) for i in numlist]) + " \n"
-    #write_log('../ext/' + fname +'_log1-segment-id-readable.txt',raw_sentence)
-    segmentation_count = 0
-    #segment_count = 0
-    # Check the very first case, if there is a subordinating conjunction, if so, write it into log directly 
-    # New rule: subordinating conjunction + sbars, as long as there is a subclauses 
-    valid_sbar = Valid_SubClauses(tr, taglist)
-    if len(valid_sbar) >0:
-        #print "subconj!!"
-        used = True
-        subconj_seg_sent,subconj_seg_ids = Rule_SBAR(valid_sbar,numlist)
-        for segmt in range(0,len(subconj_seg_sent)): 
-            #for kk in range(0,len(subconj_seg_sent[segmt])):
-            output_sentence = Format_Sentence(1,subconj_seg_ids[segmt],summary_index,ind,segmentation_count,segmt)
-            #write_log('../ext/' + fname +'_log-segment-id-readable.txt',output_sentence)
-                # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
-            out_sent = Format_Sentence(3,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt)
-            output_sentence1 = Format_Sentence(2,subconj_seg_sent[segmt],summary_index,ind,segmentation_count,segmt) 
-            #write_log('../ext/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
-            write_log(seg_dir+'/'+ fname +'.segs',out_sent)
-        segmentation_count += 1  
 
-    #Rule 2: [NP/VP, SBAR]
-    # Parallel NP/VP SBAR
-    sbar_flag,sbar = get_SBAR(tr)
-    if sbar_flag == True:
-        used = True 
-        #print "embedded vps! "
-        sbar_ids, sbar_sent = Rule_NPSBAR(tr,tl,sbar,numlist)
-        for segmt in range(0,len(sbar_sent)): 
-            for kk in range(0,len(sbar_sent[segmt])):
-                output_sentence = Format_Sentence(1,sbar_ids[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
-                #write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',output_sentence) 
-                out_sent = Format_Sentence(3,sbar_sent[segmt][kk],summary_index,ind,segmentation_count+segmt,kk)
-                output_sentence1 = Format_Sentence(2,sbar_sent[segmt][kk],summary_index,ind,segmentation_count+segmt,kk) 
-                #write_log('../ext'+'/'+ fname +'_log-segment-label-readable.txt',output_sentence1)
-                write_log(seg_dir+'/' + fname +'.segs',out_sent)
-        segmentation_count += len(sbar)
+output = open(ext+'/'+fname+".segs", 'w')
 
-    # Iterating in a list of vp chunks 
-    if vps:
-        for i in vps:
-            # For indicating if there is a match with current vp chunk 
-            flag = False
-            # Firstly, get id list 
-            idlist = vps_leaf_number(i.leaves())
-            # Get three sets of candidates 
-            wa,woa,purevps = find_arcs(i,things,tl)
-            # For direct subject 
-            if len(wa) >0:
-                for e in wa:
-                    # There must be one of e in the idlist 
-                    if e['dep_id'] not in idlist:
-                        # a verb used for finding another verb  
-                        nodes_id = e['dep_id']
-                        #print "nodes id", nodes_id
-                        nodes_label = e['dep']
-                        #print "nodes label", nodes_label
-                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
-                        for each in ids:
-                            tmp_ids.append(each)
-                    elif e['gov_id'] not in idlist:
-                        nodes_id = e['gov_id']
-                        nodes_label = e['gov']
-                        ids,parts = pull_subj_parts(e,i.leaves(),nodes_id,nodes_label,idlist,ind,flag,fname)
-                        #print "ids gov", ids
-                        for each in ids:
-                            tmp_ids.append(each)
-            # For complement, conjunction 
-            if len(woa) >0:
-                # Mark the current verb as starting node, vp always starts from a verb 
-                nodes_id = i.leaves()[0][1]
-                nodes_label = i.leaves()[0][0]
-                ids,all_comp = pull_comp_parts(woa,things,i.leaves(),idlist,ind,flag,nodes_id,nodes_label,fname)
-                for each in ids:
-                    tmp_ids.append(each)
-            idseg[ind] = tmp_ids
+
+# Loop for iterating for each sentence
+for sentence_num in range(len(dep_sentences)):
+    #print ("="*25+"Sentence Number: "+str(sentence_num+1)+" "+"="*25)
+
+    dep_sentence = dep_sentences[sentence_num+1]
+    token = tokens[sentence_num]
+
+    tree, treeList, numList = getTreeInfo(parse[sentence_num])
+
+    # print the constituency parse tree
+    #tree.pretty_print()
+    lists_nodes[sentence_num] = treeList
+    segmentation_index = 0
+    #print("Segmentation " + str(segmentation_index)+ " : Complete sentence")
+    segment_index = 0
+    # Outputting the whole sentence as the first segmentation
+    outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, numList)
+    segmentation_index += 1
+    segment_index = 0
+    # Splitting the sentence into constituent parts
+    s_split = compoundSplit(tree)
+    segtreelist = []
+    combinations = []
+    segments = []
+    
+    # If a split takes place
+    if len(s_split) > 1:
+        segments, segtreelist = makeSubtreeList(s_split, numList)
+        #print("Segmentation " + str(segmentation_index) + " : Initial segmenting & combinations (S Sibling splitting)")
+        # Outputs the split segments as a separate segmentation
+        for i in range(len(s_split)):
+            outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, segments[i])
+            segment_index += 1
+        segmentation_index += 1
+        segment_index = 0
+        # If there are more than 2 segments, produces output segmentations with adjacent combinations
+        if len(s_split) > 2:
+            combinations, _ = combineSegs(segments)
+            if len(combinations)>5:
+                combinations = combinations[:5]
+            for x in combinations:
+                #print("Segmentation " + str(segmentation_index) + ":")
+                for i in range(len(x)):
+                    outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, x[i])
+                    segment_index += 1
+                segmentation_index += 1
+                segment_index = 0
     else:
-        idseg[ind] = [int(s) for s in tl] 
-    t_seg = []
-    for item in idseg[ind]:
-        if item not in t_seg:
-            t_seg.append(item)
-    idseg[ind] = t_seg
-    punctuation = int(tl[len(tl)-1])
-    tl = map(int,tl)
-    if len(embedvps) != 0:
-        _embedfinal = Rule_EmbeddedVP(embedvps,tr,tl,numlist,things,ind,fname)
-        idseg[ind] += _embedfinal 
-    else:
-        pass 
+        # If no splits happen, makes the original lists as output
+        segtreelist = [[int(item) for item in treeList]]
+        s_split = [tree]
+        segments = [numList]
 
-    # Now, start to pull out the segments from sentences 
-    if all_vpnodes:
-        used = True
-        _idseg = RemakeSegStructure(idseg[ind])
-        seg_combo = with_segmentation(_idseg)
-        left = get_left(seg_combo,tl)
-        segs = Rearrange2(tl,seg_combo,left)
-        final = Connect_subj(seg_combo,segs)
-        final = Clean_Duplicate(final)
-        segment_set[ind] = final
-        if len(segment_set[ind]) != 0:
-            for k,v in enumerate(segment_set[ind]):
-                for vv in range(0,len(v)):
-                    sentence = Format_Sentence(1, v[vv], summary_index,ind,segmentation_count+k,vv)
-                    #write_log('../ext'+'/' + fname +'_log-segment-id-readable.txt',sentence)
-                    #write_log(ext+'/' + fname +'_log-segment-id.txt',out_sent)
-            seg = Pull_Words(segment_set,ind,numlist)
-            for k,v in seg.items():
-                for vv in range(0,len(v)):
-                    # Format: summary_index&sentence_index&segmentation_index$segment_index$segment 
-                    sentence = Format_Sentence(2, v[vv], summary_index,ind,segmentation_count+k,vv)
-                    #write_log('../ext'+'/' + fname +'_log-segment-label-readable.txt',sentence) 
-                    sent = Format_Sentence(3,v[vv],summary_index,ind,segmentation_count+k,vv)
-                    #print "segment ", vv, " label: ", v[vv]
-                    write_log(seg_dir+'/' + fname +'.segs',sent)
-            segmentation_count += len(seg)
-    else:
-        # If already considers the subbordinating conjunction case, then no needs to take the raw sentence as segmentation 
-        #if subconj_flag == True:
-        #    pass
-        pass 
-    #if used == False:
-    if segmentation_count == 0:
-        #Just output whatever it is 
-        #print "defalut rule! "
-        defalut_rule = True 
-        if defalut_rule:
-            v = " ".join([item[0] for item in numlist]) 
-            sentence = Format_Sentence(3,v,summary_index,ind,segmentation_count,0)
-            #if sentence.split('&')[4].strip() != '.':
-            write_log(seg_dir +'/'+ fname +'.segs',sentence)
-    else:
-        pass
+    
+    # List of splits that happen due to split rules
+    ruleSplits = []
 
-# Remove empty lines to prevent WTMF errors 
-ffname = seg_dir +'/'+ fname +'.segs'
+    for i, st in enumerate(s_split):
+        # Rule 1 for Verb SBAR (Needs edits for edgecases)
+        sbar_ind, sbar = ruleSBAR(st, segments[i])
+        if len(sbar) > 0:
+            ruleSplits.append([sbar_ind, sbar, i])
 
-all_text = open(ffname).readlines()
-all_text[len(all_text)-1] = all_text[len(all_text)-1].replace("\n","")
+        # Rule 2 for checking conjoined VP without nouns
+        vpslist = getcvps(st)
+        nplist = getnp(st)
 
-with open(ffname,'wb') as f:
-    for i in all_text:
-        f.write(i)
-f.close()
+        # If VP matching the criteria found
+        if len(vpslist) > 0:
+            deplist = []
 
-print "Sentence decomposition parser done with cleaning files!"
+            # Get dependency noun index for each VP
+            for each in vpslist:
+                dependency = getdependency(each, dep_sentence,segtreelist[i])
+                if dependency > 0:
 
+                    # Find the NP associated with the dependency
+                    nptree = findnp(dependency, nplist)
+                    if nptree is not -1:
+                        deplist.append([nptree, each])
+            res = []
+            res_ind = []
+            # Continues to next step if no noun phrase found
+            if len(deplist) > 1:
+                # Adds the split to the list for prcessing in the next step
+                for each in deplist:
+                    vpconj, vpconj_list = joinTree(each)
+                    res.append(vpconj)
+                    res_ind.append(vpconj_list)
+                fullres, fullres_ind = addAll(res, res_ind, segtreelist[i], segments[i])
+                ruleSplits.append([fullres_ind, fullres, i])
+                if len(sbar) > 0:
+                    res_index, res, maxsplit_flag = splitAll(sbar_ind, deplist, segments[i])
+                    if maxsplit_flag:
+                        for i in range(len(res)):
+                            outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, res[i])
+                            segment_index += 1
+                        segmentation_index += 1
+                        segment_index = 0
+            
+            
+            
+    # Printing out all the rule segments with the rest of the sentence as a separate segmentation
+    if len(ruleSplits) > 0:
+        #print("Segmentation " + str(segmentation_index) + " : Rule segmenting & combinations (SBAR and Conjoined VP)")
+        maxsplit, samesegs = rejoinRuleSplits(ruleSplits, segments)
+        if len(maxsplit) > 5:
+            maxsplit = maxsplit[:5]
+        for segmt in maxsplit: 
+            for i in range(len(segmt)):
+                outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, segmt[i])
+                segment_index += 1
+            segmentation_index += 1
 
+            segment_index = 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        # Printing out recombinations of the segments as new segmentations for all possible adjacent combinations
+        for i, segmt in enumerate(maxsplit):
+            res = combineSplitSegs(segmt, samesegs[i])
+            #print("Segmentation " + str(segmentation_index)+" : ")
+            if len(res) > 5:
+                res = res[:5]
+            for sen in res:
+                for i in range(len(sen)):
+                    outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, sen[i])
+                    segment_index += 1
+                segmentation_index += 1
+                segment_index = 0
+output.close()

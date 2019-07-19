@@ -16,10 +16,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from lib_scoring import sentencesFromSegmentations, SummaryGraph, buildSCUcandidateList, filename, formatVerboseOutput
+from lib_scoring import sentencesFromSegmentations, SummaryGraph, buildSCUcandidateList, filename, getsegsCount
 from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid, new_getlayersize
 from scipy.stats import pearsonr as pearson
-from scipy.stats import spearmanr as spearman 
+from scipy.stats import spearmanr as spearman
+from printEsumLog import printEsumLogWrapper 
 import optparse
 import glob
 import copy
@@ -166,7 +167,9 @@ for pyramid in pyramids:
                     Graph = SummaryGraph(sentences, scus)
                     independentSet = Graph.independentSet
                     candidates = buildSCUcandidateList(independentSet)
+                    print "Candidates: ", 
                     results, possiblyUsed = processResults(candidates, independentSet)
+                    segcount = getsegsCount(segment_list, results, segs, num_sentences)
                     print "Possibly used: ", possiblyUsed
                     keys = [res.split('&') for res in results]
                     rearranged_results = scusBySentences(results)
@@ -179,9 +182,10 @@ for pyramid in pyramids:
                     raw_scores[summary_name] = score
                     # temporary fix to number of sentences 
                     #q_max = maxRawScore(count_by_weight, possiblyUsed)
-                    q_max = maxRawScore(count_by_weight, num_sentences)
+                    q_max = maxRawScore(count_by_weight, segcount)
                     print "MAXSUM for numbers of matched SCU", q_max 
                     c_max = maxRawScore(count_by_weight, avg)
+
                     print "MAXSUM for avg scu: ", c_max 
                     print "score divided by max obtainable scores: ", q_max
                     quality = 0 if not q_max else float(score)/q_max
@@ -200,7 +204,12 @@ for pyramid in pyramids:
             if (print_all) or log:
                 #log_f = log + summary_name
                 log_f = "../log/"+summary_name
-                formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
+                
+                loginput = open("loginput.txt", "w+")
+                loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
+                loginput.close()
+                print("Success!!")
+                printEsumLogWrapper(summary_name,segcount,score,quality,coverage,comprehension,q_max, c_max, avg, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
 
     #raw_scores = sort(raw_scores)
     #print type(raw_scores)

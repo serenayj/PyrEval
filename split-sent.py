@@ -3,7 +3,7 @@
 #    Copyright (C) 2017 Yanjun Gao
 
 #    This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
+#    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
 
@@ -46,6 +46,22 @@ def removesymbols(text):
 	ele = ' '.join(rmv0)
 	return ele
 
+# Modified code to fix issues with not getting all the files and trying to open split folder as file
+for filename in glob.glob(inpath + '/*'):
+	# Added a check to make sure that the script does not try to open a directory as a file
+	if os.path.isdir(filename):
+		continue
+	# Since there is no error, the script runs for all files and so, all files are split
+	content = open(filename).read()
+	content = removesymbols(content)
+	sent_list = sent_tokenize(content)
+	slash = filename.rfind('/')
+	fn = outpath+filename[slash:]
+	with open(fn,'wb') as wf:
+		for i in sent_list:
+			wf.write(i+'\n')
+# Old code for reference
+"""
 for filename in glob.glob(inpath + '/*'):
 	content = open(filename).read()
 	content = removesymbols(content)
@@ -55,7 +71,7 @@ for filename in glob.glob(inpath + '/*'):
 	with open(fn,'wb') as wf:
 		for i in sent_list:
 			wf.write(i+'\n')
-
+"""
 
 
 

@@ -51,6 +51,8 @@ class Segment():
         self.text = text
     def setSCUTextPairs(self, scu_text_pairs):
         self.scu_text_pairs = scu_text_pairs
+#    def toString(self)
+#        return str(self.sentence_id)+'\n'+str(self.segment_id)+'\n'+"\n".join(self.segments)+'\n'+str(self.length)+'\n'+
 
 def parseMaxSegment(segment_list, number_of_sentences, used_sentence_list):
     candidates = [segment for segment in segment_list if segment.used == False]
@@ -625,7 +627,6 @@ def wrap_string(text, starter_text):
     wrap_indicator = int(w) - wrap_point
     num_line_wraps = len(text) / wrap_indicator
     left_over = len(text) % wrap_indicator
-    lines = []
     for i in range(num_line_wraps):
         lines.append(text[i:((i+1)*wrap_indicator)] + '\n')
     lines.append(text[-left_over:])
@@ -633,16 +634,74 @@ def wrap_string(text, starter_text):
     return ''.join(lines)
 
 
+# Returns the number of segments in the list of matched and non matched segments used by the pyramid
+def getsegsCount(segment_list, results, segs, num_sentences):
+    checker = {}
+    usedcounter = 0
+    used_sentences = []
+    for seg in segment_list:
+        for res, scu in results.items():
+            sentence_id, segmentation_id, segment_id = getMetadata(res)
+            if segIsEqual(seg, sentence_id, segmentation_id):
+                tup = (sentence_id, segmentation_id)
+                if tup in checker.keys():
+                    if segment_id not in checker[tup]:
+                        checker[tup].append(segment_id)
+                        usedcounter += 1
+                else:
+                    checker[tup] = [segment_id]
+                    usedcounter +=1
+                seg.scu_text_pairs[segment_id] = scu
+                
+                if sentence_id not in used_sentences:
+                    used_sentences.append(sentence_id)
+    
+    used = {}
+    counter = 0
+    for s in segment_list:
+        if s.sentence_id not in used_sentences:
+            if (s.sentence_id,s.segment_id) not in used.keys():
+                used[(s.sentence_id,s.segment_id)] = 1
+            else:
+                used[(s.sentence_id,s.segment_id)] = used[(s.sentence_id,s.segment_id)] + 1
+        else:
+            if (s.sentence_id, s.segment_id) in checker.keys():
+                if (s.sentence_id,s.segment_id) not in used.keys():
+                    used[(s.sentence_id,s.segment_id)] = 1
+                else:
+                    used[(s.sentence_id,s.segment_id)] = used[(s.sentence_id,s.segment_id)] + 1
+                
+    for i in range(1, num_sentences + 1):
+        maxcount = 0
+        for each in used.keys():
+            if i == each[0]:
+                if maxcount < used[each]:
+                    maxcount = used[each]
+        counter += maxcount
+        
+    for each in used.keys():
+        print ("segment" + str(each)+ " : "+ str(used[each]))
+    
+    print ("Total segments : "+str(counter))
+    return counter
+                
+                   
 
 
+# Returns true if the segment has the same sentence id and segment id as the args
+def segIsEqual(seg, sentence_id, segmentation_id):
+    if seg.sentence_id == sentence_id and seg.segment_id == segmentation_id:
+        return True
+    else:
+        return False
 
-
-
-
-
-
-
-
+# Returns the sentence id, segment id, and segmentation id for the given arg line
+def getMetadata(x):
+    r = x.split('&')
+    sentence_id = int(r[1])
+    segmentation_id = int(r[2])
+    segment_id = int(r[3])
+    return sentence_id, segmentation_id, segment_id
 
 
 

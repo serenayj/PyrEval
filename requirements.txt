@@ -1,0 +1,9 @@
+nltk
+scikit-learn
+beautifulsoup4
+numpy
+scipy
+networkx
+statistics
+pandas
+theano

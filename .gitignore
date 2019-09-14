@@ -1,0 +1,17 @@
+*.pyc
+
+Stanford/
+temp/
+
+Scoring/pyrs
+Scoring/scu
+Scoring/sizes
+loginput.txt
+
+log/
+
+Raw/*/split/
+Raw/peers/
+Raw/model/
+
+scores.txt

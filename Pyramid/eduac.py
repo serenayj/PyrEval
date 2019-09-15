@@ -27,31 +27,24 @@ import cProfile
 #sum_dir = sys.argv[1]
 
 #topic = sum_dir[sum_dir.rfind("/")+1:]
-#topic = "6"
-#fname = "RAMDS-Topic-"+topic
-#fname = "D1004A"
-#fname = "test-1045a"
-#fname = "test-1045a"
 N = 4
 k = 10
-#print("Reading Content")
-#directories = glob.iglob('wise_crowd/*')
-# sum_dir = '../Missing/'+str(fname)+'/Preprocess/wise_crowd_summaries/*'
-# directories = list(glob.iglob(sum_dir))
-# print directories
-# segs, vecs, N = readFiles(directories)
+
+
 #directories = list(glob.iglob(sum_dir+'/Preprocess/wise_crowd_summaries/*'))
+#segs, vecs, N = readFiles(directories)
 directories = list(glob.iglob('../Preprocess/wise_crowd_summaries/*'))
+
+
 segs, vecs, N = readFiles(directories)
 #print("Making Segments")
 segpool = make_segs(segs, vecs)
 #pairwise_test(segpool, N)
-fname = "0925B"
+#fname = "0925B"
 
 threshold = 83
-tups = (100,2.0)
-#tups = (125,2.0)
-bf_dict = tups
+
+fname = "eduac"
 
 # For Demo 
 print "========= This is a brand new core for PyrEval =========== "
@@ -157,7 +150,7 @@ for k,v in SCUs.items():
 		Pyramid_size[weight] = 1 
 
 
-with open("scu/"+fname+"-readable.pyr",'w') as f:
+with open("../Scoring/scu/"+fname+"-readable.pyr",'w') as f:
 	for k,v in enumerate(SCUs):
 		labels = SCUs[k]
 		for ind in range(0,len(labels)):
@@ -177,8 +170,8 @@ for j, i in enumerate(SCUs):
 		ET.SubElement(scu, 'contributor', label = SCUs[j][ele])
 
 tree = ET.ElementTree(root)
-#tree.write("../Scoring/pyrs/pyramids/"+fname + '.pyr')
-tree.write("../Scoring/EDUA-test/"+fname + '.pyr')
+tree.write("../Scoring/pyrs/pyramids/"+fname + '.pyr')
+#tree.write("../Scoring/EDUAC-10/"+fname + '.pyr')
 
 with open('../Scoring/sizes/' + fname + '.size', 'w') as f:
 	for n,pyr in enumerate(Pyramid_size):

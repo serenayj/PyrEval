@@ -73,7 +73,6 @@ for pyr in pyramids:
 
 
 
-#dataset_ind = 'D0614'
 """
 ================ Scoring Mechanisms ======================
 """
@@ -82,14 +81,6 @@ score_tables = ['raw', 'quality', 'coverage', 'Comprehensive']
 """
 ==== What is Matter Test Data Set ====
 """
-# sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(j[0][:(j[0].rfind('.'))])))]
-
-# RAW={}
-# with open("gs-WIM.csv","rU") as f:
-#     rea = csv.reader(f)
-#     for l in rea:
-#         RAW[l[0]] = int(l[1])
-# RAW = sort(RAW)
 
 """
 Raw scores from scores.csv, a column 
@@ -99,38 +90,18 @@ Raw scores from scores.csv, a column
 === DUC Test Data Sets ====
 """
 
-# data = pd.read_csv("/Users/Serena/Desktop/Dataset/LREC-datasets/DUC06/scores.csv",index_col = 0)
-# RAW = [data[dataset_ind][i] for i in range(0,22)]
 
 def getName(name):
     num = name.rfind('.')
     name = name[num+1:]
     return name
 
-#sort = lambda score_dict: [x[1].index(type(x),x) for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0]))))]
-#sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0])) if str(getName(j[0])).isdigit()) + sorted(score_dict.items(), key=lambda j: str(getName(j[0])) if not str(getName(j[0])).isdigit()))]
-
-#sort = lambda score_dict: [x[1] for x in list(sorted(score_dict.items(), key=lambda j: int(getName(j[0]))))]
 
 
 """
 ====================== Scoring Pipeline ========================
 """
 
-"""
-for TAC
-"""
-# data = pd.read_csv("/Users/Serena/Desktop/Dataset/ductac/TAC-Nine/scores.csv",index_col = 0)
-# RAW = list(data['D0925B'])
-#RAW = [data['D0925B'][i] for i in range(1,55)]
-#RAW = [4,13,19,14,30,18,14,12,14,7,7,17,12,26,11,8,15,21,14,14,20,8]
-## For D05
-
-# correlation_file='../WIM-newvec.csv'
-# corr = open(correlation_file, 'w')
-# corr_w = csv.writer(corr)
-# corr_w.writerow(['Pyramid'] + score_tables)
-# corr.close()
 
 
 for pyramid in pyramids:
@@ -167,10 +138,10 @@ for pyramid in pyramids:
                     Graph = SummaryGraph(sentences, scus)
                     independentSet = Graph.independentSet
                     candidates = buildSCUcandidateList(independentSet)
-                    print "Candidates: ", 
+                    #print "Candidates: ", 
                     results, possiblyUsed = processResults(candidates, independentSet)
                     segcount = getsegsCount(segment_list, results, segs, num_sentences)
-                    print "Possibly used: ", possiblyUsed
+                    #print "Possibly used: ", possiblyUsed
                     keys = [res.split('&') for res in results]
                     rearranged_results = scusBySentences(results)
                     score, matched_cus = getScore(rearranged_results, scus)
@@ -178,16 +149,16 @@ for pyramid in pyramids:
                     #count_by_weight, avg = getLayerSizes(size_file)
                     # New get layersize 
                     count_by_weight, avg = new_getlayersize(size_file,numsmodel)
-                    print "AVG SCU: ", avg 
+                    #print "AVG SCU: ", avg 
                     raw_scores[summary_name] = score
                     # temporary fix to number of sentences 
                     #q_max = maxRawScore(count_by_weight, possiblyUsed)
                     q_max = maxRawScore(count_by_weight, segcount)
-                    print "MAXSUM for numbers of matched SCU", q_max 
+                    #print "MAXSUM for numbers of matched SCU", q_max 
                     c_max = maxRawScore(count_by_weight, avg)
 
-                    print "MAXSUM for avg scu: ", c_max 
-                    print "score divided by max obtainable scores: ", q_max
+                    #print "MAXSUM for avg scu: ", c_max 
+                    #print "score divided by max obtainable scores: ", q_max
                     quality = 0 if not q_max else float(score)/q_max
                     if quality > 1:
                         quality = 1 
@@ -246,43 +217,7 @@ for pyramid in pyramids:
                             output = [summary_name, raw_scores[summary_name],quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]]
                             w.writerow(output)
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
-            
-            #print "sorted raw scores, ", raw_scores
-            #raw_sc = sort(raw_scores)
-            # raw_corr = pearson(raw_sc, RAW)[0]
-            #raw_corr = spearman(new_raw_sc, RAW)[0]
-            # print "Sorted Pan file scores, ", RAW
-            # print('{:>16} | {:>.2f}'.format('Correlation', raw_corr*100))
-            # print '\n'
 
-            """
-            Changes for DUC05
-            """
-            # raw_sc = collections.OrderedDict(sorted(raw_scores.items()))
-            # print "sorted raw scroes", raw_scores
-            # new_raw_sc = []
-            # for k,v in enumerate(raw_sc):
-            #     print k,v, raw_sc[v]
-            #     new_raw_sc.append(raw_sc[v])
-
-            # print "sorted raw scores, ", new_raw_sc
-            # raw_corr = pearson(new_raw_sc, RAW)[0]
-            # #raw_corr = spearman(new_raw_sc, RAW)[0]
-            # print "Sorted Pan file scores, ", RAW
-            # print('{:>16} | {:>.2f}'.format('Correlation', raw_corr*100))
-            # print '\n'
-
-    ### Only for correlation 
-    # with open(correlation_file, 'a') as f:
-    #     w = csv.writer(f)
-    #     raw_sc = collections.OrderedDict(sorted(raw_scores.items()))
-    #     print raw_sc
-    #     new_raw_sc = []
-    #     for k,v in enumerate(raw_sc):
-    #         print k,v, raw_sc[v]
-    #         new_raw_sc.append(raw_sc[v])
-    #     raw_corr = pearson(new_raw_sc, RAW)[0]
-    #     w.writerow([pyramid_name] + [raw_corr])
 
 
 

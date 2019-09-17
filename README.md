@@ -5,7 +5,7 @@ PyrEval  Copyright (C) 2017 Yanjun Gao
 
 This is the package for running PyrEval. 
 
-[Here](https://youtu.be/i_wdH3__urY) is a demo presented in CLIEDE2017. Please cite this paper if you use our code. 
+[Here](https://youtu.be/i_wdH3__urY) is a demo presented in [CLIEDE2017](https://sites.psu.edu/cliede2017/). Please cite this paper if you use our code. 
 
 [1] Gao, Yanjun, Andrew Warner, and Rebecca J. Passonneau. "Pyreval: An automated method for summary content analysis." Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC). 2018.
 

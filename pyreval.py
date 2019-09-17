@@ -184,9 +184,11 @@ choice_dict = {
       'i': change_py_interp,
 }
 
-user_in = raw_input(INPUT_STR)
-
-while user_in:
+while True:
+    try:
+        user_in = raw_input(INPUT_STR)
+    except (EOFError, KeyboardInterrupt):
+        sys.exit(0)
     tokens = user_in.split()
     command = tokens[0]
     params = tokens[1:]
@@ -194,7 +196,6 @@ while user_in:
         choice = choice_dict[tokens[0]]
     except KeyError:
         error_print('Bad command')
+        continue
     choice(params)
-    user_in = raw_input(INPUT_STR)
-
 

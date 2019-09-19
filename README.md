@@ -4,7 +4,7 @@ PyrEval Copyright (C) 2017 Yanjun Gao
 
 This is the package for running PyrEval. 
 
-[Here](https://youtu.be/i_wdH3__urY) is a demo presented in [CLIEDE2017](https://sites.psu.edu/cliede2017/). Please cite this paper if you use our code. 
+[Here](https://youtu.be/i_wdH3__urY) is a demo presented in [CLIEDE2017](https://sites.psu.edu/cliede2017/). Please cite these papers if you use our code. 
 
 [1] Gao, Yanjun, Chen Sun, and Rebecca J. Passonneau. "Automated Pyramid Summarization Evaluation." Proceedings of Conference on Computational Natural Language Learning (CoNLL). 2019. 
 
@@ -35,18 +35,17 @@ PyrEval is a tool that automateds the pyramid method for summary content evauati
 pip install -r requirements.txt
 sudo apt install python-lxml
 ```
-<br />
 
 ## Components and Directories
 This package contains two major components: Build the pyramid and Score the peer summaries by the pyramid.  
 
 Here is an explanation of 4 folders under PyrEval. 
+- Raw: For raw summary text files in launcher.  
 - Preprocess: For preprocessing your raw texts (step 0 and 1). Currently the decomposition into sub-sentence clauses uses Stanford CoreNLP tools [6], and conversion to semantic vectors uses WTMF.[7,8] In principle, these can be replaced by other methods.
 - Pyramid: For preprocessing model summaries(step 2). PyrEval uses model summaries under wise_crowd to build the pyramid. We build the pyramid from model summaries under wise_crowd. And output the pyramid for future use. 
 - Scoring: For scoring peer summaries by the pyramid (step3).  
 - log: folder of log output
 
-<br />
 
 ## HOW TO USE - Launcher (Recommended)
 
@@ -141,7 +140,7 @@ It is a known issue that this command will occasionally throw an error when atte
 #### 6. Exit
 
 To exit the PyrEval launcher, simply press `<Enter/Return>` with no input.
-<br />
+
 
 ## HOW TO USE - Manual
 

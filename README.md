@@ -212,7 +212,7 @@ Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p.
 Output of Step 3 is a .csv file, located under PyrEval. 
 
 ## Acknowledgement
-The contributors to this repository include: Andrew Warner, Brent Hoffert, Purushartha Singh, and Steven Fontanella.  
+The contributors to this repository include: Andrew Warner (for initial implementation of the pipeline), Brent Hoffert (for creation of the launcher), Purushartha Singh (for fixing bugs in decomposition parser), and Steven Fontanella (for cleaning up the package and testing the improvements).  
 
 ## References
 [1] Nenkova, Ani and Rebecca J. Passonneau. Evaluating content selection in summarization: The Pyramid Method. Joint Annual Meeting of Human Language Technology and the North American chapter of the Association for Computational Linguistics (HLT/NAACL). Boston, MA. June, 2004.

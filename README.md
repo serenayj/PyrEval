@@ -14,6 +14,8 @@ This is the package for running PyrEval.
 ## Introduction 
 PyrEval is a tool that automateds the pyramid method for summary content evauation.[1] It constructs a content model of semantically coherent units discovered from a small sample of expert reference summaries of one or more source texts, and to apply the content model to automatically evaluate the content of new summaries. It automates a manual method that was developed over a decade ago [1], and found to be extremely reliable [2, 3]. The tool is aimed at two audiences. It can help educators evaluate students’ summaries for content; this is important because summarization is a commonly used vehicle to teach reading and writing skills, and to assess students’ knowledge of content [4, 5]. It can also be used in evaluation of automated summarizers [5]. It has performed well on college student's summaries in multiple domains, and on sections of legal briefs written by law students.
 
+![PyrEval system pipeline and log output example](img/pyreval_img.png)
+
 ### Table of Contents
 **[Requirements](#requirements)**<br>
 **[Components and Directories](#components-and-directories)**<br>
@@ -39,7 +41,7 @@ sudo apt install python-lxml
 ## Components and Directories
 This package contains two major components: Build the pyramid and Score the peer summaries by the pyramid.  
 
-Here is an explanation of 4 folders under PyrEval. 
+Here is an explanation of 5 folders under PyrEval. 
 - Raw: For raw summary text files in launcher.  
 - Preprocess: For preprocessing your raw texts (step 0 and 1). Currently the decomposition into sub-sentence clauses uses Stanford CoreNLP tools [6], and conversion to semantic vectors uses WTMF.[7,8] In principle, these can be replaced by other methods.
 - Pyramid: For preprocessing model summaries(step 2). PyrEval uses model summaries under wise_crowd to build the pyramid. We build the pyramid from model summaries under wise_crowd. And output the pyramid for future use. 

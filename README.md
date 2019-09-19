@@ -1,6 +1,6 @@
 # PyrEval
 
-PyrEval  Copyright (C) 2017 Yanjun Gao
+PyrEval Copyright (C) 2017 Yanjun Gao
 
 This is the package for running PyrEval. 
 
@@ -16,9 +16,9 @@ PyrEval is a tool that automateds the pyramid method for summary content evauati
 
 ### Table of Contents
 **[Requirements](#requirements)**<br>
-**[Components and Directories](#components)**<br>
-**[HOW TO USE - Launcher (Recommended)](#launcher)**<br>
-**[HOW TO USE - Manual](#manual)**<br>
+**[Components and Directories](#components-and-directories)**<br>
+**[HOW TO USE - Launcher (Recommended)](#how-to-use---launcher-recommended)**<br>
+**[HOW TO USE - Manual](#how-to-use---manual)**<br>
 
 ## Requirements
 ### Installation Requirement 
@@ -158,8 +158,7 @@ Copy stanford.py to the Stanford CoreNLP folder, then run command:
 ```
 python stanford.py path_to_raw_text mode path_to_PyrEval
 ```
-where mode: 1: peer summries; 2: wise_crowd_summaries. 
-E.g: 
+where mode: 1: peer summries; 2: wise_crowd_summaries. E.g: 
 ```
 python stanford.py Users\blah\raw_text 2 Users\blah\PyrEval 
 ```

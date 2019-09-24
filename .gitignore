@@ -4,10 +4,12 @@ Stanford/
 temp/
 ext/
 
-Scoring/pyrs
-Scoring/scu
-Scoring/sizes
+Scoring/pyrs/**
+!Scoring/pyrs/pyramids/
+Scoring/scu/**
+Scoring/sizes/**
 loginput.txt
+!.gitkeep
 
 log/
 

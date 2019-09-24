@@ -163,7 +163,7 @@ def Build_All_Record(segmentpool, Pyramid):
 			keys = ['seg%did' % (p + 1) for p in range(weight)]
 			used1 = [item[k] for k in keys]
 			used.extend(Extract_Segset(data_seg,used1))
-	print "Build_All_Record" , used 
+	#print "Build_All_Record" , used 
 	return used 
 
 # Clean layer1, remove segments that are not adopted  
@@ -306,12 +306,6 @@ def Update_AllocRecord(data,alls):
 			results.append(seg)
 	missings = list(set(results).difference(set(alls)))
 	return missings
-
-def Extension(missings,segmentpool):
-	tmp = []
-	for item in segmentpool:
-		if item.id in missings:
-			tmp.append({'seg1id':item.id,'WAS':1,'seg1':item.seg})
 
 
 

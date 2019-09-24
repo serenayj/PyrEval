@@ -1,15 +1,14 @@
 *.pyc
 
-Stanford/
-temp/
-ext/
+Stanford/**
+temp/**
+ext/**
 
 Scoring/pyrs/**
 !Scoring/pyrs/pyramids/
 Scoring/scu/**
 Scoring/sizes/**
 loginput.txt
-!.gitkeep
 
 log/
 
@@ -18,3 +17,4 @@ Raw/peers/
 Raw/model/
 
 scores.txt
+!.gitkeep

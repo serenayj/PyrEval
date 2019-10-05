@@ -78,7 +78,7 @@ for sentence_num in range(len(dep_sentences)):
     segtreelist = []
     combinations = []
     segments = []
-    
+
     # If a split takes place
     if len(s_split) > 1:
         segments, segtreelist = makeSubtreeList(s_split, numList)
@@ -107,7 +107,7 @@ for sentence_num in range(len(dep_sentences)):
         s_split = [tree]
         segments = [numList]
 
-    
+
     # List of splits that happen due to split rules
     ruleSplits = []
 
@@ -153,16 +153,16 @@ for sentence_num in range(len(dep_sentences)):
                             segment_index += 1
                         segmentation_index += 1
                         segment_index = 0
-            
-            
-            
+
+
+
     # Printing out all the rule segments with the rest of the sentence as a separate segmentation
     if len(ruleSplits) > 0:
         #print("Segmentation " + str(segmentation_index) + " : Rule segmenting & combinations (SBAR and Conjoined VP)")
         maxsplit, samesegs = rejoinRuleSplits(ruleSplits, segments)
         if len(maxsplit) > 5:
             maxsplit = maxsplit[:5]
-        for segmt in maxsplit: 
+        for segmt in maxsplit:
             for i in range(len(segmt)):
                 outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, segmt[i])
                 segment_index += 1

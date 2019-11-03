@@ -2,7 +2,7 @@
 
 PyrEval Copyright (C) 2017 Yanjun Gao
 
-This is the package for running PyrEval. 
+This is the package for running PyrEval. The current pacakge is written in Python 2.7 and Python>=3.6 will be released soon. 
 
 [Here](https://youtu.be/i_wdH3__urY) is a demo presented in [CLIEDE2017](https://sites.psu.edu/cliede2017/). Please cite these papers if you use our code. 
 

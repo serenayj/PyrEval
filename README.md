@@ -6,9 +6,9 @@ This is the package for running PyrEval. The current pacakge is written in Pytho
 
 [Here](https://youtu.be/i_wdH3__urY) is a demo presented in [CLIEDE2017](https://sites.psu.edu/cliede2017/). Please cite these papers if you use our code. 
 
-[1] Gao, Yanjun, Chen Sun, and Rebecca J. Passonneau. "Automated Pyramid Summarization Evaluation." Proceedings of Conference on Computational Natural Language Learning (CoNLL). 2019. 
+[1] Gao, Yanjun, Chen Sun, and Rebecca J. Passonneau. "Automated Pyramid Summarization Evaluation." Proceedings of Conference on Computational Natural Language Learning (CoNLL). 2019. [Link](https://www.aclweb.org/anthology/K19-1038/) 
 
-[2] Gao, Yanjun, Andrew Warner, and Rebecca J. Passonneau. "Pyreval: An automated method for summary content analysis." Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC). 2018.
+[2] Gao, Yanjun, Andrew Warner, and Rebecca J. Passonneau. "Pyreval: An automated method for summary content analysis." Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC). 2018. [Link](http://www.lrec-conf.org/proceedings/lrec2018/pdf/1096.pdf)
 
 
 ## Introduction 

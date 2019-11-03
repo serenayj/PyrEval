@@ -40,7 +40,6 @@ def stemming(text):
 
 def removesymbols(text):
 	tmp = []
-	print "now start to remove symbols! "
 	result = ''.join([i for i in text if not i.isdigit()])
 	rmv0 = re.findall(r"[\w!,.:;']+",result)
 	ele = ' '.join(rmv0)

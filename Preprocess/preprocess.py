@@ -66,4 +66,3 @@ print('Time: {}'.format(str(done - timer)))
 #	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
 #	os.system(command)
 
-print "Finish Preprocess!!!"

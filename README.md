@@ -28,7 +28,7 @@ PyrEval is a tool that automates the pyramid method for summary content evauatio
 ### Installation Requirement 
 1. Python 2.7 (or Anaconda2)
 2. Perl
-3. Stanford CoreNLP System[6], see download https://stanfordnlp.github.io/CoreNLP/index.html. 
+3. Stanford CoreNLP System[6], see download [link](https://drive.google.com/file/d/18Q1GxX7IkF-Zp14khacT-hDtdn5anLd6/view?usp=sharing) for 2018-10-05 version. The newest CoreNLP system is not compatible with PyrEval, and we are working on upgrading PyrEval to python 3.8 with newest dependencies.  
 
 ### Data Requirement 
 4 to 5 human-written summaries in plain text files (referred throughout as “wise crowd” summaries); any number of summaries to score (referred throughout as “peer” summaries) 

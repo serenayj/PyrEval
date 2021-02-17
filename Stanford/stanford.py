@@ -27,6 +27,17 @@ import sys
 path_ = sys.argv[1]
 mode = sys.argv[2]
 pyrEval = sys.argv[3]
+
+#Wasih
+#find Stanford CoreNLP directory
+files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
+coreNlpDir = ""
+for filename in files:
+	if (os.path.isdir(filename)):
+		coreNlpDir = filename
+		break
+print coreNlpDir
+
 if len(sys.argv) == 5:
 	java_exec = sys.argv[4]
 else:
@@ -67,6 +78,7 @@ if os.path.isdir(path_):
 		print "Option doesn't exist!!!"
 	if outpath:
 		print outpath
+		os.chdir(coreNlpDir)
 		# TODO: Very clunky solution to set max heap size here
 		command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath
 		os.system(command2)

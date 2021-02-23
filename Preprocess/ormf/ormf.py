@@ -6,15 +6,6 @@ import os
 from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import SnowballStemmer
 
-# Initialize Objects
-stemmer = SnowballStemmer("english")
-
-# Initialize PATHs
-model = 'ormf/models/train100/model.mat'
-vocab = 'ormf/models/train100/vocab'
-idf = 'ormf/models/train100/idf'
-
-
 # Read in Vocab File, return dictionary {key=word, value=index}
 def readVocab(vocab_file):
 	vocab = {}
@@ -128,7 +119,13 @@ class Model():
 		pptw = self.__pptw__()
 		return pptw * w_m
 
+# Initialize Objects
+stemmer = SnowballStemmer("english")
 
+# Initialize PATHs
+model = 'ormf/models/train100/model.mat'
+vocab = 'ormf/models/train100/vocab'
+idf = 'ormf/models/train100/idf'
 cwd = "../Preprocess/"
 #cwd = '/Users/andrewwarner/Developer/NLP/testing_package/PyrEval/Preprocess'
 vocab = readVocab(cwd+vocab)

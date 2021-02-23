@@ -24,62 +24,66 @@ import os
 import sys
 #from lib_preprocessing import *
 
-path_ = sys.argv[1]
-mode = sys.argv[2]
-pyrEval = sys.argv[3]
+#Wasih (02-19-20) Use functions instead of calling script
+#path_ = sys.argv[1]
+#mode = sys.argv[2]
+#pyrEval = sys.argv[3]
 
-#Wasih
-#find Stanford CoreNLP directory
-files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
-coreNlpDir = ""
-for filename in files:
-	if (os.path.isdir(filename)):
-		coreNlpDir = filename
-		break
-print coreNlpDir
+#Wasih (02-19-20) Use functions instead of calling script
+def stanfordmain(path_, mode, pyrEval):
+	#Wasih (02-17-20) find Stanford CoreNLP directory
+	files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
+	coreNlpDir = ""
+	for filename in files:
+		if (os.path.isdir(filename)):
+			coreNlpDir = filename
+			break
+	print coreNlpDir
 
-if len(sys.argv) == 5:
-	java_exec = sys.argv[4]
-else:
-	java_exec = 'java'
-
-
-# Clean Summary before XML dump
-if os.path.isdir(path_):
-	for filename in os.listdir(path_):
-		if filename[0] != '.':
-			full_path = os.path.join(path_,filename)
-			with open(full_path, 'r') as infile:
-				lines = infile.readlines()
-			clean = []
-			for line in lines:
-				line = line.replace("'", '').replace('`', '')
-				# if '.' in line:
-				# 	ind = line.index('.')
-				# 	if len(line) == ind + 1:
-				# 		pass
-				# 	elif line[ind + 1] != ' ':
-				# 		line[ind] = ' '
-				clean.append(line)
-			with open(full_path, 'w') as outfile:
-				for line in clean:
-					outfile.write(line)
-
-	filename = os.path.abspath(path_)
-	print "current filename", filename
-	print mode
-	if int(mode) == 1:
-		outpath = os.path.join(pyrEval, 'Preprocess', 'peer_summaries')
-	elif int(mode) == 2:
-		outpath = os.path.join(pyrEval, 'Preprocess', 'wise_crowd_summaries')
-	#elif int(mode) == 3:
-		#outpath = pyrEval + "/Preprocess/test_summaries"
+	if len(sys.argv) == 5:
+		java_exec = sys.argv[4]
 	else:
-		print "Option doesn't exist!!!"
-	if outpath:
-		print outpath
-		os.chdir(coreNlpDir)
-		# TODO: Very clunky solution to set max heap size here
-		command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath
-		os.system(command2)
+		java_exec = 'java'
+
+
+	# Clean Summary before XML dump
+	if os.path.isdir(path_):
+		for filename in os.listdir(path_):
+			if filename[0] != '.':
+				full_path = os.path.join(path_,filename)
+				with open(full_path, 'r') as infile:
+					lines = infile.readlines()
+				clean = []
+				for line in lines:
+					line = line.replace("'", '').replace('`', '')
+					# if '.' in line:
+					# 	ind = line.index('.')
+					# 	if len(line) == ind + 1:
+					# 		pass
+					# 	elif line[ind + 1] != ' ':
+					# 		line[ind] = ' '
+					clean.append(line)
+				with open(full_path, 'w') as outfile:
+					for line in clean:
+						outfile.write(line)
+
+		filename = os.path.abspath(path_)
+		print "current filename", filename
+		print mode
+		#Wasih (02-19-20) Use functions instead of calling script (Mode is already integer)    
+		if mode == 1:
+			outpath = os.path.join(pyrEval, 'Preprocess', 'peer_summaries')
+		elif mode == 2:
+			outpath = os.path.join(pyrEval, 'Preprocess', 'wise_crowd_summaries')
+		#elif int(mode) == 3:
+			#outpath = pyrEval + "/Preprocess/test_summaries"
+		else:
+			print "Option doesn't exist!!!"
+		if outpath:
+			print outpath
+			#Wasih (02-17-20) find Stanford CoreNLP directory	
+			os.chdir(coreNlpDir)
+			# TODO: Very clunky solution to set max heap size here
+			command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath
+			os.system(command2)
 

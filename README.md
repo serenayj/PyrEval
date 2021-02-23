@@ -211,6 +211,15 @@ Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p.
 
 Output of Step 3 is a .csv file, located under PyrEval. 
 
+## Notes
+If nltk throws errors like: "Resource punkt not found" in the 1) (Pre-processing step), it means that you need to install it manually like:
+1. Open up your Python2 interpreter: python<2?>
+2. Type: import nltk
+3. Then: nltk.download()
+4. Then a list of options appear, enter: d
+5. In the prompt, then enter punkt and it should properly install punkt for you.
+Now, you can re-run step 1) and it should work fine
+
 ## Acknowledgement
 The contributors to this repository include: Andrew Warner (for initial implementation of the pipeline), Brent Hoffert (for creation of the launcher), Purushartha Singh (for fixing bugs in decomposition parser), and Steven Fontanella (for cleaning up the package and testing the improvements).  
 

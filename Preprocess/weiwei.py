@@ -28,7 +28,3 @@ def vectorize(text, mode=None):
 		return [format_vector(segment) for segment in segments]
 	else:
 		return [segment.vector.tolist() for segment in segments]
-
-
-
-

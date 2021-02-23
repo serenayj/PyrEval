@@ -22,9 +22,9 @@ import os
 import glob 
 import sys
 
-
-inpath = sys.argv[1]
-outpath = sys.argv[2]
+#Wasih (02-19-20) Use functions instead of calling script
+#inpath = sys.argv[1]
+#outpath = sys.argv[2]
 
 def stemming(text): 
 	#dic = enchant.Dict("en_US")
@@ -46,32 +46,31 @@ def removesymbols(text):
 	return ele
 
 # Modified code to fix issues with not getting all the files and trying to open split folder as file
-for filename in glob.glob(inpath + '/*'):
-	# Added a check to make sure that the script does not try to open a directory as a file
-	if os.path.isdir(filename):
-		continue
-	# Since there is no error, the script runs for all files and so, all files are split
-	content = open(filename).read()
-	content = removesymbols(content)
-	sent_list = sent_tokenize(content)
-	slash = filename.rfind('/')
-	fn = outpath+filename[slash:]
-	with open(fn,'wb') as wf:
-		for i in sent_list:
-			wf.write(i+'\n')
-# Old code for reference
-"""
-for filename in glob.glob(inpath + '/*'):
-	content = open(filename).read()
-	content = removesymbols(content)
-	sent_list = sent_tokenize(content)
-	slash = filename.rfind('/')
-	fn = outpath+filename[slash:]
-	with open(fn,'wb') as wf:
-		for i in sent_list:
-			wf.write(i+'\n')
-"""
 
-
-
-
+#Wasih (02-19-20) Use functions instead of calling script
+def split(inpath, outpath):
+	for filename in glob.glob(inpath + '/*'):
+		# Added a check to make sure that the script does not try to 			open a directory as a file
+		if os.path.isdir(filename):
+			continue
+		# Since there is no error, the script runs for all files and 			so, all files are split
+		content = open(filename).read()
+		content = removesymbols(content)
+		sent_list = sent_tokenize(content)
+		slash = filename.rfind('/')
+		fn = outpath+filename[slash:]
+		with open(fn,'wb') as wf:
+			for i in sent_list:
+				wf.write(i+'\n')
+		# Old code for reference
+		"""
+		for filename in glob.glob(inpath + '/*'):
+			content = open(filename).read()
+			content = removesymbols(content)
+			sent_list = sent_tokenize(content)
+			slash = filename.rfind('/')
+			fn = outpath+filename[slash:]
+			with open(fn,'wb') as wf:
+				for i in sent_list:
+					wf.write(i+'\n')
+		"""

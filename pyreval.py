@@ -3,6 +3,11 @@ import os
 import sys
 import shutil
 from subprocess import call
+#Wasih (02-19-20) Use functions instead of calling script
+from splitsent import *
+from Stanford.stanford import *
+from Pyramid.pyramid import pyramidmain
+import ConfigParser as configparser
 
 INPUT_STR = '>>> '
 
@@ -34,15 +39,24 @@ def autorun(params):
     preprocess(params)
     pyramid(params)
     score(params)
+    clean(params)
 
 def splitsent(params):
-    call(py_interp + [split_script, raw_peer_dir, split_peer_dir])
-    call(py_interp + [split_script, raw_model_dir, split_model_dir])
+    #call(py_interp + [split_script, raw_peer_dir, split_peer_dir])
+    #call(py_interp + [split_script, raw_model_dir, split_model_dir])
+    #Wasih (02-19-20) Use functions instead of calling script
+    split(raw_peer_dir, split_peer_dir)
+    split(raw_model_dir, split_model_dir)
 
 def stanford(params):
     os.chdir(stanford_dir)
-    call(py_interp + [stanford_script, split_peer_dir, '1', base_dir])
-    call(py_interp + [stanford_script, split_model_dir, '2', base_dir])
+    #call(py_interp + [stanford_script, split_peer_dir, '1', base_dir])
+    #call(py_interp + [stanford_script, split_model_dir, '2', base_dir])
+    
+    #Wasih (02-19-20) Use functions instead of calling script
+    stanfordmain(split_peer_dir, 1, base_dir)
+    os.chdir(stanford_dir)
+    stanfordmain(split_model_dir, 2, base_dir)
     os.chdir(base_dir)
 
 def preprocess(params):
@@ -53,7 +67,9 @@ def preprocess(params):
 
 def pyramid(params):
     os.chdir(pyramid_dir)
-    call(py_interp + [pyramid_script])
+    #call(py_interp + [pyramid_script])
+    #Wasih (02-19-20) Use functions instead of calling script
+    pyramidmain()
     os.chdir(base_dir)
 
 def score(params):
@@ -72,7 +88,7 @@ def clean(params):
 
     def remove_dirs(dirs):
         for dir in dirs:
-            try:
+            try: 
                 shutil.rmtree(dir)
             except OSError as e:
                 error_print('Cannot delete ' + file, e2=e)
@@ -151,51 +167,57 @@ def error_print(e1, e2=None):
     if e2:
         print(e2)
 
-print(INSTRUCTIONS)
+if __name__ == "__main__":
+	print(INSTRUCTIONS)
+	config = configparser.ConfigParser()
+	config.read('parameters.ini')
 
-base_dir = os.path.dirname(os.path.realpath(__file__))
-# TODO: user-changeable
-py_interp = ['python']
-raw_peer_dir = os.path.join(base_dir,'Raw','peers')
-raw_model_dir = os.path.join(base_dir,'Raw','model')
-split_peer_dir = os.path.join(raw_peer_dir,'split')
-split_model_dir = os.path.join(raw_model_dir,'split')
-split_script = os.path.join(base_dir,'split-sent.py')
-stanford_dir = os.path.join(base_dir,'Stanford')
-stanford_script = os.path.join(stanford_dir, 'stanford.py')
-preprocess_dir = os.path.join(base_dir,'Preprocess')
-preprocess_script = os.path.join(preprocess_dir, 'preprocess.py')
-preprocess_peers_dir = os.path.join(preprocess_dir,'peer_summaries')
-preprocess_model_dir = os.path.join(preprocess_dir,'wise_crowd_summaries')
-pyramid_dir = os.path.join(base_dir,'Pyramid')
-pyramid_script = os.path.join(pyramid_dir, 'pyramid.py')
-scoring_dir = os.path.join(base_dir,'Scoring')
-scoring_script = os.path.join(scoring_dir, 'scoring.py')
-ext_dir = os.path.join(base_dir, 'ext')
+	base_dir = os.path.dirname(os.path.realpath(__file__))
+	# TODO: user-changeable
 
-choice_dict = {
-      '0': autorun,
-      '1': splitsent,
-      '2': stanford,
-      '3': preprocess,
-      '4': pyramid,
-      '5': score,
-      'c': clean,
-      'i': change_py_interp,
-}
+	#Wasih (02-20-20) Make ConfigParser
 
-while True:
-    try:
-        user_in = raw_input(INPUT_STR)
-    except (EOFError, KeyboardInterrupt):
-        sys.exit(0)
-    tokens = user_in.split()
-    command = tokens[0]
-    params = tokens[1:]
-    try:
-        choice = choice_dict[tokens[0]]
-    except KeyError:
-        error_print('Bad command')
-        continue
-    choice(params)
+	py_interp = [config.get('Paths', 'PythonInterp')]
+	raw_peer_dir = os.path.join(base_dir, config.get('Paths', 'RawPeerDir'))
+	raw_model_dir = os.path.join(base_dir, config.get('Paths', 'RawModelDir'))
+	split_peer_dir = os.path.join(base_dir, config.get('Paths', 'SplitPeerDir'))
+	split_model_dir = os.path.join(base_dir, config.get('Paths', 'SplitModelDir'))
+	split_script = os.path.join(base_dir, config.get('Paths', 'SplitScript'))
+	stanford_dir = os.path.join(base_dir, config.get('Paths', 'StanfordDir'))
+	stanford_script = os.path.join(base_dir, config.get('Paths', 'StanfordScript'))
+	preprocess_dir = os.path.join(base_dir, config.get('Paths', 'PreprocessDir'))
+	preprocess_script = os.path.join(base_dir, config.get('Paths', 'PreprocessScript'))
+	preprocess_peers_dir = os.path.join(base_dir, config.get('Paths', 'PreprocessPeersDir'))
+	preprocess_model_dir = os.path.join(base_dir, config.get('Paths', 'PreprocessModelDir'))
+	pyramid_dir = os.path.join(base_dir, config.get('Paths', 'PyramidDir'))
+	pyramid_script = os.path.join(base_dir, config.get('Paths', 'PyramidScript'))
+	scoring_dir = os.path.join(base_dir, config.get('Paths', 'ScoringDir'))
+	scoring_script = os.path.join(base_dir, config.get('Paths', 'ScoringScript'))
+	ext_dir = os.path.join(base_dir, config.get('Paths', 'ExtDir'))
+
+	choice_dict = {
+	      '0': autorun,
+	      '1': splitsent,
+	      '2': stanford,
+	      '3': preprocess,
+	      '4': pyramid,
+	      '5': score,
+	      'c': clean,
+	      'i': change_py_interp,
+	}
+
+	while True:
+	    try:
+		user_in = raw_input(INPUT_STR)
+	    except (EOFError, KeyboardInterrupt):
+		sys.exit(0)
+	    tokens = user_in.split()
+	    command = tokens[0]
+	    params = tokens[1:]
+	    try:
+		choice = choice_dict[tokens[0]]
+	    except KeyError:
+		error_print('Bad command')
+		continue
+	    choice(params)
 

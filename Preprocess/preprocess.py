@@ -19,6 +19,7 @@ import glob
 import sys
 from time import time
 from lib_preprocessing import *
+
 mode = sys.argv[1]
 
 #mode = 2
@@ -26,7 +27,6 @@ mode = sys.argv[1]
 """
 =============== MAIN ===================
 """
-
 
 #summaries = [sys.argv[1]]
 peer_summaries = []
@@ -36,6 +36,7 @@ timer = time()
 
 error_file = '../Preprocess/errors-file.txt'
 errors = [] 
+#Wasih (02-19-20) Use functions instead of calling script (mode is already integer)
 if int(mode) == 1:
 	dir1 = "../Preprocess/peer_summaries"
 elif int(mode) == 2:
@@ -47,12 +48,12 @@ else:
 	print "Option doesn't exist!!!"
 
 if (dir1):
-	summaries = sorted(list(glob.iglob(dir1+ '/*.xml')))
+	summaries = sorted(list(glob.iglob(dir1 + '/*.xml')))
 	for n, summary in enumerate(summaries):
 		#try:
-		DecomposeSummary(summary, n + 1,dir1)
+		DecomposeSummary(summary, n + 1, dir1)
 		#summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
-		VectorizeSummary(summary, dir1,n+1, 'preprocess')
+		VectorizeSummary(summary, dir1, n + 1, 'preprocess')
 		#except:
 		#	print "current file failed: ", n, " ", summary
 		#	errors.append(summary)

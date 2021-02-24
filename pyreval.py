@@ -1,4 +1,3 @@
-
 import os
 import sys
 import shutil
@@ -8,6 +7,9 @@ from splitsent import *
 from Stanford.stanford import *
 from Pyramid.pyramid import pyramidmain
 import ConfigParser as configparser
+
+#Wasih (02-21-20) Use termcolor to display colored text
+from termcolor import colored
 
 INPUT_STR = '>>> '
 
@@ -30,8 +32,9 @@ NOTES:
 c: Clean directories
 i: Change python interpreter
 
-To quit, type nothing and press return.
+To quit, type q.
 """
+#Wasih (02-21-20) more convenient quitting
 
 def autorun(params):
     splitsent(params)
@@ -39,43 +42,96 @@ def autorun(params):
     preprocess(params)
     pyramid(params)
     score(params)
-    clean(params)
 
 def splitsent(params):
     #call(py_interp + [split_script, raw_peer_dir, split_peer_dir])
     #call(py_interp + [split_script, raw_model_dir, split_model_dir])
     #Wasih (02-19-20) Use functions instead of calling script
-    split(raw_peer_dir, split_peer_dir)
-    split(raw_model_dir, split_model_dir)
-
+    #Wasih (02-21-20) Add user friendly lines
+    try:
+        #Wasih (02-21-20) Check for split directory present or not, if not then create it
+        if not os.path.exists(split_peer_dir):
+            os.makedirs(split_peer_dir)
+        
+        if not os.path.exists(split_model_dir):
+            os.makedirs(split_model_dir)
+        
+        split(raw_peer_dir, split_peer_dir)
+        split(raw_model_dir, split_model_dir)
+        text = colored('\n\n********************Splitting of Sentences/normalization completed!********************\n\n', 'green', attrs = ['bold'])
+        print text	
+    except:
+	text = colored('\n\n********************Splitting of Sentences/normalization Threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print text
+    
 def stanford(params):
     os.chdir(stanford_dir)
     #call(py_interp + [stanford_script, split_peer_dir, '1', base_dir])
     #call(py_interp + [stanford_script, split_model_dir, '2', base_dir])
     
     #Wasih (02-19-20) Use functions instead of calling script
-    stanfordmain(split_peer_dir, 1, base_dir)
-    os.chdir(stanford_dir)
-    stanfordmain(split_model_dir, 2, base_dir)
+    try:
+        stanfordmain(split_peer_dir, 1, base_dir)
+        os.chdir(stanford_dir)
+        stanfordmain(split_model_dir, 2, base_dir)
+        text = colored('\n\n********************Stanford Pipelining of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
+        print text	
+    except:
+	text = colored('\n\n********************Stanford Pipelining of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print text
+    
     os.chdir(base_dir)
 
 def preprocess(params):
     os.chdir(preprocess_dir)
-    call(py_interp + [preprocess_script, '1', ' '.join(py_interp)])
-    call(py_interp + [preprocess_script, '2', ' '.join(py_interp)])
+    try:
+        call(py_interp + [preprocess_script, '1', ' '.join(py_interp)])
+        call(py_interp + [preprocess_script, '2', ' '.join(py_interp)])
+        text = colored('\n\n********************Preprocessing of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
+        print text	
+    except:
+	text = colored('\n\n********************Preprocessing of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print text
     os.chdir(base_dir)
 
 def pyramid(params):
     os.chdir(pyramid_dir)
     #call(py_interp + [pyramid_script])
-    #Wasih (02-19-20) Use functions instead of calling script
-    pyramidmain()
+    try:
+        #Wasih (02-21-20) Deep Clean (folders scu, sizes, pyrs/pyramids too)
+        if not os.path.exists(os.path.join(scoring_dir, 'scu')):
+            os.makedirs(os.path.join(scoring_dir, 'scu'))
+        
+        if not os.path.exists(os.path.join(scoring_dir, 'sizes')):
+            os.makedirs(os.path.join(scoring_dir, 'sizes'))
+
+        if not os.path.exists(os.path.join(scoring_dir, 'pyrs', 'pyramids')):
+            os.makedirs(os.path.join(scoring_dir, 'pyrs', 'pyramids'))
+        
+        if not os.path.exists(os.path.join(scoring_dir,'temp')):
+            os.makedirs(os.path.join(scoring_dir, 'temp'))
+
+        if not os.path.exists(os.path.join(scoring_dir,'temp')):
+            os.makedirs(os.path.join(scoring_dir, 'temp'))
+        #Wasih (02-19-20) Use functions instead of calling script
+        pyramidmain()
+        text = colored('\n\n********************Pyramid Building of Reference summaries completed!********************\n\n', 'green', attrs = ['bold'])
+        print text	
+    except:
+	text = colored('\n\n********************Pyramid Building of Reference summaries threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print text
     os.chdir(base_dir)
 
 def score(params):
     os.chdir(scoring_dir)
-    call_s = py_interp + [scoring_script] + params
-    call(call_s)
+    try:
+        call_s = py_interp + [scoring_script] + params
+        call(call_s)
+        text = colored('\n\n********************Scoring of summaries completed!********************\n\n', 'green', attrs = ['bold'])
+    except:
+	text = colored('\n\n********************Scoring of summaries threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print text
+
     os.chdir(base_dir)
 
 def clean(params):
@@ -94,53 +150,80 @@ def clean(params):
                 error_print('Cannot delete ' + file, e2=e)
 
     def clean_splits_peers():
-        files = [os.path.join(split_peer_dir,x) for x in os.listdir(split_peer_dir) if x[0] != '.']
-        remove_files(files)
-
+        if os.path.exists(split_peer_dir):
+            files = [os.path.join(split_peer_dir,x) for x in os.listdir(split_peer_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep clean; remove split directory too
+            shutil.rmtree(split_peer_dir)
+        
     def clean_splits_model():
-        files = [os.path.join(split_model_dir,x) for x in os.listdir(split_model_dir) if x[0] != '.']
-        remove_files(files)
-
+        if os.path.exists(split_model_dir):
+            files = [os.path.join(split_model_dir,x) for x in os.listdir(split_model_dir) if x[0] != '.']
+            remove_files(files)
+           #Wasih (02-21-20) Deep clean; remove split directory too
+            shutil.rmtree(split_model_dir)
+ 
     def clean_preprocess_peers():
-        files = [os.path.join(preprocess_peers_dir,x) for x in os.listdir(preprocess_peers_dir) if x[0] != '.']
-        dirs = list(filter(os.path.isdir, files))
-        files = list(filter(os.path.isfile, files))
-        remove_files(files)
-        remove_dirs(dirs)
+        if os.path.exists(preprocess_peers_dir):
+            files = [os.path.join(preprocess_peers_dir,x) for x in os.listdir(preprocess_peers_dir) if x[0] != '.']
+            dirs = list(filter(os.path.isdir, files))
+            files = list(filter(os.path.isfile, files))
+            remove_files(files)
+            remove_dirs(dirs)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(preprocess_peers_dir)
 
     def clean_preprocess_model():
-        files = [os.path.join(preprocess_model_dir,x) for x in os.listdir(preprocess_model_dir) if x[0] != '.']
-        dirs = list(filter(os.path.isdir, files))
-        files = list(filter(os.path.isfile, files))
-        remove_files(files)
-        remove_dirs(dirs)
+        if os.path.exists(preprocess_model_dir):
+            files = [os.path.join(preprocess_model_dir,x) for x in os.listdir(preprocess_model_dir) if x[0] != '.']
+            dirs = list(filter(os.path.isdir, files))
+            files = list(filter(os.path.isfile, files))
+            remove_files(files)
+            remove_dirs(dirs)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(preprocess_model_dir)
 
     def clean_pyramid():
         remove_files( [os.path.join(pyramid_dir,'scores.txt')] )
 
     def clean_scoring_pyrs():
-        pyrs_dir = os.path.join(scoring_dir,'pyrs','pyramids')
-        files = [os.path.join(pyrs_dir,x) for x in os.listdir(pyrs_dir) if x[0] != '.']
-        remove_files(files)
+        if os.path.exists(os.path.join(scoring_dir, 'pyrs')):
+            pyrs_dir = os.path.join(scoring_dir,'pyrs','pyramids')
+            files = [os.path.join(pyrs_dir,x) for x in os.listdir(pyrs_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(os.path.join(scoring_dir, 'pyrs'))
 
     def clean_scoring_scu():
-        scu_dir = os.path.join(scoring_dir,'scu')
-        files = [os.path.join(scu_dir,x) for x in os.listdir(scu_dir) if x[0] != '.']
-        remove_files(files)
+        if os.path.exists(os.path.join(scoring_dir, 'scu')):
+            scu_dir = os.path.join(scoring_dir,'scu')
+            files = [os.path.join(scu_dir,x) for x in os.listdir(scu_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(scu_dir)
 
     def clean_scoring_sizes():
-        sizes_dir = os.path.join(scoring_dir,'sizes')
-        files = [os.path.join(sizes_dir,x) for x in os.listdir(sizes_dir) if x[0] != '.']
-        remove_files(files)
+        if os.path.exists(os.path.join(scoring_dir, 'sizes')):
+            sizes_dir = os.path.join(scoring_dir,'sizes')
+            files = [os.path.join(sizes_dir,x) for x in os.listdir(sizes_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(sizes_dir)
 
     def clean_scoring_temp():
-        temp_dir = os.path.join(scoring_dir,'temp')
-        files = [os.path.join(temp_dir,x) for x in os.listdir(temp_dir) if x[0] != '.']
-        remove_files(files)
+        if os.path.exists(os.path.join(scoring_dir, 'temp')):
+            temp_dir = os.path.join(scoring_dir,'temp')
+            files = [os.path.join(temp_dir,x) for x in os.listdir(temp_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(temp_dir)
 
     def clean_ext():
-        files = [os.path.join(ext_dir,x) for x in os.listdir(ext_dir) if x[0] != '.']
-        remove_files(files)
+        if os.path.exists(ext_dir):
+            files = [os.path.join(ext_dir,x) for x in os.listdir(ext_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(ext_dir)
 
     def clean_base():
         files = [os.path.join(base_dir,x) for x in os.listdir(base_dir) if (os.path.splitext(x)[1] == '.csv' and x[0] != '.')]
@@ -157,6 +240,10 @@ def clean(params):
     clean_scoring_temp()
     clean_ext()
     clean_base()
+    
+    #Wasih (02-21-20) Print colored text for user-friendliness
+    text = colored('Everything Cleaned!', 'yellow')
+    print text
 
 def change_py_interp(params):
     global py_interp
@@ -204,8 +291,9 @@ if __name__ == "__main__":
 	      '5': score,
 	      'c': clean,
 	      'i': change_py_interp,
+              'q': quit,
 	}
-
+        
 	while True:
 	    try:
 		user_in = raw_input(INPUT_STR)
@@ -219,5 +307,12 @@ if __name__ == "__main__":
 	    except KeyError:
 		error_print('Bad command')
 		continue
-	    choice(params)
+            #Wasih (02-21-20) Add ext dir if not present (deleted in deep cleaning)
+            if tokens[0] == 'q':
+		break
+	    else:
+	        if not os.path.exists(ext_dir):
+		    os.makedirs(ext_dir)
+
+	        choice(params)
 

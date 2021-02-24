@@ -7,3 +7,4 @@ networkx
 statistics
 pandas
 theano
+termcolor

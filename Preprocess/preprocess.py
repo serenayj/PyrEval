@@ -20,6 +20,9 @@ import sys
 from time import time
 from lib_preprocessing import *
 
+#Wasih (02-21-20) Use termcolor to display colored text; user friendly
+from termcolor import colored
+
 mode = sys.argv[1]
 
 #mode = 2
@@ -62,7 +65,11 @@ if (dir1):
 	#	for each in errors:
 	#		f.write(each)
 done = time()
-print('Time: {}'.format(str(done - timer)))
+
+text = colored(('Time: {}'.format(str(done - timer))), 'blue')
+print text
+#print('Time: {}'.format(str(done - timer)))
+
 #if int(mode) ==2:
 #	command = 'mv ../Preprocess/wise_crowd_summaries ../Pyramid/wise_crowd'
 #	os.system(command)

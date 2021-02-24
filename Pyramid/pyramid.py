@@ -1,8 +1,10 @@
+#Wasih (02-21-20) Add more structure
 
-from lib_pyramid import readFiles, make_segs, pairwise, power_law, ComposeLayer2
-from lib_pyramid import ComposeSegSets, SortDescendingWAS, BestFit, CheckConstraint1
-from lib_pyramid import localBackTracking, RecursiveSettling, ComposeLayer1, Layer, GLobalBT
-from lib_pyramid import pairwise_test
+from lib_pyramid import *
+#from lib_pyramid import readFiles, make_segs, pairwise, power_law, ComposeLayer2
+#from lib_pyramid import ComposeSegSets, SortDescendingWAS, BestFit, CheckConstraint1
+#from lib_pyramid import localBackTracking, RecursiveSettling, ComposeLayer1, Layer, GLobalBT
+#from lib_pyramid import pairwise_test
 import warnings
 from sanitycheck import * 
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
@@ -15,6 +17,9 @@ import csv
 import sys
 import pandas as pd 
 import pdb 
+
+#Wasih (02-21-20) Use termcolor for displaying important messages (user-friendly)
+from termcolor import colored
 
 """
 =========================== Pipeline =================================
@@ -292,14 +297,25 @@ def pyramidmain():
 		# print('a: {} | b: {}').format(tup[0], tup[1])  
 		# print('cost: %.2f' % cost)
 		# print('was: %.2f' % was)
-		print('Pyramid: %s' % fname)
-		print('Time: {}'.format(str(done - timer)))
+
+                text = colored(('Pyramid: %s' % fname), 'blue')
+                print text
+		#print('Pyramid: %s' % fname)
+		text = colored(('Time: {}'.format(str(done - timer))), 'blue')
+                print text
+                #print('Time: {}'.format(str(done - timer)))
 		# with open(time_records,"a") as f:
 		#     wr = csv.writer(f)
 		#     wr.writerow([str(done-timer)])
-		print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/')
-		print('Pyramid .size file stored in PyrEval/Scoring/sizes/')
-		print('Readable pyramid file stored in PyrEval/Scoring/scu/')
+		text = colored('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/', 'blue')
+                print text
+                #print('Pyramid .pyr file stored in PyrEval/Scoring/pyrs/pyramids/')
+                text = colored('Pyramid .size file stored in PyrEval/Scoring/sizes/', 'blue')
+                print text
+		#print('Pyramid .size file stored in PyrEval/Scoring/sizes/')
+		text = colored('Readable pyramid file stored in PyrEval/Scoring/scu/', 'blue')
+                print text
+                #print('Readable pyramid file stored in PyrEval/Scoring/scu/')
 		with open('../Scoring/sizes/' + fname + '.size', 'w') as f:
 		    for n,pyr in enumerate(Pyramid_info):
 			f.write(str(pyr.length) + "\n")

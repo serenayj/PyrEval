@@ -15,9 +15,10 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-from lib_scoring import sentencesFromSegmentations, SummaryGraph, buildSCUcandidateList, filename, getsegsCount
-from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid, new_getlayersize
+#Wasih (02-21-20) Add more structure 
+from lib_scoring import *
+#from lib_scoring import sentencesFromSegmentations, SummaryGraph, buildSCUcandidateList, filename, getsegsCount
+#from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid, new_getlayersize
 from scipy.stats import pearsonr as pearson
 from scipy.stats import spearmanr as spearman
 from printEsumLog import printEsumLogWrapper 
@@ -30,6 +31,11 @@ import collections
 import sys
 import pandas as pd
 
+#Wasih (02-21-20) results.csv not generating
+import ConfigParser as configparser
+
+#Wasih (02-21-20) Use termcolor to display colored text; user-friendly
+from termcolor import colored
 
 """
 ============================ Input==============================
@@ -37,12 +43,18 @@ import pandas as pd
 #dir1 = sys.argv[1]
 
 #dataset_ind = sys.argv[1]
+#Wasih (02-21-20) results.csv not generating
+config = configparser.ConfigParser()
+config.read('../parameters.ini')
 
 parser = optparse.OptionParser()
 parser.add_option('-a', '--all', action="store_true", dest="a", default=False)
-parser.add_option('-t', '--table', action="store_true", dest="t", default=False)
+parser.add_option('-t', '--table', action="store_true", dest="t", default=True)
 parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyramids")
-parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
+#parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
+#Wasih (02-21-20) results.csv not generating
+parser.add_option('-o', '--output', action="store", dest='output', default=config.get('Paths', 'OutputFile'))
+
 parser.add_option('-l', '--log', action='store', dest='log', default=False)
 parser.add_option('-m', '--model', action='store', dest='model', default=1)
 #parser.add_option('-n', '--numsmodel', action='store', dest='numsmodel', default=4)
@@ -218,11 +230,10 @@ for pyramid in pyramids:
                             w.writerow(output)
                             print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
 
-
-
-
 print '\n'
-print 'Results written to %s' % results_file
+text = colored('Results written to %s' % results_file, 'blue')
+print text
+#print 'Results written to %s' % results_file
 print '\n'
 
 

@@ -234,6 +234,10 @@ def clean(params):
     clean_preprocess_peers()
     clean_preprocess_model()
     clean_pyramid()
+    #Wasih (02-22-20) Remove results.csv
+    output_file = config.get('Paths', 'OutputFile')
+    if os.path.exists(output_file):
+        os.remove(output_file)
     clean_scoring_pyrs()
     clean_scoring_scu()
     clean_scoring_sizes()
@@ -263,24 +267,23 @@ if __name__ == "__main__":
 	# TODO: user-changeable
 
 	#Wasih (02-20-20) Make ConfigParser
-
 	py_interp = [config.get('Paths', 'PythonInterp')]
-	raw_peer_dir = os.path.join(base_dir, config.get('Paths', 'RawPeerDir'))
-	raw_model_dir = os.path.join(base_dir, config.get('Paths', 'RawModelDir'))
-	split_peer_dir = os.path.join(base_dir, config.get('Paths', 'SplitPeerDir'))
-	split_model_dir = os.path.join(base_dir, config.get('Paths', 'SplitModelDir'))
-	split_script = os.path.join(base_dir, config.get('Paths', 'SplitScript'))
-	stanford_dir = os.path.join(base_dir, config.get('Paths', 'StanfordDir'))
-	stanford_script = os.path.join(base_dir, config.get('Paths', 'StanfordScript'))
-	preprocess_dir = os.path.join(base_dir, config.get('Paths', 'PreprocessDir'))
-	preprocess_script = os.path.join(base_dir, config.get('Paths', 'PreprocessScript'))
-	preprocess_peers_dir = os.path.join(base_dir, config.get('Paths', 'PreprocessPeersDir'))
-	preprocess_model_dir = os.path.join(base_dir, config.get('Paths', 'PreprocessModelDir'))
-	pyramid_dir = os.path.join(base_dir, config.get('Paths', 'PyramidDir'))
-	pyramid_script = os.path.join(base_dir, config.get('Paths', 'PyramidScript'))
-	scoring_dir = os.path.join(base_dir, config.get('Paths', 'ScoringDir'))
-	scoring_script = os.path.join(base_dir, config.get('Paths', 'ScoringScript'))
-	ext_dir = os.path.join(base_dir, config.get('Paths', 'ExtDir'))
+	raw_peer_dir = config.get('Paths', 'RawPeerDir')
+	raw_model_dir = config.get('Paths', 'RawModelDir')
+	split_peer_dir = config.get('Paths', 'SplitPeerDir')
+	split_model_dir = config.get('Paths', 'SplitModelDir')
+	split_script = config.get('Paths', 'SplitScript')
+	stanford_dir = config.get('Paths', 'StanfordDir')
+	stanford_script = config.get('Paths', 'StanfordScript')
+	preprocess_dir = config.get('Paths', 'PreprocessDir')
+	preprocess_script = config.get('Paths', 'PreprocessScript')
+	preprocess_peers_dir = config.get('Paths', 'PreprocessPeersDir')
+	preprocess_model_dir = config.get('Paths', 'PreprocessModelDir')
+	pyramid_dir = config.get('Paths', 'PyramidDir')
+	pyramid_script = config.get('Paths', 'PyramidScript')
+	scoring_dir = config.get('Paths', 'ScoringDir')
+	scoring_script = config.get('Paths', 'ScoringScript')
+	ext_dir = config.get('Paths', 'ExtDir')
 
 	choice_dict = {
 	      '0': autorun,

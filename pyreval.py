@@ -6,10 +6,21 @@ from subprocess import call
 from splitsent import *
 from Stanford.stanford import *
 from Pyramid.pyramid import pyramidmain
-import ConfigParser as configparser
+#Wasih (02-26-20) Make conditional imports depending on Python version
+#Wasih (02-27-20) Define a variable for python version & then use it
+PYTHON_VERSION = 2
+if sys.version_info[0] == 2:
+    import ConfigParser as configparser
+else:
+    import configparser
+    PYTHON_VERSION = 3
 
 #Wasih (02-21-20) Use termcolor to display colored text
 from termcolor import colored
+
+#Wasih (02-27-20) Use imports of traceback and logging to print any exception
+import logging
+import traceback
 
 INPUT_STR = '>>> '
 
@@ -59,10 +70,12 @@ def splitsent(params):
         split(raw_peer_dir, split_peer_dir)
         split(raw_model_dir, split_model_dir)
         text = colored('\n\n********************Splitting of Sentences/normalization completed!********************\n\n', 'green', attrs = ['bold'])
-        print text	
-    except:
-	text = colored('\n\n********************Splitting of Sentences/normalization Threw an Error!********************\n\n', 'red', attrs = ['bold'])
-        print text
+        print (text)	
+    except Exception as e:
+        text = colored('\n\n********************Splitting of Sentences/normalization Threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        logging.error(traceback.format_exc())
+        #print(e)
+        print (text)
     
 def stanford(params):
     os.chdir(stanford_dir)
@@ -71,27 +84,56 @@ def stanford(params):
     
     #Wasih (02-19-20) Use functions instead of calling script
     try:
-        stanfordmain(split_peer_dir, 1, base_dir)
-        os.chdir(stanford_dir)
-        stanfordmain(split_model_dir, 2, base_dir)
-        text = colored('\n\n********************Stanford Pipelining of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
-        print text	
-    except:
-	text = colored('\n\n********************Stanford Pipelining of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
-        print text
+        try:
+            stanfordmain(split_peer_dir, 1, base_dir)
+        except Exception as e:
+            logging.error(traceback.format_exc())
+            print(e)
+            text = colored('\n\n********************Stanford Pipelining of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+            print (text)
     
+        os.chdir(stanford_dir)
+        try:
+            stanfordmain(split_model_dir, 2, base_dir)
+        except Exception as e:
+            logging.error(traceback.format_exc())
+            print(e)
+            text = colored('\n\n********************Stanford Pipelining of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+            print (text)    
+        text = colored('\n\n********************Stanford Pipelining of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
+        print (text)	
+    except Exception as e:
+        logging.error(traceback.format_exc())
+        print(e)
+        text = colored('\n\n********************Stanford Pipelining of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print (text)    
     os.chdir(base_dir)
 
 def preprocess(params):
     os.chdir(preprocess_dir)
     try:
-        call(py_interp + [preprocess_script, '1', ' '.join(py_interp)])
-        call(py_interp + [preprocess_script, '2', ' '.join(py_interp)])
+        try:
+            call(py_interp + [preprocess_script, '1', ' '.join(py_interp)])
+        except Exception as e:
+            logging.error(traceback.format_exc())
+            print(e)
+            text = colored('\n\n********************Preprocessing of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+            print (text)
+        try:
+            call(py_interp + [preprocess_script, '2', ' '.join(py_interp)])
+        except Exception as e:
+            logging.error(traceback.format_exc())
+            print(e)
+            text = colored('\n\n********************Preprocessing of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+            print (text)
+
         text = colored('\n\n********************Preprocessing of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
-        print text	
-    except:
-	text = colored('\n\n********************Preprocessing of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
-        print text
+        print (text)	
+    except Exception as e:
+        logging.error(traceback.format_exc())
+        print(e)
+        text = colored('\n\n********************Preprocessing of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print (text)
     os.chdir(base_dir)
 
 def pyramid(params):
@@ -116,10 +158,13 @@ def pyramid(params):
         #Wasih (02-19-20) Use functions instead of calling script
         pyramidmain()
         text = colored('\n\n********************Pyramid Building of Reference summaries completed!********************\n\n', 'green', attrs = ['bold'])
-        print text	
-    except:
-	text = colored('\n\n********************Pyramid Building of Reference summaries threw an Error!********************\n\n', 'red', attrs = ['bold'])
-        print text
+        print (text)	
+    except Exception as e:
+        logging.error(traceback.format_exc())
+        print(e)
+        text = colored('\n\n********************Pyramid Building of Reference summaries threw an Error!********************\n\n', 'red', attrs = ['bold'])
+
+        print (text)
     os.chdir(base_dir)
 
 def score(params):
@@ -128,9 +173,11 @@ def score(params):
         call_s = py_interp + [scoring_script] + params
         call(call_s)
         text = colored('\n\n********************Scoring of summaries completed!********************\n\n', 'green', attrs = ['bold'])
-    except:
-	text = colored('\n\n********************Scoring of summaries threw an Error!********************\n\n', 'red', attrs = ['bold'])
-        print text
+    except Exception as e:
+        logging.error(traceback.format_exc())
+        print(e)
+        text = colored('\n\n********************Scoring of summaries threw an Error!********************\n\n', 'red', attrs = ['bold'])
+        print (text)
 
     os.chdir(base_dir)
 
@@ -184,7 +231,9 @@ def clean(params):
             shutil.rmtree(preprocess_model_dir)
 
     def clean_pyramid():
-        remove_files( [os.path.join(pyramid_dir,'scores.txt')] )
+        #Wasih (02-27-20) First check if scores.txt present, only then delete it
+        if os.path.exists(os.path.join(pyramid_dir, 'scores.txt')) == True:
+            remove_files( [os.path.join(pyramid_dir,'scores.txt')] )
 
     def clean_scoring_pyrs():
         if os.path.exists(os.path.join(scoring_dir, 'pyrs')):
@@ -247,7 +296,7 @@ def clean(params):
     
     #Wasih (02-21-20) Print colored text for user-friendliness
     text = colored('Everything Cleaned!', 'yellow')
-    print text
+    print (text)
 
 def change_py_interp(params):
     global py_interp
@@ -259,63 +308,62 @@ def error_print(e1, e2=None):
         print(e2)
 
 if __name__ == "__main__":
-	print(INSTRUCTIONS)
-	config = configparser.ConfigParser()
-	config.read('parameters.ini')
-
-	base_dir = os.path.dirname(os.path.realpath(__file__))
-	# TODO: user-changeable
-
-	#Wasih (02-20-20) Make ConfigParser
-	py_interp = [config.get('Paths', 'PythonInterp')]
-	raw_peer_dir = config.get('Paths', 'RawPeerDir')
-	raw_model_dir = config.get('Paths', 'RawModelDir')
-	split_peer_dir = config.get('Paths', 'SplitPeerDir')
-	split_model_dir = config.get('Paths', 'SplitModelDir')
-	split_script = config.get('Paths', 'SplitScript')
-	stanford_dir = config.get('Paths', 'StanfordDir')
-	stanford_script = config.get('Paths', 'StanfordScript')
-	preprocess_dir = config.get('Paths', 'PreprocessDir')
-	preprocess_script = config.get('Paths', 'PreprocessScript')
-	preprocess_peers_dir = config.get('Paths', 'PreprocessPeersDir')
-	preprocess_model_dir = config.get('Paths', 'PreprocessModelDir')
-	pyramid_dir = config.get('Paths', 'PyramidDir')
-	pyramid_script = config.get('Paths', 'PyramidScript')
-	scoring_dir = config.get('Paths', 'ScoringDir')
-	scoring_script = config.get('Paths', 'ScoringScript')
-	ext_dir = config.get('Paths', 'ExtDir')
-
-	choice_dict = {
-	      '0': autorun,
-	      '1': splitsent,
-	      '2': stanford,
-	      '3': preprocess,
-	      '4': pyramid,
-	      '5': score,
-	      'c': clean,
-	      'i': change_py_interp,
-              'q': quit,
-	}
-        
-	while True:
-	    try:
-		user_in = raw_input(INPUT_STR)
-	    except (EOFError, KeyboardInterrupt):
-		sys.exit(0)
-	    tokens = user_in.split()
-	    command = tokens[0]
-	    params = tokens[1:]
-	    try:
-		choice = choice_dict[tokens[0]]
-	    except KeyError:
-		error_print('Bad command')
-		continue
-            #Wasih (02-21-20) Add ext dir if not present (deleted in deep cleaning)
-            if tokens[0] == 'q':
-		break
-	    else:
-	        if not os.path.exists(ext_dir):
-		    os.makedirs(ext_dir)
-
-	        choice(params)
+    print(INSTRUCTIONS)
+    config = configparser.ConfigParser()
+    config.read('parameters.ini')
+    base_dir = os.path.dirname(os.path.realpath(__file__))
+    # TODO: user-changeable
+    #Wasih (02-20-20) Make ConfigParser
+    py_interp = [config.get('Paths', 'PythonInterp')]
+    raw_peer_dir = config.get('Paths', 'RawPeerDir')
+    raw_model_dir = config.get('Paths', 'RawModelDir')
+    split_peer_dir = config.get('Paths', 'SplitPeerDir')
+    split_model_dir = config.get('Paths', 'SplitModelDir')
+    split_script = config.get('Paths', 'SplitScript')
+    stanford_dir = config.get('Paths', 'StanfordDir')
+    stanford_script = config.get('Paths', 'StanfordScript')
+    preprocess_dir = config.get('Paths', 'PreprocessDir')
+    preprocess_script = config.get('Paths', 'PreprocessScript')
+    preprocess_peers_dir = config.get('Paths', 'PreprocessPeersDir')
+    preprocess_model_dir = config.get('Paths', 'PreprocessModelDir')
+    pyramid_dir = config.get('Paths', 'PyramidDir')
+    pyramid_script = config.get('Paths', 'PyramidScript')
+    scoring_dir = config.get('Paths', 'ScoringDir')
+    scoring_script = config.get('Paths', 'ScoringScript')
+    ext_dir = config.get('Paths', 'ExtDir')
+    choice_dict = {
+        '0': autorun,
+        '1': splitsent,
+        '2': stanford,
+        '3': preprocess,
+        '4': pyramid,
+        '5': score,
+        'c': clean,
+        'i': change_py_interp,
+        'q': quit,
+    }    
+    while True:
+        try:
+            #Wasih (02-27-20) If python 2 => use raw_input, else use input
+            if PYTHON_VERSION == 2:
+                user_in = raw_input(INPUT_STR)
+            else:
+                user_in = input(INPUT_STR)
+        except (EOFError, KeyboardInterrupt):
+            sys.exit(0)
+        tokens = user_in.split()
+        command = tokens[0]
+        params = tokens[1:]
+        try:
+            choice = choice_dict[tokens[0]]
+        except KeyError:
+            error_print('Bad command')
+            continue
+        #Wasih (02-21-20) Add ext dir if not present (deleted in deep cleaning)
+        if tokens[0] == 'q':
+            break
+        else:
+            if not os.path.exists(ext_dir):
+                os.makedirs(ext_dir)
+            choice(params)
 

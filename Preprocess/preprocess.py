@@ -48,7 +48,7 @@ elif int(mode) == 2:
 	#dir1 = "../Preprocess/test_summaries"
 else:
 	dir1 = None
-	print "Option doesn't exist!!!"
+	print ("Option doesn't exist!!!")
 
 if (dir1):
 	summaries = sorted(list(glob.iglob(dir1 + '/*.xml')))
@@ -67,7 +67,7 @@ if (dir1):
 done = time()
 
 text = colored(('Time: {}'.format(str(done - timer))), 'blue')
-print text
+print (text)
 #print('Time: {}'.format(str(done - timer)))
 
 #if int(mode) ==2:

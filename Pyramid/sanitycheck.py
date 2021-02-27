@@ -178,7 +178,7 @@ def Iterate_Clean_Record(used,Pyramid):
 	#print allused 
 	layer1segs = [item['seg1id'] for item in Pyramid[0]]
 	segshouldberemoved = list(set(layer1segs).difference(set(allshouldbeused)))
-	print "segs should be removed: ", segshouldberemoved
+	print ("segs should be removed: ", segshouldberemoved)
 	if len(segshouldberemoved) >0:
 		candidate = copy.deepcopy(Pyramid[0])
 		for s in Pyramid[0]:
@@ -207,7 +207,7 @@ def SelectNonconflict(clist):
 	flag = False 
 	for i in range(0,len(clist)-1):
 		seg1 = clist[i]
-		print "seg1: ", seg1 
+		print ("seg1: ", seg1)
 		for j in range(1,len(clist)):
 			seg2 = clist[j]
 			if Conflict(seg1,seg2):

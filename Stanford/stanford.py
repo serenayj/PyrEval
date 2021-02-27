@@ -33,12 +33,13 @@ import sys
 def stanfordmain(path_, mode, pyrEval):
 	#Wasih (02-17-20) find Stanford CoreNLP directory
 	files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
+	print(files)	
 	coreNlpDir = ""
 	for filename in files:
-		if (os.path.isdir(filename)):
+		if (os.path.isdir(filename) and 'stanford' in filename):
 			coreNlpDir = filename
 			break
-	print coreNlpDir
+	print (coreNlpDir)
 
 	if len(sys.argv) == 5:
 		java_exec = sys.argv[4]
@@ -68,8 +69,8 @@ def stanfordmain(path_, mode, pyrEval):
 						outfile.write(line)
 
 		filename = os.path.abspath(path_)
-		print "current filename", filename
-		print mode
+		print ("current filename", filename)
+		print (mode)
 		#Wasih (02-19-20) Use functions instead of calling script (Mode is already integer)    
 		if mode == 1:
 			outpath = os.path.join(pyrEval, 'Preprocess', 'peer_summaries')
@@ -78,9 +79,9 @@ def stanfordmain(path_, mode, pyrEval):
 		#elif int(mode) == 3:
 			#outpath = pyrEval + "/Preprocess/test_summaries"
 		else:
-			print "Option doesn't exist!!!"
+			print ("Option doesn't exist!!!")
 		if outpath:
-			print outpath
+			print (outpath)
 			#Wasih (02-17-20) find Stanford CoreNLP directory	
 			os.chdir(coreNlpDir)
 			# TODO: Very clunky solution to set max heap size here

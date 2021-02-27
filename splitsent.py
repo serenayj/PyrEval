@@ -21,7 +21,15 @@ import re
 import os
 import glob 
 import sys
+#Wasih (02-25-20) Incorporate more things like abbreviations in sentence split
+import ast
 
+#Wasih (02-26-20) Make conditional imports depending on Python version
+if sys.version_info[0] == 2:
+        import ConfigParser as configparser
+else:
+        import configparser
+        
 #Wasih (02-19-20) Use functions instead of calling script
 #inpath = sys.argv[1]
 #outpath = sys.argv[2]
@@ -45,21 +53,44 @@ def removesymbols(text):
 	ele = ' '.join(rmv0)
 	return ele
 
+#Wasih (02-25-20) Incorporate normalization in sentence split
+def normalize(content, config):
+	'''
+	Replace specific words in sentences (according to config file) by their normalized versions.
+	Then return the final string
+	'''
+	abvs = config.get('Normalization', 'Abbs')
+	#abvs has the structure of a dictionary with lists of values
+	#use ast (abstract syntax tree) to parse it to a dictionary first
+	abvs = ast.literal_eval(abvs)
+	
+	
+	
+
+
+
+
+
 # Modified code to fix issues with not getting all the files and trying to open split folder as file
 
 #Wasih (02-19-20) Use functions instead of calling script
 def split(inpath, outpath):
+	#Wasih (02-25-20) Read in normalization schemes and parse it	
+	config = configparser.ConfigParser()
+	config.read('parameters.ini')
+	
 	for filename in glob.glob(inpath + '/*'):
 		# Added a check to make sure that the script does not try to 			open a directory as a file
 		if os.path.isdir(filename):
 			continue
 		# Since there is no error, the script runs for all files and 			so, all files are split
 		content = open(filename).read()
+		#content = normalize(content, config)
 		content = removesymbols(content)
 		sent_list = sent_tokenize(content)
 		slash = filename.rfind('/')
 		fn = outpath+filename[slash:]
-		with open(fn,'wb') as wf:
+		with open(fn,'w') as wf:
 			for i in sent_list:
 				wf.write(i+'\n')
 		# Old code for reference

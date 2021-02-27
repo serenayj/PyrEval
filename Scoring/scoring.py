@@ -74,14 +74,14 @@ pyramids = list(glob.iglob(pyramid_path + '/*.pyr'))
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 numsmodel = len(list(glob.iglob('../Preprocess/wise_crowd_summaries/*.xml')))
 #numsmodel = 5
-print "Numbers of contributors: ", numsmodel
+print ("Numbers of contributors: ", numsmodel)
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
 #pyramid = sys.argv[1]
 #for testing
 # pyramids = list(glob.iglob('pyrs/pyramids/*'))
 #pyramids = list(glob.iglob('pyrs/pyramids/*'))
 for pyr in pyramids:
-    print pyr
+    print (pyr)
 
 
 
@@ -198,7 +198,7 @@ for pyramid in pyramids:
     #print type(raw_scores)
     #print "raw_scores: ", raw_scores
     scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores]
-    print "scores ", scores
+    print ("scores ", scores)
     if print_table:
         #results_f = 
         ### For DUC05
@@ -206,15 +206,15 @@ for pyramid in pyramids:
         #results_file = "../311-6-1-results/"+str(items[1][1:])+"_"+str(items[2][1:])+"_"+str(items[3][1:])+"-raw.csv"
         ## FOr Duc 05
         #results_file = "results-raw.csv"
-        print "Will write into results file!! ", results_file
+        print ("Will write into results file!! ", results_file)
         # f = open(results_file, 'w')
         # f.close()
         with open(results_file, 'a') as f:
             w = csv.writer(f)
             w.writerow([pyramid_name])
-            print pyramid_name
+            print (pyramid_name)
             w.writerow(['Summary'] + score_tables)
-            print '{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehensive score")
+            print ('{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehensive score"))
             for n, summary in enumerate(summaries):
                 #w.writerow([filename(summary)] + [s[n] for s in scores])
                 if os.path.isdir(summary):
@@ -225,16 +225,16 @@ for pyramid in pyramids:
                             summary_slash= fn.rfind('/') + 1
                             summary_dot = fn.rfind('.')
                             summary_name = fn[summary_slash:summary_dot]
-                            print "Raw score for summary ", summary_name, ": ", raw_scores[summary_name]
+                            print ("Raw score for summary ", summary_name, ": ", raw_scores[summary_name])
                             output = [summary_name, raw_scores[summary_name],quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]]
                             w.writerow(output)
-                            print '{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name])
+                            print ('{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]))
 
-print '\n'
+print ('\n')
 text = colored('Results written to %s' % results_file, 'blue')
-print text
+print (text)
 #print 'Results written to %s' % results_file
-print '\n'
+print ('\n')
 
 
 

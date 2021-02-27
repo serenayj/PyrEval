@@ -279,8 +279,8 @@ def make_segs(text, vecs):
             i = i[4].strip('\n').replace('[', '').replace(']', '')
             i = [float(j) for j in i.split(',')]
             vectors.append(i)
-    print len(vectors)
-    print len(content)
+    print (len(vectors))
+    print (len(content))
     ccontent = [] 
     for n, each in enumerate(content):
         index = '.'.join(each[:4])
@@ -340,7 +340,7 @@ def pairwise(segmentpool, N, threshold):
                 result.append( {'seg1id': segment.id, 'seg2id': seg.id, 'seg1': segment.seg, 'seg2': seg.seg, 'WAS': sc*2})
     Q3 = np.percentile(np.asarray(scores), threshold)
     fifty = np.percentile(np.asarray(scores), 50)
-    print fifty
+    print (fifty)
     #print('\tCosine Score for Quantile: %.3f' % Q3)
     rresult = []
     for res in result:

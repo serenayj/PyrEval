@@ -53,8 +53,8 @@ for fname in glob.iglob(path_ + '/*'):
 
 
 for filename in glob.glob(os.path.join(path_, '')):
-	print "current filename", filename
-	print mode
+	print ("current filename", filename)
+	print (mode)
 	if int(mode) == 1:
 		outpath = pyrEval + "/Preprocess/peer_summaries"
 	elif int(mode) == 2:
@@ -62,9 +62,9 @@ for filename in glob.glob(os.path.join(path_, '')):
 	#elif int(mode) == 3:
 		#outpath = pyrEval + "/Preprocess/test_summaries"
 	else:
-		print "Option doesn't exist!!!"
+		print ("Option doesn't exist!!!")
 	if outpath:
-		print outpath
+		print (outpath)
 		command2 = "java -cp '*' edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file "+filename+" -outputDirectory "+outpath
 		os.system(command2)
 

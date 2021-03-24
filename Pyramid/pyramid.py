@@ -155,7 +155,8 @@ def pyramidmain():
 					#print(layer)
 				# Sorting Algorithm for Segment Sets and Yield Best Fitting Layer
 				layer = SortDescendingWAS(layer)	
-				
+				layer = BestFit(layer, n, segmentpool, y_n)
+
 				# Set Properties of Layer Object
 				length = len(layer)
 				obj = Layer(n)

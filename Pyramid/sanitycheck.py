@@ -3,6 +3,13 @@ from operator import itemgetter
 import copy
 import pandas as pd
 
+#Wasih (02-28-21) Use conditional statements for python3
+import sys
+
+PYTHON_VERSION = 2
+if sys.version_info[0] == 3:
+	PYTHON_VERSION = 3
+
 
 ### Check which layer the segment committed to 
 def check_problem(segmentpool, Pyramid):
@@ -15,11 +22,18 @@ def check_problem(segmentpool, Pyramid):
 			#keys = ['seg%did' % (p + 1) for p in range(_)]
 			for s in allsegs:
 				if s in item.values():
-					# The actual sgment id we are looking for 
-					if belongs.has_key(s):
-						belongs[s].append(_)
+					# The actual sgment id we are looking for
+					#Wasih (02-28-21) Python3 doesn't support has_key, use in instead
+					if PYTHON_VERSION == 2:
+						if belongs.has_key(s):
+							belongs[s].append(_)
+						else:
+							belongs[s] = [_]
 					else:
-						belongs[s] = [_]
+						if s in belongs:
+							belongs[s].append(_)
+						else:
+							belongs[s] = [_]						
 				else:
 					continue 
 
@@ -87,6 +101,8 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 		for i2 in range(_,len(new)):
 			item2 = new[i2]
 			weight2 = get_weight(item2)
+			#Wasih (02-28-21) Convert weight2 to integer
+			weight2 = int(weight2)
 			keys2 = ['seg%did' % (p + 1) for p in range(weight2)]
 			used2 = [item2[k] for k in keys2]
 			#print "segment set 2: ", used2 
@@ -134,6 +150,8 @@ def Pickup_used(Pyramid):
 	for _ in range(len(Pyramid),0,-1):
 		for item in Pyramid[_-1]:
 			weight = get_weight(item)
+			#Wasih (02-28-21) convert weight to integer 
+			weight = int(weight)
 			keys = ['seg%did' % (p + 1) for p in range(weight)]
 			used1 = [item[k] for k in keys]
 			alls.extend(used1)
@@ -160,6 +178,8 @@ def Build_All_Record(segmentpool, Pyramid):
 	for _ in range(len(Pyramid),1,-1):
 		for item in Pyramid[_-1]:
 			weight = get_weight(item)
+			#Wasih 02-28-21 Convert weight to integer
+			weight = int(weight)
 			keys = ['seg%did' % (p + 1) for p in range(weight)]
 			used1 = [item[k] for k in keys]
 			used.extend(Extract_Segset(data_seg,used1))
@@ -222,12 +242,28 @@ def BuildSentenceRecord(data):
 	record = {}
 	for r,v in data.iterrows():
 		doc = v["Doc"]
+		#Wasih (02-28-21) Python3 doesn't support has_key, use in instead
+		if PYTHON_VERSION == 2:
+			if record.has_key(doc):
+				if v['Sent'] not in record:
+					record[doc].append(v['Sent'])
+			else:
+				record[doc] = [v["Sent"]]
+
+		else:
+			if doc in record:
+				if v['Sent'] not in record:
+					record[doc].append(v['Sent'])
+			else:
+				record[doc] = [v["Sent"]]
+	return record
+'''
 		if record.has_key(doc):
 			if v['Sent'] not in record:
 				record[doc].append(v['Sent'])
 		else:
 			record[doc] = [v["Sent"]]
-	return record
+'''
 
 # test is a list of df from all used segments  
 def CheckleftSentence(sentrecord,test,data):

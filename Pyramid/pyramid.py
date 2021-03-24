@@ -20,8 +20,16 @@ import sys
 import pandas as pd 
 import pdb 
 
+import ast
+
 #Wasih (02-21-20) Use termcolor for displaying important messages (user-friendly)
 from termcolor import colored
+
+#Wasih (02-27-20) Use conditional code according to Python Version
+
+PYTHON_VERSION = 2
+if sys.version_info[0] == 3:
+	PYTHON_VERSION = 3
 
 """
 =========================== Pipeline =================================
@@ -52,7 +60,6 @@ def pyramidmain():
 	segpool = make_segs(segs, vecs)
 	print (len(segpool))
 	pairwise_test(segpool, N)
-
 	allsegs = [i.id for i in segpool]
 
 	#time_records = str(N)+"-models-time.csv"
@@ -88,7 +95,6 @@ def pyramidmain():
 	#tups = [(175,2.0)]
 	#tups = [(len(segpool)+10,3)]
 
-
 	for threshold in thresholds:
 		for tup in tups:
 		#print('Using Threshold {}\n\ta = {} and b = {}'.format(threshold, tup[0], tup[1]))
@@ -97,8 +103,8 @@ def pyramidmain():
 			segmentpool_length = len(segmentpool)
 			
 			# Build Pairwise Similarity Set
-			BigSet2 = pairwise(segmentpool, N, threshold)
-			
+			BigSet2 = pairwise(segmentpool, N, threshold)			
+
 			# For getting the coefficients combinations 
 			#bf_dict = BruteForceLaw(len(segmentpool),5)
 			bf_dict = tup
@@ -109,30 +115,56 @@ def pyramidmain():
 
 			# N is the number of summaries used, indicates number of layers in pyramid
 			# Pyramid is a list of lists and Pyramid_info is a list of Layer() objects
-			Pyramid = range(N)
-			Pyramid_info = range(N)
+			
+			#Wasih (02-27-20) Use lists in python3 instead of range (same thing)
+			if PYTHON_VERSION == 2:
+				Pyramid = range(N)
+				Pyramid_info = range(N)
+			else:
+				Pyramid = []
+				Pyramid_info = []
+				for i in range(N):
+					Pyramid.append(i)
+					Pyramid_info.append(i)	
 
 			# Build the first N -> 2 Layers of the Pyramid
 			for n in range(N,1, -1):
-				#print "Building Layer %d" % n
+				
+				#Wasih (02-28-21) Debug prints
 				y_n = power_law(n, bf_dict)
 				# If we are building the second layer of the Pyramid
 				if n == 2:
 					layer = ComposeLayer2(BigSet2, segmentpool)
+					#for seg in segmentpool:
+					#	print(seg.id, ' : ', seg.status, ' : ', seg.commit_invalid)
+											
+					#f = open('/home/wasih7/PyrEval/car.txt', 'r')
+					#st = f.read()
+					#st = st.strip()
+					#layer = ast.literal_eval(st)
+					#print(layer)
 				# Else, build pyramid using Clique Algorithm
 				else:
+					#if n != 3:
 					layer = ComposeSegSets(BigSet2, segmentpool, n)
-
+					#else:					
+					#	f = open('/home/wasih7/PyrEval/bi.txt', 'r')
+					#	st = f.read()
+					#	st = st.strip()
+					#	layer = ast.literal_eval(st)
+					#print(layer)
 				# Sorting Algorithm for Segment Sets and Yield Best Fitting Layer
-				layer = SortDescendingWAS(layer)
-				layer = BestFit(layer, n, segmentpool, y_n)
-
-				# Set Properties of Layer Object    
+				layer = SortDescendingWAS(layer)	
+				
+				# Set Properties of Layer Object
 				length = len(layer)
 				obj = Layer(n)
 				obj.length = length
 				obj.size = length * n
 				obj.capacity = y_n
+
+				#Wasih (03-01-21) Debug prints
+				#print('----> ', layer)				
 
 				# Assign objects to lists
 				Pyramid[n-1] = layer
@@ -141,7 +173,7 @@ def pyramidmain():
 				# Check whether the given layer respects contraints
 				constraint = CheckConstraint1(length,n, N,Pyramid_info)
 				obj.constraint1 = constraint
-
+				
 				# If we are looking at any layer between N-1 and 2 and the contraint is False...
 				if (constraint == False) and (n != N):
 					#print("\tCalling Local Backtracking")
@@ -158,7 +190,7 @@ def pyramidmain():
 						
 				# Settle Nodes Recursively because some layers were changed in Local Backtracking
 				segmentpool = RecursiveSettling(Pyramid, segmentpool)
-
+				
 			# Build Layer 1
 			#print "Building Layer 1"
 			bs1, segmentpool = ComposeLayer1(segmentpool)
@@ -169,12 +201,24 @@ def pyramidmain():
 			bottom.constraint1 = True
 			bottom.capacity = power_law(1, bf_dict)
 			Pyramid_info[0] = bottom
-
+			
+			#Wasih (02-28-21) Debug prints
+			#print('Wasih!')
+			
 			# print('Active Segments: %d' % len([segment for segment in segmentpool if # segment.status == False]))
 			# Global Backtracking settles contraints problems in all Layers
-			segmentpool, Pyramid_info, Pyramid = GLobalBT(Pyramid_info, Pyramid, N, segmentpool, bf_dict, BigSet2)
+			t = time()
+			#print(bf_dict, '$')
+			#print(Pyramid, '$')			
 
+
+			segmentpool, Pyramid_info, Pyramid = GLobalBT(Pyramid_info, Pyramid, N, segmentpool, bf_dict, BigSet2)
+			
+			#Wasih (02-28-21) Debug prints
 			flag, problem, belongs = check_problem(segmentpool, Pyramid)
+
+			#Wasih (02-28-21) Debug prints
+			
 			if flag:
 				print ("======Trigger Sanity Check =======")
 				new = detail_check(problem,belongs, Pyramid)
@@ -184,9 +228,14 @@ def pyramidmain():
 		### Check if there is any segment that is not supposed to be used but gets adopted
 		segshouldbeused_df = Build_All_Record(segmentpool, Pyramid)
 		Pyramid[0] = Iterate_Clean_Record(segshouldbeused_df,Pyramid)  
+		#print(Pyramid[0])		
+
 		alls = Pickup_used(Pyramid)
 		# Here is 
 		missings = Update_Record(data_record,alls)
+		
+		#Wasih (02-28-21) Debug prints
+		
 		if len(missings) >0:
 			print ("Found missing segments: ", missings) 
 			for each in missings:
@@ -196,15 +245,8 @@ def pyramidmain():
 
 		# Update pyramid information for the cleaned layer1 
 		Pyramid_info[0].length = len(Pyramid[0]) 
-		print ("Current layer1: ", Pyramid[0])
-
-
-		print (Pyramid_info)
-		print (Pyramid)
 		# DONE!
 		done = time()
-
-		
 		
 		'''
 		================= Format Output =================

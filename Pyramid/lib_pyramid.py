@@ -192,6 +192,7 @@ def CheckConstraint1(layern_length,n, N,Pyramid_info):
         else:
             return False    
     else:
+        #print('WAS;;;;;, ', layern_length, Pyramid_info[n].length)
         upper = Pyramid_info[n]
         if upper.length >= layern_length:
             return False
@@ -443,9 +444,14 @@ def BestFit(layern, n, segmentpool,capacity):
     layer_copy = copy.deepcopy(layern)
     if n == 4 and capacity == 1:
         capacity = 2
+    
     while (len(segments_in_layer) + 1 < capacity) and (len(layer_copy) != 0):
             # While Condition : We are below (or at) capacity and we arent searching an empty set
         max_seg_set = layer_copy[0]
+        #if n == 2:
+            #print(max_seg_set)
+            #print (capacity)
+            #print(layer_copy)	
         segments_in_layer.append(max_seg_set)
         seg_ids_we_cant_use = [max_seg_set['seg%did' % (p + 1)] for p in range(n)]
         docs_and_segs = {seg_id.split('.')[0]: [seg_id.split('.')[1], seg_id.split('.')[2]] for seg_id in seg_ids_we_cant_use}
@@ -453,8 +459,14 @@ def BestFit(layern, n, segmentpool,capacity):
         to_remove = set()
         ids_to_remove = set(max_seg_set['seg%did' % (p + 1)] for p in range(n))
         layer_copy.remove(max_seg_set)
+        #print('SADAA')
+        #print(len(layer_copy))
         layer_set = set()
-        for seg_set in layern[1:]:
+        #print(tuple(layer_copy[0].values()))
+        #Wasih: 03-21-21 Possible bug: layern.values() is not the same as layer_copy.values()
+        #for seg_set in layern[1:]:
+        for seg_set in layer_copy:
+            #print(tuple(seg_set.values()))
             layer_set.add(tuple(seg_set.values()))
             # We Should Not start at the maximum
             seg_ids = [seg_set['seg%did' % (p + 1)] for p in range(n)]
@@ -470,16 +482,23 @@ def BestFit(layern, n, segmentpool,capacity):
                         else:
                             to_remove.add(tuple(seg_set.values()))
                             ids_to_remove.add(seg_id)
+        #print(len(to_remove))
         if len(to_remove) == 0:
             # If there is nothing to remove, and the length of the layer_copy is not empty, we need to break
             layer_copy = layer_copy[1:]
         else:
             layer_set = layer_set.difference(to_remove)
+            #print('GOOOO')
+            #for seg_set in layer_copy:
+            #    print(tuple(seg_set.values()))
             layer_copy = [seg_set for seg_set in layer_copy if tuple(seg_set.values()) in layer_set]
-
+        #print(layer_set)
         for segment in segmentpool:
             if segment.id in ids_to_remove:
                 segment.commit_invalid = True
+
+        #print(layer_copy)
+
     for seg_set in segments_in_layer:
         seg_ids = [seg_set['seg%did' % (p + 1)] for p in range(n)]
         seg_ph = ['seg%did' % (p + 1) for p in range(n)]
@@ -487,6 +506,8 @@ def BestFit(layern, n, segmentpool,capacity):
             seg = findSegFromID(seg_id, segmentpool)
             seg_num = seg_ph[j][3]
             seg_set['seg%s' % seg_num] = seg
+    #print('Car')
+    #print(segments_in_layer)
     return segments_in_layer
 
 
@@ -516,7 +537,12 @@ def segSetTrueInFakePool(SegSet, fakepool):
 def execute_solutions(BigSet2, fakepool, n, segmentpool, bf_dict):
     newFullyCompletedCurrentLayer = ComposeSegSets(BigSet2, fakepool, n+1)
     newFullyCompletedCurrentLayer = SortDescendingWAS(newFullyCompletedCurrentLayer) 
-    current = BestFit(newFullyCompletedCurrentLayer, n+1, segmentpool, bf_dict)
+    
+    #Wasih (02-28-21) Possible Typo, bf_dict is a tuple, calculate power law here
+    y_n = power_law(n + 1, bf_dict)
+    current = BestFit(newFullyCompletedCurrentLayer, n+1, segmentpool, y_n)
+
+    #current = BestFit(newFullyCompletedCurrentLayer, n+1, segmentpool, bf_dict)
     return current
 def getSolutionMap(direction, fakepool, Pyramid, n, BigSet2, Pyramid_info, N, segmentpool, bf_dict):
     solution_map = []
@@ -526,7 +552,11 @@ def getSolutionMap(direction, fakepool, Pyramid, n, BigSet2, Pyramid_info, N, se
         fakepool = HypSetFree(seg_set, fakepool)
         newLayer = ComposeSegSets(BigSet2, fakepool, n+1)
         newLayer = SortDescendingWAS(newLayer)
-        newLayer = BestFit(newLayer, n+1, segmentpool, bf_dict)
+        #Wasih (02-28-21) Possible Typo, bf_dict is a tuple, calculate power law here
+        y_n = power_law(n + 1, bf_dict)
+        newLayer = BestFit(newLayer, n+1, segmentpool, y_n)
+        
+        #newLayer = BestFit(newLayer, n+1, segmentpool, bf_dict)
         was = BottomUPWAS(newLayer,n+1, N, Pyramid_info)
         temp_solution[0] = seg_set; temp_solution[1] = was; temp_solution[2] = direction
         fakepool = segSetTrueInFakePool(seg_set, fakepool)
@@ -714,9 +744,16 @@ def GLobalBT(Pyramid_info,Pyramid, N, segmentpool, bf_dict, BigSet2):
         current = Pyramid_info[ind]
         #print(current)
         #print(current.constraint1)
+        #Wasih (02-28-21) Debug prints
+        #print('GWasih 1')
+        
         if current.constraint1 == False:
+            #print('Yellow')
+            #print(ind)
             try:
                 flag, segmentpool, Pyramid, Pyramid_info, current = localBackTracking(Pyramid[ind], ind+1, segmentpool, Pyramid_info, Pyramid, BigSet2, N, bf_dict)
+                #Wasih (02-28-21) Debug prints
+                #print('GWasih 2')
                 layer = current
                 length = len(layer)
                 obj = Pyramid_info[ind]
@@ -727,6 +764,7 @@ def GLobalBT(Pyramid_info,Pyramid, N, segmentpool, bf_dict, BigSet2):
                 segmentpool = SettleNodes(layer, ind + 1, segmentpool)
             except ValueError:
                 pass
+        print('Hello')
     # Second, if there is any segment marked as False, feed them into layer1 
     for seg in segmentpool:
         if seg.status == False:
@@ -735,6 +773,8 @@ def GLobalBT(Pyramid_info,Pyramid, N, segmentpool, bf_dict, BigSet2):
             Pyramid[0].append(item)
         # Settle all the segments 
         segmentpool = SettleNodes(Pyramid[0], 1, segmentpool)
+        #Wasih (02-28-21) Debug prints
+        #print(seg, 'GWasih 3')
         obj = Pyramid_info[0]
         obj.length = len(Pyramid[0])
         obj.size = obj.length * 1

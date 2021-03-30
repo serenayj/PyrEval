@@ -6,6 +6,7 @@ from subprocess import call
 from splitsent import *
 from Stanford.stanford import *
 from Pyramid.pyramid import pyramidmain
+
 #Wasih (02-26-20) Make conditional imports depending on Python version
 #Wasih (02-27-20) Define a variable for python version & then use it
 PYTHON_VERSION = 2
@@ -95,13 +96,14 @@ def stanford(params):
         os.chdir(stanford_dir)
         try:
             stanfordmain(split_model_dir, 2, base_dir)
+            text = colored('\n\n********************Stanford Pipelining of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
+            print (text)
         except Exception as e:
             logging.error(traceback.format_exc())
             print(e)
             text = colored('\n\n********************Stanford Pipelining of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
             print (text)    
-        text = colored('\n\n********************Stanford Pipelining of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
-        print (text)	
+       	
     except Exception as e:
         logging.error(traceback.format_exc())
         print(e)
@@ -114,6 +116,7 @@ def preprocess(params):
     try:
         try:
             call(py_interp + [preprocess_script, '1', ' '.join(py_interp)])
+            #prepro('1')
         except Exception as e:
             logging.error(traceback.format_exc())
             print(e)
@@ -121,14 +124,15 @@ def preprocess(params):
             print (text)
         try:
             call(py_interp + [preprocess_script, '2', ' '.join(py_interp)])
+            #prepro('2')
+            text = colored('\n\n********************Preprocessing of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
+            print (text)
         except Exception as e:
             logging.error(traceback.format_exc())
             print(e)
             text = colored('\n\n********************Preprocessing of Sentences threw an Error!********************\n\n', 'red', attrs = ['bold'])
             print (text)
-
-        text = colored('\n\n********************Preprocessing of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
-        print (text)	
+	
     except Exception as e:
         logging.error(traceback.format_exc())
         print(e)
@@ -274,6 +278,13 @@ def clean(params):
             #Wasih (02-21-20) Deep Clean; remove folders too
             shutil.rmtree(ext_dir)
 
+    def clean_log():
+        if os.path.exists(log_dir):
+            files = [os.path.join(log_dir,x) for x in os.listdir(log_dir) if x[0] != '.']
+            remove_files(files)
+            #Wasih (02-21-20) Deep Clean; remove folders too
+            shutil.rmtree(log_dir)
+
     def clean_base():
         files = [os.path.join(base_dir,x) for x in os.listdir(base_dir) if (os.path.splitext(x)[1] == '.csv' and x[0] != '.')]
         remove_files(files)
@@ -292,6 +303,7 @@ def clean(params):
     clean_scoring_sizes()
     clean_scoring_temp()
     clean_ext()
+    clean_log()
     clean_base()
     
     #Wasih (02-21-20) Print colored text for user-friendliness
@@ -331,6 +343,7 @@ if __name__ == "__main__":
     scoring_dir = config.get('Paths', 'ScoringDir')
     scoring_script = config.get('Paths', 'ScoringScript')
     ext_dir = config.get('Paths', 'ExtDir')
+    log_dir = config.get('Paths', 'LogDir')
     choice_dict = {
         '0': autorun,
         '1': splitsent,

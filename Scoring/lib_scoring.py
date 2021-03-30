@@ -82,7 +82,7 @@ class SCU():
     def averageSimilarity(self, segment_embedding):
         normalizer = len(self.embeddings)
         if normalizer == 0:
-            print self.id 
+            print (self.id) 
         similarity = 0
         segment_embedding = np.array([segment_embedding])
         segment_embedding.reshape(-1,1)
@@ -212,6 +212,7 @@ class SummaryGraph():
 """
 
 def getSoup(fname):
+    print(fname)
     handler = open(fname, 'r')
     soup = Soup(handler, 'lxml')
     return soup
@@ -372,12 +373,13 @@ def processResults(scu_and_segments, independentSet):
     segment_ids = []
     for scu, segments in scu_and_segments.items():
         segment_ids += segments
-        for segment in segments.keys():
+        for segment in list(segments):
             if segment in chosen:
                 del segments[segment] 
         if len(segments) != 0:
             median = statistics.median_high(segments.values())
-        for segment, value in segments.items():
+        for segment in list(segments):
+            value = segments[segment]
             if value == median:
                 segment_and_scu[segment] = scu
                 #print(segment, scu)
@@ -391,7 +393,7 @@ def scusBySentences(segment_scu):
     sentences = {}
     for segment, scu in segment_scu.items():
         sentence_id = segment.split('&')[1]
-        if sentence_id in sentences.keys():
+        if sentence_id in list(sentences):
             sentences[sentence_id][segment] = scu
         else:
             sentences[sentence_id] = {}
@@ -401,7 +403,8 @@ def scusBySentences(segment_scu):
 def getScore(sentences, scus):
     sentence_scores = {}
     matched_cus = 0
-    for sentence, segments in sentences.items():
+    for sentence in list(sentences):
+        segments = sentences[sentence]
         lil_score = 0
         for segment, scu in segments.items():
             for s in scus:
@@ -451,7 +454,7 @@ def new_getlayersize(sizefile, numsmodel):
     count_by_weight = {}
     for ind in range(len(lines),0,-1):
         nums = int(lines[len(lines)-ind].strip()) * ind 
-        print "layer: ", ind, " nums of SCU: ", int(lines[len(lines)-ind].strip())
+        print ("layer: ", ind, " nums of SCU: ", int(lines[len(lines)-ind].strip()))
         count_by_weight[ind] = int(lines[len(lines)-ind].strip()) 
         count += nums 
     avg = count / numsmodel
@@ -545,30 +548,30 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
     
     handler = open(log_file, 'w') if log_file else None
 
-    print '\n' + '#'*(w/2 - summary_name_len + 2) + '  ' + summary_name + '  ' + '#'*(w/2 - summary_name_len + 2) + '\n'
+    print ('\n' + '#'*(w/2 - summary_name_len + 2) + '  ' + summary_name + '  ' + '#'*(w/2 - summary_name_len + 2) + '\n')
     handler.write('\n' + '#'*(w/2 - summary_name_len + 2) + '  ' + summary_name + '  ' + '#'*(w/2 - summary_name_len + 2) + '\n') if handler else None
-    print 'Pyramid: %s' % pyramid_name
+    print ('Pyramid: %s' % pyramid_name)
     handler.write('Pyramid: %s\n' % pyramid_name) if handler else None
     
-    print 'No. Segments in Summary: {}'.format(segment_count)
+    print ('No. Segments in Summary: {}'.format(segment_count))
     handler.write('No. Segments in Summary: {}\n'.format(segment_count)) if handler else None
 
-    print '{:>17}: {:>10}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}'.format('Raw', score, 'Quality', quality, 'Coverage', coverage, 'Comprehensive', comprehension)
+    print ('{:>17}: {:>10}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}'.format('Raw', score, 'Quality', quality, 'Coverage', coverage, 'Comprehensive', comprehension))
     handler.write('{:>17}: {:>10}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n{:>17}: {:>10.3f}\n'.format('Raw', score, 'Quality', quality, 'Coverage', coverage, 'Comprehensive', comprehension)) if handler else None
 
-    print '{:>17}: \t{}\n'.format('Content Unit List', cu_line)
+    print ('{:>17}: \t{}\n'.format('Content Unit List', cu_line))
     handler.write( '{:>17}: \t{}\n'.format('Content Unit List', cu_line)) if handler else None
 
 
 
     for s in newSegmentList:
-        print "Sentence: %d, Segmentation %d" % (s.sentence_id, s.segment_id)
+        print ("Sentence: %d, Segmentation %d" % (s.sentence_id, s.segment_id))
         handler.write( "\nSentence: %d, Segmentation %d\n" % (s.sentence_id, s.segment_id)) if handler else None
 
 
         for seg_index, text in s.text.items():
             if seg_index in s.scu_text_pairs.keys():
-                print "\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]])) 
+                print ("\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))) 
 
                 handler.write("\n\tSegment: %d | Content Unit: %d [Weight: %d]" % (seg_index, s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))) if handler else None
                 #handler.write("\n\t")
@@ -579,27 +582,27 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
                 content_unit = scu_labels[s.scu_text_pairs[seg_index]]
                 for n, cu_part in enumerate(content_unit):
                     if n == 0:
-                        print wrap_string(cu_part, '\tContent Unit: ............ (%d) ' % (n+1))
+                        print (wrap_string(cu_part, '\tContent Unit: ............ (%d) ' % (n+1)))
                         #handler.write(wrap_string(cu_part, '\n\tContent Unit: ............ (%d) \n' % (n+1))) if handler else None
                         handler.write('\n\tContent Unit: ............ (%d)' % (n+1)+ " "+cu_part+"\n")
 
                     else:
-                        print wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) "  % (n+1))                            
+                        print (wrap_string(cu_part, "\t" + " "*13 + " ............ (%d) "  % (n+1)))                            
                         #handler.write(wrap_string(cu_part, "\n\t" + " "*13 + " ............ (%d) "  % (n+1))) if handler else None 
                         handler.write("\n\t" + " "*13 + " ............ (%d) "  % (n+1)+ " "+cu_part)
             else:
-                print "\tSegment: %d | Content Unit: None" % seg_index 
+                print ("\tSegment: %d | Content Unit: None" % seg_index) 
                 handler.write("\n\tSegment: %d | Content Unit: None\n" % seg_index) if handler else None
 
                 print(wrap_string(s.text[seg_index].strip(), '\tSegment: ................. '))
                 handler.write(wrap_string(s.text[seg_index].strip(), '\n\tSegment: ................. \n')) if handler else None
 
-        print "\n"
-    print "\n"
+        print ("\n")
+    print ("\n")
     handler.write("\n\n") if handler else None
-    print "="*w
+    print ("="*w)
     handler.write("="*w) if handler else None
-    print "\n"
+    print ("\n")
     handler.write("\n") if handler else None
 
     handler.close() 

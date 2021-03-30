@@ -6,8 +6,8 @@ from lib_preprocessing import getRealName
 
 
 def SIF_master(segfile,cleanfile,directory,summ_ind):
-	print "segfile: ", segfile
-	print "clean file: ", cleanfile
+	print ("segfile: ", segfile)
+	print ("clean file: ", cleanfile)
 	#cleanfile = cleanfile+".ls"
 	class params(object):
 	    def __init__(self):
@@ -56,12 +56,12 @@ def SIF_master(segfile,cleanfile,directory,summ_ind):
 			lines = indexes[ind]+str(list(embedding[ind]))
 			matches.append(lines)
 	else:
-		print "length doesn't match!! Check if there is empty line!!"
+		print ("length doesn't match!! Check if there is empty line!!")
 
 	#fname = directory +'/'+str(summ_ind)+ '/' + getRealName(segfile) + '.ls'
 	#fname = directory +'/'+str(summ_ind)+ '/' + segfile + '.ls'
 	fname = directory +'/'+str(summ_ind)+ '/' +getRealName(segfile)
-	print fname 
+	print (fname)
 	with open(fname+".ls", "w") as file:
 		for item in matches:
 			file.write(item+"\n")

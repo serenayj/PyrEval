@@ -764,7 +764,7 @@ def GLobalBT(Pyramid_info,Pyramid, N, segmentpool, bf_dict, BigSet2):
                 segmentpool = SettleNodes(layer, ind + 1, segmentpool)
             except ValueError:
                 pass
-        print('Hello')
+        #print('Hello')
     # Second, if there is any segment marked as False, feed them into layer1 
     for seg in segmentpool:
         if seg.status == False:

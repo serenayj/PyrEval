@@ -46,14 +46,14 @@ def getRealName(fname):
 #	os.system(mv)
 
 def DecomposeSummary(fname, summ_ind, dir1):
-	print "DECOMPOSING SENTENCES FROM SUMMARY {}".format(fname)
+	print ("DECOMPOSING SENTENCES FROM SUMMARY {}".format(fname))
 	""" Reads in XML file from CoreNLP_XMLs, facilitates sentence decomposition, outputs .segs file """
 	#cmd = 'python sentparser.py ' + fname + '.xml ' + str(summ_ind)
 	cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1
 	os.system(cmd)
 
 def CleanSegmentations(fname, directory, summ_ind):
-	print "CLEANING SENTENCE DECOMPOSITION FROM SUMMARY {}".format(getRealName(fname) + '.segs')
+	print ("CLEANING SENTENCE DECOMPOSITION FROM SUMMARY {}".format(getRealName(fname) + '.segs'))
 	""" Reads in .segs file moves it to its directory in Decomposed Summaries/, cleans file of segment segment_ids """
 	#segFile = 'DecomposedSummaries/' + getRealName(fname) + '.segs'
 	#mv = 'mv ' + segFile + ' ' + directory
@@ -82,7 +82,7 @@ def CleanSegmentations(fname, directory, summ_ind):
 #	f.close()
 
 def VectorizeSummary(fname, directory, summ_ind, mode=None):
-	print "VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname)
+	print ("VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname))
 	segFile = directory + '/' + str(summ_ind) + '/' + getRealName(fname) + '.segs'
 	vectors = vectorize(segFile, mode)
 	fname = directory +'/'+str(summ_ind)+ '/' + getRealName(fname) + '.ls'

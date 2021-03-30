@@ -32,7 +32,12 @@ import sys
 import pandas as pd
 
 #Wasih (02-21-20) results.csv not generating
-import ConfigParser as configparser
+PYTHON_VERSION = 2
+if sys.version_info[0] == 2:
+    import ConfigParser as configparser
+else:
+    import configparser
+    PYTHON_VERSION = 3
 
 #Wasih (02-21-20) Use termcolor to display colored text; user-friendly
 from termcolor import colored

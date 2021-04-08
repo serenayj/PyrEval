@@ -62,7 +62,7 @@ parser.add_option('-o', '--output', action="store", dest='output', default=confi
 
 parser.add_option('-l', '--log', action='store', dest='log', default=False)
 parser.add_option('-m', '--model', action='store', dest='model', default=1)
-#parser.add_option('-n', '--numsmodel', action='store', dest='numsmodel', default=4)
+parser.add_option('-n', '--numsmodel', action='store', dest='numsmodel', default=False)
 options, args = parser.parse_args()
 
 print_all = options.a
@@ -70,14 +70,24 @@ print_table = options.t
 pyramid_path = options.pyramid
 results_file = options.output
 log = options.log
+
+#Wasih 07-04-21: If log folder is not there create it
+if log:
+    if not os.path.exists('../log'):
+        os.makedirs('../log')
+
 model = options.model
-
-
 #pyramids = list(glob.iglob(pyramid_path + '*.pyr'))
 pyramids = list(glob.iglob(pyramid_path + '/*.pyr'))
 #pyramids = list(glob.iglob(dir1+"/*.pyr"))
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 numsmodel = len(list(glob.iglob('../Preprocess/wise_crowd_summaries/*.xml')))
+
+#Wasih 07-04-21 Override numsmodel with parser if present
+if options.numsmodel:
+    numsmodel = options.numsmodel
+    numsmodel = int(numsmodel)
+
 #numsmodel = 5
 print ("Numbers of contributors: ", numsmodel)
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
@@ -212,8 +222,8 @@ for pyramid in pyramids:
         ## FOr Duc 05
         #results_file = "results-raw.csv"
         print ("Will write into results file!! ", results_file)
-        # f = open(results_file, 'w')
-        # f.close()
+        f = open(results_file, 'w')
+        f.close()
         with open(results_file, 'a') as f:
             w = csv.writer(f)
             w.writerow([pyramid_name])
@@ -240,7 +250,3 @@ text = colored('Results written to %s' % results_file, 'blue')
 print (text)
 #print 'Results written to %s' % results_file
 print ('\n')
-
-
-
-

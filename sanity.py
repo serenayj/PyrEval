@@ -33,13 +33,14 @@ except ImportError:
     text = colored('Please Install scikit-learn!', 'red', attrs = ['bold'])
     print (text)
     sys.exit(0)
-'''
+
 try:
-    import beautifulsoup4
-except ImportError, e:
-    print 'Please Install beautifulsoup4!'
+    import bs4
+except ImportError:
+    text = colored('Please Install beautifulsoup4!', 'red', attrs = ['bold'])
+    print (text)
     sys.exit(0)
-'''
+
 try:
     import scipy 
 except ImportError:

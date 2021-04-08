@@ -211,6 +211,18 @@ Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p.
 
 Output of Step 3 is a .csv file, located under PyrEval. 
 
+## Migration to Python3
+1. For Python3 users, PyrEval should now be able to run on Python3 seamlessly. To use PyrEval with Python3, first you need to install the packages listed in requirements.txt as: sudo pip3 install -r requirements.txt
+2. Additionally, lxml needs to be installed for Python3 as: sudo apt install python3-lxml
+3. There is a parameters' file which has been added, "parameters.ini". It basically contains paths' information and it is mostly self-explanatory. Some paths like, BaseDir, OutputFile require absolute path.
+4. It is also recommended to first run "sanity.py" by: python3 sanity.py (or python sanity.py, if using Python2). This script will check whether all required directories like Stanford Directory, Scoring Directory, Model directory, etc. are present or not and whether the required dependencies are installed or not. Note: If you are getting some error with nltk, then please refer to the Notes section in this README.
+5. To run PyrEval in python3 run it as: python3 pyreval.py. Also, change the parameter, "PythonInterp" to python3 in "parameters.ini" if you are using python3 and to python if using python2.
+6. Some additional enhancements which have been done in Python3 are: 
+   - Colored prints to show error or completion of a process like stanford coreNLP step or preprocessing step, etc. 
+   - Thorough cleaning of generated output files. Now, with the command, 'c' on the interpreter of PyrEval, all output files like log folder, pyramids directory, etc. would now be deleted (except the model and peer directory).
+   - We now graciously exit out of the interpreter by typing the command, 'q'. 
+7. If you notice any bugs or issues with the Python3 use, please raise an issue under this branch ("new_impl") as its still under development phase.
+
 ## Notes
 If nltk throws errors like: "Resource punkt not found" in the 1) (Pre-processing step), it means that you need to install it manually like:
 1. Open up your Python2 interpreter: python<2?>
@@ -218,7 +230,9 @@ If nltk throws errors like: "Resource punkt not found" in the 1) (Pre-processing
 3. Then: nltk.download()
 4. Then a list of options appear, enter: d
 5. In the prompt, then enter punkt and it should properly install punkt for you.
-Now, you can re-run step 1) and it should work fine
+Now, you can re-run step 1) and it should work fine.
+If nltk throws error like SSL: CERTIFICATE_VERIFY_FAILED, then it means you need to manually download 'punkt' source code and place it under "/Users/<user name>/nltk_data". Note that you need to copy punkt from: http://www.nltk.org/nltk_data/ . Just download punkt tokenizer and place it under "/Users/<user name>/nltk_data/tokenizers/".
+It is also required to install Java Runtime before running PyrEval.
 
 ## Acknowledgement
 The contributors to this repository include: Andrew Warner (for initial implementation of the pipeline), Brent Hoffert (for creation of the launcher), Purushartha Singh (for fixing bugs in decomposition parser), and Steven Fontanella (for cleaning up the package and testing the improvements).  

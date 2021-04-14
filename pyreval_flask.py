@@ -7,6 +7,7 @@ from .splitsent import *
 from .Stanford.stanford import *
 from .Pyramid.pyramid import pyramidmain
 import csv
+import pickle
 
 #Wasih (02-26-20) Make conditional imports depending on Python version
 #Wasih (02-27-20) Define a variable for python version & then use it
@@ -114,13 +115,18 @@ def getIndividualScoreFunc(peer_summary):
         preprocess(None, True)
         var1 = '-p' + pyramid_path
         var2 = '-n' + num_models
-        score([var1, var2])
+        var3 = '-r' + 'True'
+        score([var1, var2, var3])
         #For testing, just open Results.csv and return the three scores
-        f = open(results_file, 'r')
-        csv_reader = csv.DictReader(f, fieldnames = ['Summary', 'raw', 'quality', 'coverage', 'Comprehensive'])
-        values = {}
-        for row in csv_reader:
-            values = row
+        #Wasih 04-13-20: Return a dictionary data structure where for each segment in the summary, return its text and the SCU id (or None if no match)
+        dict_file, _ = os.path.split(results_file)
+        dict_file = os.path.join(dict_file, 'dict')
+        f = open(dict_file, 'rb')
+        values = pickle.load(f)
+        #csv_reader = csv.DictReader(f, fieldnames = ['Summary', 'raw', 'quality', 'coverage', 'Comprehensive'])
+        #values = {}
+        #for row in csv_reader:
+        #    values = row
         #need to clean everything after run
         clean(None)
         return values
@@ -457,4 +463,3 @@ if __name__ == "__main__":
             if not os.path.exists(ext_dir):
                 os.makedirs(ext_dir)
             choice(params, False)
-

@@ -63,7 +63,8 @@ def splitsent(params):
     try:
         #Wasih (02-21-20) Check for split directory present or not, if not then create it
         if not os.path.exists(split_peer_dir):
-            os.makedirs(split_peer_dir)
+            os.makedirs(spli
+			t_peer_dir)
         
         if not os.path.exists(split_model_dir):
             os.makedirs(split_model_dir)
@@ -364,6 +365,8 @@ if __name__ == "__main__":
                 user_in = input(INPUT_STR)
         except (EOFError, KeyboardInterrupt):
             sys.exit(0)
+	if (len(user_in) == 0):
+            continue
         tokens = user_in.split()
         command = tokens[0]
         params = tokens[1:]

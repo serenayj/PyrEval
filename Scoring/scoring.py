@@ -21,7 +21,8 @@ from lib_scoring import *
 #from lib_scoring import getScore, getLayerSizes, processResults, scusBySentences, maxRawScore, readPyramid, new_getlayersize
 from scipy.stats import pearsonr as pearson
 from scipy.stats import spearmanr as spearman
-from printEsumLog import printEsumLogWrapper 
+#from printEsumLog import printEsumLogWrapper 
+from printEsumLog import *
 import optparse
 import glob
 import copy
@@ -30,6 +31,7 @@ import os
 import collections
 import sys
 import pandas as pd
+import pickle
 
 #Wasih (02-21-20) results.csv not generating
 PYTHON_VERSION = 2
@@ -63,6 +65,9 @@ parser.add_option('-o', '--output', action="store", dest='output', default=confi
 parser.add_option('-l', '--log', action='store', dest='log', default=False)
 parser.add_option('-m', '--model', action='store', dest='model', default=1)
 parser.add_option('-n', '--numsmodel', action='store', dest='numsmodel', default=False)
+#Wasih 04-13-21 Add flag for return type data structure for notebook
+parser.add_option('-r', '--returnflag', action='store', dest='returnflag', default=False)
+
 options, args = parser.parse_args()
 
 print_all = options.a
@@ -124,12 +129,41 @@ def getName(name):
     return name
 
 
+"""
+=== Dictionary data-structure used to return to notebook after evaluating a summary. {Segment-Id:{'text':<Text corresponding to Segment-Id>, 'SCU':SCU-Id},...}
+"""
+
+def getDictionary(segList, pyramid, results, scores):
+    #closely follows printSegments() in printEsumLog.py
+    answer = {}
+    for s in segList:
+        for seg_index, text in s.text.items():
+            if seg_index in s.scu_text_pairs.keys():
+                segment_id = str(s.sentence_id) + '&' + str(s.segment_id) + '&' + str(seg_index)
+                value = {}
+                value['text'] = text.strip()
+                value['SCU'] = s.scu_text_pairs[seg_index]
+                answer[segment_id] = value
+            else:
+                segment_id = str(s.sentence_id) + '&' + str(s.segment_id) + '&' + str(seg_index)
+                value = {}
+                value['text'] = text.strip()
+                value['SCU'] = None
+                answer[segment_id] = value
+    #now put scores in answer
+    for (key, value) in scores[0].items():
+        answer['raw'] = value
+    for (key, value) in scores[1].items():
+        answer['quality'] = value
+    for (key, value) in scores[2].items():
+        answer['coverage'] = value
+    for (key, value) in scores[3].items():
+        answer['comprehensive'] = value
+    return answer
 
 """
 ====================== Scoring Pipeline ========================
 """
-
-
 
 for pyramid in pyramids:
     raw_scores = {}
@@ -207,12 +241,34 @@ for pyramid in pyramids:
                 loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
                 loginput.close()
                 print("Success!!")
-                printEsumLogWrapper(summary_name,segcount,score,quality,coverage,comprehension,q_max, c_max, avg, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
+               
+    print('******************************\n\n')
+    #print(results)
+    print(rearranged_results)   
+    print('******************************\n\n')   
+
+    if options.returnflag:
+        scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 
+        s = Summary(summary_name, segcount, segment_list, num_sentences, segs)
+        p = Pyramid(scu_labels, pyramid_name)
+        segList, SCUL = listSegments(s, p, results)
+        dicti = getDictionary(segList, p, results, scores)
+        #now write the dictionary to a pickle file which will then be read by the flask app
+        dict_filename, _ = os.path.split(results_file)
+        dict_filename = os.path.join(dict_filename, 'dict')
+        f = open(dict_filename, 'wb')
+        pickle.dump(dicti, f)
+        #f.write(dicti)
+        print(dicti)
+        print('******************************\n\n')
+    
+    #printSegments(segList, SCUL, p, None)
+ #printEsumLogWrapper(summary_name,segcount,score,quality,coverage,comprehension,q_max, c_max, avg, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
 
     #raw_scores = sort(raw_scores)
     #print type(raw_scores)
     #print "raw_scores: ", raw_scores
-    scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores]
+    #scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores]
     print ("scores ", scores)
     if print_table:
         #results_f = 

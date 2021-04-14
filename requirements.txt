@@ -8,3 +8,4 @@ statistics
 pandas
 theano
 termcolor
+lxml

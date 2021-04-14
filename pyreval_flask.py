@@ -448,6 +448,8 @@ if __name__ == "__main__":
                 user_in = input(INPUT_STR)
         except (EOFError, KeyboardInterrupt):
             sys.exit(0)
+	if (len(user_in) == 0):
+            continue
         tokens = user_in.split()
         command = tokens[0]
         params = tokens[1:]

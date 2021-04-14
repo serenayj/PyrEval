@@ -213,7 +213,7 @@ Output of Step 3 is a .csv file, located under PyrEval.
 
 ## Migration to Python3 and Flask Support
 1. For Python3 users, PyrEval should now be able to run on Python3 seamlessly. To use PyrEval with Python3, first you need to install the packages listed in requirements.txt as: sudo pip3 install -r requirements.txt
-2. Additionally, lxml needs to be installed for Python3 as: sudo apt install python3-lxml
+~~2. Additionally, lxml needs to be installed for Python3 as: sudo apt install python3-lxml~~ Now, we have added lxml to requirements.txt, so no need to install it separately.
 3. There is a parameters' file which has been added, "parameters.ini". It basically contains paths' information and it is mostly self-explanatory. Some paths like, BaseDir, OutputFile require absolute path.
 4. Note that the parameters' file now contains two additional arguments, "PyramidPath" and "NumModels". Please kindly ignore "PyramidPath" and delete "NumModels = 5" line. These parameters are used with the Flask setup because at testing time, pyramid building is skipped. To run PyrEval with Flask, please visit: https://github.com/wasih7/PyrEval-Flask
 5. It is also recommended to first run "sanity.py" by: python3 sanity.py (or python sanity.py, if using Python2). This script will check whether all required directories like Stanford Directory, Scoring Directory, Model directory, etc. are present or not and whether the required dependencies are installed or not. Note: If you are getting some error with nltk, then please refer to the Notes section in this README.

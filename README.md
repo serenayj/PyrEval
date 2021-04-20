@@ -212,7 +212,8 @@ Where the selected_pyramid could be found in Scoring/pyrs/pyramids/*.p.
 Output of Step 3 is a .csv file, located under PyrEval. 
 
 ## Migration to Python3 and Flask Support
-1. For Python3 users, PyrEval should now be able to run on Python3 seamlessly. To use PyrEval with Python3, first you need to install the packages listed in requirements.txt as: sudo pip3 install -r requirements.txt
+1. For Python3 users, PyrEval should now be able to run on Python3 seamlessly. To use PyrEval with Python3, first you need to install the packages listed in requirements.txt as: sudo pip3 install -r requirements.txt.
+**NOTE**: For efficiently using CoreNLP with Flask (one summary at a time), now the Python wrapper, stanfordcorenlp (Available only for Python3) is required to be installed. We have added the same to requirements.txt but sanity.py wouldn't check for it; so if you intend to use it with Flask, please install all the dependencies mentioned in requirements.txt
 2. ~~Additionally, lxml needs to be installed for Python3 as: sudo apt install python3-lxml~~ Now, we have added lxml to requirements.txt, so no need to install it separately.
 3. There is a parameters' file which has been added, "parameters.ini". It basically contains paths' information and it is mostly self-explanatory. Some paths like, BaseDir, OutputFile require absolute path.
 4. Note that the parameters' file now contains two additional arguments, "PyramidPath" and "NumModels". Please kindly ignore "PyramidPath" and delete "NumModels = 5" line. These parameters are used with the Flask setup because at testing time, pyramid building is skipped. To run PyrEval with Flask, please visit: https://github.com/wasih7/PyrEval-Flask
@@ -222,6 +223,7 @@ Output of Step 3 is a .csv file, located under PyrEval.
    - Colored prints to show error or completion of a process like stanford coreNLP step or preprocessing step, etc. 
    - Thorough cleaning of generated output files. Now, with the command, 'c' on the interpreter of PyrEval, all output files like log folder, pyramids directory, etc. would now be deleted (except the model and peer directory).
    - We now graciously exit out of the interpreter by typing the command, 'q'. 
+   - **NEW**: Now, we use CoreNLP efficiently when running PyrEval with Flask. Specifically, now the annotators in the pipeline are not loaded every time a query is made to the Flask server. This is avoided by running coreNLP in a server-client fashion, where only the first time are the annotators loaded. The time is reduced from ~27sec (for CoreNLP step) to ~3.3sec! To incorporate this change in the Flask application, please check: https://github.com/wasih7/PyrEval-Flask
 8. If you notice any bugs or issues with the Python3 use, please raise an issue under this branch ("new_impl") as its still under development phase.
 
 ## Notes

@@ -4,10 +4,11 @@ import shutil
 from subprocess import call
 #Wasih (02-19-20) Use functions instead of calling script
 from .splitsent import *
-from .Stanford.stanford import *
+from .Stanford.stanfordv2 import *
 from .Pyramid.pyramid import pyramidmain
 import csv
 import pickle
+import time
 
 #Wasih (02-26-20) Make conditional imports depending on Python version
 #Wasih (02-27-20) Define a variable for python version & then use it
@@ -106,12 +107,16 @@ def getIndividualScoreFunc(peer_summary):
         if not os.path.exists(os.path.join(scoring_dir, 'sizes')):
             os.makedirs(os.path.join(scoring_dir, 'sizes'))
         
+        #start the server for coreNLP
         f = open(os.path.join(raw_peer_dir, 'test.txt'), 'w')
         f.write(peer_summary)
         f.close()
         #now run pyreval's steps
         splitsent(None, True)
+        start = time.time()
         stanford(None, True)
+        end = time.time()
+        print ('Time: ', end - start, '\n')
         preprocess(None, True)
         var1 = '-p' + pyramid_path
         var2 = '-n' + num_models
@@ -123,6 +128,8 @@ def getIndividualScoreFunc(peer_summary):
         dict_file = os.path.join(dict_file, 'dict')
         f = open(dict_file, 'rb')
         values = pickle.load(f)
+        f.close()
+        os.remove(dict_file)
         #csv_reader = csv.DictReader(f, fieldnames = ['Summary', 'raw', 'quality', 'coverage', 'Comprehensive'])
         #values = {}
         #for row in csv_reader:
@@ -448,7 +455,7 @@ if __name__ == "__main__":
                 user_in = input(INPUT_STR)
         except (EOFError, KeyboardInterrupt):
             sys.exit(0)
-	if (len(user_in) == 0):
+        if (len(user_in) == 0):
             continue
         tokens = user_in.split()
         command = tokens[0]
@@ -465,3 +472,4 @@ if __name__ == "__main__":
             if not os.path.exists(ext_dir):
                 os.makedirs(ext_dir)
             choice(params, False)
+

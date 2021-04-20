@@ -242,25 +242,20 @@ for pyramid in pyramids:
                 loginput.close()
                 print("Success!!")
                
-    print('******************************\n\n')
-    #print(results)
-    print(rearranged_results)   
-    print('******************************\n\n')   
-
-    if options.returnflag:
-        scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 
-        s = Summary(summary_name, segcount, segment_list, num_sentences, segs)
-        p = Pyramid(scu_labels, pyramid_name)
-        segList, SCUL = listSegments(s, p, results)
-        dicti = getDictionary(segList, p, results, scores)
-        #now write the dictionary to a pickle file which will then be read by the flask app
-        dict_filename, _ = os.path.split(results_file)
-        dict_filename = os.path.join(dict_filename, 'dict')
-        f = open(dict_filename, 'wb')
-        pickle.dump(dicti, f)
-        #f.write(dicti)
-        print(dicti)
-        print('******************************\n\n')
+            if options.returnflag:
+                scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 
+                s = Summary(summary_name, segcount, segment_list, num_sentences, segs)
+                p = Pyramid(scu_labels, pyramid_name)
+                segList, SCUL = listSegments(s, p, results)
+                dicti = getDictionary(segList, p, results, scores)
+                #now write the dictionary to a pickle file which will then be read by the flask app
+                dict_filename, _ = os.path.split(results_file)
+                dict_filename = os.path.join(dict_filename, 'dict')
+                f = open(dict_filename, 'wb')
+                pickle.dump(dicti, f)
+                #f.write(dicti)
+                print(dicti)
+                print('******************************\n\n')
     
     #printSegments(segList, SCUL, p, None)
  #printEsumLogWrapper(summary_name,segcount,score,quality,coverage,comprehension,q_max, c_max, avg, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
@@ -269,7 +264,6 @@ for pyramid in pyramids:
     #print type(raw_scores)
     #print "raw_scores: ", raw_scores
     #scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores]
-    print ("scores ", scores)
     if print_table:
         #results_f = 
         ### For DUC05

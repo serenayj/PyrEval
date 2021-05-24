@@ -225,6 +225,7 @@ Output of Step 3 is a .csv file, located under PyrEval.
    - We now graciously exit out of the interpreter by typing the command, 'q'. 
    - **NEW**: Now, we use CoreNLP efficiently when running PyrEval with Flask. Specifically, now the annotators in the pipeline are not loaded every time a query is made to the Flask server. This is avoided by running coreNLP in a server-client fashion, where only the first time are the annotators loaded. The time is reduced from ~27sec (for CoreNLP step) to ~3.3sec! To incorporate this change in the Flask application, please check: https://github.com/wasih7/PyrEval-Flask
 8. If you notice any bugs or issues with the Python3 use, please raise an issue under this branch ("new_impl") as its still under development phase.
+9. **NEW**: Now, we have introduce a set of configurable parameters under a section, Scoring_Params in the config file. See the file, lib_scoring.py and search for Wasih for an understanding of the meanings of these parameters. These should allow the user for more control over the scoring step of the pipeline. Also, a minor bug in the getWeight() function of lib_scoring.py has been corrected where scu[0] has been changed to scu[1].
 
 ## Notes
 If nltk throws errors like: "Resource punkt not found" in the 1) (Pre-processing step), it means that you need to install it manually like:

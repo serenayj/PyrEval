@@ -30,7 +30,14 @@ from weiwei import vectorize
 from sif_embedding import vectorize_sif
 import numpy as np 
 
+#Wasih: 05-23-21 configurable scoring: read configurable parameters from config file
+if sys.version_info[0] == 2:
+    import ConfigParser as configparser
+else:
+    import configparser
 
+config = configparser.ConfigParser()
+config.read('../parameters.ini')
 
 """
 ===================== Segments =====================
@@ -93,16 +100,20 @@ class SCU():
             
             #print "embedding", segment_embedding
             embedding.reshape(-1,1)
-            
-            similarity += cos(embedding, segment_embedding)[0][0]
+            #Wasih: 05-23-21 configurable scoring: Read the distance measure from config file to compute distance between embedding vectors, for eg. cos
+            distance_method = config.get('Scoring_Params', 'DistanceMethod')
+            if distance_method == 'cos':
+                similarity += cos(embedding, segment_embedding)[0][0]
+            #similarity += cos(embedding, segment_embedding)[0][0]
             #similarity += cos(embedding, segment_embedding)
             # For testing purpose, change simiarity threshold to 4.0  
         #if similarity / normalizer < 4.35146819363:
-        if similarity / normalizer <0.5:
+        #Wasih: 05-23-21 configurable scoring: Read threshold from config fil
+        edge_threshold = float(config.get('Scoring_Params', 'EdgeThreshold'))
+        if similarity / normalizer < edge_threshold:
             return None
         else:
             return [similarity / normalizer, self.weight]
-
 
 """
 ============== Sentence Graph ====================
@@ -130,7 +141,9 @@ class SentenceGraph():
             average = scu.averageSimilarity(segment_embedding)
             if average != None:
                 scores[scu.id] = average
-        scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:2]
+        #Wasih: 05-23-21 configurable scoring: top k scus to consider for making the most similar scus matching the given segment embedding
+        top_k_scus = int(config.get('Scoring_Params', 'TopKScus'))
+        scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:top_k_scus]
         scores = [(score[0], score[1][0]) for score in scores]
         return scores
 
@@ -143,13 +156,31 @@ class Vertex():
         self.max = False
         self.used = True
     def getWeight(self):
+        #Wasih: 05-23-21 configurable scoring: vertex weighting scheme
+        weight_scheme = config.get('Scoring_Params', 'WeightScheme')
+        if weight_scheme == 'average':
+            if len(self.scu_list) != 0:
+                return sum([scu[1] for scu in self.scu_list]) / len(self.scu_list)
+            else:
+                return 0
+
+        elif weight_scheme == 'sum':
+            #Wasih: 05-23-21 Possible bug: Correct it to scu[1] (this is cosine similarity), as scu[0] is just the scu id
+            return sum([scu[1] for scu in self.scu_list])
+
+        elif weight_scheme == 'max':
+            if len(self.scu_list) != 0:
+                return max([scu[1] for scu in self.scu_list])
+            else:
+                return 0
+
         ###### Weight Scheme 1
         #return sum([scu[1] for scu in self.scu_list]) / len(self.scu_list)
         ###### Weight Scheme 2
-        return sum([scu[0] for scu in self.scu_list])
+        #Wasih: 05-23-21 Possible bug: Correct it to scu[1] (this is cosine similarity), as scu[0] is just the scu id
+        #return sum([scu[1] for scu in self.scu_list])
         ###### Weight Scheme 3
         #return max([scu[1] for scu in self.scu_list])
-
     def add_neighbor(self, neighbor):
         self.neighbors.append(neighbor)
         neighbor.we_are_neighbors(self)
@@ -163,7 +194,6 @@ class Vertex():
         self.useMe = False
         for neighbor in self.neighbors:
             neighbor.useMe = False
-
 
 class SummaryGraph():
     def __init__(self, sentences, scus):
@@ -287,7 +317,6 @@ def readPyramid(fname):
     return scu_objects, scus
 
 
-
 """
 ============= Function Definitions ===============
 """
@@ -349,9 +378,6 @@ def sortSegmentations(segmentation_dict):
 
                 segment_list += [Segment(sentence_id,segment_id, segmentation)]
     return segment_list
-
-
-
 
 def buildSCUcandidateList(vertices):
     scu_and_segments = {}
@@ -421,7 +447,6 @@ def filename(fname):
     return fname[slash:dot]
 
 
-
 '''
 ================== Scores and Results ================
 '''
@@ -459,7 +484,6 @@ def new_getlayersize(sizefile, numsmodel):
         count += nums 
     avg = count / numsmodel
     return count_by_weight, avg 
-
 
 def getLayerSizes(fname):
     f = open(fname, 'r')
@@ -607,7 +631,6 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
 
     handler.close() 
 
-
 """
 ======= etc ==========
 """
@@ -635,7 +658,6 @@ def wrap_string(text, starter_text):
     lines.append(text[-left_over:])
     lines = [starter_text + lines[0]] + [" "*wrap_point + line for line in lines[1:]]
     return ''.join(lines)
-
 
 # Returns the number of segments in the list of matched and non matched segments used by the pyramid
 def getsegsCount(segment_list, results, segs, num_sentences):
@@ -687,9 +709,6 @@ def getsegsCount(segment_list, results, segs, num_sentences):
     
     print ("Total segments : "+str(counter))
     return counter
-                
-                   
-
 
 # Returns true if the segment has the same sentence id and segment id as the args
 def segIsEqual(seg, sentence_id, segmentation_id):
@@ -705,7 +724,3 @@ def getMetadata(x):
     segmentation_id = int(r[2])
     segment_id = int(r[3])
     return sentence_id, segmentation_id, segment_id
-
-
-
-

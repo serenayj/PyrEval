@@ -91,12 +91,17 @@ def GetSegment(k,BigSegSet):
 
 def ComposeSegSets(BigSet2, segmentpool, n):
     candidates = [segment.id for segment in segmentpool if segment.status == False]
-    bs2 = copy.deepcopy(BigSet2)
+    #bs2 = copy.deepcopy(BigSet2)
+    #Wasih: 05-23-21 Efficiency: remove an element from a list is O(e:#edges) because of which the loop is O(e^2) in the worst scenario. This can be made O(e) by using list.append
+    bs2 = []
     for pair in BigSet2:
         seg1id = pair['seg1id']
         seg2id = pair['seg2id']
-        if seg1id not in candidates or seg2id not in candidates:
-            bs2.remove(pair)
+        #if seg1id not in candidates or seg2id not in candidates:
+            #bs2.remove(pair)
+        #Wasih: 05-23-21 Efficiency: add an element to edge set only if both the vertices are candidates
+        if seg1id in candidates and seg2id in candidates:
+            bs2.append(pair)
     edges = [(pair['seg1id'], pair['seg2id'], pair['WAS']) for pair in bs2]
     G = nx.Graph()
     G.add_weighted_edges_from(edges)

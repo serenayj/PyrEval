@@ -40,7 +40,9 @@ tensed_verb = ['VBZ','VBD','VBP','MD']
 wl = ['CC', 'CD', 'DT', 'EX', 'FW', 'IN', 'JJ', 'JJR', 'JJS', 'LS', 'MD', 'NN', 'NNS', 'NNP', 'NNPS', 'PDT', 'POS',
       'PRP', 'PRP$', 'RB', 'RBR', 'RBS', 'RP', 'SYM', 'TO', 'UH', 'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'WDT', 'WP',
       'WP$', 'WRB']
-subj = ['nsubj','csubj','nsubjpass','csubjpass']
+#subj = ['nsubj','csubj','nsubjpass','csubjpass']
+subj = ['nsubj','csubj','nsubjpass','csubjpass', 'nsubj:pass', 'csubj:pass']
+#Wasih 09-05-21: Add nsubj:pass and csubj:pass for CoreNLP 4.2.0
 comp = ['comp','acomp','ccomp','xcomp']
 sub_conj = ['because', 'while', 'since', 'even', 'if', 'rather']
 

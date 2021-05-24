@@ -76,8 +76,8 @@ pyramid_path = options.pyramid
 results_file = options.output
 log = options.log
 
-#Wasih 07-04-21: If log folder is not there create it
-if log:
+#Wasih 04-07-21: If log folder is not there create it
+if log or print_all:
     if not os.path.exists('../log'):
         os.makedirs('../log')
 
@@ -235,12 +235,13 @@ for pyramid in pyramids:
                     pass
             if (print_all) or log:
                 #log_f = log + summary_name
-                log_f = "../log/"+summary_name
-                
-                loginput = open("loginput.txt", "w+")
+                log_f = "../log/" + summary_name
+                #loginput = open(log_f, "w+")
+                loginput = open("../log/loginput.txt", "w+")
                 loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
                 loginput.close()
                 print("Success!!")
+                printEsumLogWrapper(summary_name, segcount, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_f)
                
             if options.returnflag:
                 scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 

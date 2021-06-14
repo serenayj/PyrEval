@@ -40,13 +40,17 @@ NOTES:
 3: Preprocess - Main
 4: Build pyramids
 5: Score pyramids
+Score Flags (Usage: 5 <flag>):
+-a: Print verbose output on terminal and store in PyrEval/log directory
+-l: Equivalent to -a
+-t: Print scoring results to terminal and save in Results.csv file
 
 c: Clean directories
 i: Change python interpreter
 
 To quit, type q.
 """
-#Wasih (02-21-20) more convenient quitting
+#Wasih (02-21-21) more convenient quitting
 
 def autorun(params):
     splitsent(params)
@@ -58,10 +62,10 @@ def autorun(params):
 def splitsent(params):
     #call(py_interp + [split_script, raw_peer_dir, split_peer_dir])
     #call(py_interp + [split_script, raw_model_dir, split_model_dir])
-    #Wasih (02-19-20) Use functions instead of calling script
-    #Wasih (02-21-20) Add user friendly lines
+    #Wasih (02-19-21) Use functions instead of calling script
+    #Wasih (02-21-21) Add user friendly lines
     try:
-        #Wasih (02-21-20) Check for split directory present or not, if not then create it
+        #Wasih (02-21-21) Check for split directory present or not, if not then create it
         if not os.path.exists(split_peer_dir):
             os.makedirs(split_peer_dir)
         
@@ -83,7 +87,7 @@ def stanford(params):
     #call(py_interp + [stanford_script, split_peer_dir, '1', base_dir])
     #call(py_interp + [stanford_script, split_model_dir, '2', base_dir])
     
-    #Wasih (02-19-20) Use functions instead of calling script
+    #Wasih (02-19-21) Use functions instead of calling script
     try:
         try:
             stanfordmain(split_peer_dir, 1, base_dir)
@@ -144,7 +148,7 @@ def pyramid(params):
     os.chdir(pyramid_dir)
     #call(py_interp + [pyramid_script])
     try:
-        #Wasih (02-21-20) Deep Clean (folders scu, sizes, pyrs/pyramids too)
+        #Wasih (02-21-21) Deep Clean (folders scu, sizes, pyrs/pyramids too)
         if not os.path.exists(os.path.join(scoring_dir, 'scu')):
             os.makedirs(os.path.join(scoring_dir, 'scu'))
         
@@ -159,8 +163,9 @@ def pyramid(params):
 
         if not os.path.exists(os.path.join(scoring_dir,'temp')):
             os.makedirs(os.path.join(scoring_dir, 'temp'))
-        #Wasih (02-19-20) Use functions instead of calling script
-        pyramidmain()
+        #Wasih (02-19-21) Use functions instead of calling script
+        #Wasih (06-13-21) Create user specified pyramid file
+        pyramidmain(pyramid_name)
         text = colored('\n\n********************Pyramid Building of Reference summaries completed!********************\n\n', 'green', attrs = ['bold'])
         print (text)	
     except Exception as e:
@@ -344,6 +349,7 @@ if __name__ == "__main__":
     scoring_script = config.get('Paths', 'ScoringScript')
     ext_dir = config.get('Paths', 'ExtDir')
     log_dir = config.get('Paths', 'LogDir')
+    pyramid_name = config.get('Paths', 'OutputPyramidName')
     choice_dict = {
         '0': autorun,
         '1': splitsent,

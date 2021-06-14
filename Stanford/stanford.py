@@ -85,6 +85,6 @@ def stanfordmain(path_, mode, pyrEval):
 			#Wasih (02-17-20) find Stanford CoreNLP directory	
 			os.chdir(coreNlpDir)
 			# TODO: Very clunky solution to set max heap size here
-			command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath
+			command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath + ' -outputFormat xml'
 			os.system(command2)
 

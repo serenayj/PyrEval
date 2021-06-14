@@ -35,7 +35,7 @@ if sys.version_info[0] == 3:
 =========================== Pipeline =================================
 """ 
 #Wasih (02-19-20) Use functions instead of calling script
-def pyramidmain():
+def pyramidmain(pyr_name):
 	#fname = sys.argv[1]
 
 	#directories = list(glob.iglob(dir1+'/*'))
@@ -297,6 +297,8 @@ def pyramidmain():
 		
 		# Writing Readable version of Pyramid
 		fname = 'pyramid_t{}_a{}_b{}'.format(threshold, tup[0], tup[1])
+		#Wasih (06-13-21) Create user specified pyramid file. Readable file is by the name, user_read.pyr
+		fname = pyr_name
 		lines = []
 		if cu_ids:
 			for j, i in enumerate(cu_ids):
@@ -304,7 +306,7 @@ def pyramidmain():
 				print (line)
 				#print(line)
 				lines.append(line)
-		with open('../Scoring/scu/' + fname + '.pyr', 'w') as f:
+		with open('../Scoring/scu/' + fname + '_read.pyr', 'w') as f:
 			for line in lines:
 				#print(line)
 				f.write(line + '\n')
@@ -320,7 +322,7 @@ def pyramidmain():
 			ET.SubElement(scu, 'contributor', label = labels[j])
 		tree = ET.ElementTree(root)
 		### Normal Path 
-		tree.write("../Scoring/pyrs/pyramids/"+fname+".pyr")
+		tree.write("../Scoring/pyrs/pyramids/" + fname + ".pyr")
 		#tree.write("../Scoring/EDUAG/"+fname+".pyr")
 		#tree.write('../Scoring/311-4-2/pyramids/' + fname + '.pyr')
 			  

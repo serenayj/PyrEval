@@ -145,6 +145,8 @@ class SentenceGraph():
         top_k_scus = int(config.get('Scoring_Params', 'TopKScus'))
         scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:top_k_scus]
         scores = [(score[0], score[1][0]) for score in scores]
+        #Wasih (06-14-21) Add another element (SCU weight) to make the scores/scu list as that of triples
+        scores = [(score[0], score[1][0], score[1][1]) for score in scores]
         return scores
 
 class Vertex():

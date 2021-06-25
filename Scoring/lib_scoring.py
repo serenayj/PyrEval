@@ -90,7 +90,8 @@ class SCU():
         normalizer = len(self.embeddings)
         if normalizer == 0:
             print (self.id) 
-        similarity = 0
+        # Puru 06/25/21 Added info to get std dev of cosine similarity of SCUs contributors with the segment
+        similarities = []
         segment_embedding = np.array([segment_embedding])
         segment_embedding.reshape(-1,1)
         for embedding in self.embeddings:
@@ -103,7 +104,9 @@ class SCU():
             #Wasih: 05-23-21 configurable scoring: Read the distance measure from config file to compute distance between embedding vectors, for eg. cos
             distance_method = config.get('Scoring_Params', 'DistanceMethod')
             if distance_method == 'cos':
-                similarity += cos(embedding, segment_embedding)[0][0]
+                similarities.append(cos(embedding, segment_embedding)[0][0])
+            similarity = sum(similarities)
+            stddev = np.std(similarities)
             #similarity += cos(embedding, segment_embedding)[0][0]
             #similarity += cos(embedding, segment_embedding)
             # For testing purpose, change simiarity threshold to 4.0  
@@ -113,11 +116,14 @@ class SCU():
         if similarity / normalizer < edge_threshold:
             return None
         else:
-            return [similarity / normalizer, self.weight]
+            return [similarity / normalizer, self.weight, stddev]
 
 """
 ============== Sentence Graph ====================
 """
+def weight_fn(cosine, weight):
+    fn = cosine * weight
+    return fn
 
 class SentenceGraph():
     """ Given a Sentence, build a graph from segmentations """
@@ -143,10 +149,12 @@ class SentenceGraph():
                 scores[scu.id] = average
         #Wasih: 05-23-21 configurable scoring: top k scus to consider for making the most similar scus matching the given segment embedding
         top_k_scus = int(config.get('Scoring_Params', 'TopKScus'))
-        scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:top_k_scus]
-        scores = [(score[0], score[1][0]) for score in scores]
+        
+        scores = sorted(scores.items(), key=lambda x:x[1][0]*x[1][1], reverse=True)[:top_k_scus]
+        #scores = [(score[0], score[1][0]) for score in scores]
         #Wasih (06-14-21) Add another element (SCU weight) to make the scores/scu list as that of triples
-        scores = [(score[0], score[1][0], score[1][1]) for score in scores]
+        #Puru 06/25/21 Added 4th element (SCU standard deviation) to make a 4 tuple for each SCU
+        scores = [(score[0], score[1][0], score[1][1], score[1][2]) for score in scores]
         return scores
 
 class Vertex():
@@ -172,7 +180,7 @@ class Vertex():
 
         elif weight_scheme == 'max':
             if len(self.scu_list) != 0:
-                return max([scu[1] for scu in self.scu_list])
+                return max([scu[1]*scu[2] for scu in self.scu_list])
             else:
                 return 0
 
@@ -563,7 +571,7 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
                 cu = (s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))
                 cu_list.append(cu)
     if len(cu_list) != 0:
-        cu_list = sorted(cu_list, key=lambda x:x[1], reverse=True)
+        cu_list = sorted(cu_list, key=lambda x:(x[1], x[0]), reverse=True)
         cu_line = ''
         for cu in cu_list[:len(cu_list)-1]:
             cu_line += str(cu[0]) + ': ' + str(cu[1]) + ', '

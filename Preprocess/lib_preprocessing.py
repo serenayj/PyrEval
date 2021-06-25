@@ -18,6 +18,8 @@
 
 import os
 from weiwei import vectorize
+#Wasih (06-20-21): Add glove vectorization method
+from glove_sif_io import *
 
 """
 =============== Methods ===================
@@ -45,11 +47,17 @@ def getRealName(fname):
 #	mv = 'mv ' + getRoot(fname) + '.xml' + ' CoreNLP_XMLs/'
 #	os.system(mv)
 
-def DecomposeSummary(fname, summ_ind, dir1):
+def DecomposeSummary(fname, summ_ind, dir1, method, abcd_dir = None):
 	print ("DECOMPOSING SENTENCES FROM SUMMARY {}".format(fname))
 	""" Reads in XML file from CoreNLP_XMLs, facilitates sentence decomposition, outputs .segs file """
 	#cmd = 'python sentparser.py ' + fname + '.xml ' + str(summ_ind)
-	cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1
+	#Wasih (06-25-21) Add ABCD segmentation method
+	if method == 'rule':
+		cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1
+	else:
+		current_dir = os.getcwd()
+		os.chdir(abcd_dir)
+		cmd = 'python complete.py ' + fname + ' ' + str(summ_ind) + ' ' + dir1
 	os.system(cmd)
 
 def CleanSegmentations(fname, directory, summ_ind):
@@ -81,13 +89,15 @@ def CleanSegmentations(fname, directory, summ_ind):
 #			f.write(line)
 #	f.close()
 
-def VectorizeSummary(fname, directory, summ_ind, mode=None):
+def VectorizeSummary(fname, directory, summ_ind, mode=None, vector_method = 'wtmf'):
 	print ("VECTORIZING SEGMENTS FROM SUMMARY {}".format(fname))
 	segFile = directory + '/' + str(summ_ind) + '/' + getRealName(fname) + '.segs'
-	vectors = vectorize(segFile, mode)
-	fname = directory +'/'+str(summ_ind)+ '/' + getRealName(fname) + '.ls'
-	with open(fname, 'w') as f:
-		for n, vec in enumerate(vectors):
-			f.write(vec + '\n')
-
+	if vector_method == 'wtmf':
+		vectors = vectorize(segFile, mode)
+		fname = directory +'/'+str(summ_ind)+ '/' + getRealName(fname) + '.ls'
+		with open(fname, 'w') as f:
+			for n, vec in enumerate(vectors):
+				f.write(vec + '\n')
+	elif vector_method == 'glove':
+		glove(segFile)
 

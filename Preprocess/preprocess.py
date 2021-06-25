@@ -31,6 +31,20 @@ mode = sys.argv[1]
 =============== MAIN ===================
 """
 
+#Wasih (06-20-21) Read vectorization method from parameters file
+PYTHON_VERSION = 2
+if sys.version_info[0] == 2:
+	import ConfigParser as configparser
+else:
+	import configparser
+	PYTHON_VERSION = 3
+
+config = configparser.ConfigParser()
+config.read('../parameters.ini')
+#Wasih (06-25-21) Read segmentation method from parameters file
+segmentation_method = config.get('Segmentation', 'Method')
+vector_method = config.get('Vectorization', 'Method')
+
 #summaries = [sys.argv[1]]
 peer_summaries = []
 wise_crowd = []
@@ -54,9 +68,9 @@ if (dir1):
 	summaries = sorted(list(glob.iglob(dir1 + '/*.xml')))
 	for n, summary in enumerate(summaries):
 		#try:
-		DecomposeSummary(summary, n + 1, dir1)
+		DecomposeSummary(summary, n + 1, dir1, segmentation_method)
 		#summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
-		VectorizeSummary(summary, dir1, n + 1, 'preprocess')
+		VectorizeSummary(summary, dir1, n + 1, 'preprocess', vector_method)
 		#except:
 		#	print "current file failed: ", n, " ", summary
 		#	errors.append(summary)

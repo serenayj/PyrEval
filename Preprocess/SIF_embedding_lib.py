@@ -13,11 +13,12 @@ def get_weighted_average(We, x, w):
     """
     n_samples = x.shape[0]
     emb = np.zeros((n_samples, We.shape[1]))
-    for i in xrange(n_samples):
+    #Wasih (06-20-21) Use range to work in both P2 and P3
+    for i in range(n_samples):
         emb[i,:] = w[i,:].dot(We[x[i,:],:]) / np.count_nonzero(w[i,:])
 
     # By Yanjun 
-    for i in xrange(n_samples):
+    for i in range(n_samples):
         where_nan = isnan(emb[i,:])
         emb[i,where_nan] = 0 
         

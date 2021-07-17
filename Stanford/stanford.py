@@ -30,7 +30,7 @@ import sys
 #pyrEval = sys.argv[3]
 
 #Wasih (02-19-20) Use functions instead of calling script
-def stanfordmain(path_, mode, pyrEval):
+def stanfordmain(path_, mode, pyrEval, seg_method):
 	#Wasih (02-17-20) find Stanford CoreNLP directory
 	files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
 	print(files)	
@@ -85,6 +85,10 @@ def stanfordmain(path_, mode, pyrEval):
 			#Wasih (02-17-20) find Stanford CoreNLP directory	
 			os.chdir(coreNlpDir)
 			# TODO: Very clunky solution to set max heap size here
-			command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath + ' -outputFormat xml'
+			#Wasih (07-15-21) change output type according to segmentation method
+			out_type = ''
+			if seg_method == 'rule':
+				out_type = ' -outputFormat xml'
+			command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath + out_type
 			os.system(command2)
 

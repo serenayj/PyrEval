@@ -23,6 +23,16 @@ from lib_preprocessing import *
 #Wasih (02-21-20) Use termcolor to display colored text; user friendly
 from termcolor import colored
 
+def get_sentence_file(summary_name, mode):
+	summary_name_only = os.path.split(summary_name)[1]
+	summary_name_only = summary_name_only[:-4]
+	if mode == '1':
+		prepend_path = '../Raw/peers/split'
+	else:
+		prepend_path = '../Raw/model/split'
+	sentence_file = os.path.join(prepend_path, summary_name_only)
+	return sentence_file
+
 mode = sys.argv[1]
 
 #mode = 2
@@ -44,6 +54,8 @@ config.read('../parameters.ini')
 #Wasih (06-25-21) Read segmentation method from parameters file
 segmentation_method = config.get('Segmentation', 'Method')
 vector_method = config.get('Vectorization', 'Method')
+abcd_dir = config.get('Paths', 'ABCDDir')
+glove_dir = config.get('Segmentation', 'GloveDir')
 
 #summaries = [sys.argv[1]]
 peer_summaries = []
@@ -65,10 +77,14 @@ else:
 	print ("Option doesn't exist!!!")
 
 if (dir1):
-	summaries = sorted(list(glob.iglob(dir1 + '/*.xml')))
+	if segmentation_method == 'ABCD':
+		summaries = sorted(list(glob.iglob(dir1 + '/*.out')))
+	else:
+		summaries = sorted(list(glob.iglob(dir1 + '/*.xml')))
 	for n, summary in enumerate(summaries):
 		#try:
-		DecomposeSummary(summary, n + 1, dir1, segmentation_method)
+		sentence_file = get_sentence_file(summary, mode)
+		DecomposeSummary(summary, n + 1, dir1, segmentation_method, sentence_file, abcd_dir, glove_dir)
 		#summary, seg_ids = CleanSegmentations(summary, dir1,n+1)
 		VectorizeSummary(summary, dir1, n + 1, 'preprocess', vector_method)
 		#except:

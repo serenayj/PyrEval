@@ -87,6 +87,9 @@ pyramids = list(glob.iglob(pyramid_path + '/*.pyr'))
 #pyramids = list(glob.iglob(dir1+"/*.pyr"))
 summaries = list(glob.iglob('../Preprocess/peer_summaries/*'))
 numsmodel = len(list(glob.iglob('../Preprocess/wise_crowd_summaries/*.xml')))
+#Wasih (07-15-21) If ABCD is used, then instead of xml, '.out' files will be there
+if numsmodel == 0:
+    numsmodel = len(list(glob.iglob('../Preprocess/wise_crowd_summaries/*.out')))
 
 #Wasih 07-04-21 Override numsmodel with parser if present
 if options.numsmodel:

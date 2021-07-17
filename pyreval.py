@@ -90,7 +90,7 @@ def stanford(params):
     #Wasih (02-19-21) Use functions instead of calling script
     try:
         try:
-            stanfordmain(split_peer_dir, 1, base_dir)
+            stanfordmain(split_peer_dir, 1, base_dir, seg_method)
         except Exception as e:
             logging.error(traceback.format_exc())
             print(e)
@@ -99,7 +99,7 @@ def stanford(params):
     
         os.chdir(stanford_dir)
         try:
-            stanfordmain(split_model_dir, 2, base_dir)
+            stanfordmain(split_model_dir, 2, base_dir, seg_method)
             text = colored('\n\n********************Stanford Pipelining of Sentences completed!********************\n\n', 'green', attrs = ['bold'])
             print (text)
         except Exception as e:
@@ -339,6 +339,8 @@ if __name__ == "__main__":
     split_script = config.get('Paths', 'SplitScript')
     stanford_dir = config.get('Paths', 'StanfordDir')
     stanford_script = config.get('Paths', 'StanfordScript')
+    abcd_dir = config.get('Paths', 'ABCDDir')
+    seg_method = config.get('Segmentation', 'Method')
     preprocess_dir = config.get('Paths', 'PreprocessDir')
     preprocess_script = config.get('Paths', 'PreprocessScript')
     preprocess_peers_dir = config.get('Paths', 'PreprocessPeersDir')

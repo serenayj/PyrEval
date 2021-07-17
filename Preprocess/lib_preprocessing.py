@@ -47,7 +47,7 @@ def getRealName(fname):
 #	mv = 'mv ' + getRoot(fname) + '.xml' + ' CoreNLP_XMLs/'
 #	os.system(mv)
 
-def DecomposeSummary(fname, summ_ind, dir1, method, abcd_dir = None):
+def DecomposeSummary(fname, summ_ind, dir1, method, sentence_file = None, abcd_dir = None, glove_dir = None):
 	print ("DECOMPOSING SENTENCES FROM SUMMARY {}".format(fname))
 	""" Reads in XML file from CoreNLP_XMLs, facilitates sentence decomposition, outputs .segs file """
 	#cmd = 'python sentparser.py ' + fname + '.xml ' + str(summ_ind)
@@ -55,9 +55,7 @@ def DecomposeSummary(fname, summ_ind, dir1, method, abcd_dir = None):
 	if method == 'rule':
 		cmd = 'python sentparser.py ' + fname +' ' + str(summ_ind) + ' '+ dir1
 	else:
-		current_dir = os.getcwd()
-		os.chdir(abcd_dir)
-		cmd = 'python complete.py ' + fname + ' ' + str(summ_ind) + ' ' + dir1
+		cmd = 'python abcd_decomposer.py ' + fname + ' ' + str(summ_ind) + ' ' + dir1 + ' ' + sentence_file + ' ' + abcd_dir + ' ' + glove_dir
 	os.system(cmd)
 
 def CleanSegmentations(fname, directory, summ_ind):

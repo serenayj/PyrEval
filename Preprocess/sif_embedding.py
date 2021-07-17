@@ -2,8 +2,7 @@ import sys
 sys.path.append('src')
 import data_io, SIF_embedding_lib
 #import data_io, params, SIF_embedding
-from lib_preprocessing import getRealName
-
+#from lib_preprocessing import getRealName
 
 def SIF_master(segfile,cleanfile,directory,summ_ind):
 	print ("segfile: ", segfile)
@@ -83,8 +82,8 @@ def vectorize_sif(filename):
 	        return ' '.join(t)
 
 	# input
-	wordfile = 'glove.6B.100d.txt' # word vector file, can be downloaded from GloVe website
-	weightfile = 'enwiki_vocab_min200.txt' # each line is a word and its frequency
+	wordfile = 'ormf/models/glove/vectors.txt' #glove.6B.100d.txt' # word vector file, can be downloaded from GloVe website
+	weightfile = 'ormf/models/glove/freq.txt' #enwiki_vocab_min200.txt' # each line is a word and its frequency
 	weightpara = 1e-3 # the parameter in the SIF weighting scheme, usually in the range [3e-5, 3e-3]
 	rmpc = 1 # number of principal components to remove in SIF weighting scheme
 	#sentiment_file = '../data/sentiment-test' # sentiment data file
@@ -106,8 +105,6 @@ def vectorize_sif(filename):
 
 	# get SIF embedding
 	embedding = SIF_embedding_lib.SIF_embedding(We, x, w, params) # embedding[i,:] is the embedding for sentence i
-
-
 	return embedding 
 
 

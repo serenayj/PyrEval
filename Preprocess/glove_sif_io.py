@@ -9,7 +9,7 @@ import sys
 def glove(filename):
 	clean_text_path = filename
 	out_ls_path= clean_text_path.rsplit('.',1)[0]+".ls"
-	print (out_ls_path)
+	#print (out_ls_path)
 	vecs = vectorize_sif(clean_text_path) 
 	tags_file = clean_text_path.rsplit('.',1)[0]+'.segs'
 	tags = []

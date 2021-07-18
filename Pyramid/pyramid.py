@@ -227,6 +227,7 @@ def pyramidmain(pyr_name):
 
 		### Constraints Check:
 		### Check if there is any segment that is not supposed to be used but gets adopted
+		
 		segshouldbeused_df = Build_All_Record(segmentpool, Pyramid)
 		Pyramid[0] = Iterate_Clean_Record(segshouldbeused_df,Pyramid)  
 		#print(Pyramid[0])		
@@ -234,15 +235,21 @@ def pyramidmain(pyr_name):
 		alls = Pickup_used(Pyramid)
 		# Here is 
 		missings = Update_Record(data_record,alls)
-		
 		#Wasih (02-28-21) Debug prints
 		
 		if len(missings) >0:
 			print ("Found missing segments: ", missings) 
 			for each in missings:
-				segtext = [s.seg for s in segmentpool if s.id == each][0]
-				item = {'seg1id': each,'WAS': 1,'seg1':segtext}
-				Pyramid[0].append(item)
+				#Wasih (06-17-21) Remove duplicate SCUs of weight 1
+				is_used = False
+				for alpha in alls:
+					if each == alpha:
+						is_used = True
+						break
+				if is_used == False:
+					segtext = [s.seg for s in segmentpool if s.id == each][0]
+					item = {'seg1id': each,'WAS': 1,'seg1':segtext}
+					Pyramid[0].append(item)
 
 		# Update pyramid information for the cleaned layer1 
 		Pyramid_info[0].length = len(Pyramid[0]) 

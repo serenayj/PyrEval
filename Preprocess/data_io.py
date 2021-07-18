@@ -286,13 +286,15 @@ def getWordWeight(weightfile, a=1e-3):
                 N += float(i[1])
             else:
                 print(i)
-    for key, value in word2weight.iteritems():
+    #Wasih (06-20-21) dictionary: use .items(), works for both P2 & P3
+    for key, value in word2weight.items():
         word2weight[key] = a / (a + value/N) # By Yanjun: where it applies a/(a+p(w))
     return word2weight
 
 def getWeight(words, word2weight):
     weight4ind = {}
-    for word, ind in words.iteritems():
+    #Wasih (06-20-21) dictionary: use .items(), works for both P2 & P3
+    for word, ind in words.items():
         if word in word2weight:
             weight4ind[ind] = word2weight[word]
         else:
@@ -301,8 +303,9 @@ def getWeight(words, word2weight):
 
 def seq2weight(seq, mask, weight4ind):
     weight = np.zeros(seq.shape).astype('float32')
-    for i in xrange(seq.shape[0]):
-        for j in xrange(seq.shape[1]):
+    #Wasih (06-20-21): Use range to work in both P2 and P3
+    for i in range(seq.shape[0]):
+        for j in range(seq.shape[1]):
             if mask[i,j] > 0 and seq[i,j] >= 0:
                 weight[i,j] = weight4ind[seq[i,j]]
     weight = np.asarray(weight, dtype='float32')

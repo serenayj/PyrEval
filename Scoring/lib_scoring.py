@@ -271,7 +271,12 @@ def vecotirizationProtocol(fname):
     os.chdir('../Preprocess/')
     fname = '../Scoring/' + fname
     #By Yanjun : weiwei's method
-    vecs = vectorize(fname)
+    vec_method = config.get('Vectorization', 'Method')
+    #Puru (07-17-21): Need to add glove vectorization while vectorizing scu segments too
+    if vec_method == 'wtmf':
+        vecs = vectorize(fname)
+    elif vec_method == 'glove':
+        vecs = vectorize_sif(fname)
     #By Yanjun: SIF method 
     #vecs = vectorize_sif(fname)
     os.chdir(cwd)

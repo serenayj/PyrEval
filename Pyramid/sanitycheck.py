@@ -94,6 +94,8 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 		#current = ListNode(_)
 		sol = [_] 
 		weight = get_weight(item)
+		#Wasih (07-26-21) Convert weight to integer
+		weight = int(weight)
 		keys = ['seg%did' % (p + 1) for p in range(weight)]
 		used1 = [item[k] for k in keys]
 		#print "current sets of segments navigated: ", used1 
@@ -115,14 +117,18 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 				#compatibles.append([newlist.index(item),newlist.index(item2),item['WAS']+item2['WAS']])
 		solutions.append(sol)
 
-	sol_was = range(len(solutions))
+	#sol_was = range(len(solutions))
+	#Wasih (07-26-21) Update to python3
+	sol_was = [i for i in range(len(solutions))]
 	for s in solutions:
 		was = 0 
 		for ind in s:
 			was += new[ind]['WAS']
 		sol_was[solutions.index(s)] = was 
 
-	index_max = max(xrange(len(sol_was)), key=sol_was.__getitem__)
+    #Wasih (07-26-21) Update to python3
+	#index_max = max(xrange(len(sol_was)), key=sol_was.__getitem__)
+	index_max = max(range(len(sol_was)), key=sol_was.__getitem__)
 	final_solution = solutions[index_max]
 	# CUs that will be abandoned 
 	abandons = []
@@ -133,7 +139,9 @@ def Final_Solutions(new, Pyramid, Pyramid_info):
 			abandons.append(new[ind])
 	#print "abandons: ", abandons 
 	### Construct New Pyramid 
-	newpyramid = range(len(Pyramid))
+	#newpyramid = range(len(Pyramid))
+	#Wasih (07-26-21) Update to python3
+	newpyramid = [i for i in range(len(Pyramid))]
 	for _ in range(len(Pyramid)):
 		newpyramid[_] = []
 		for item in Pyramid[_]:
@@ -342,7 +350,6 @@ def Update_AllocRecord(data,alls):
 			results.append(seg)
 	missings = list(set(results).difference(set(alls)))
 	return missings
-
 
 
 

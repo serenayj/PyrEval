@@ -65,7 +65,7 @@ def stanfordmain(path_, mode, pyrEval):
 
 	# Clean Summary before XML dump
 	if os.path.isdir(path_):
-		for filename in os.listdir(path_):
+		for filename in sorted(os.listdir(path_)):
 			if filename[0] != '.':
 				full_path = os.path.join(path_,filename)
 				with open(full_path, 'r') as infile:

@@ -278,13 +278,16 @@ for pyramid in pyramids:
         print ("Will write into results file!! ", results_file)
         f = open(results_file, 'w')
         f.close()
+        # 07/05/21 Puru changes to sorting of results
+        x = [summ for summ in summaries if not summ.split('.')[-1] == 'xml']
+        x = sorted(x, key=lambda x: float(x.split('/')[-1]))
         with open(results_file, 'a') as f:
             w = csv.writer(f)
             w.writerow([pyramid_name])
             print (pyramid_name)
             w.writerow(['Summary'] + score_tables)
             print ('{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehensive score"))
-            for n, summary in enumerate(summaries):
+            for n, summary in enumerate(x):
                 #w.writerow([filename(summary)] + [s[n] for s in scores])
                 if os.path.isdir(summary):
                     summ = glob.iglob(summary+'/*')

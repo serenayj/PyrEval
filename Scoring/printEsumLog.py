@@ -192,7 +192,20 @@ def printScuList(scu_list, printfile):
     if len(scu_list) is 0:
         output = 'No linked Content Units'
     else:
-        scu_list = sorted(scu_list, key=lambda weight: weight[1], reverse=True)
+        scu_list = sorted(scu_list, key=lambda x:(10 - x[1], x[0]))
+        """sorted_cu_list = {}
+        for item in scu_list:
+            if item[1] in sorted_cu_list.keys():
+                sorted_cu_list[int(item[1])].append(item)
+            else:
+                sorted_cu_list[int(item[1])] = [item]
+        cu_list = []
+        for i in range(5, 0, -1):
+            sorted_cu_list[i] = sorted(sorted_cu_list[i], key=lambda x:int(x[0]))
+            scu_list.append(sorted_cu_list[i])
+        
+        # print(scu_list)"""
+        cu_line = ''
         output = '[ID(Weight)]: '
         for scu in scu_list:
             output += (str(scu[0])+'('+str(scu[1])+'), ')

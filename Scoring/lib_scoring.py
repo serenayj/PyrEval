@@ -81,6 +81,16 @@ def parseMaxSegment(segment_list, number_of_sentences, used_sentence_list):
 ===================== SCU ======================
 """
 
+def normalize(lst, typ):
+    if typ == 'cosine':
+        min_val = 0.5
+        rang = 0.5
+    else:
+        min_val = 1
+        rang = 4
+    # rang = max(lst) - min_val
+    return [(x-min_val)/rang for x in lst]
+
 class SCU():
     def __init__(self, scu_id, weight, segment_embeddings):
         self.id = scu_id
@@ -88,8 +98,8 @@ class SCU():
         self.weight = weight
     def averageSimilarity(self, segment_embedding):
         normalizer = len(self.embeddings)
-        if normalizer == 0:
-            print (self.id) 
+        # if normalizer == 0:
+            # print (self.id) 
         # Puru 06/25/21 Added info to get std dev of cosine similarity of SCUs contributors with the segment
         similarities = []
         segment_embedding = np.array([segment_embedding])
@@ -149,13 +159,36 @@ class SentenceGraph():
                 scores[scu.id] = average
         #Wasih: 05-23-21 configurable scoring: top k scus to consider for making the most similar scus matching the given segment embedding
         top_k_scus = int(config.get('Scoring_Params', 'TopKScus'))
-        
-        scores = sorted(scores.items(), key=lambda x:x[1][0]*x[1][1], reverse=True)[:top_k_scus]
+        sort_fn = config.get('Scoring_Params', 'SortingMetric')
+
+        cos = normalize([x[1][0] for x in scores.items()], 'cosine')
+        wts = normalize([x[1][1] for x in scores.items()], 'weight')
+        wtdsum = [(x,y) for x in cos for y in wts]
+        # print (wtdsum)
+        for i, each in enumerate(scores.items()):
+            each[1].append(wtdsum[i])
+        if sort_fn == "product":
+            scores = sorted(scores.items(), key=lambda x:x[1][0]*x[1][1], reverse=True)[:top_k_scus]
+            #scores = [(score[0], score[1][0], score[1][1], score[1][2]) for score in scores]
+        elif sort_fn == "stddev":
+            scores = sorted(scores.items(), key=lambda x:x[1][0]*x[1][1]*(1-x[1][2]), reverse=True)[:top_k_scus]
+            #scores = [(score[0], score[1][0], score[1][1], score[1][2]) for score in scores]
+        elif sort_fn == "cosine":
+            scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:top_k_scus]
+            #scores = [(score[0], score[1][0], score[1][1], score[1][2]) for score in scores]
+        elif sort_fn == "wtdsum" or sort_fn == "normsum":
+                scores = sorted(scores.items(), key=lambda x:x[1][3][1]+x[1][3][0], reverse=True)[:top_k_scus]
+                # print(scores)
+                #scores = [(score[0], score[1][0], score[1][1], score[1][2], score[1][3]) for score in scores]
+        elif sort_fn == "normsum":
+            pass
+
         #scores = [(score[0], score[1][0]) for score in scores]
         #Wasih (06-14-21) Add another element (SCU weight) to make the scores/scu list as that of triples
         #Puru 06/25/21 Added 4th element (SCU standard deviation) to make a 4 tuple for each SCU
-        scores = [(score[0], score[1][0], score[1][1], score[1][2]) for score in scores]
+        scores = [(score[0], score[1][0], score[1][1], score[1][2], score[1][3]) for score in scores]
         return scores
+        
 
 class Vertex():
     def __init__(self, segment_id, scu_list):
@@ -168,21 +201,42 @@ class Vertex():
     def getWeight(self):
         #Wasih: 05-23-21 configurable scoring: vertex weighting scheme
         weight_scheme = config.get('Scoring_Params', 'WeightScheme')
+        #Puru 06/25/21 Fixed the bug and added functionality to change the function
+        weight_fn = config.get('Scoring_Params', 'WeightingMetric')
+        
+        weights = []
+        # print(self.scu_list)
+        if weight_fn == "product":
+            weights = [scu[1]*scu[2] for scu in self.scu_list]
+        elif weight_fn == "stddev":
+            weights = [scu[1]*scu[2]*(1-scu[3]) for scu in self.scu_list]
+        elif weight_fn == "cosine":
+            weights = [scu[1] for scu in self.scu_list]
+        elif weight_fn == "wtdsum" or weight_fn == "normsum":
+            #print(list(self.scu_list))
+            weights = [scu[4][0] + scu[4][1] for scu in self.scu_list]
+        elif weight_fn == "normsum":
+            weights = [normalize(scu[1])+normalize(scu[2]) for scu in self.scu_list]
+        
+        
         if weight_scheme == 'average':
             if len(self.scu_list) != 0:
-                return sum([scu[1] for scu in self.scu_list]) / len(self.scu_list)
+                return sum(weights)/ len(self.scu_list)
             else:
                 return 0
-
         elif weight_scheme == 'sum':
             #Wasih: 05-23-21 Possible bug: Correct it to scu[1] (this is cosine similarity), as scu[0] is just the scu id
-            return sum([scu[1] for scu in self.scu_list])
 
-        elif weight_scheme == 'max':
             if len(self.scu_list) != 0:
-                return max([scu[1]*scu[2] for scu in self.scu_list])
+                return sum(weights)
             else:
                 return 0
+        elif weight_scheme == 'max':
+            if len(self.scu_list) != 0:
+                return max(weights)
+            else:
+                return 0
+
 
         ###### Weight Scheme 1
         #return sum([scu[1] for scu in self.scu_list]) / len(self.scu_list)
@@ -252,7 +306,7 @@ class SummaryGraph():
 """
 
 def getSoup(fname):
-    print(fname)
+    # print(fname)
     handler = open(fname, 'r')
     soup = Soup(handler, 'lxml')
     return soup
@@ -494,7 +548,7 @@ def new_getlayersize(sizefile, numsmodel):
     count_by_weight = {}
     for ind in range(len(lines),0,-1):
         nums = int(lines[len(lines)-ind].strip()) * ind 
-        print ("layer: ", ind, " nums of SCU: ", int(lines[len(lines)-ind].strip()))
+        # print ("layer: ", ind, " nums of SCU: ", int(lines[len(lines)-ind].strip()))
         count_by_weight[ind] = int(lines[len(lines)-ind].strip()) 
         count += nums 
     avg = count / numsmodel
@@ -516,6 +570,7 @@ def retrieveSeg(segID, seg_list):
         if segID == seg_id:
             return seg
 
+# Puru defunct function (refer to printEsumLog.py)
 def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,comprehension, results, segment_list,num_sentences,segs,scu_labels, pyramid_name, log_file):
     w,h = terminal_size()
     summary_name_len = len(summary_name)
@@ -576,8 +631,19 @@ def formatVerboseOutput(summary_name,segment_count,score,quality,coverage,compre
                 cu = (s.scu_text_pairs[seg_index], len(scu_labels[s.scu_text_pairs[seg_index]]))
                 cu_list.append(cu)
     if len(cu_list) != 0:
-        cu_list = sorted(cu_list, key=lambda x:(x[1], x[0]), reverse=True)
+        cu_list = sorted(cu_list, key=lambda x:x[0], reverse=True)
+        sorted_cu_list = {5:[], 4:[], 3:[], 2:[], 1:[]}
+        for item in cu_list:
+            sorted_cu_list[item[1]].append(item)
+        cu_list = []
+        for i in range(5, 0, -1):
+            sorted_cu_list[i] = sorted(sorted_cu_list[i], key=lambda x:int(x[0]))
+            cu_list.append(sorted_cu_list[i])
+        
+        print(cu_list)
+        x = input()
         cu_line = ''
+        
         for cu in cu_list[:len(cu_list)-1]:
             cu_line += str(cu[0]) + ': ' + str(cu[1]) + ', '
         cu_line += str(cu_list[len(cu_list)-1][0]) + ': ' + str(cu_list[len(cu_list)-1][1])

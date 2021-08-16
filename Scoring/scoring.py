@@ -201,6 +201,7 @@ for pyramid in pyramids:
                     sentences, segment_count, segment_list = sentencesFromSegmentations(fn)
                     Graph = SummaryGraph(sentences, scus)
                     independentSet = Graph.independentSet
+                    independentSetValues = Graph.independentSetValues
                     candidates = buildSCUcandidateList(independentSet)
                     #print "Candidates: ", 
                     results, possiblyUsed = processResults(candidates, independentSet)
@@ -244,7 +245,7 @@ for pyramid in pyramids:
                 loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
                 loginput.close()
                 print("Success!!")
-                printEsumLogWrapper(summary_name, segcount, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_f)
+                printEsumLogWrapper(summary_name, segcount, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_f, independentSetValues)
                
             if options.returnflag:
                 scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 

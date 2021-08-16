@@ -37,6 +37,7 @@ class Summary():
         self.segs = segs
         self.used_sentence_list = []
         self.check_tups = {}
+        
 
 # A class holding all the arguments related to the pyramid
 
@@ -56,6 +57,13 @@ class Scores():
         self.cmax = cmax
         self.avg = avg
 
+class Value():
+    def __init__(self, metadata, value):
+        _, self.sentid, self.segid, self.segmtid = metadata.split('&')
+        self.scuid = value[0]
+        self.apcs = value[1]
+        self.scuwt = value[2]
+        self.stdapcs = value[3]
 
 ##########################################################################
 # Helper Functions
@@ -214,15 +222,22 @@ def printScuList(scu_list, printfile):
     printfile.write("\n\n{:>20}{} \n\n".format("Content Unit List ", output))
 
 # Prints the segments and associated SCU for each segment of the summary
-def printSegments(segList, scuList, pyramid, output):
+def printSegments(segList, scuList, pyramid, output, values):
     for s in segList:
         print("\n\nSentence: {} | Segmentation: {}".format(s.sentence_id, s.segment_id))
         output.write("\n\nSentence: {} | Segmentation: {}".format(s.sentence_id, s.segment_id))
 
         for seg_index, text in s.text.items():
             if seg_index in s.scu_text_pairs.keys():
-                print("\n\tSegment ID: {} | Content Unit: {} [Weight: {}]".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]])))
-                output.write("\n\n\tSegment ID: {} | Content Unit: {} [Weight: {}]".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]])))
+                key = str(s.sentence_id) + '&' + str(s.segment_id) + '&' + str(seg_index)
+                val_list = values[key]
+                match = val_list[0]
+                for val in val_list:
+                    if val.scuid == s.scu_text_pairs[seg_index]:
+                        match = val
+
+                print("\n\tSegment ID: {} | Content Unit: {} [Weight: {}] | APCS: {:.4f} +/- {:.4f}".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]]), val.apcs, val.stdapcs))
+                output.write("\n\n\tSegment ID: {} | Content Unit: {} [Weight: {}] | APCS: {:.4f} +/- {:.4f}".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]]), val.apcs, val.stdapcs))
 
                 wrap_seg = textwrap.wrap(s.text[seg_index].strip(), width=getWidth()-38)
                 for i, line in enumerate(wrap_seg):
@@ -288,25 +303,37 @@ def printSegments(segList, scuList, pyramid, output):
                         output.write("\n\t"+" "*9+".................... " + line)
 
 
+def getInfo(values):
+    # print(values)
+    V = {}
+    for value in values:
+        sz = len(value[1])
+        for i in range(sz):
+            if value[0][2:] in V.keys():
+                V[value[0][2:]].append(Value(value[0], value[1][i]))
+            else:
+                V[value[0][2:]] = [Value(value[0], value[1][i])]
+    print(V.keys())
+    return V
 
 
 ##########################################################################
 ####Wrapper Function
 ##########################################################################
 
-def printEsumLogWrapper(summary_name, segment_count, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_file):
+def printEsumLogWrapper(summary_name, segment_count, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_file, values):
     # creates instances of the wrapper classes and passes them to the main function
     s = Summary(summary_name, segment_count, segment_list, num_sentences, segs)
     r = Scores(score, quality, coverage, comprehension, q_max, c_max, avg)
     p = Pyramid(scu_labels, pyramid_name)
-    
-    printEsumLog(s, r, p, results, log_file)
+    v = getInfo(values)
+    printEsumLog(s, r, p, v, results, log_file)
 
 
 ##########################################################################
 # Main Function
 ##########################################################################
-def printEsumLog(summary, scores, pyramid, results, log_file):
+def printEsumLog(summary, scores, pyramid, values, results, log_file):
 
     output = open(log_file, "w+")
     printHeader(summary, pyramid, output)
@@ -315,7 +342,7 @@ def printEsumLog(summary, scores, pyramid, results, log_file):
     segList, scuList = listSegments(summary, pyramid, results)
 
     printScuList(scuList, output)
-    printSegments(segList, scuList, pyramid, output)
+    printSegments(segList, scuList, pyramid, output, values)
     printFooter(output)
     output.close()
 

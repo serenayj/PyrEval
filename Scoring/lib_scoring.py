@@ -245,6 +245,9 @@ class Vertex():
         #return sum([scu[1] for scu in self.scu_list])
         ###### Weight Scheme 3
         #return max([scu[1] for scu in self.scu_list])
+
+    def getValues(self):
+        return self.scu_list       
     def add_neighbor(self, neighbor):
         self.neighbors.append(neighbor)
         neighbor.we_are_neighbors(self)
@@ -265,7 +268,7 @@ class SummaryGraph():
         for sentence in self.sentences:
             self.buildInnerEdgesList(sentence.graph)
         self.vertices = self.buildOuterEdgesList()
-        self.independentSet = self.buildIndependentSet()
+        self.independentSet, self.independentSetValues = self.buildIndependentSet()
     def buildInnerEdgesList(self, sentenceGraph):
         nodes = list(sentenceGraph)
         while len(nodes) > 0:
@@ -298,7 +301,10 @@ class SummaryGraph():
             independentSet.append(vertex)
             vertex.delete()
             vertices = [vert for vert in vertices if vert.useMe == True]
-        return independentSet
+        for each in independentSet:
+            values = [(each.id, each.getValues()) for each in independentSet]
+            # print(each.id, each.getValues())
+        return independentSet, values
 
 
 """

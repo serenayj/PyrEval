@@ -163,7 +163,11 @@ class SentenceGraph():
 
         cos = normalize([x[1][0] for x in scores.items()], 'cosine')
         wts = normalize([x[1][1] for x in scores.items()], 'weight')
-        wtdsum = [(x,y) for x in cos for y in wts]
+        std = [1-x[1][2] for x in scores.items()]
+        wtdsum = []
+        for i in range(len(scores.items())):
+            wtdsum.append((cos[i], wts[i], std[i]))
+        # wtdsum = [(x,y,z) for x in cos for y in wts for ]
         # print (wtdsum)
         for i, each in enumerate(scores.items()):
             each[1].append(wtdsum[i])
@@ -176,12 +180,13 @@ class SentenceGraph():
         elif sort_fn == "cosine":
             scores = sorted(scores.items(), key=lambda x:x[1][0], reverse=True)[:top_k_scus]
             #scores = [(score[0], score[1][0], score[1][1], score[1][2]) for score in scores]
-        elif sort_fn == "wtdsum" or sort_fn == "normsum":
-                scores = sorted(scores.items(), key=lambda x:x[1][3][1]+x[1][3][0], reverse=True)[:top_k_scus]
+        elif sort_fn == "normsum":
+            scores = sorted(scores.items(), key=lambda x:x[1][3][1]+x[1][3][0]+x[1][3][2], reverse=True)[:top_k_scus]
                 # print(scores)
                 #scores = [(score[0], score[1][0], score[1][1], score[1][2], score[1][3]) for score in scores]
-        elif sort_fn == "normsum":
-            pass
+        elif  sort_fn == "wtdsum":
+            weights = (1,0,1)
+            scores = sorted(scores.items(), key=lambda x:x[1][3][1]*weights[1]+x[1][3][0]*weights[0]+x[1][3][2]*weights[2], reverse=True)[:top_k_scus]
 
         #scores = [(score[0], score[1][0]) for score in scores]
         #Wasih (06-14-21) Add another element (SCU weight) to make the scores/scu list as that of triples
@@ -214,9 +219,12 @@ class Vertex():
             weights = [scu[1] for scu in self.scu_list]
         elif weight_fn == "wtdsum" or weight_fn == "normsum":
             #print(list(self.scu_list))
-            weights = [scu[4][0] + scu[4][1] for scu in self.scu_list]
-        elif weight_fn == "normsum":
-            weights = [normalize(scu[1])+normalize(scu[2]) for scu in self.scu_list]
+            if weight_fn == "wtdsum":
+                wts = (1,0,1)
+            else:
+                wts = (1,1,1)
+            weights = [scu[4][0]*wts[0] + scu[4][1]*wts[1] + scu[4][2]*wts[2] for scu in self.scu_list]
+        
         
         
         if weight_scheme == 'average':

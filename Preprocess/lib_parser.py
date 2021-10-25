@@ -35,6 +35,13 @@ import sys
 from bs4 import BeautifulSoup
 from nltk.tree import Tree
 
+if sys.version_info[0] == 2:
+    import ConfigParser as configparser
+else:
+    import configparser
+    PYTHON_VERSION = 3
+
+
 # GLOBAL LISTS
 tensed_verb = ['VBZ','VBD','VBP','MD']
 wl = ['CC', 'CD', 'DT', 'EX', 'FW', 'IN', 'JJ', 'JJR', 'JJS', 'LS', 'MD', 'NN', 'NNS', 'NNP', 'NNPS', 'PDT', 'POS',
@@ -156,13 +163,16 @@ def compoundSplit(tree):
     nosplitflag = False
     splits = []
 
+    config = configparser.ConfigParser()
+    config.read('../parameters.ini')
+    minLength = int(config.get('Segmentation', 'MinSentenceLength'))
     # Checks the S sibling relation
     for st in tree.subtrees():
         # print str(st)
         if patternS.match(str(st)):
             for i in range(len(st)):
                 if st[i].label() == "S":
-                    if len(st[i].leaves()) > 2:
+                    if len(st[i].leaves()) > minLength:
                         splits.append(st[i])
 
     # Checks for embedded cases and if present removes the parent tree
@@ -171,7 +181,7 @@ def compoundSplit(tree):
             if each in tr.subtrees() and each != tr:
                 splits.remove(tr)
 
-    if len(splits) is 0:
+    if len(splits) == 0:
         splits.append(tree)
         nosplitflag = True
 
@@ -182,7 +192,7 @@ def compoundSplit(tree):
                 dellist = []
                 skipflag = False
                 for i in range(len(st)):
-                    if st[i].label() == "SBAR" and len(st[i].leaves()) > 2:
+                    if st[i].label() == "SBAR" and len(st[i].leaves()) > minLength:
                         splits.append(st[i])
                         dellist.append(i)
                     else:
@@ -191,10 +201,10 @@ def compoundSplit(tree):
                 for j in dellist:
                     del st[j]
                 if skipflag:
-                    if len(x.leaves()) > 5:
+                    if len(x.leaves()) > minLength + 2:
                         splits.append(x)
                 else:
-                    if len(x.leaves()) > 3:
+                    if len(x.leaves()) > minLength:
                         splits.append(x)
 
     if nosplitflag:
@@ -329,6 +339,10 @@ def combineSplitSegs(segments, samesegs):
 # Input: Tree to check the rule in and list of all nodes of the tree
 # Output: List of subtrees which are considered dependent subclauses, and list of the subtree indices
 def ruleSBAR(tr, numlist):
+    config = configparser.ConfigParser()
+    config.read('../parameters.ini')
+    minLength = int(config.get('Segmentation', 'MinSentenceLength'))
+
     candidate = []
     cand_pos = []
     pattern = re.compile("^\(VP\n(  \(.+\)\n)*  \(SBAR.*")
@@ -336,7 +350,7 @@ def ruleSBAR(tr, numlist):
     
     # Checks for non VP child SBAR subtrees to split from the root tree
     for i, st in enumerate(tr.subtrees()):
-        if i == 0 or len(st.leaves()) < 3:
+        if i == 0 or len(st.leaves()) < minLength:
             continue
         if pattern.match(str(st)):
             vp_flag = True
@@ -348,7 +362,7 @@ def ruleSBAR(tr, numlist):
                     pass
                 else:
                     continue
-            if len(st.leaves()) > 2 and len(st.leaves()) + 2 < len(tr.leaves()):
+            if len(st.leaves()) > minLength and len(st.leaves()) + minLength < len(tr.leaves()):
                 candidate.append(st)
 
     if len(candidate) == 0:

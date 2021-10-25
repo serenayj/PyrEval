@@ -281,7 +281,7 @@ for pyramid in pyramids:
         f.close()
         # 07/05/21 Puru changes to sorting of results
         x = [summ for summ in summaries if not summ.split('.')[-1] == 'xml']
-        x = sorted(x, key=lambda x: float(x.split('/')[-1]))
+        x = sorted(x, key=lambda x: x.split('/')[-1])
         with open(results_file, 'a') as f:
             w = csv.writer(f)
             w.writerow([pyramid_name])

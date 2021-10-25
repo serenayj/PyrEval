@@ -229,15 +229,17 @@ def printSegments(segList, scuList, pyramid, output, values):
 
         for seg_index, text in s.text.items():
             if seg_index in s.scu_text_pairs.keys():
-                key = str(s.sentence_id) + '&' + str(s.segment_id) + '&' + str(seg_index)
-                val_list = values[key]
-                match = val_list[0]
-                for val in val_list:
-                    if val.scuid == s.scu_text_pairs[seg_index]:
-                        match = val
+                print("\n\tSegment ID: {} | Content Unit: {} [Weight: {}]".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]])))
+                output.write("\n\n\tSegment ID: {} | Content Unit: {} [Weight: {}]".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]])))
+                # key = str(s.sentence_id) + '&' + str(s.segment_id) + '&' + str(seg_index)
+                # val_list = values[key]
+                # match = val_list[0]
+                # for val in val_list:
+                    # if val.scuid == s.scu_text_pairs[seg_index]:
+                        # match = val
 
-                print("\n\tSegment ID: {} | Content Unit: {} [Weight: {}] | APCS: {:.4f} +/- {:.4f}".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]]), val.apcs, val.stdapcs))
-                output.write("\n\n\tSegment ID: {} | Content Unit: {} [Weight: {}] | APCS: {:.4f} +/- {:.4f}".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]]), val.apcs, val.stdapcs))
+                # print("\n\tSegment ID: {} | Content Unit: {} [Weight: {}] | APCS: {:.4f} +/- {:.4f}".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]]), val.apcs, val.stdapcs))
+                # output.write("\n\n\tSegment ID: {} | Content Unit: {} [Weight: {}] | APCS: {:.4f} +/- {:.4f}".format(seg_index,s.scu_text_pairs[seg_index], len(pyramid.scu_labels[s.scu_text_pairs[seg_index]]), val.apcs, val.stdapcs))
 
                 wrap_seg = textwrap.wrap(s.text[seg_index].strip(), width=getWidth()-38)
                 for i, line in enumerate(wrap_seg):

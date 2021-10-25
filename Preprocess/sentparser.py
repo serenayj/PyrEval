@@ -6,7 +6,16 @@
 
 # Add import statements
 from lib_parser import *
+if sys.version_info[0] == 2:
+    import ConfigParser as configparser
+else:
+    import configparser
 
+config = configparser.ConfigParser()
+config.read('../parameters.ini')
+decomposeLabel = config.get('Segmentation', 'DecompositionMode')
+decompose = {"default":0, "sentence":1, "sentsplit":2, "vpsbar":3,"convp":4}
+rule_parameter = decompose[decomposeLabel]
 # Command line arguments for filename, output directory, and summary index
 fname = sys.argv[1]
 ext = sys.argv[3]
@@ -71,6 +80,9 @@ for sentence_num in range(len(dep_sentences)):
     segment_index = 0
     # Outputting the whole sentence as the first segmentation
     outputSegs(output, summary_index, sentence_num+1, segmentation_index, segment_index, numList)
+    if rule_parameter == 1:
+        continue
+
     segmentation_index += 1
     segment_index = 0
     # Splitting the sentence into constituent parts
@@ -107,22 +119,25 @@ for sentence_num in range(len(dep_sentences)):
         s_split = [tree]
         segments = [numList]
 
+    if rule_parameter == 2:
+        continue
 
     # List of splits that happen due to split rules
     ruleSplits = []
 
     for i, st in enumerate(s_split):
         # Rule 1 for Verb SBAR (Needs edits for edgecases)
-        sbar_ind, sbar = ruleSBAR(st, segments[i])
-        if len(sbar) > 0:
-            ruleSplits.append([sbar_ind, sbar, i])
+        if rule_parameter == 0 or rule_parameter == 3:
+            sbar_ind, sbar = ruleSBAR(st, segments[i])
+            if len(sbar) > 0:
+                ruleSplits.append([sbar_ind, sbar, i])
 
         # Rule 2 for checking conjoined VP without nouns
         vpslist = getcvps(st)
         nplist = getnp(st)
 
         # If VP matching the criteria found
-        if len(vpslist) > 0:
+        if len(vpslist) > 0 and rule_parameter % 4 == 0:
             deplist = []
 
             # Get dependency noun index for each VP

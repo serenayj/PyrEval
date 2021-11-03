@@ -23,6 +23,7 @@ from scipy.stats import pearsonr as pearson
 from scipy.stats import spearmanr as spearman
 #from printEsumLog import printEsumLogWrapper 
 from printEsumLog import *
+from time import time
 import optparse
 import glob
 import copy
@@ -32,6 +33,7 @@ import collections
 import sys
 import pandas as pd
 import pickle
+import threading
 
 #Wasih (02-21-20) results.csv not generating
 PYTHON_VERSION = 2
@@ -51,18 +53,23 @@ from termcolor import colored
 
 #dataset_ind = sys.argv[1]
 #Wasih (02-21-20) results.csv not generating
+
+timer = time()
+
 config = configparser.ConfigParser()
 config.read('../parameters.ini')
 
+#Puru (11-03-21) Fixed bugs with -l -t -a 
+
 parser = optparse.OptionParser()
 parser.add_option('-a', '--all', action="store_true", dest="a", default=False)
-parser.add_option('-t', '--table', action="store_true", dest="t", default=True)
+parser.add_option('-t', '--table', action="store_true", dest="t", default=False)
 parser.add_option('-p', '--pyramid', action="store", dest="pyramid", default="pyrs/pyramids")
 #parser.add_option('-o', '--output', action="store", dest='output', default='../results.csv')
 #Wasih (02-21-20) results.csv not generating
 parser.add_option('-o', '--output', action="store", dest='output', default=config.get('Paths', 'OutputFile'))
 
-parser.add_option('-l', '--log', action='store', dest='log', default=False)
+parser.add_option('-l', '--log', action='store', dest='log', default=True)
 parser.add_option('-m', '--model', action='store', dest='model', default=1)
 parser.add_option('-n', '--numsmodel', action='store', dest='numsmodel', default=False)
 #Wasih 04-13-21 Add flag for return type data structure for notebook
@@ -71,6 +78,7 @@ parser.add_option('-r', '--returnflag', action='store', dest='returnflag', defau
 options, args = parser.parse_args()
 
 print_all = options.a
+print("Print All booleanb value:", print_all)
 print_table = options.t
 pyramid_path = options.pyramid
 results_file = options.output
@@ -103,8 +111,8 @@ print ("Numbers of contributors: ", numsmodel)
 #for testing
 # pyramids = list(glob.iglob('pyrs/pyramids/*'))
 #pyramids = list(glob.iglob('pyrs/pyramids/*'))
-for pyr in pyramids:
-    print (pyr)
+# for pyr in pyramids:
+    # print (pyr)
 
 
 
@@ -168,6 +176,8 @@ def getDictionary(segList, pyramid, results, scores):
 ====================== Scoring Pipeline ========================
 """
 
+#Puru (11-03-21) Implemented Threading. Commented out since did not improve performance 
+
 for pyramid in pyramids:
     raw_scores = {}
     quality_scores = {}
@@ -176,135 +186,70 @@ for pyramid in pyramids:
     pyramid_name = pyramid[pyramid.rfind('/') + 1:pyramid.rfind('.')]
     #print "test"
     scus_og, scu_labels = readPyramid(pyramid)
-    
+    x = []
+    # threads = []
     for summary in summaries:
-        scus = copy.deepcopy(scus_og)
         if os.path.isdir(summary):
             summ = glob.iglob(summary+'/*')
             #fn is the summary name 
             for fn in summ:
-                #print "current filename: ", fn
                 if fn.endswith('.ls'):
-                    summary_slash= fn.rfind('/') + 1
-                    summary_dot = fn.rfind('.')
-                    summary_name = fn[summary_slash:summary_dot]
-                    if os.path.getsize(fn) == 0:
-                        raw_scores[summary_name] = 0
-                        quality_scores[summary_name] = 0
-                        coverage_scores[summary_name] = 0
-                        comprehension_scores[summary_name] = 0
-                        continue
-                    segs = fn[:fn.rfind('/')] + '/' + summary_name + '.segs'
-                    segs = open(segs, 'r').readlines()
-                    num_sentences = int(segs[len(segs)-1].split('&')[1])
-                    segs = {'&'.join(seg.split('&')[:4]): seg.split('&')[4] for seg in segs}
-                    sentences, segment_count, segment_list = sentencesFromSegmentations(fn)
-                    Graph = SummaryGraph(sentences, scus)
-                    independentSet = Graph.independentSet
-                    independentSetValues = Graph.independentSetValues
-                    candidates = buildSCUcandidateList(independentSet)
-                    #print "Candidates: ", 
-                    results, possiblyUsed = processResults(candidates, independentSet)
-                    segcount = getsegsCount(segment_list, results, segs, num_sentences)
-                    #print "Possibly used: ", possiblyUsed
-                    keys = [res.split('&') for res in results]
-                    rearranged_results = scusBySentences(results)
-                    score, matched_cus = getScore(rearranged_results, scus)
-                    size_file = 'sizes/' + filename(pyramid) + '.size'
-                    #count_by_weight, avg = getLayerSizes(size_file)
-                    # New get layersize 
-                    count_by_weight, avg = new_getlayersize(size_file,numsmodel)
-                    #print "AVG SCU: ", avg 
-                    raw_scores[summary_name] = score
-                    # temporary fix to number of sentences 
-                    #q_max = maxRawScore(count_by_weight, possiblyUsed)
-                    q_max = maxRawScore(count_by_weight, segcount)
-                    #print "MAXSUM for numbers of matched SCU", q_max 
-                    c_max = maxRawScore(count_by_weight, avg)
+                    fn_name = fn.split('/')[-1].rsplit('.', 1)[0]
+                    print ("Scoring File: ", fn_name)
+                    # if print_all:
+                        # print("Printing output is disabled with multithreading")
+                        # print_all = False
+                    # threads.append(threading.Thread(target = score, args= (copy.deepcopy(scus_og), fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, options.returnflag)))
+                    x.append(fn_name)
+                    score(copy.deepcopy(scus_og), fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, options.returnflag)
+                    # threads[-1].start()
 
-                    #print "MAXSUM for avg scu: ", c_max 
-                    #print "score divided by max obtainable scores: ", q_max
-                    quality = 0 if not q_max else float(score)/q_max
-                    if quality > 1:
-                        quality = 1 
-                    coverage = 0 if not c_max else float(score)/c_max
-                    if coverage > 1:
-                        coverage = 1 
-                    comprehension = float((quality + coverage)) / 2
-                    quality_scores[summary_name] = quality
-                    coverage_scores[summary_name] = coverage
-                    comprehension_scores[summary_name] = comprehension
-
-                else:
-                    pass
-            if (print_all) or log:
-                #log_f = log + summary_name
-                log_f = "../log/" + summary_name
-                #loginput = open(log_f, "w+")
-                loginput = open("../log/loginput.txt", "w+")
-                loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
-                loginput.close()
-                print("Success!!")
-                printEsumLogWrapper(summary_name, segcount, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_f, independentSetValues)
-               
-            if options.returnflag:
-                scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 
-                s = Summary(summary_name, segcount, segment_list, num_sentences, segs)
-                p = Pyramid(scu_labels, pyramid_name)
-                segList, SCUL = listSegments(s, p, results)
-                dicti = getDictionary(segList, p, results, scores)
-                #now write the dictionary to a pickle file which will then be read by the flask app
-                dict_filename, _ = os.path.split(results_file)
-                dict_filename = os.path.join(dict_filename, 'dict')
-                f = open(dict_filename, 'wb')
-                pickle.dump(dicti, f)
-                #f.write(dicti)
-                print(dicti)
-                print('******************************\n\n')
-    
-    #printSegments(segList, SCUL, p, None)
- #printEsumLogWrapper(summary_name,segcount,score,quality,coverage,comprehension,q_max, c_max, avg, results, segment_list,num_sentences,segs,scu_labels,pyramid_name, log_f)
-
-    #raw_scores = sort(raw_scores)
-    #print type(raw_scores)
-    #print "raw_scores: ", raw_scores
-    #scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores]
-    if print_table:
+    # for i in range(len(threads)):
+    #     threads[i].join()
+    # if print_table:
         #results_f = 
         ### For DUC05
-        items = pyramid_name.split("_")
-        #results_file = "../311-6-1-results/"+str(items[1][1:])+"_"+str(items[2][1:])+"_"+str(items[3][1:])+"-raw.csv"
-        ## FOr Duc 05
-        #results_file = "results-raw.csv"
-        print ("Will write into results file!! ", results_file)
-        f = open(results_file, 'w')
-        f.close()
-        # 07/05/21 Puru changes to sorting of results
-        x = [summ for summ in summaries if not summ.split('.')[-1] == 'xml']
-        x = sorted(x, key=lambda x: x.split('/')[-1])
-        with open(results_file, 'a') as f:
-            w = csv.writer(f)
-            w.writerow([pyramid_name])
+
+    ## FOr Duc 05
+    #results_file = "results-raw.csv"
+    print ("Will write into results file!! ", results_file)
+    f = open(results_file, 'w')
+    f.close()
+    # 07/05/21 Puru changes to sorting of results
+    # x = [summ for summ in summaries if not summ.split('.')[-1] == 'xml']
+    x = sorted(x)
+    # print(x)
+    #Puru (11-03-21) Fixed Output bugs
+
+    with open(results_file, 'a') as f:
+        w = csv.writer(f)
+        w.writerow([pyramid_name])
+        if print_table:
             print (pyramid_name)
-            w.writerow(['Summary'] + score_tables)
-            print ('{} | {} | {} | {} | {}'.format("summary name", "Raw score", "Quality score", "Coverage score", "Comprehensive score"))
-            for n, summary in enumerate(x):
-                #w.writerow([filename(summary)] + [s[n] for s in scores])
-                if os.path.isdir(summary):
-                    summ = glob.iglob(summary+'/*')
-                    for fn in summ:
-                        #if fn[:-5] == '.segs':
-                         if fn.endswith('.ls'):
-                            summary_slash= fn.rfind('/') + 1
-                            summary_dot = fn.rfind('.')
-                            summary_name = fn[summary_slash:summary_dot]
-                            print ("Raw score for summary ", summary_name, ": ", raw_scores[summary_name])
-                            output = [summary_name, raw_scores[summary_name],quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]]
-                            w.writerow(output)
-                            print ('{:>16} | {:>2} | {:.3f} | {:.3f} | {:.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]))
+        w.writerow(['Summary'] + score_tables)
+        if print_table:
+            print ('{} | {:^9} | {:^9} | {:^9} | {}'.format("Summary Name", "Raw Rcore", "Quality", "Coverage", "Comprehensive"))
+        for summary_name in x:
+            #w.writerow([filename(summary)] + [s[n] for s in scores])
+            # if os.path.isdir(summary):
+            #     summ = glob.iglob(summary+'/*')
+            #     for fn in summ:
+            #         #if fn[:-5] == '.segs':
+            #          if fn.endswith('.ls'):
+            # summary_slash= summary.rfind('/') + 1
+            # summary_dot = summary.rfind('.')
+            # summary_name = summary[summary_slash:summary_dot]
+            #             # print ("Raw score for summary ", summary_name, ": ", raw_scores[summary_name])
+            output = [summary_name, raw_scores[summary_name],quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]]
+            w.writerow(output)
+            if print_table:
+                print ('{:<12} | {:^9} | {:^9.3f} | {:^9.3f} | {:^13.3f}'.format(summary_name, raw_scores[summary_name], quality_scores[summary_name],coverage_scores[summary_name],comprehension_scores[summary_name]))
 
 print ('\n')
 text = colored('Results written to %s' % results_file, 'blue')
+print (text)
+done = time()
+text = colored(('Time: {}'.format(str(done - timer))), 'blue')
 print (text)
 #print 'Results written to %s' % results_file
 print ('\n')

@@ -17,6 +17,7 @@
 
 
 from sklearn.metrics.pairwise import cosine_similarity as cos
+from printEsumLog import *
 import pickle
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -29,6 +30,7 @@ sys.path.append('../Preprocess/')
 from weiwei import vectorize
 from sif_embedding import vectorize_sif
 import numpy as np 
+import glob
 
 #Wasih: 05-23-21 configurable scoring: read configurable parameters from config file
 if sys.version_info[0] == 2:
@@ -533,6 +535,91 @@ def filename(fname):
 '''
 ================== Scores and Results ================
 '''
+#Puru (11-03-21) Added this function to move things from the main file to the helper library for better threading 
+
+def score(scus, fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, rf):
+    # if os.path.isdir(summary):
+    #     summ = glob.iglob(summary+'/*')
+    #     #fn is the summary name 
+    #     for fn in summ:
+    #         print ("current filename: ", fn)
+    #         if fn.endswith('.ls'):
+            # scus = copy.deepcopy(scus_og)
+    summary_slash= fn.rfind('/') + 1
+    summary_dot = fn.rfind('.')
+    summary_name = fn[summary_slash:summary_dot]
+    if os.path.getsize(fn) == 0:
+        raw_scores[summary_name] = 0
+        quality_scores[summary_name] = 0
+        coverage_scores[summary_name] = 0
+        comprehension_scores[summary_name] = 0
+        return
+    segs = fn[:fn.rfind('/')] + '/' + summary_name + '.segs'
+    segs = open(segs, 'r').readlines()
+    num_sentences = int(segs[len(segs)-1].split('&')[1])
+    segs = {'&'.join(seg.split('&')[:4]): seg.split('&')[4] for seg in segs}
+    sentences, segment_count, segment_list = sentencesFromSegmentations(fn)
+    Graph = SummaryGraph(sentences, scus)
+    independentSet = Graph.independentSet
+    independentSetValues = Graph.independentSetValues
+    candidates = buildSCUcandidateList(independentSet)
+    #print "Candidates: ", 
+    results, possiblyUsed = processResults(candidates, independentSet)
+    segcount = getsegsCount(segment_list, results, segs, num_sentences)
+    #print "Possibly used: ", possiblyUsed
+    keys = [res.split('&') for res in results]
+    rearranged_results = scusBySentences(results)
+    score, matched_cus = getScore(rearranged_results, scus)
+    size_file = 'sizes/' + filename(pyramid) + '.size'
+    #count_by_weight, avg = getLayerSizes(size_file)
+    # New get layersize 
+    count_by_weight, avg = new_getlayersize(size_file,numsmodel)
+    #print "AVG SCU: ", avg 
+    raw_scores[summary_name] = score
+    # temporary fix to number of sentences 
+    #q_max = maxRawScore(count_by_weight, possiblyUsed)
+    q_max = maxRawScore(count_by_weight, segcount)
+    #print "MAXSUM for numbers of matched SCU", q_max 
+    c_max = maxRawScore(count_by_weight, avg)
+
+    #print "MAXSUM for avg scu: ", c_max 
+    #print "score divided by max obtainable scores: ", q_max
+    quality = 0 if not q_max else float(score)/q_max
+    if quality > 1:
+        quality = 1 
+    coverage = 0 if not c_max else float(score)/c_max
+    if coverage > 1:
+        coverage = 1 
+    comprehension = float((quality + coverage)) / 2
+    quality_scores[summary_name] = quality
+    coverage_scores[summary_name] = coverage
+    comprehension_scores[summary_name] = comprehension
+
+    if (print_all) or log:
+        #log_f = log + summary_name
+        log_f = "../log/" + summary_name
+        #loginput = open(log_f, "w+")
+        # loginput = open("../log/loginput.txt", "w+")
+        # loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
+        # loginput.close()
+        # if not print_all:
+        #     print("Success!!")
+        printEsumLogWrapper(summary_name, segcount, score, quality, coverage, comprehension, q_max, c_max, avg, results, segment_list, num_sentences, segs, scu_labels, pyramid_name, log_f, independentSetValues, print_all)
+       
+    if rf:
+        scores = [raw_scores, quality_scores, coverage_scores, comprehension_scores] 
+        s = Summary(summary_name, segcount, segment_list, num_sentences, segs)
+        p = Pyramid(scu_labels, pyramid_name)
+        segList, SCUL = listSegments(s, p, results)
+        dicti = getDictionary(segList, p, results, scores)
+        #now write the dictionary to a pickle file which will then be read by the flask app
+        dict_filename, _ = os.path.split(results_file)
+        dict_filename = os.path.join(dict_filename, 'dict')
+        f = open(dict_filename, 'wb')
+        pickle.dump(dicti, f)
+        #f.write(dicti)
+        print(dicti)
+        print('******************************\n\n')
 
 def recall(results, fname):
     path = 'pan/op_' + filename(fname) + 'pan'
@@ -799,10 +886,10 @@ def getsegsCount(segment_list, results, segs, num_sentences):
                     maxcount = used[each]
         counter += maxcount
         
-    for each in used.keys():
-        print ("segment" + str(each)+ " : "+ str(used[each]))
+    # for each in used.keys():
+        # print ("segment" + str(each)+ " : "+ str(used[each]))
     
-    print ("Total segments : "+str(counter))
+    # print ("Total segments : "+str(counter))
     return counter
 
 # Returns true if the segment has the same sentence id and segment id as the args

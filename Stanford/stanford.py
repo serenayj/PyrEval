@@ -22,6 +22,7 @@
 
 import os
 import sys
+import threading
 #from lib_preprocessing import *
 
 #Wasih (02-19-20) Use functions instead of calling script
@@ -87,7 +88,7 @@ def stanfordmain(path_, mode, pyrEval, seg_method):
 			# TODO: Very clunky solution to set max heap size here
 			#Wasih (07-15-21) change output type according to segmentation method
 			out_type = ''
-			if seg_method == 'rule':
+			if seg_method == 'dcp':
 				out_type = ' -outputFormat xml'
 			command2 = java_exec + ' -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,parse,depparse -file ' + filename + ' -outputDirectory ' + outpath + out_type
 			os.system(command2)

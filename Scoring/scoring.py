@@ -34,6 +34,7 @@ import sys
 import pandas as pd
 import pickle
 import threading
+import json
 
 #Wasih (02-21-20) results.csv not generating
 PYTHON_VERSION = 2
@@ -104,7 +105,7 @@ if options.numsmodel:
     numsmodel = options.numsmodel
     numsmodel = int(numsmodel)
 
-#numsmodel = 5
+numsmodel = 5
 print ("Numbers of contributors: ", numsmodel)
 # See pyrmaid from "Scoring/pyrs/pyramids/" folder
 #pyramid = sys.argv[1]
@@ -188,6 +189,11 @@ for pyramid in pyramids:
     scus_og, scu_labels = readPyramid(pyramid)
     x = []
     # threads = []
+    # Puru 02/17/22 Extension for Notebook Input generation and descriptive spreadsheets
+    cu_matches = {}
+    group_matches = {}
+
+
     for summary in summaries:
         if os.path.isdir(summary):
             summ = glob.iglob(summary+'/*')
@@ -201,7 +207,7 @@ for pyramid in pyramids:
                         # print_all = False
                     # threads.append(threading.Thread(target = score, args= (copy.deepcopy(scus_og), fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, options.returnflag)))
                     x.append(fn_name)
-                    score(copy.deepcopy(scus_og), fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, options.returnflag)
+                    score(copy.deepcopy(scus_og), fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, options.returnflag, cu_matches, group_matches)
                     # threads[-1].start()
 
     # for i in range(len(threads)):
@@ -210,6 +216,23 @@ for pyramid in pyramids:
         #results_f = 
         ### For DUC05
 
+
+    # Puru 02/17/22 Extension for Notebook Input generation and descriptive spreadsheets
+    with open('cu_vectors.json', 'w') as f:
+        json.dump(cu_matches, f)
+    with open('groupings_vectors.json', 'w') as f:
+        json.dump(group_matches, f)
+    # Take input from file for the grouping names once file is decided
+    cu_df = pd.DataFrame.from_dict(cu_matches, orient='index')
+    with open('cu_vectors.csv', 'w') as f:
+        cu_df.to_csv(f)
+    gp_df = pd.DataFrame.from_dict(group_matches, orient='index', columns = ['A', 'B', 'C', 'D'])
+    with open('group_vectors.csv', 'w') as f:
+        gp_df.to_csv(f)    
+
+
+    # print(cu_matches)
+    # print(group_matches)
     ## FOr Duc 05
     #results_file = "results-raw.csv"
     print ("Will write into results file!! ", results_file)

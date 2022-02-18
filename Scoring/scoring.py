@@ -224,9 +224,11 @@ for pyramid in pyramids:
         json.dump(group_matches, f)
     # Take input from file for the grouping names once file is decided
     cu_df = pd.DataFrame.from_dict(cu_matches, orient='index')
+    cu_df = cu_df.sort_index()
     with open('cu_vectors.csv', 'w') as f:
         cu_df.to_csv(f)
     gp_df = pd.DataFrame.from_dict(group_matches, orient='index', columns = ['A', 'B', 'C', 'D'])
+    gp_df = gp_df.sort_index()
     with open('group_vectors.csv', 'w') as f:
         gp_df.to_csv(f)    
 

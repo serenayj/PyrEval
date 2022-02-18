@@ -30,6 +30,7 @@ sys.path.append('../Preprocess/')
 from weiwei import vectorize
 from sif_embedding import vectorize_sif
 import numpy as np 
+import pandas as pd
 import glob
 
 #Wasih: 05-23-21 configurable scoring: read configurable parameters from config file
@@ -535,9 +536,23 @@ def filename(fname):
 '''
 ================== Scores and Results ================
 '''
+# Puru 02/18/22 Find group matchings for the notebook feedback
+def getGroups(cu_vector):
+    # Convert the groups to a file at some point once a standard format for the file can be decided
+    groups = {'A' : [0], 'B' : [10,12], 'C' : [1], 'D' : [13]}
+    results = [0]*len(groups)
+    for i, each in enumerate(groups.keys()):
+        vals = groups[each]
+        match = 1
+        for index in vals:
+            match *= cu_vector[index]
+        results[i] = match
+    return results
+
+
 #Puru (11-03-21) Added this function to move things from the main file to the helper library for better threading 
 
-def score(scus, fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, rf):
+def score(scus, fn, raw_scores, quality_scores, coverage_scores, comprehension_scores, pyramid, pyramid_name, scu_labels, numsmodel, print_all, log, rf, cu_matches, group_matches):
     # if os.path.isdir(summary):
     #     summ = glob.iglob(summary+'/*')
     #     #fn is the summary name 
@@ -595,10 +610,21 @@ def score(scus, fn, raw_scores, quality_scores, coverage_scores, comprehension_s
     coverage_scores[summary_name] = coverage
     comprehension_scores[summary_name] = comprehension
 
+    # Puru 02/18/22 Additional code for the notebook input files
+    cu_vector = [0]*15
+    for each in results:
+        if results[each] < 15:
+            cu_vector[results[each]] = 1
+
+    cu_matches[summary_name] = cu_vector
+    group_vector = getGroups(cu_vector)
+    group_matches[summary_name] = group_vector
+
+
     if (print_all) or log:
         #log_f = log + summary_name
         log_f = "../log/" + summary_name
-        #loginput = open(log_f, "w+")
+        # loginput = open(log_f, "w+")
         # loginput = open("../log/loginput.txt", "w+")
         # loginput.write(summary_name+'\n'+str(segcount)+'\n'+str(score)+'\n'+str(quality)+'\n'+str(coverage)+'\n'+str(comprehension)+'\n'+str(results)+'\n'+" ".join(str(segment_list))+'\n'+str(num_sentences)+'\n'+str(segs)+'\n'+str(scu_labels)+'\n'+pyramid_name+'\n'+log_f)
         # loginput.close()

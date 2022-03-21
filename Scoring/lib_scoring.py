@@ -539,7 +539,7 @@ def filename(fname):
 # Puru 02/18/22 Find group matchings for the notebook feedback
 def getGroups(cu_vector):
     # Convert the groups to a file at some point once a standard format for the file can be decided
-    groups = {'A' : [0], 'B' : [10,12], 'C' : [1], 'D' : [13]}
+    groups = {'A' : [0], 'B' : [1], 'C' : [2], 'D' : [3]}
     results = [0]*len(groups)
     for i, each in enumerate(groups.keys()):
         vals = groups[each]

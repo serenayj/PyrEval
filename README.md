@@ -2,6 +2,8 @@
 
 PyrEval Copyright (C) 2017 Yanjun Gao
 
+__This repository is no longer being updated. Please visit [this new repository of PyrEval](https://github.com/psunlpgroup/PyrEvalv2), with advanced features.  Thanks to PSU NLP Group led by Dr. Rebecca Passonneau!__
+
 This is the package for running PyrEval. The current pacakge is written in Python 2.7 and Python>=3.6 will be released soon. 
 
 [Here](https://youtu.be/i_wdH3__urY) is a demo presented in [CLIEDE2017](https://sites.psu.edu/cliede2017/). Please cite these papers if you use our code. 
